@@ -1,6 +1,6 @@
 import { Navbar, Container, Nav, NavDropdown } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import Brand from "../Brand/BrandWhiteNavbar";
+import Brand from "../brand/BrandWhiteNavbar";
 
 export default function NavBar() {
   return (
@@ -11,7 +11,10 @@ export default function NavBar() {
         bg="dark"
         variant="dark"
         fixed="top"
-        style={{ fontWeight: "500", fontSize: "14px" }}
+        style={{
+          fontWeight: "500",
+          fontSize: "14px",
+        }}
       >
         <Container>
           <Navbar.Brand as={Link} to="/" style={{ marginRight: "7%" }}>
