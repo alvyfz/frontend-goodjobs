@@ -1,5 +1,5 @@
 import { Container, Row, Col } from "react-bootstrap";
-import Brand from "../Brand/Brand";
+import Brand from "../brand/Brand";
 import { Link } from "react-router-dom";
 export default function Footer() {
   return (
@@ -13,20 +13,21 @@ export default function Footer() {
           }}
         >
           <Row>
-            <Col lg={6}>
+            <Col lg={5}>
               <Brand />
+
               <p style={{ fontSize: "14px" }}>
-              goodJobs is an web-based platform to rent office spaces across Jakarta. 
-              goodjobs aims for the convenience of user when searching for a suitable 
-              working space in Jakarta’s business district areas.
+                goodJobs is an web-based platform to rent office spaces across
+                Jakarta. goodjobs aims for the convenience of user when
+                searching for a suitable working space in Jakarta’s business
+                district areas.
               </p>
             </Col>
-            <Col lg={6}>
+            <Col lg={7}>
               <Row style={{ marginTop: "20px" }}>
                 <Col lg={4}>
                   <>
                     <h6 style={{ fontWeight: "600" }}>INFORMATION</h6>
-                    <br />
                     <dl style={{ fontSize: "14px" }}>
                       <dd>
                         <Link
@@ -61,7 +62,7 @@ export default function Footer() {
                 <Col lg={4}>
                   <>
                     <h6 style={{ fontWeight: "600" }}>MY ACCOUNT</h6>
-                    <br />
+
                     <dl style={{ fontSize: "14px" }}>
                       <dd>My Account</dd>
                     </dl>
@@ -71,7 +72,7 @@ export default function Footer() {
                   {" "}
                   <>
                     <h6 style={{ fontWeight: "600" }}>CONTACT US</h6>
-                    <br />
+
                     <dl style={{ fontSize: "14px" }}>
                       <dd>
                         <Link
