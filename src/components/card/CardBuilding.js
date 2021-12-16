@@ -1,5 +1,5 @@
 import "./CardBuilding.css";
-import { Card, Button, Container } from "react-bootstrap";
+import { Card, Button, Row } from "react-bootstrap";
 import { Rating } from "react-simple-star-rating";
 
 export default function CardBuilding() {
@@ -69,13 +69,30 @@ export default function CardBuilding() {
 
           <Card.Text style={{ fontSize: "13px" }}>Thamrin</Card.Text>
         </Card.Body>
-        <div style={{ padding: "0" }}>
-          <Button
-            variant="primary"
-            style={{ width: "80%", textAlign: "center" }}
+        <div style={{ padding: "0", backgroundColor: "#E5E5E5" }}>
+          <Row
+            className="justify-content-center"
+            style={{ padding: "20px 0px 20px 0px" }}
           >
-            Go somewhere
-          </Button>{" "}
+            {" "}
+            <Button
+              variant="dark"
+              style={{ width: "80%", textAlign: "center", fontSize: "11px" }}
+            >
+              ENQUIRE
+            </Button>{" "}
+            <Button
+              variant="light"
+              style={{
+                width: "80%",
+                align: "center",
+                fontSize: "11px",
+                // background: "white",
+              }}
+            >
+              VIEW DETAIL
+            </Button>{" "}
+          </Row>
         </div>
       </Card>
     </>
