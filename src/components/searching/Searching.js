@@ -29,21 +29,6 @@ export default function Searching() {
             >
               <Row style={{ paddingTop: "45px" }}>
                 <Form inline className="d-flex" onSubmit={handleSearching}>
-                  {/* <Col md={2}> */}
-                  {/* <DropdownButton
-                    title={filter}
-                    id="bg-nested-dropdown"
-                    variant="light"
-                    style={{ marginRight: "20px" }}
-                    value={filter}
-                  >
-                    <Dropdown.Item eventKey="1" value="Complex">
-                      Complex
-                    </Dropdown.Item>
-                    <Dropdown.Item eventKey="2" value="Building">
-                      Building
-                    </Dropdown.Item>
-                  </DropdownButton> */}
                   <Form.Select
                     size="sm"
                     id="nationality"
@@ -55,8 +40,6 @@ export default function Searching() {
                     <option value="Complex">Complex</option>
                     <option value="Building">Building</option>
                   </Form.Select>
-                  {/* </Col> */}
-                  {/* <Col md={8}> */}
                   <Form.Control
                     value={text}
                     type="text"
@@ -65,8 +48,6 @@ export default function Searching() {
                     onChange={(e) => settext(e.target.value)}
                     required
                   />
-                  {/* </Col> */}
-                  {/* <Col md={2}></Col> */}
                   <Button
                     variant="dark"
                     type="submit"

@@ -2,11 +2,22 @@ import "./CardBuilding.css";
 import { Card, Button, Row } from "react-bootstrap";
 import { Rating } from "react-simple-star-rating";
 
-export default function CardBuilding() {
-  var img =
-    "https://images.unsplash.com/photo-1639502003763-e9dae1e76ec5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw0Mnx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60";
-  var rating = 90;
-  var hover = false;
+export default function CardBuilding({
+  clickView,
+  clickEnquire,
+  rating,
+  img,
+  price,
+  complex,
+  name,
+}) {
+  const formatRupiah = () => {
+    return new Intl.NumberFormat("id-ID", {
+      style: "currency",
+      currency: "IDR",
+      minimumFractionDigits: 0,
+    }).format(price);
+  };
   const conversiValue = (OldValue) => {
     var OldMax = 100;
     var OldMin = 0;
@@ -17,8 +28,6 @@ export default function CardBuilding() {
     var NewValue = ((OldValue - OldMin) * NewRange) / (OldRange + NewMin);
     return NewValue;
   };
-  console.log(conversiValue(90));
-  console.log(conversiValue(75));
 
   return (
     <>
@@ -47,16 +56,16 @@ export default function CardBuilding() {
           <p style={{ paddingLeft: "10px", color: "white" }}>
             {" "}
             <span style={{ fontSize: "12px" }}>Star from (per sqm/month) </span>
-            <br /> <span style={{ fontWeight: "550" }}>Rp.500.000</span>
+            <br /> <span style={{ fontWeight: "550" }}>{formatRupiah()}</span>
           </p>
         </Card.ImgOverlay>
         <Card.Body style={{ color: "black" }}>
           <Card.Title
             style={{ fontWeight: "600", fontSize: "24px", margin: "0" }}
           >
-            Menara Global
+            {name}
           </Card.Title>
-          <Rating ratingValue={rating} allowHover={hover} size={25}></Rating>
+          <Rating ratingValue={rating} allowHover={false} size={25}></Rating>
           <span
             style={{
               paddingLeft: "10px",
@@ -67,7 +76,7 @@ export default function CardBuilding() {
             {conversiValue(rating)}{" "}
           </span>
 
-          <Card.Text style={{ fontSize: "13px" }}>Thamrin</Card.Text>
+          <Card.Text style={{ fontSize: "13px" }}>{complex}</Card.Text>
         </Card.Body>
         <div style={{ padding: "0", backgroundColor: "#E5E5E5" }}>
           <Row
@@ -76,18 +85,19 @@ export default function CardBuilding() {
           >
             {" "}
             <Button
+              onClick={clickEnquire}
               variant="dark"
               style={{ width: "80%", textAlign: "center", fontSize: "11px" }}
             >
               ENQUIRE
             </Button>{" "}
             <Button
+              onClick={clickView}
               variant="light"
               style={{
                 width: "80%",
                 align: "center",
                 fontSize: "11px",
-                // background: "white",
               }}
             >
               VIEW DETAIL
