@@ -1,0 +1,779 @@
+{
+    "complex" : [
+        {
+            "id": 1,
+            "name": "Thamrin",
+            "img": "https://asset.kompas.com/crops/l1BXH-2XdKOnFYGCutKr8nQZOfA=/22x0:1612x1060/750x500/data/photo/2020/01/13/5e1c2a68b2973.jpg"
+        },
+        {
+            "id": 2,
+            "name": "Gatot Subroto",
+            "img": "https://cdn1-production-images-kly.akamaized.net/5yDZAutTjvrq-aoqyXEu3xx1bNA=/383x288/smart/filters:quality(75):strip_icc():format(jpeg)/kly-media-production/medias/1179704/original/015703800_1458650429-20160322--Jalan-Sudirman-Gatot-Subroto-Jadi-Lancar-akibat-Sopir-Taksi-Demo-Jakarta--Faisal-R-Syam-03.jpg"
+        },
+        {
+            "id": 3,
+            "name": "Mega Kuningan",
+            "img": "https://a0.muscache.com/pictures/911d6d53-ed95-48a4-a3a3-4ef020200c4d.jpg"
+        },
+        {
+            "id": 4,
+            "name": "Sudirman",
+            "img": "https://img.okezone.com/content/2021/07/04/338/2435178/foto-foto-jalan-sudirman-jakarta-lenggang-saat-ppkm-darurat-F59pu9KT99.jpg"
+        },
+        {
+            "id": 5,
+            "name": "Pancoran",
+            "img": "https://images.trvl-media.com/hotels/8000000/7260000/7250200/7250107/c27c0652.jpg?impolicy=fcrop&w=670&h=385&p=1&q=medium"
+        },
+        {
+            "id": 6,
+            "name": "TB Simatupang",
+            "img": "https://images.bisnis-cdn.com/posts/2020/08/10/1277014/hil-tol-2.jpg"
+        }
+
+    ],
+    "building" : [
+        {
+            "id": 1,
+            "complex_id": 1,
+            "name": "The Plaza",
+            "description": "The Plaza is a tall building of 38 storeys that is of walking distance to Plaza Indonesia, Grand Indonesia Shopping Town and Sarinah Plaza. The Plaza is equipped with 20 lifts that is split into 3 zones, namely Low Zone, Mid Zone and High Zone, and a dedicated service lift and executive lift.",
+            "building_size": "30.085 m²",
+            "floor": "39",
+            "office_hours": "Mon - Fri : 07:00 - 18:00 Sat : 07:00 - 13:00 Sun : N/A",
+            "address": "Jl. M.H. Thamrin No. 28-30 Jakarta Pusat, Jakarta, Indonesia",
+            "toilet": "8",
+            "img": "https://images.squarespace-cdn.com/content/v1/59635cf28419c269d9cf741b/1499694854631-9MDXK0TA49NM52MI714V/img2.png",
+            "latitude": "-6.209132",
+            "longitude": "106.819702"
+        },
+        {
+            "id": 2,
+            "complex_id": 4,
+            "name": "Equity Tower",
+            "description": "Equity Tower adalah gedung pencakar langit yang terletak di Sudirman Central Business District, Senayan, Kebayoran Baru, Jakarta Selatan. Gedung ini memiliki ketinggian 220 meter dengan 50 lantai. Gedung ini memiliki ketinggian 220 meter. Gedung ini berfungsi sebagai gedung perkantoran komersial",
+            "building_size": "30.085 m²",
+            "floor": "39",
+            "office_hours": "Mon - Fri : 07:00 - 18:00 Sat : 07:00 - 13:00 Sun : N/A",
+            "address": "Sudirman Central Busines District Lot 9 JRT.5, Jl. Jend. Sudirman No.Kav.52-53, RT.5/RW.3, Senayan, Kec. Kby. Baru, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 12190",
+            "toilet": "8",
+            "img": "https://equitytower.co.id/img/03.jpg",
+            "latitude": "-6.209132",
+            "longitude": "106.819702"
+        },
+        {
+            "id": 3,
+            "complex_id": 1,
+            "name": "City Tower",
+            "description": "The City Tower, Jl. M.H. Thamrin No.81, RT.1/RW.6, Dukuh Atas, Menteng, Kec. Menteng, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10310",
+            "building_size": "30.085 m²",
+            "floor": "39",
+            "office_hours": "Mon - Fri : 07:00 - 18:00 Sat : 07:00 - 13:00 Sun : N/A",
+            "address": "The City Tower, Jl. M.H. Thamrin No.81, RT.1/RW.6, Dukuh Atas, Menteng, Kec. Menteng, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10310",
+            "toilet": "8",
+            "img": "https://voffice.co.id/jakarta-virtual-office/img/virtual-office/tct.jpg",
+            "latitude": "-6.209132",
+            "longitude": "106.819702"
+        },
+        {
+            "id": 4,
+            "complex_id": 1,
+            "name": "Sinarmas Land Plaza Menara 3",
+            "description": "Sinarmas Land Plaza Menara 3 is a medium sized office building that is of walking distance to Sarinah Plaza, Plaza Indonesia and Grand Indonesia Shopping Town. Sinarmas Land Plaza Menara 3 is equipped with 5 lifts, and a dedicated service lift.",
+            "building_size": "12.594 m2",
+            "floor": "39",
+            "office_hours": "Mon - Fri : 07:00 - 18:00 Sat : 07:00 - 13:00 Sun : N/A",
+            "address": "Jl. M.H. Thamrin No.51",
+            "toilet": "8",
+            "img": "https://voffice.co.id/jakarta-virtual-office/img/virtual-office/tct.jpg",
+            "latitude": "-6.209132",
+            "longitude": "106.819702"
+        },
+        {
+            "id": 5,
+            "complex_id": 2,
+            "name": "Patra Jasa",
+            "description": "Patra Jasa is a Grade B office building located at the heart of Jakarta's Central Business District. With a total building size of 51.269 sqm, the office building in Jl. Jend. Gatot Subroto No. 32-34 is available for lease only.",
+            "building_size": "51.269 m2",
+            "floor": "22",
+            "office_hours": "Mon - Fri : 07:00 - 18:00 Sat : 07:00 - 13:00 Sun : N/A",
+            "address": "Jl. Jend. Gatot Subroto No. 32-34 ",
+            "toilet": "8",
+            "img": "https://image2.sewakantorcbd.com/800x0/upload/office-leasing/building-photos/157_sinarmas-land-plaza-ex-plaza-bii-sinarmas-land-plaza-menara-3_20180413080103_45465.jpg",
+            "latitude": "-6.209132",
+            "longitude": "106.819702"
+        },
+        {
+            "id": 6,
+            "complex_id": 2,
+            "name": "Menara Global",
+            "description": "Menara Global is a Grade B office building located at the heart of Jakarta's Central Business District. With a total building size of 22.169 sqm, the office building in Jl. Jend. Gatot Subroto No. 27 is available for lease only.",
+            "building_size": "22.169 m2",
+            "floor": "24",
+            "office_hours": "Mon - Fri : 07:00 - 18:00 Sat : 07:00 - 13:00 Sun : N/A",
+            "address": "Jl. Jend. Gatot Subroto No. 27 Setiabudi, Jakarta Selatan",
+            "toilet": "24",
+            "img": "https://image2.sewakantorcbd.com/800x0/upload/office-leasing/building-photos/11_menara-global-menara-global_20160914044222_13139.jpg",
+            "latitude": "-6.209132",
+            "longitude": "106.819702"
+        },
+        {
+            "id": 7,
+            "complex_id": 2,
+            "name": "Centennial Tower",
+            "description": "Centennial Tower is a Grade B office building located at the heart of Jakarta's Central Business District. With a total building size of 22.169 sqm, the office building in Jl. Jend. Gatot Subroto No. 27 is available for lease only.",
+            "building_size": "22.169 m2",
+            "floor": "24",
+            "office_hours": "Mon - Fri : 07:00 - 18:00 Sat : 07:00 - 13:00 Sun : N/A",
+            "address": "Jl. Jend Gatot Subroto No 27 Setiabudi, Jakarta Selatan",
+            "toilet": "24",
+            "img": "https://image2.sewakantorcbd.com/300x400/upload/office-leasing/building-photos/2_centennial-tower-centennial-tower_20160914043747_36742.JPG",
+            "latitude": "-6.209132",
+            "longitude": "106.819702"
+        },
+        {
+            "id": 8,
+            "complex_id": 3,
+            "name": "Menara Anugrah",
+            "description": "Menara Anugrah is a Grade B office building located at the heart of Jakarta's Central Business District. With a total building size of 15.309 sqm, the office building in Jl. Mega Kuningan Lot E. 33 No. 1&2 is available for lease only.",
+            "building_size": "15.309 m2",
+            "floor": "28",
+            "office_hours": "Mon - Fri : 07:00 - 18:00 Sat : 07:00 - 13:00 Sun : N/A",
+            "address": "Jl. Mega Kuningan Lot E. 33 No. 1&2 Setiabudi, Jakarta Selatan",
+            "toilet": "28",
+            "img": "https://image2.sewakantorcbd.com/800x0/upload/office-leasing/building-photos/68_menara-anugrah-menara-anugrah_20161124034717_67258.jpg",
+            "latitude": "-6.209132",
+            "longitude": "106.819702"
+        },
+        {
+            "id": 9,
+            "complex_id": 3,
+            "name": "Noble House",
+            "description": "Noble House is a new Grade A office building located at the heart of Jakarta's Central Business District. With a total building size of 50.000 sqm, the office building in Jl. Dr Ide Anak Agung Gde Agung Kav E 4.2 No. 2 is available for lease only.",
+            "building_size": "50.000 m²",
+            "floor": "39",
+            "office_hours": "Mon - Fri : 07:00 - 18:00 Sat : 07:00 - 13:00 Sun : N/A",
+            "address": "Jl. Mega Kuningan Lot E. 33 No. 1&2 Setiabudi, Jakarta Selatan",
+            "toilet": "39",
+            "img": "https://image2.sewakantorcbd.com/800x0/upload/office-leasing/building-photos/75_noble-house-noble-house_20160914044332_79418.JPG",
+            "latitude": "-6.209132",
+            "longitude": "106.819702"
+        },
+        {
+            "id": 10,
+            "complex_id": 3,
+            "name": "Menara Rajawali",
+            "description": "Menara Rajawali is a new Grade A office building located at the heart of Jakarta's Central Business District. With a total building size of 50.000 sqm, the office building in Jl. Dr Ide Anak Agung Gde Agung Kav E 4.2 No. 2 is available for lease only.",
+            "building_size": "50.000 m²",
+            "floor": "39",
+            "office_hours": "Mon - Fri : 07:00 - 18:00 Sat : 07:00 - 13:00 Sun : N/A",
+            "address": "Jl. Lingkar Mega Kuningan Lot 5.1 Setiabudi, Jakarta Selatan",
+            "toilet": "39",
+            "img": "https://image2.sewakantorcbd.com/300x400/upload/office-leasing/building-photos/74_menara-rajawali-menara-rajawali_20160914044303_77705.JPG",
+            "latitude": "-6.209132",
+            "longitude": "106.819702"
+        },
+        {
+            "id": 11,
+            "complex_id": 4,
+            "name": "Wisma KEIAI",
+            "description": "Wisma KEIAI is a new Grade A office building located at the heart of Jakarta's Central Business District. With a total building size of 50.000 sqm, the office building in Jl. Dr Ide Anak Agung Gde Agung Kav E 4.2 No. 2 is available for lease only.",
+            "building_size": "50.000 m²",
+            "floor": "39",
+            "office_hours": "Mon - Fri : 07:00 - 18:00 Sat : 07:00 - 13:00 Sun : N/A",
+            "address": "Jl. Jend Sudirman Kav 3 Tanah Abang, Jakarta Pusat",
+            "toilet": "39",
+            "img": "https://image2.sewakantorcbd.com/300x400/upload/office-leasing/building-photos/139_wisma-keiai-wisma-keiai_20160914044755_14749.jpg",
+            "latitude": "-6.209132",
+            "longitude": "106.819702"
+        },
+        {
+            "id": 12,
+            "complex_id": 4,
+            "name": "Atria at Sudirman",
+            "description": "Atria at Sudirman is a new Grade A office building located at the heart of Jakarta's Central Business District. With a total building size of 50.000 sqm, the office building in Jl. Dr Ide Anak Agung Gde Agung Kav E 4.2 No. 2 is available for lease only.",
+            "building_size": "50.000 m²",
+            "floor": "39",
+            "office_hours": "Mon - Fri : 07:00 - 18:00 Sat : 07:00 - 13:00 Sun : N/A",
+            "address": "Jl. Jend Sudirman Kav 33A Tanah Abang, Jakarta Pusat",
+            "toilet": "39",
+            "img": "https://image2.sewakantorcbd.com/300x400/upload/office-leasing/building-photos/87_anz-tower-anz-tower_20160914043659_79488.jpg",
+            "latitude": "-6.209132",
+            "longitude": "106.819702"
+        },
+        {
+            "id": 13,
+            "complex_id": 5,
+            "name": "Menara Hijau",
+            "description": "Menara Hijau is a new Grade A office building located at the heart of Jakarta's Central Business District. With a total building size of 50.000 sqm, the office building in Jl. Dr Ide Anak Agung Gde Agung Kav E 4.2 No. 2 is available for lease only.",
+            "building_size": "50.000 m²",
+            "floor": "39",
+            "office_hours": "Mon - Fri : 07:00 - 18:00 Sat : 07:00 - 13:00 Sun : N/A",
+            "address": "Jl. Let. Jend. M.T Haryono Kav 33 Pancoran, Jakarta Selatan",
+            "toilet": "39",
+            "img": "https://image2.sewakantorcbd.com/300x400/upload/office-leasing/building-photos/262_menara-hijau-menara-hijau_20160914044227_61234.JPG",
+            "latitude": "-6.209132",
+            "longitude": "106.819702"
+        },
+        {
+            "id": 14,
+            "complex_id": 5,
+            "name": "L'Avenue Office Park",
+            "description": "L'Avenue Office Park is a new Grade A office building located at the heart of Jakarta's Central Business District. With a total building size of 50.000 sqm, the office building in Jl. Dr Ide Anak Agung Gde Agung Kav E 4.2 No. 2 is available for lease only.",
+            "building_size": "50.000 m²",
+            "floor": "39",
+            "office_hours": "Mon - Fri : 07:00 - 18:00 Sat : 07:00 - 13:00 Sun : N/A",
+            "address": "Jl. Raya Pasar Minggu Kav. 16,Pancoran ,Jakarta Selatan",
+            "toilet": "39",
+            "img": "https://image2.sewakantorcbd.com/300x400/upload/office-leasing/building-photos/426_l-avenue-office-park-l-avenue-office_20170502060109_11014.jpg",
+            "latitude": "-6.209132",
+            "longitude": "106.819702"
+        },
+        {
+            "id": 15,
+            "complex_id": 5,
+            "name": "Wisma Korindo",
+            "description": "Wisma Korindo is a new Grade A office building located at the heart of Jakarta's Central Business District. With a total building size of 50.000 sqm, the office building in Jl. Dr Ide Anak Agung Gde Agung Kav E 4.2 No. 2 is available for lease only.",
+            "building_size": "50.000 m²",
+            "floor": "39",
+            "office_hours": "Mon - Fri : 07:00 - 18:00 Sat : 07:00 - 13:00 Sun : N/A",
+            "address": "Jl. Let. Jend. M.T Haryono Kav 62 Pancoran, Jakarta Selatan",
+            "toilet": "39",
+            "img": "https://image2.sewakantorcbd.com/300x400/upload/office-leasing/building-photos/264_wisma-korindo-wisma-korindo_20160914044804_53547.JPG",
+            "latitude": "-6.209132",
+            "longitude": "106.819702"
+        },
+        {
+            "id": 16,
+            "complex_id": 6,
+            "name": "AD Premier",
+            "description": "AD Premier is a new Grade A office building located at the heart of Jakarta's Central Business District. With a total building size of 50.000 sqm, the office building in Jl. Dr Ide Anak Agung Gde Agung Kav E 4.2 No. 2 is available for lease only.",
+            "building_size": "50.000 m²",
+            "floor": "39",
+            "office_hours": "Mon - Fri : 07:00 - 18:00 Sat : 07:00 - 13:00 Sun : N/A",
+            "address": "Jl. T.B. Simatupang No. 5 Pasar Minggu, Jakarta Selatan",
+            "toilet": "39",
+            "img": "https://image2.sewakantorcbd.com/300x400/upload/office-leasing/building-photos/200_ad-premier-ad-premier_20160914043656_21630.JPG",
+            "latitude": "-6.209132",
+            "longitude": "106.819702"
+        },
+        {
+            "id": 17,
+            "complex_id": 6,
+            "name": "Menara 165",
+            "description": "Menara 165 is a new Grade A office building located at the heart of Jakarta's Central Business District. With a total building size of 50.000 sqm, the office building in Jl. Dr Ide Anak Agung Gde Agung Kav E 4.2 No. 2 is available for lease only.",
+            "building_size": "50.000 m²",
+            "floor": "39",
+            "office_hours": "Mon - Fri : 07:00 - 18:00 Sat : 07:00 - 13:00 Sun : N/A",
+            "address": "Jl. T.B. Simatupang No. 1 , Jakarta Selatan",
+            "toilet": "39",
+            "img": "https://image2.sewakantorcbd.com/300x400/upload/office-leasing/building-photos/200_ad-premier-ad-premier_20160914043656_21630.JPG",
+            "latitude": "-6.209132",
+            "longitude": "106.819702"
+        },
+        {
+            "id": 18,
+            "complex_id": 6,
+            "name": "Plaza Oleos",
+            "description": "Plaza Oleos is a new Grade A office building located at the heart of Jakarta's Central Business District. With a total building size of 50.000 sqm, the office building in Jl. Dr Ide Anak Agung Gde Agung Kav E 4.2 No. 2 is available for lease only.",
+            "building_size": "50.000 m²",
+            "floor": "39",
+            "office_hours": "Mon - Fri : 07:00 - 18:00 Sat : 07:00 - 13:00 Sun : N/A",
+            "address": "Jl. T.B. Simatupang No. 53 Pasar Minggu, Jakarta Selatan",
+            "toilet": "39",
+            "img": "https://image2.sewakantorcbd.com/300x400/upload/office-leasing/building-photos/230_plaza-oleos-plaza-oleos_20160914044459_64991.JPG",
+            "latitude": "-6.209132",
+            "longitude": "106.819702"
+        }
+
+    ],
+    "unit": [
+        {
+            "id": 1,
+            "building_id": 1,
+            "price": "Rp. 450.000 per sqm/month",
+            "name": "Unit Type A",
+            "description": "The Plaza is a tall building of 38 storeys that is of walking distance to Plaza Indonesia, Grand Indonesia Shopping Town and Sarinah Plaza. The Plaza is equipped with 20 lifts that is split into 3 zones, namely Low Zone, Mid Zone and High Zone, and a dedicated service lift and executive lift.",
+            "unit_size": "200 m²",
+            "img": "http://apartemenplazasenayan.com/img/towerCD/unit_2Bedroom_1_rev1.jpg"
+        },
+        {
+            "id": 2,
+            "building_id": 1,
+            "price": "Rp. 400.000 per sqm/month",
+            "name": "Unit Type B",
+            "description": "The Plaza is a tall building of 38 storeys that is of walking distance to Plaza Indonesia, Grand Indonesia Shopping Town and Sarinah Plaza. The Plaza is equipped with 20 lifts that is split into 3 zones, namely Low Zone, Mid Zone and High Zone, and a dedicated service lift and executive lift.",
+            "unit_size": "200 m²",
+            "img": "http://apartemenplazasenayan.com/img/towerCD/unit_3Bedroom_1.jpg"
+        },
+        {
+            "id": 3,
+            "building_id": 1,
+            "price": "Rp. 350.000 per sqm/month",
+            "name": "Unit Type C",
+            "description": "The Plaza is a tall building of 38 storeys that is of walking distance to Plaza Indonesia, Grand Indonesia Shopping Town and Sarinah Plaza. The Plaza is equipped with 20 lifts that is split into 3 zones, namely Low Zone, Mid Zone and High Zone, and a dedicated service lift and executive lift.",
+            "unit_size": "200 m²",
+            "img": "http://apartemenplazasenayan.com/img/towerCD/unit_2Bedroom_1_rev1.jpg"
+        },
+        {
+            "id": 4,
+            "building_id": 2,
+            "price": "Rp. 450.000 per sqm/month",
+            "name": "Unit Type A",
+            "description": "Unit ini sangat cocok digunakan untuk keperluan bisnis seperti rapat dan bertemu dengan client.",
+            "unit_size": "200 m²",
+            "img": "https://image2.sewakantorcbd.com/800x0/upload/office-leasing/building-photos/90_equity-tower-equity-tower_20170310075344_52936.jpg"
+        },
+        {
+            "id": 5,
+            "building_id": 2,
+            "price": "Rp. 450.000 per sqm/month",
+            "name": "Unit Type B",
+            "description": "Unit ini sangat cocok digunakan untuk keperluan bisnis seperti rapat dan bertemu dengan client.",
+            "unit_size": "200 m²",
+            "img": "https://image2.sewakantorcbd.com/800x0/upload/office-leasing/building-photos/90_equity-tower-equity-tower_20170310075344_52936.jpg"
+        },
+        {
+            "id": 6,
+            "building_id": 2,
+            "price": "Rp. 450.000 per sqm/month",
+            "name": "Unit Type C",
+            "description": "Unit ini sangat cocok digunakan untuk keperluan bisnis seperti rapat dan bertemu dengan client.",
+            "unit_size": "200 m²",
+            "img": "https://image2.sewakantorcbd.com/800x0/upload/office-leasing/building-photos/90_equity-tower-equity-tower_20170310075344_52936.jpg"
+        },
+        {
+            "id": 7,
+            "building_id": 3,
+            "price": "Rp. 450.000 per sqm/month",
+            "name": "Unit Type A",
+            "description": "Unit ini sangat cocok digunakan untuk keperluan bisnis seperti rapat dan bertemu dengan client.",
+            "unit_size": "200 m²",
+            "img": "https://image2.sewakantorcbd.com/800x0/upload/office-leasing/building-photos/90_equity-tower-equity-tower_20170310075344_52936.jpg"
+        },
+        {
+            "id": 8,
+            "building_id": 3,
+            "price": "Rp. 450.000 per sqm/month",
+            "name": "Unit Type B",
+            "description": "Unit ini sangat cocok digunakan untuk keperluan bisnis seperti rapat dan bertemu dengan client.",
+            "unit_size": "200 m²",
+            "img": "https://image2.sewakantorcbd.com/800x0/upload/office-leasing/building-photos/90_equity-tower-equity-tower_20170310075344_52936.jpg"
+        },
+        {
+            "id": 9,
+            "building_id": 3,
+            "price": "Rp. 450.000 per sqm/month",
+            "name": "Unit Type C",
+            "description": "Unit ini sangat cocok digunakan untuk keperluan bisnis seperti rapat dan bertemu dengan client.",
+            "unit_size": "200 m²",
+            "img": "https://image2.sewakantorcbd.com/800x0/upload/office-leasing/building-photos/90_equity-tower-equity-tower_20170310075344_52936.jpg"
+        },
+        {
+            "id": 10,
+            "building_id": 4,
+            "price": "Rp. 450.000 per sqm/month",
+            "name": "Unit Type A",
+            "description": "Unit ini sangat cocok digunakan untuk keperluan bisnis seperti rapat dan bertemu dengan client.",
+            "unit_size": "200 m²",
+            "img": "https://image2.sewakantorcbd.com/800x0/upload/office-leasing/building-photos/90_equity-tower-equity-tower_20170310075344_52936.jpg"
+        },
+        {
+            "id": 11,
+            "building_id": 4,
+            "price": "Rp. 450.000 per sqm/month",
+            "name": "Unit Type B",
+            "description": "Unit ini sangat cocok digunakan untuk keperluan bisnis seperti rapat dan bertemu dengan client.",
+            "unit_size": "200 m²",
+            "img": "https://image2.sewakantorcbd.com/800x0/upload/office-leasing/building-photos/90_equity-tower-equity-tower_20170310075344_52936.jpg"
+        },
+        {
+            "id": 12,
+            "building_id": 4,
+            "price": "Rp. 450.000 per sqm/month",
+            "name": "Unit Type C",
+            "description": "Unit ini sangat cocok digunakan untuk keperluan bisnis seperti rapat dan bertemu dengan client.",
+            "unit_size": "200 m²",
+            "img": "https://image2.sewakantorcbd.com/800x0/upload/office-leasing/building-photos/90_equity-tower-equity-tower_20170310075344_52936.jpg"
+        },
+        {
+            "id": 13,
+            "building_id": 5,
+            "price": "Rp. 450.000 per sqm/month",
+            "name": "Unit Type A",
+            "description": "Unit ini sangat cocok digunakan untuk keperluan bisnis seperti rapat dan bertemu dengan client.",
+            "unit_size": "200 m²",
+            "img": "https://image2.sewakantorcbd.com/800x0/upload/office-leasing/building-photos/90_equity-tower-equity-tower_20170310075344_52936.jpg"
+        },
+        {
+            "id": 14,
+            "building_id": 5,
+            "price": "Rp. 450.000 per sqm/month",
+            "name": "Unit Type B",
+            "description": "Unit ini sangat cocok digunakan untuk keperluan bisnis seperti rapat dan bertemu dengan client.",
+            "unit_size": "200 m²",
+            "img": "https://image2.sewakantorcbd.com/800x0/upload/office-leasing/building-photos/90_equity-tower-equity-tower_20170310075344_52936.jpg"
+        },
+        {
+            "id": 15,
+            "building_id": 5,
+            "price": "Rp. 450.000 per sqm/month",
+            "name": "Unit Type C",
+            "description": "Unit ini sangat cocok digunakan untuk keperluan bisnis seperti rapat dan bertemu dengan client.",
+            "unit_size": "200 m²",
+            "img": "https://image2.sewakantorcbd.com/800x0/upload/office-leasing/building-photos/90_equity-tower-equity-tower_20170310075344_52936.jpg"
+        },
+        {
+            "id": 16,
+            "building_id": 6,
+            "price": "Rp. 450.000 per sqm/month",
+            "name": "Unit Type A",
+            "description": "Unit ini sangat cocok digunakan untuk keperluan bisnis seperti rapat dan bertemu dengan client.",
+            "unit_size": "200 m²",
+            "img": "https://image2.sewakantorcbd.com/800x0/upload/office-leasing/building-photos/90_equity-tower-equity-tower_20170310075344_52936.jpg"
+        },
+        {
+            "id": 17,
+            "building_id": 6,
+            "price": "Rp. 450.000 per sqm/month",
+            "name": "Unit Type B",
+            "description": "Unit ini sangat cocok digunakan untuk keperluan bisnis seperti rapat dan bertemu dengan client.",
+            "unit_size": "200 m²",
+            "img": "https://image2.sewakantorcbd.com/800x0/upload/office-leasing/building-photos/90_equity-tower-equity-tower_20170310075344_52936.jpg"
+        },
+        {
+            "id": 18,
+            "building_id": 6,
+            "price": "Rp. 450.000 per sqm/month",
+            "name": "Unit Type C",
+            "description": "Unit ini sangat cocok digunakan untuk keperluan bisnis seperti rapat dan bertemu dengan client.",
+            "unit_size": "200 m²",
+            "img": "https://image2.sewakantorcbd.com/800x0/upload/office-leasing/building-photos/90_equity-tower-equity-tower_20170310075344_52936.jpg"
+        },
+        {
+            "id": 19,
+            "building_id": 7,
+            "price": "Rp. 450.000 per sqm/month",
+            "name": "Unit Type A",
+            "description": "Unit ini sangat cocok digunakan untuk keperluan bisnis seperti rapat dan bertemu dengan client.",
+            "unit_size": "200 m²",
+            "img": "https://image2.sewakantorcbd.com/800x0/upload/office-leasing/building-photos/90_equity-tower-equity-tower_20170310075344_52936.jpg"
+        },
+        {
+            "id": 20,
+            "building_id": 7,
+            "price": "Rp. 450.000 per sqm/month",
+            "name": "Unit Type B",
+            "description": "Unit ini sangat cocok digunakan untuk keperluan bisnis seperti rapat dan bertemu dengan client.",
+            "unit_size": "200 m²",
+            "img": "https://image2.sewakantorcbd.com/800x0/upload/office-leasing/building-photos/90_equity-tower-equity-tower_20170310075344_52936.jpg"
+        },
+        {
+            "id": 21,
+            "building_id": 7,
+            "price": "Rp. 450.000 per sqm/month",
+            "name": "Unit Type C",
+            "description": "Unit ini sangat cocok digunakan untuk keperluan bisnis seperti rapat dan bertemu dengan client.",
+            "unit_size": "200 m²",
+            "img": "https://image2.sewakantorcbd.com/800x0/upload/office-leasing/building-photos/90_equity-tower-equity-tower_20170310075344_52936.jpg"
+        },
+        {
+            "id": 22,
+            "building_id": 8,
+            "price": "Rp. 450.000 per sqm/month",
+            "name": "Unit Type A",
+            "description": "Unit ini sangat cocok digunakan untuk keperluan bisnis seperti rapat dan bertemu dengan client.",
+            "unit_size": "200 m²",
+            "img": "https://image2.sewakantorcbd.com/800x0/upload/office-leasing/building-photos/90_equity-tower-equity-tower_20170310075344_52936.jpg"
+        },
+        {
+            "id": 23,
+            "building_id": 8,
+            "price": "Rp. 450.000 per sqm/month",
+            "name": "Unit Type B",
+            "description": "Unit ini sangat cocok digunakan untuk keperluan bisnis seperti rapat dan bertemu dengan client.",
+            "unit_size": "200 m²",
+            "img": "https://image2.sewakantorcbd.com/800x0/upload/office-leasing/building-photos/90_equity-tower-equity-tower_20170310075344_52936.jpg"
+        },
+        {
+            "id": 24,
+            "building_id": 8,
+            "price": "Rp. 450.000 per sqm/month",
+            "name": "Unit Type C",
+            "description": "Unit ini sangat cocok digunakan untuk keperluan bisnis seperti rapat dan bertemu dengan client.",
+            "unit_size": "200 m²",
+            "img": "https://image2.sewakantorcbd.com/800x0/upload/office-leasing/building-photos/90_equity-tower-equity-tower_20170310075344_52936.jpg"
+        },
+        {
+            "id": 25,
+            "building_id": 9,
+            "price": "Rp. 450.000 per sqm/month",
+            "name": "Unit Type A",
+            "description": "Unit ini sangat cocok digunakan untuk keperluan bisnis seperti rapat dan bertemu dengan client.",
+            "unit_size": "200 m²",
+            "img": "https://image2.sewakantorcbd.com/800x0/upload/office-leasing/building-photos/90_equity-tower-equity-tower_20170310075344_52936.jpg"
+        },
+        {
+            "id": 26,
+            "building_id": 9,
+            "price": "Rp. 450.000 per sqm/month",
+            "name": "Unit Type B",
+            "description": "Unit ini sangat cocok digunakan untuk keperluan bisnis seperti rapat dan bertemu dengan client.",
+            "unit_size": "200 m²",
+            "img": "https://image2.sewakantorcbd.com/800x0/upload/office-leasing/building-photos/90_equity-tower-equity-tower_20170310075344_52936.jpg"
+        },
+        {
+            "id": 27,
+            "building_id": 9,
+            "price": "Rp. 450.000 per sqm/month",
+            "name": "Unit Type C",
+            "description": "Unit ini sangat cocok digunakan untuk keperluan bisnis seperti rapat dan bertemu dengan client.",
+            "unit_size": "200 m²",
+            "img": "https://image2.sewakantorcbd.com/800x0/upload/office-leasing/building-photos/90_equity-tower-equity-tower_20170310075344_52936.jpg"
+        },
+        {
+            "id": 28,
+            "building_id": 10,
+            "price": "Rp. 450.000 per sqm/month",
+            "name": "Unit Type A",
+            "description": "Unit ini sangat cocok digunakan untuk keperluan bisnis seperti rapat dan bertemu dengan client.",
+            "unit_size": "200 m²",
+            "img": "https://image2.sewakantorcbd.com/800x0/upload/office-leasing/building-photos/90_equity-tower-equity-tower_20170310075344_52936.jpg"
+        },
+        {
+            "id": 29,
+            "building_id": 10,
+            "price": "Rp. 450.000 per sqm/month",
+            "name": "Unit Type B",
+            "description": "Unit ini sangat cocok digunakan untuk keperluan bisnis seperti rapat dan bertemu dengan client.",
+            "unit_size": "200 m²",
+            "img": "https://image2.sewakantorcbd.com/800x0/upload/office-leasing/building-photos/90_equity-tower-equity-tower_20170310075344_52936.jpg"
+        },
+        {
+            "id": 30,
+            "building_id": 10,
+            "price": "Rp. 450.000 per sqm/month",
+            "name": "Unit Type C",
+            "description": "Unit ini sangat cocok digunakan untuk keperluan bisnis seperti rapat dan bertemu dengan client.",
+            "unit_size": "200 m²",
+            "img": "https://image2.sewakantorcbd.com/800x0/upload/office-leasing/building-photos/90_equity-tower-equity-tower_20170310075344_52936.jpg"
+        },
+        {
+            "id": 31,
+            "building_id": 11,
+            "price": "Rp. 450.000 per sqm/month",
+            "name": "Unit Type A",
+            "description": "Unit ini sangat cocok digunakan untuk keperluan bisnis seperti rapat dan bertemu dengan client.",
+            "unit_size": "200 m²",
+            "img": "https://image2.sewakantorcbd.com/800x0/upload/office-leasing/building-photos/90_equity-tower-equity-tower_20170310075344_52936.jpg"
+        },
+        {
+            "id": 32,
+            "building_id": 11,
+            "price": "Rp. 450.000 per sqm/month",
+            "name": "Unit Type B",
+            "description": "Unit ini sangat cocok digunakan untuk keperluan bisnis seperti rapat dan bertemu dengan client.",
+            "unit_size": "200 m²",
+            "img": "https://image2.sewakantorcbd.com/800x0/upload/office-leasing/building-photos/90_equity-tower-equity-tower_20170310075344_52936.jpg"
+        },
+        {
+            "id": 33,
+            "building_id": 11,
+            "price": "Rp. 450.000 per sqm/month",
+            "name": "Unit Type C",
+            "description": "Unit ini sangat cocok digunakan untuk keperluan bisnis seperti rapat dan bertemu dengan client.",
+            "unit_size": "200 m²",
+            "img": "https://image2.sewakantorcbd.com/800x0/upload/office-leasing/building-photos/90_equity-tower-equity-tower_20170310075344_52936.jpg"
+        },
+        {
+            "id": 34,
+            "building_id": 12,
+            "price": "Rp. 450.000 per sqm/month",
+            "name": "Unit Type A",
+            "description": "Unit ini sangat cocok digunakan untuk keperluan bisnis seperti rapat dan bertemu dengan client.",
+            "unit_size": "200 m²",
+            "img": "https://image2.sewakantorcbd.com/800x0/upload/office-leasing/building-photos/90_equity-tower-equity-tower_20170310075344_52936.jpg"
+        },
+        {
+            "id": 35,
+            "building_id": 12,
+            "price": "Rp. 450.000 per sqm/month",
+            "name": "Unit Type B",
+            "description": "Unit ini sangat cocok digunakan untuk keperluan bisnis seperti rapat dan bertemu dengan client.",
+            "unit_size": "200 m²",
+            "img": "https://image2.sewakantorcbd.com/800x0/upload/office-leasing/building-photos/90_equity-tower-equity-tower_20170310075344_52936.jpg"
+        },
+        {
+            "id": 36,
+            "building_id": 12,
+            "price": "Rp. 450.000 per sqm/month",
+            "name": "Unit Type C",
+            "description": "Unit ini sangat cocok digunakan untuk keperluan bisnis seperti rapat dan bertemu dengan client.",
+            "unit_size": "200 m²",
+            "img": "https://image2.sewakantorcbd.com/800x0/upload/office-leasing/building-photos/90_equity-tower-equity-tower_20170310075344_52936.jpg"
+        },
+        {
+            "id": 37,
+            "building_id": 13,
+            "price": "Rp. 450.000 per sqm/month",
+            "name": "Unit Type A",
+            "description": "Unit ini sangat cocok digunakan untuk keperluan bisnis seperti rapat dan bertemu dengan client.",
+            "unit_size": "200 m²",
+            "img": "https://image2.sewakantorcbd.com/800x0/upload/office-leasing/building-photos/90_equity-tower-equity-tower_20170310075344_52936.jpg"
+        },
+        {
+            "id": 38,
+            "building_id": 13,
+            "price": "Rp. 450.000 per sqm/month",
+            "name": "Unit Type B",
+            "description": "Unit ini sangat cocok digunakan untuk keperluan bisnis seperti rapat dan bertemu dengan client.",
+            "unit_size": "200 m²",
+            "img": "https://image2.sewakantorcbd.com/800x0/upload/office-leasing/building-photos/90_equity-tower-equity-tower_20170310075344_52936.jpg"
+        },
+        {
+            "id": 39,
+            "building_id": 13,
+            "price": "Rp. 450.000 per sqm/month",
+            "name": "Unit Type C",
+            "description": "Unit ini sangat cocok digunakan untuk keperluan bisnis seperti rapat dan bertemu dengan client.",
+            "unit_size": "200 m²",
+            "img": "https://image2.sewakantorcbd.com/800x0/upload/office-leasing/building-photos/90_equity-tower-equity-tower_20170310075344_52936.jpg"
+        },
+        {
+            "id": 40,
+            "building_id": 14,
+            "price": "Rp. 450.000 per sqm/month",
+            "name": "Unit Type A",
+            "description": "Unit ini sangat cocok digunakan untuk keperluan bisnis seperti rapat dan bertemu dengan client.",
+            "unit_size": "200 m²",
+            "img": "https://image2.sewakantorcbd.com/800x0/upload/office-leasing/building-photos/90_equity-tower-equity-tower_20170310075344_52936.jpg"
+        },
+        {
+            "id": 41,
+            "building_id": 14,
+            "price": "Rp. 450.000 per sqm/month",
+            "name": "Unit Type B",
+            "description": "Unit ini sangat cocok digunakan untuk keperluan bisnis seperti rapat dan bertemu dengan client.",
+            "unit_size": "200 m²",
+            "img": "https://image2.sewakantorcbd.com/800x0/upload/office-leasing/building-photos/90_equity-tower-equity-tower_20170310075344_52936.jpg"
+        },
+        {
+            "id": 42,
+            "building_id": 14,
+            "price": "Rp. 450.000 per sqm/month",
+            "name": "Unit Type C",
+            "description": "Unit ini sangat cocok digunakan untuk keperluan bisnis seperti rapat dan bertemu dengan client.",
+            "unit_size": "200 m²",
+            "img": "https://image2.sewakantorcbd.com/800x0/upload/office-leasing/building-photos/90_equity-tower-equity-tower_20170310075344_52936.jpg"
+        },
+        {
+            "id": 43,
+            "building_id": 15,
+            "price": "Rp. 450.000 per sqm/month",
+            "name": "Unit Type A",
+            "description": "Unit ini sangat cocok digunakan untuk keperluan bisnis seperti rapat dan bertemu dengan client.",
+            "unit_size": "200 m²",
+            "img": "https://image2.sewakantorcbd.com/800x0/upload/office-leasing/building-photos/90_equity-tower-equity-tower_20170310075344_52936.jpg"
+        },
+        {
+            "id": 44,
+            "building_id": 15,
+            "price": "Rp. 450.000 per sqm/month",
+            "name": "Unit Type B",
+            "description": "Unit ini sangat cocok digunakan untuk keperluan bisnis seperti rapat dan bertemu dengan client.",
+            "unit_size": "200 m²",
+            "img": "https://image2.sewakantorcbd.com/800x0/upload/office-leasing/building-photos/90_equity-tower-equity-tower_20170310075344_52936.jpg"
+        },
+        {
+            "id": 45,
+            "building_id": 15,
+            "price": "Rp. 450.000 per sqm/month",
+            "name": "Unit Type C",
+            "description": "Unit ini sangat cocok digunakan untuk keperluan bisnis seperti rapat dan bertemu dengan client.",
+            "unit_size": "200 m²",
+            "img": "https://image2.sewakantorcbd.com/800x0/upload/office-leasing/building-photos/90_equity-tower-equity-tower_20170310075344_52936.jpg"
+        },
+        {
+            "id": 46,
+            "building_id": 16,
+            "price": "Rp. 450.000 per sqm/month",
+            "name": "Unit Type A",
+            "description": "Unit ini sangat cocok digunakan untuk keperluan bisnis seperti rapat dan bertemu dengan client.",
+            "unit_size": "200 m²",
+            "img": "https://image2.sewakantorcbd.com/800x0/upload/office-leasing/building-photos/90_equity-tower-equity-tower_20170310075344_52936.jpg"
+        },
+        {
+            "id": 47,
+            "building_id": 16,
+            "price": "Rp. 450.000 per sqm/month",
+            "name": "Unit Type B",
+            "description": "Unit ini sangat cocok digunakan untuk keperluan bisnis seperti rapat dan bertemu dengan client.",
+            "unit_size": "200 m²",
+            "img": "https://image2.sewakantorcbd.com/800x0/upload/office-leasing/building-photos/90_equity-tower-equity-tower_20170310075344_52936.jpg"
+        },
+        {
+            "id": 48,
+            "building_id": 16,
+            "price": "Rp. 450.000 per sqm/month",
+            "name": "Unit Type C",
+            "description": "Unit ini sangat cocok digunakan untuk keperluan bisnis seperti rapat dan bertemu dengan client.",
+            "unit_size": "200 m²",
+            "img": "https://image2.sewakantorcbd.com/800x0/upload/office-leasing/building-photos/90_equity-tower-equity-tower_20170310075344_52936.jpg"
+        },
+        {
+            "id": 49,
+            "building_id": 17,
+            "price": "Rp. 450.000 per sqm/month",
+            "name": "Unit Type A",
+            "description": "Unit ini sangat cocok digunakan untuk keperluan bisnis seperti rapat dan bertemu dengan client.",
+            "unit_size": "200 m²",
+            "img": "https://image2.sewakantorcbd.com/800x0/upload/office-leasing/building-photos/90_equity-tower-equity-tower_20170310075344_52936.jpg"
+        },
+        {
+            "id": 50,
+            "building_id": 17,
+            "price": "Rp. 450.000 per sqm/month",
+            "name": "Unit Type B",
+            "description": "Unit ini sangat cocok digunakan untuk keperluan bisnis seperti rapat dan bertemu dengan client.",
+            "unit_size": "200 m²",
+            "img": "https://image2.sewakantorcbd.com/800x0/upload/office-leasing/building-photos/90_equity-tower-equity-tower_20170310075344_52936.jpg"
+        },
+        {
+            "id": 51,
+            "building_id": 17,
+            "price": "Rp. 450.000 per sqm/month",
+            "name": "Unit Type C",
+            "description": "Unit ini sangat cocok digunakan untuk keperluan bisnis seperti rapat dan bertemu dengan client.",
+            "unit_size": "200 m²",
+            "img": "https://image2.sewakantorcbd.com/800x0/upload/office-leasing/building-photos/90_equity-tower-equity-tower_20170310075344_52936.jpg"
+        },
+        {
+            "id": 52,
+            "building_id": 18,
+            "price": "Rp. 450.000 per sqm/month",
+            "name": "Unit Type A",
+            "description": "Unit ini sangat cocok digunakan untuk keperluan bisnis seperti rapat dan bertemu dengan client.",
+            "unit_size": "200 m²",
+            "img": "https://image2.sewakantorcbd.com/800x0/upload/office-leasing/building-photos/90_equity-tower-equity-tower_20170310075344_52936.jpg"
+        },
+        {
+            "id": 53,
+            "building_id": 18,
+            "price": "Rp. 450.000 per sqm/month",
+            "name": "Unit Type B",
+            "description": "Unit ini sangat cocok digunakan untuk keperluan bisnis seperti rapat dan bertemu dengan client.",
+            "unit_size": "200 m²",
+            "img": "https://image2.sewakantorcbd.com/800x0/upload/office-leasing/building-photos/90_equity-tower-equity-tower_20170310075344_52936.jpg"
+        },
+        {
+            "id": 54,
+            "building_id": 18,
+            "price": "Rp. 450.000 per sqm/month",
+            "name": "Unit Type C",
+            "description": "Unit ini sangat cocok digunakan untuk keperluan bisnis seperti rapat dan bertemu dengan client.",
+            "unit_size": "200 m²",
+            "img": "https://image2.sewakantorcbd.com/800x0/upload/office-leasing/building-photos/90_equity-tower-equity-tower_20170310075344_52936.jpg"
+        }
+    ]
+
+}
