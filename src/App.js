@@ -1,7 +1,8 @@
 import logo from "./logo.svg";
 import "./App.css";
 import Search from "./components/searching/Searching";
-import CardComplex from "./components/card/card_complex";
+import CardComplex from "./components/card/CardComplex";
+import CardBuilding from "./components/card/CardBuilding";
 import { Row } from "react-bootstrap";
 function App() {
   return (
@@ -13,6 +14,9 @@ function App() {
           <CardComplex />
           <CardComplex />
           <CardComplex />
+          <CardBuilding />
+          <CardBuilding />
+          <CardBuilding />
         </Row>
 
         <h1>RALEWAY</h1>
