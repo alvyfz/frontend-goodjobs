@@ -10,7 +10,7 @@ export default function Searching() {
   const [text, settext] = useState();
 
   const handleSearching = () => {
-    Navigate(`/search?search=${text}&filter=${filter}`);
+    Navigate(`/search?key=${text}&filter=${filter}`);
   };
   return (
     <>
