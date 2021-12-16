@@ -1,15 +1,17 @@
 import "./Search.css";
-import {
-  Container,
-  Row,
-  Col,
-  DropdownButton,
-  Dropdown,
-  Form,
-  Button,
-} from "react-bootstrap";
+import { Container, Row, Col, Form, Button } from "react-bootstrap";
+import { useState } from "react";
 
-export default function Search() {
+import { useNavigate } from "react-router-dom";
+
+export default function Searching() {
+  const Navigate = useNavigate();
+  const [filter, setfilter] = useState();
+  const [text, settext] = useState();
+
+  const handleSearching = () => {
+    Navigate(`/search?key=${text}&filter=${filter}`);
+  };
   return (
     <>
       <Container fluid className="Background">
@@ -26,26 +28,26 @@ export default function Search() {
               }}
             >
               <Row style={{ paddingTop: "45px" }}>
-                <Form inline className="d-flex">
-                  {/* <Col md={2}> */}
-                  <DropdownButton
-                    title="Filter"
-                    id="bg-nested-dropdown"
-                    variant="light"
-                    style={{ marginRight: "20px" }}
+                <Form inline className="d-flex" onSubmit={handleSearching}>
+                  <Form.Select
+                    size="sm"
+                    id="nationality"
+                    value={filter}
+                    onChange={(e) => setfilter(e.target.value)}
+                    style={{ width: "110px", marginRight: "20px" }}
                   >
-                    <Dropdown.Item eventKey="1">Complex</Dropdown.Item>
-                    <Dropdown.Item eventKey="2">Building</Dropdown.Item>
-                  </DropdownButton>
-                  {/* </Col> */}
-                  {/* <Col md={8}> */}
+                    <option selected>Filter</option>
+                    <option value="Complex">Complex</option>
+                    <option value="Building">Building</option>
+                  </Form.Select>
                   <Form.Control
+                    value={text}
                     type="text"
                     placeholder="Type Building (e.g. Wisma 46,Menara BCA)"
                     variant="light"
+                    onChange={(e) => settext(e.target.value)}
+                    required
                   />
-                  {/* </Col> */}
-                  {/* <Col md={2}></Col> */}
                   <Button
                     variant="dark"
                     type="submit"
