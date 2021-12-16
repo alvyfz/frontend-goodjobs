@@ -1,7 +1,7 @@
 import logo from "./logo.svg";
 import "./App.css";
 import Search from "./components/searching/Searching";
-import CardComplex from "./components/card/CardComplex";
+import CardComplex from "./components/card/CardUnit";
 import CardBuilding from "./components/card/CardBuilding";
 import { Row } from "react-bootstrap";
 function App() {
@@ -14,6 +14,7 @@ function App() {
           <CardComplex
             name="Suryanti"
             img="https://images.unsplash.com/photo-1639502003763-e9dae1e76ec5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw0Mnx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60"
+            price={800000}
           />
           <CardComplex
             name="Siska"

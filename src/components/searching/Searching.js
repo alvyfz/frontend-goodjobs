@@ -36,7 +36,9 @@ export default function Searching() {
                     onChange={(e) => setfilter(e.target.value)}
                     style={{ width: "110px", marginRight: "20px" }}
                   >
-                    <option selected>Filter</option>
+                    <option selected value="">
+                      Filter
+                    </option>
                     <option value="Complex">Complex</option>
                     <option value="Building">Building</option>
                   </Form.Select>
