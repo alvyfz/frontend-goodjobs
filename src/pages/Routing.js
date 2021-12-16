@@ -1,7 +1,7 @@
 import { Routes, Route, useLocation } from "react-router-dom";
 //pages
-import NavBar from "../components/NavBar/NavBar";
-import Footer from "../components/Footer/Footer";
+import NavBar from "../components/navbar/NavBar";
+import Footer from "../components/footer/Footer";
 import App from "../App";
 export default function Routing() {
   let path = useLocation();
