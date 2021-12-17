@@ -9,7 +9,7 @@ export default function CardComplex({ name, img }) {
           padding: "0",
           backgroundImage: "url(" + img + ")",
           backgroundSize: "cover",
-          width: "296px",
+          width: "100%",
           height: "200px",
         }}
       >

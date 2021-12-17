@@ -34,7 +34,7 @@ const Home = () => {
         <Row>
           <Col lg={2}></Col>
           <Col lg={8}>
-            <Row className="row1">
+            <Row className="justify-content-center row1">
               <Col lg={4} className="col1">
                 <CardFeatured
                   idx={4}
@@ -96,7 +96,7 @@ const Home = () => {
         <Row className="justify-content-center">
           <Col lg={2}></Col>
           <Col lg={8}>
-            <Row>
+            <Row className="justify-content-center">
               {building?.slice(0, 6).map((v, i) => {
                 return (
                   <Col lg={4} key={v.id}>
