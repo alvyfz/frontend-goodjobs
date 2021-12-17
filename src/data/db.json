@@ -2,22 +2,22 @@
   "complex": [
     {
       "id": 1,
-      "name": "Thamrin",
+      "name": "Thamrin, CBD",
       "img": "http://d2e5ushqwiltxm.cloudfront.net/wp-content/uploads/sites/109/2019/09/27080349/web-drone.jpg"
     },
     {
       "id": 2,
-      "name": "Gatot Subroto",
+      "name": "Gatot Subroto, CBD",
       "img": "https://c8.alamy.com/comp/2C2W88R/beautiful-gatot-subroto-jakarta-in-the-night-has-a-blend-of-architecture-metropolitan-culture-modernity-and-nightlife-2C2W88R.jpg"
     },
     {
       "id": 3,
-      "name": "Mega Kuningan",
+      "name": "Mega Kuningan, CBD",
       "img": "https://live.staticflickr.com/5515/30434467474_c3e5dc6ecc_b.jpg"
     },
     {
       "id": 4,
-      "name": "Sudirman",
+      "name": "Sudirman, CBD",
       "img": "https://arthagraha.net/wp-content/uploads/2015/06/parallax-1.jpg"
     },
     {
@@ -27,7 +27,7 @@
     },
     {
       "id": 6,
-      "name": "TB Simatupang",
+      "name": "TB Simatupang, CBD",
       "img": "https://cdn-2.tstatic.net/tribunnews/foto/bank/images/kawasan-perkantoran-dan-hunian-high-rise-di-tb-simatupang.jpg"
     }
   ],
