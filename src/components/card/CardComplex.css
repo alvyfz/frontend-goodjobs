@@ -3,7 +3,8 @@
   font-size: 18px;
   text-align: left !important;
   height: 35px;
-  margin-top: 56%;
+  margin-top: 165px;
+  border-radius: 5px;
   background-color: rgba(0, 0, 0, 0.66);
 }
 
@@ -21,4 +22,7 @@
   -webkit-transform: scale(1.05) !important;
   -ms-transform: scale(1.05) !important;
   z-index: 2;
+  border: 0;
+  border-radius: 5px;
+  margin: 10px;
 }

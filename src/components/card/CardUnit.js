@@ -30,23 +30,6 @@ export default function CardUnit({
             height: "200px",
           }}
         />
-        {/* <Card.ImgOverlay
-          style={{
-            padding: "0px ",
-            fontSize: "18px",
-            textAlign: "left !important",
-            height: "60px",
-            marginTop: "49%",
-
-            backgroundColor: "rgba(0, 0, 0, 0.66)",
-          }}
-        >
-          <p style={{ paddingLeft: "10px", color: "white" }}>
-            {" "}
-            <span style={{ fontSize: "12px" }}>Star from (per sqm/month) </span>
-            <br /> <span style={{ fontWeight: "550" }}>{formatRupiah()}</span>
-          </p>
-        </Card.ImgOverlay> */}
         <Card.Body style={{ color: "black" }}>
           <Card.Title
             style={{ fontWeight: "600", fontSize: "24px", margin: "0" }}
