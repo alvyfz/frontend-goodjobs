@@ -1,0 +1,14 @@
+h4 {
+  margin: 0px;
+  font-weight: 600;
+}
+
+h2 {
+  font-weight: 700;
+}
+
+.title {
+  margin-top: 60px;
+  margin-bottom: 50px;
+  text-align: center;
+}

@@ -11,13 +11,23 @@ export default function Searching() {
 
   const handleSearching = () => {
     Navigate(`/search?key=${text}&filter=${filter}`);
+    setfilter();
+    settext();
   };
   return (
     <>
       <Container fluid className="Background">
-        <Row className="justify-content-center" style={{ paddingTop: "120px" }}>
+        <Row
+          className="justify-content-center"
+          style={{ paddingTop: "120px", textAlign: "center" }}
+        >
           <Col md={6}>
-            <h1 style={{ fontWeight: "600px", color: "white" }}>
+            <h1
+              style={{
+                fontWeight: "600px",
+                color: "white",
+              }}
+            >
               The Easiest Way to Get Office Space
             </h1>
             <Container
