@@ -11,7 +11,7 @@ import { GrClose } from "react-icons/gr";
 
 const AddComplex = () => {
   const Navigate = useNavigate();
-  const role_id = 3;
+  const role_id = 2;
 
   useEffect(() => {
     if (role_id !== 1 && role_id !== 2) {
@@ -59,6 +59,7 @@ const AddComplex = () => {
                     <Form.Control
                       type="text"
                       required
+                      value={name}
                       onChange={(e) => setName(e.target.value)}
                     />
                   </Col>
@@ -163,19 +164,21 @@ const AddComplex = () => {
                     </ImageUploading>
                   </Col>
                 </Form.Group>
-                <Row className="justify-content-right">
+                <Row>
                   <Col lg={8}></Col>
-                  <Col lg={4}>
+                  <Col lg={2}>
                     <Button
                       variant=""
-                      style={{ marginLeft: "27px" }}
+                      style={{ width: "100%" }}
                       onClick={() => Navigate(-1)}
                     >
                       Cancel
                     </Button>
+                  </Col>
+                  <Col lg={2}>
                     <Button
                       variant="dark"
-                      style={{ marginLeft: "10px" }}
+                      style={{ width: "100%" }}
                       onSubmit={handleSubmit}
                     >
                       Save

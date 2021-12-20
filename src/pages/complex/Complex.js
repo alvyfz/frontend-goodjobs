@@ -52,6 +52,7 @@ const Complex = () => {
       <Container fluid className="complexcon">
         <div className="title">
           <Row>
+            <Col lg={2}></Col>
             <Col lg={3}>
               <h3>
                 <Link className="spanhome" to="/">
