@@ -188,7 +188,6 @@ const Login = () => {
       setErrorPassword2("");
     }
   };
-  console.log(token);
 
   return (
     <>
