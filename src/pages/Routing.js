@@ -6,6 +6,7 @@ import Home from "./home/Home";
 import App from "../App";
 import Complex from "./complex/Complex";
 import NotFound from "./error/NotFound";
+import Login from "./login/Login";
 export default function Routing() {
   // let path = useLocation();
 
@@ -14,6 +15,7 @@ export default function Routing() {
       {/* {path.pathname === "/login" || "*" ? null : <NavBar />} */}
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/building/detail" element={<Home />} />
         <Route path="/complex/detail" element={<App />} />
         <Route path="/complex" element={<Complex />} />
