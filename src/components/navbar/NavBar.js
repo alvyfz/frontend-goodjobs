@@ -2,7 +2,7 @@ import { Navbar, Container, Nav, NavDropdown } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Brand from "../brand/BrandWhiteNavbar";
 
-export default function NavBar() {
+export default function NavBar({ home, complex, building, chat }) {
   return (
     <>
       <Navbar
@@ -23,13 +23,28 @@ export default function NavBar() {
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link as={Link} to="/" style={{ marginRight: "10%" }}>
+              <Nav.Link
+                as={Link}
+                to="/"
+                active={home}
+                style={{ marginRight: "10%" }}
+              >
                 HOME
               </Nav.Link>
-              <Nav.Link as={Link} to="/complex" style={{ marginRight: "10%" }}>
+              <Nav.Link
+                as={Link}
+                to="/complex"
+                active={complex}
+                style={{ marginRight: "10%" }}
+              >
                 COMPLEX
               </Nav.Link>
-              <Nav.Link as={Link} to="/building" style={{ marginRight: "10%" }}>
+              <Nav.Link
+                as={Link}
+                to="/building"
+                active={building}
+                style={{ marginRight: "10%" }}
+              >
                 BUILDING
               </Nav.Link>
               {/* <NavDropdown title="Dropdown" id="collasible-nav-dropdown">

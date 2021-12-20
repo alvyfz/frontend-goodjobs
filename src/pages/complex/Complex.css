@@ -1,0 +1,36 @@
+.title {
+  padding: 60px;
+  text-align: left;
+  padding-left: 253px;
+}
+h3 {
+  font-size: 36;
+  font-weight: 700;
+}
+
+.complexcon {
+  padding-bottom: 60px;
+  background-color: #f2f2f2;
+}
+
+.spancon {
+  color: #4f4f4f;
+}
+
+.spanhome,
+.spanhome:link,
+.spanhome:visited,
+.spanhome:hover,
+.spanhome:focus,
+.spanhome:active {
+  color: inherit;
+  text-decoration: none;
+}
+
+#spinner {
+  margin: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: inherit;
+}

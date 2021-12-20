@@ -1,12 +1,17 @@
 import "./Home.css";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Spinner } from "react-bootstrap";
 import Searching from "../../components/searching/Searching";
 import CardFeatured from "../../components/card/CardFeatured";
 import CardComplex from "../../components/card/CardComplex";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
+import Error500 from "../../components/error/Error500";
 import axios from "axios";
+import NavBar from "../../components/navbar/NavBar";
+import Footer from "../../components/footer/Footer";
 const Home = () => {
+  const [isError, setIsError] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [building, setbuilding] = useState();
   useEffect(() => {
     var options = {
@@ -18,16 +23,29 @@ const Home = () => {
       .request(options)
       .then(function (response) {
         setbuilding(response.data);
+        setIsLoading(false);
       })
       .catch(function (error) {
-        console.error(error);
+        setIsError(true);
+        setIsLoading(false);
       });
   }, []);
+  if (isLoading) {
+    return (
+      <div id="spinner">
+        <Spinner animation="border" />
+      </div>
+    );
+  }
+  if (isError) {
+    return <Error500 />;
+  }
   return (
     <>
+      <NavBar home={true} />
       <Searching />
       <Container fluid className="container1">
-        <div className="title">
+        <div className="title2">
           <h4>Featured Office Space</h4>
           <h2>POPULAR COMPLEX</h2>
         </div>
@@ -111,6 +129,7 @@ const Home = () => {
           <Col lg={2}> </Col>
         </Row>
       </Container>
+      <Footer />
     </>
   );
 };

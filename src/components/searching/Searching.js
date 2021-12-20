@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function Searching() {
   const Navigate = useNavigate();
-  const [filter, setfilter] = useState();
+  const [filter, setfilter] = useState("building");
   const [text, settext] = useState();
 
   const handleSearching = () => {
@@ -42,15 +42,15 @@ export default function Searching() {
                   <Form.Select
                     size="sm"
                     id="nationality"
+                    name="Filter"
                     value={filter}
                     onChange={(e) => setfilter(e.target.value)}
                     style={{ width: "110px", marginRight: "20px" }}
                   >
-                    <option selected value="">
-                      Filter
+                    <option value="complex">Complex</option>
+                    <option selected value="building">
+                      Building
                     </option>
-                    <option value="Complex">Complex</option>
-                    <option value="Building">Building</option>
                   </Form.Select>
                   <Form.Control
                     value={text}
