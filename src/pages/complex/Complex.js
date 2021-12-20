@@ -43,7 +43,7 @@ const Complex = () => {
     return <Error500 />;
   }
 
-  const role_id = 2;
+  const role_id = 1;
 
   return (
     <>
@@ -60,7 +60,7 @@ const Complex = () => {
                 <span className="spancon"> / COMPLEX</span>
               </h3>
             </Col>
-            {role_id <= 2 ? (
+            {role_id === 2 || role_id === 1 ? (
               <Col>
                 <span>
                   <Button
@@ -68,10 +68,10 @@ const Complex = () => {
                     className="bcc"
                     size="sm"
                     as={Link}
-                    to="/complex/create"
+                    to="/complex/add"
                   >
                     {" "}
-                    <MdOutlineAddCircleOutline size={28} /> Create Complex
+                    <MdOutlineAddCircleOutline size={28} /> Add Complex
                   </Button>
                 </span>
               </Col>

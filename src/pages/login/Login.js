@@ -6,7 +6,7 @@ const Login = () => {
   useEffect(() => {
     var options = {
       method: "GET",
-      url: "http://localhost:8080/user/5",
+      url: "http://13.213.57.122:8080/user/5",
     };
 
     axios
