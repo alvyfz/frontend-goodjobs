@@ -1,10 +1,10 @@
 import { Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "./CardFeatured.css";
-export default function CardComplex({ click, name, img, width, idx }) {
+export default function CardFeatured({ click, name, img, width, idx }) {
   return (
     <>
-      <Link to={`/complex?id=${idx}`} style={{ textDecoration: "none" }}>
+      <Link to={`/complex/detail?id=${idx}`} style={{ textDecoration: "none" }}>
         <div
           onClick={click}
           className="ho card"
