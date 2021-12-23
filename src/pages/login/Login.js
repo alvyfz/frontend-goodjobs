@@ -8,17 +8,21 @@ import {
   Image,
   Form,
   Tab,
-  FloatingLabel,
   Tabs,
+  InputGroup,
 } from "react-bootstrap";
 import { useNavigate, Link } from "react-router-dom";
 import Brand from "../../components/brand/Brand";
 import Swal from "sweetalert2";
 import { setCookie } from "nookies";
+import { BiShow, BiHide } from "react-icons/bi";
 
 const Login = () => {
   const navigate = useNavigate();
   const [key, setKey] = useState("signin");
+  const [showPassIn, setShowPassIn] = useState(false);
+  const [showPassUp1, setShowPassUp1] = useState(false);
+  const [showPassUp2, setShowPassUp2] = useState(false);
   const [nameUp, setNameUp] = useState("");
   const [emailUp, setEmailUp] = useState("");
   const [password1Up, setPassword1Up] = useState("");
@@ -49,19 +53,22 @@ const Login = () => {
         url: "http://13.213.57.122:8080/user/login",
         headers: {},
         data: {
-          email: emailIn,
+          email: emailIn.toLowerCase(),
           password: passwordIn,
         },
       });
       const jwtValid = jwt_decode(response.data.data.token);
-      console.log(jwtValid.id);
+      console.log(jwtValid);
+      console.log("ini from default", response.status);
+      console.log(emailIn, passwordIn);
+
       if (jwtValid.id !== 0) {
         const jwt = response.data.data.token;
-        setCookie(null, "jwt", jwt, {
+        setCookie(null, "auth", jwt, {
           maxAge: 3 * 60 * 60,
-          httpOnly: true,
-          path: "/",
-          secure: process.env.SECURE_COOKIE === "true",
+          // httpOnly: true,
+          // path: "/",
+          // secure: process.env.SECURE_COOKIE === "true",
         });
 
         navigate(-1);
@@ -102,7 +109,7 @@ const Login = () => {
           headers: {},
           data: {
             name: nameUp,
-            email: emailUp,
+            email: emailUp.toLowerCase(),
             phone: phone,
             password: password2Up,
             roles_id: 4,
@@ -193,18 +200,23 @@ const Login = () => {
     <>
       <Row>
         <Col lg={3}>
-          <Image alt="" src="/images/login.png" height={720} />
+          <Image
+            alt=""
+            src="/images/login.png"
+            height={800}
+            className="d-none d-sm-block"
+          />
         </Col>
         <Col lg={9}>
           {" "}
-          <div style={{ textAlign: "center", margin: "50px" }}>
+          <div style={{ textAlign: "center", padding: "45px" }}>
             <Brand />
             <br />
             {/* <h2>Sorry, You have to login first. </h2> */}
           </div>
           <Row
             className="justify-content-center"
-            // style={{ margin: "20px 20px 0px 20px" }}
+            style={{ margin: "20px 20px 20px 20px" }}
           >
             <Col lg={4}>
               <Tabs
@@ -216,33 +228,49 @@ const Login = () => {
               >
                 <Tab eventKey="signin" title="Sign In">
                   <form onSubmit={handleLogin}>
-                    <FloatingLabel
+                    {/* <FloatingLabel
                       controlId="floatingInput"
                       label="Email address"
                       className="mb-3"
-                    >
+                    > */}
+                    <Form.Control
+                      size="lg"
+                      className="mb-3"
+                      type="email"
+                      placeholder="Email"
+                      value={emailIn}
+                      onChange={(e) => {
+                        setEmailIn(e.target.value);
+                      }}
+                    />
+                    {/* </FloatingLabel>{" "} */}
+                    <InputGroup className="mb-1">
+                      {/* <FloatingLabel
+                        controlId="floatingPassword"
+                        label="Password"
+                      > */}
                       <Form.Control
-                        type="email"
-                        placeholder="name@example.com"
-                        value={emailIn}
-                        onChange={(e) => {
-                          setEmailIn(e.target.value);
-                        }}
-                      />
-                    </FloatingLabel>
-                    <FloatingLabel
-                      controlId="floatingPassword"
-                      label="Password"
-                    >
-                      <Form.Control
+                        size="lg"
                         onChange={(e) => {
                           setPasswordIn(e.target.value);
                         }}
-                        type="password"
+                        type={showPassIn ? "text" : "password"}
                         placeholder="Password"
                         value={passwordIn}
-                      />
-                    </FloatingLabel>
+                      />{" "}
+                      {/* </FloatingLabel> */}
+                      <Button
+                        onClick={() => setShowPassIn(!showPassIn)}
+                        variant="white"
+                      >
+                        {" "}
+                        {showPassIn ? (
+                          <BiShow size={25} />
+                        ) : (
+                          <BiHide size={25} />
+                        )}
+                      </Button>{" "}
+                    </InputGroup>
                     <p
                       style={{
                         textAlign: "right",
@@ -289,12 +317,14 @@ const Login = () => {
                 {/* tab 2 */}
                 <Tab eventKey="signup" title="Sign Up">
                   <form onSubmit={handleSignup}>
-                    <FloatingLabel
+                    {/* <FloatingLabel
                       controlId="floatingInput"
                       label="Name"
                       className="mb-3"
-                    >
+                    > */}
+                    <div className="mb-3">
                       <Form.Control
+                        size="lg"
                         type="text"
                         placeholder="Name"
                         value={nameUp}
@@ -302,29 +332,35 @@ const Login = () => {
                       />
                       <Form.Text className="formText" style={{ color: "red" }}>
                         {errorName}
-                      </Form.Text>
-                    </FloatingLabel>
-                    <FloatingLabel
+                      </Form.Text>{" "}
+                    </div>
+                    {/* </FloatingLabel> */}
+                    {/* <FloatingLabel
                       controlId="floatingInput"
                       label="Email address"
                       className="mb-3"
-                    >
+                    > */}
+                    <div className="mb-3">
                       <Form.Control
+                        size="lg"
                         type="email"
-                        placeholder="name@example.com"
+                        placeholder="Email"
                         value={emailUp}
                         onChange={handleChangeEmailUp}
                       />
                       <Form.Text className="formText" style={{ color: "red" }}>
                         {errorEmail}
                       </Form.Text>{" "}
-                    </FloatingLabel>
-                    <FloatingLabel
+                    </div>
+                    {/* </FloatingLabel> */}
+                    {/* <FloatingLabel
                       controlId="floatingInput"
                       label="Phone number"
                       className="mb-3"
-                    >
+                    > */}
+                    <div className="mb-3">
                       <Form.Control
+                        size="lg"
                         type="text"
                         placeholder="Phone number"
                         value={phone}
@@ -333,38 +369,93 @@ const Login = () => {
                       <Form.Text className="formText" style={{ color: "red" }}>
                         {errorPhone}
                       </Form.Text>
-                    </FloatingLabel>
-
-                    <FloatingLabel
+                    </div>
+                    {/* </FloatingLabel> */}
+                    {/* <FloatingLabel
                       controlId="floatingPassword"
                       label="Password"
                       className="mb-3"
-                    >
+                    > */}
+                    {/* <Form.Control
+                      className="mb-3"
+                      type="password"
+                      placeholder="Password"
+                      value={password1Up}
+                      onChange={handleChangePassword1Up}
+                    />{" "} */}
+                    <InputGroup className="mb-3">
+                      {/* <FloatingLabel
+                        controlId="floatingPassword"
+                        label="Password"
+                      > */}
                       <Form.Control
-                        type="password"
+                        size="lg"
+                        onChange={(e) => {
+                          setPassword1Up(e.target.value);
+                        }}
+                        type={showPassUp1 ? "text" : "password"}
                         placeholder="Password"
                         value={password1Up}
                         onChange={handleChangePassword1Up}
                       />{" "}
+                      {/* </FloatingLabel> */}
+                      <Button
+                        onClick={() => setShowPassUp1(!showPassUp1)}
+                        variant="white"
+                      >
+                        {" "}
+                        {showPassUp1 ? (
+                          <BiShow size={25} />
+                        ) : (
+                          <BiHide size={25} />
+                        )}
+                      </Button>{" "}
                       <Form.Text className="formText" style={{ color: "red" }}>
                         {errorPassword}
                       </Form.Text>
-                    </FloatingLabel>
-                    <FloatingLabel
+                    </InputGroup>
+
+                    {/* </FloatingLabel> */}
+                    {/* <FloatingLabel
                       controlId="floatingPassword"
                       label="Retry password"
                       className="mb-3"
-                    >
-                      <Form.Control
-                        type="password"
-                        placeholder="Retry password "
-                        value={password2Up}
-                        onChange={handleChangePassword2Up}
-                      />
+                    > */}
+                    <div className="mb-3">
+                      <InputGroup>
+                        {/* <FloatingLabel
+                        controlId="floatingPassword"
+                        label="Password"
+                      > */}
+                        <Form.Control
+                          size="lg"
+                          onChange={(e) => {
+                            setPassword2Up(e.target.value);
+                          }}
+                          type={showPassUp2 ? "text" : "password"}
+                          placeholder="Password"
+                          value={password2Up}
+                          onChange={handleChangePassword2Up}
+                        />{" "}
+                        {/* </FloatingLabel> */}
+                        <Button
+                          onClick={() => setShowPassUp2(!showPassUp2)}
+                          variant="white"
+                        >
+                          {" "}
+                          {showPassUp2 ? (
+                            <BiShow size={25} />
+                          ) : (
+                            <BiHide size={25} />
+                          )}
+                        </Button>{" "}
+                      </InputGroup>{" "}
                       <Form.Text className="formText" style={{ color: "red" }}>
                         {errorPassword2}
-                      </Form.Text>
-                    </FloatingLabel>
+                      </Form.Text>{" "}
+                    </div>
+
+                    {/* </FloatingLabel> */}
                     <Row
                       className="justify-content-center"
                       style={{ margin: "20px 10px 20px 10px" }}
