@@ -69,11 +69,7 @@ const Login = () => {
         });
 
         navigate(-1);
-        Swal.fire(
-          "Sign In Success!",
-          "You can open wishlist and chat",
-          "success"
-        );
+        Swal.fire("Sign In Success!", "", "success");
         // setEmailIn("");
         // setPasswordIn("");
         // console.log(response);
@@ -99,39 +95,30 @@ const Login = () => {
       validPassword2 &&
       validPhone
     ) {
-      const postRegister = async () => {
-        const response = await axios({
-          method: "post",
-          url: "http://13.213.57.122:8080/user/register",
-          headers: {},
-          data: {
-            name: nameUp,
-            email: emailUp.toLowerCase(),
-            phone: phone,
-            password: password2Up,
-            roles_id: 4,
-          },
-        });
-        // const res = response.data;
-        if (response.data.data.id !== 0) {
+      axios
+        .post("http://13.213.57.122:8080/user/register", {
+          name: nameUp,
+          email: emailUp.toLowerCase(),
+          phone: phone,
+          password: password2Up,
+          roles_id: 4,
+        })
+        .then(function (response) {
+          console.log(response);
           Swal.fire("Sign up success!", "You can Sign In now!", "success");
           setEmailUp("");
           setPassword1Up("");
           setPassword2Up("");
           setNameUp("");
           setPhone("");
-        } else {
+        })
+        .catch(function (error) {
           Swal.fire({
             icon: "error",
             title: "Oops...",
             text: "Email already registered!",
           });
-          // setEmailIn("");
-          // setPasswordIn("");
-          // console.log(response);
-        }
-      };
-      postRegister();
+        });
     } else {
       Swal.fire({
         icon: "error",
