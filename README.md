@@ -1,3 +1,47 @@
+# FRONT-END GOODJOBS OFFICE BOOKING SYSTEM WITH REACTJS
+![user interface](user_interface.png?raw=true "user interface")
+
+### What GoodJobs Office Booking System is
+
+goodJobs is an web-based platform to rent office spaces across Jakarta. goodjobs aims for the convenience of user when searching for a suitable working space in Jakarta’s business district areas.
+
+## MVP
+
+#### Customer Site
+
+* Search for building
+* Live chat
+* Booking Office via chat
+* Submit review
+* Registration User
+
+#### Admin Portal
+
+* Manage complex -> building ->Unit data
+* Manage customer data
+* Manage building review from customer
+* Manage area and nearby facilities
+* For superadmin: manage user
+
+## Prototype
+
+##### Wireframe
+
+<a href="https://whimsical.com/wireframe-tim-6-goodjobs-5eVSTMrbDHitPG5yLuw8FG">Wireframe - GoodJobs Office Booking System</a>
+
+#### User Persona and UI with Figma
+
+<a href="https://www.figma.com/file/LstK3aMA4Wf58DO8VhHAM6/ui%2Fux-goodjobs?node-id=18%3A2">User Persona and User interface - GoodJobs Office Booking System</a>
+
+### Technology and Frameworks yang digunakan
+
+* [Javascript](https://www.javascript.com//) as Programming Language  
+* [ReactJS](https://reactjs.org/docs/getting-started.html) as JavaScript library for building user interfaces
+* [GrapghQL](https://gorm.io/docs/) for the initial migration and creation of the database schema
+* Using [GraphQL](https://graphql.org/) for implementing Live chat
+* Using [Vercel](https://vercel.com/dashboard/) for Deployment
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
