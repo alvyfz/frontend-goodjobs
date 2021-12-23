@@ -11,7 +11,7 @@ export default function NavBar({ home, complex, building, chat, myaccount }) {
   console.log(jwt);
   const handleLogout = () => {
     destroyCookie(null, "auth");
-    Swal.fire("Sign out success!", "", "warning");
+    Swal.fire("Sign out success!", "", "success");
     navigate("/login");
   };
   return (

@@ -58,9 +58,6 @@ const Login = () => {
         },
       });
       const jwtValid = jwt_decode(response.data.data.token);
-      console.log(jwtValid);
-      console.log("ini from default", response.status);
-      console.log(emailIn, passwordIn);
 
       if (jwtValid.id !== 0) {
         const jwt = response.data.data.token;
@@ -212,7 +209,6 @@ const Login = () => {
           <div style={{ textAlign: "center", padding: "45px" }}>
             <Brand />
             <br />
-            {/* <h2>Sorry, You have to login first. </h2> */}
           </div>
           <Row
             className="justify-content-center"
@@ -220,7 +216,6 @@ const Login = () => {
           >
             <Col lg={4}>
               <Tabs
-                // style={{ backgroundColor: "gray", color: "white" }}
                 id=" controlled-tab-example"
                 activeKey={key}
                 onSelect={(k) => setKey(k)}
