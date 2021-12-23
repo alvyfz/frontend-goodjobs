@@ -41,6 +41,8 @@ goodJobs is an web-based platform to rent office spaces across Jakarta. goodjobs
 * Using [GraphQL](https://graphql.org/) for implementing Live chat
 * Using [Vercel](https://vercel.com/dashboard/) for Deployment
 
+### Deployment
+[goodJobs](goodjobs-mu.vercel.app)
 
 # Getting Started with Create React App
 
