@@ -7,10 +7,14 @@ import "./AllBuilding.css";
 import axios from "axios";
 import Error500 from "../../components/error/Error500";
 import CardBuilding from "../../components/card/CardBuilding";
+import Footer from "../../components/footer/Footer";
+import Paginations from "../../components/pagination/Paginations";
 
 const AllBuilding = () => {
   const [building, setBuilding] = useState();
   const [isLoading, setIsLoading] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [cardsPerPage, setCardsPerPage] = useState(6);
 
   const [isError, setIsError] = useState(false);
   useEffect(() => {
@@ -23,7 +27,6 @@ const AllBuilding = () => {
     axios
       .request(options)
       .then(function (response) {
-        console.log(response.data);
         setBuilding(response.data);
         setIsLoading(false);
       })
@@ -42,6 +45,10 @@ const AllBuilding = () => {
   if (isError) {
     return <Error500 />;
   }
+  const indexOfLastPost = currentPage * cardsPerPage;
+  const indexOfFirstPost = indexOfLastPost - cardsPerPage;
+  const currentCards = building?.slice(indexOfFirstPost, indexOfLastPost);
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
   return (
     <>
       <NavBar building={true} />
@@ -65,12 +72,16 @@ const AllBuilding = () => {
           <Col lg={2}></Col>
           <Col lg={8}>
             <Row className="justify-content-center">
-              {building?.slice(0, 6).map((v, i) => {
+              {currentCards?.map((v, i) => {
                 return (
-                  <Col lg={4} key={v.id}>
-                    <Link to={`/building/detail?id=${v.id}`} className="link">
-                      <CardBuilding img={v.img} name={v.name} price={450000} />{" "}
-                    </Link>
+                  <Col lg={4} key={v.id} className="allbuildingcard">
+                    <CardBuilding
+                      img={v.img[0]}
+                      name={v.name}
+                      price={450000}
+                      rating={90}
+                      id={v.id}
+                    />{" "}
                   </Col>
                 );
               })}
@@ -78,7 +89,20 @@ const AllBuilding = () => {
           </Col>
           <Col lg={2}> </Col>
         </Row>
+        <Row className="justify-content-center">
+          <Col md={1}>
+            <Paginations
+              className="paginationStyle"
+              totalCards={building?.length}
+              cardsPerPage={cardsPerPage}
+              paginate={paginate}
+              active={currentPage}
+            />
+          </Col>
+        </Row>
       </Container>
+
+      <Footer />
     </>
   );
 };

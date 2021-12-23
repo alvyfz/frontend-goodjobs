@@ -1,5 +1,5 @@
 {
-"complex": [
+  "complex": [
     {
       "id": 1,
       "name": "Thamrin, CBD",
@@ -31,8 +31,7 @@
       "img": "https://cdn-2.tstatic.net/tribunnews/foto/bank/images/kawasan-perkantoran-dan-hunian-high-rise-di-tb-simatupang.jpg"
     }
   ],
-  "building":
-  [
+  "building": [
     {
       "id": 1,
       "complex_id": 1,
@@ -42,8 +41,8 @@
       "floor": "39",
       "office_hours": {
         "weekday": "07.00-17.00",
-        "saturday":"07.00-12.00",
-        "sunday":"libur"
+        "saturday": "07.00-12.00",
+        "sunday": "libur"
       },
       "address": "Jl. M.H. Thamrin No. 28-30 Jakarta Pusat, Jakarta, Indonesia",
       "toilet": "8",
@@ -65,8 +64,8 @@
       "floor": "39",
       "office_hours": {
         "weekday": "07.00-17.00",
-        "saturday":"07.00-12.00",
-        "sunday":"libur"
+        "saturday": "07.00-12.00",
+        "sunday": "libur"
       },
       "address": "Sudirman Central Busines District Lot 9 JRT.5, Jl. Jend. Sudirman No.Kav.52-53, RT.5/RW.3, Senayan, Kec. Kby. Baru, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 12190",
       "toilet": "8",
@@ -88,16 +87,16 @@
       "floor": "39",
       "office_hours": {
         "weekday": "07.00-17.00",
-        "saturday":"07.00-12.00",
-        "sunday":"libur"
+        "saturday": "07.00-12.00",
+        "sunday": "libur"
       },
       "address": "The City Tower, Jl. M.H. Thamrin No.81, RT.1/RW.6, Dukuh Atas, Menteng, Kec. Menteng, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10310",
       "toilet": "8",
       "img": [
-      "https://sewaruangkantor.net/wp-content/uploads/2014/04/The-City-Tower.jpg",
-      "https://s3.amazonaws.com/images.skyscrapercenter.com/thumbs/75638_500x650.jpg",
-      "https://voffice.co.id/jakarta-virtual-office/img/locations/city-tower/tct-meet.jpg",
-      "https://static-id.lamudi.com/static/media/cXVhbGl0eS82NQ%3D%3D/2x2x5x881x390/28a0ab40136963.jpg"
+        "https://sewaruangkantor.net/wp-content/uploads/2014/04/The-City-Tower.jpg",
+        "https://s3.amazonaws.com/images.skyscrapercenter.com/thumbs/75638_500x650.jpg",
+        "https://voffice.co.id/jakarta-virtual-office/img/locations/city-tower/tct-meet.jpg",
+        "https://static-id.lamudi.com/static/media/cXVhbGl0eS82NQ%3D%3D/2x2x5x881x390/28a0ab40136963.jpg"
       ],
       "latitude": "-6.192553",
       "longitude": "106.822353"
@@ -105,14 +104,14 @@
     {
       "id": 4,
       "complex_id": 1,
-      "name": "Sinarmas Land Plaza Menara 3",
+      "name": "Sinarmas Land",
       "description": "Sinarmas Land Plaza Menara 3 is a medium sized office building that is of walking distance to Sarinah Plaza, Plaza Indonesia and Grand Indonesia Shopping Town. Sinarmas Land Plaza Menara 3 is equipped with 5 lifts, and a dedicated service lift.",
       "building_size": "12.594 m2",
       "floor": "39",
       "office_hours": {
         "weekday": "07.00-17.00",
-        "saturday":"07.00-12.00",
-        "sunday":"libur"
+        "saturday": "07.00-12.00",
+        "sunday": "libur"
       },
       "address": "Jl. M.H. Thamrin No.51",
       "toilet": "8",
@@ -134,8 +133,8 @@
       "floor": "22",
       "office_hours": {
         "weekday": "07.00-17.00",
-        "saturday":"07.00-12.00",
-        "sunday":"libur"
+        "saturday": "07.00-12.00",
+        "sunday": "libur"
       },
       "address": "Jl. Jend. Gatot Subroto No. 32-34 ",
       "toilet": "8",
@@ -157,8 +156,8 @@
       "floor": "24",
       "office_hours": {
         "weekday": "07.00-17.00",
-        "saturday":"07.00-12.00",
-        "sunday":"libur"
+        "saturday": "07.00-12.00",
+        "sunday": "libur"
       },
       "address": "Jl. Jend. Gatot Subroto No. 27 Setiabudi, Jakarta Selatan",
       "toilet": "24",
@@ -180,8 +179,8 @@
       "floor": "24",
       "office_hours": {
         "weekday": "07.00-17.00",
-        "saturday":"07.00-12.00",
-        "sunday":"libur"
+        "saturday": "07.00-12.00",
+        "sunday": "libur"
       },
       "address": "Jl. Jend Gatot Subroto No 27 Setiabudi, Jakarta Selatan",
       "toilet": "24",
@@ -203,8 +202,8 @@
       "floor": "28",
       "office_hours": {
         "weekday": "07.00-17.00",
-        "saturday":"07.00-12.00",
-        "sunday":"libur"
+        "saturday": "07.00-12.00",
+        "sunday": "libur"
       },
       "address": "Jl. Mega Kuningan Lot E. 33 No. 1&2 Setiabudi, Jakarta Selatan",
       "toilet": "28",
@@ -226,8 +225,8 @@
       "floor": "39",
       "office_hours": {
         "weekday": "07.00-17.00",
-        "saturday":"07.00-12.00",
-        "sunday":"libur"
+        "saturday": "07.00-12.00",
+        "sunday": "libur"
       },
       "address": "Jl. Mega Kuningan Lot E. 33 No. 1&2 Setiabudi, Jakarta Selatan",
       "toilet": "39",
@@ -249,8 +248,8 @@
       "floor": "39",
       "office_hours": {
         "weekday": "07.00-17.00",
-        "saturday":"07.00-12.00",
-        "sunday":"libur"
+        "saturday": "07.00-12.00",
+        "sunday": "libur"
       },
       "address": "Jl. Lingkar Mega Kuningan Lot 5.1 Setiabudi, Jakarta Selatan",
       "toilet": "39",
@@ -272,8 +271,8 @@
       "floor": "39",
       "office_hours": {
         "weekday": "07.00-17.00",
-        "saturday":"07.00-12.00",
-        "sunday":"libur"
+        "saturday": "07.00-12.00",
+        "sunday": "libur"
       },
       "address": "Jl. Jend Sudirman Kav 3 Tanah Abang, Jakarta Pusat",
       "toilet": "39",
@@ -295,8 +294,8 @@
       "floor": "39",
       "office_hours": {
         "weekday": "07.00-17.00",
-        "saturday":"07.00-12.00",
-        "sunday":"libur"
+        "saturday": "07.00-12.00",
+        "sunday": "libur"
       },
       "address": "Jl. Jend Sudirman Kav 33A Tanah Abang, Jakarta Pusat",
       "toilet": "39",
@@ -318,8 +317,8 @@
       "floor": "39",
       "office_hours": {
         "weekday": "07.00-17.00",
-        "saturday":"07.00-12.00",
-        "sunday":"libur"
+        "saturday": "07.00-12.00",
+        "sunday": "libur"
       },
       "address": "Jl. Let. Jend. M.T Haryono Kav 33 Pancoran, Jakarta Selatan",
       "toilet": "39",
@@ -341,8 +340,8 @@
       "floor": "39",
       "office_hours": {
         "weekday": "07.00-17.00",
-        "saturday":"07.00-12.00",
-        "sunday":"libur"
+        "saturday": "07.00-12.00",
+        "sunday": "libur"
       },
       "address": "Jl. Raya Pasar Minggu Kav. 16,Pancoran ,Jakarta Selatan",
       "toilet": "39",
@@ -364,8 +363,8 @@
       "floor": "39",
       "office_hours": {
         "weekday": "07.00-17.00",
-        "saturday":"07.00-12.00",
-        "sunday":"libur"
+        "saturday": "07.00-12.00",
+        "sunday": "libur"
       },
       "address": "Jl. Let. Jend. M.T Haryono Kav 62 Pancoran, Jakarta Selatan",
       "toilet": "39",
@@ -387,8 +386,8 @@
       "floor": "39",
       "office_hours": {
         "weekday": "07.00-17.00",
-        "saturday":"07.00-12.00",
-        "sunday":"libur"
+        "saturday": "07.00-12.00",
+        "sunday": "libur"
       },
       "address": "Jl. T.B. Simatupang No. 5 Pasar Minggu, Jakarta Selatan",
       "toilet": "39",
@@ -410,8 +409,8 @@
       "floor": "39",
       "office_hours": {
         "weekday": "07.00-17.00",
-        "saturday":"07.00-12.00",
-        "sunday":"libur"
+        "saturday": "07.00-12.00",
+        "sunday": "libur"
       },
       "address": "Jl. T.B. Simatupang No. 1 , Jakarta Selatan",
       "toilet": "39",
@@ -433,8 +432,8 @@
       "floor": "39",
       "office_hours": {
         "weekday": "07.00-17.00",
-        "saturday":"07.00-12.00",
-        "sunday":"libur"
+        "saturday": "07.00-12.00",
+        "sunday": "libur"
       },
       "address": "Jl. T.B. Simatupang No. 53 Pasar Minggu, Jakarta Selatan",
       "toilet": "39",

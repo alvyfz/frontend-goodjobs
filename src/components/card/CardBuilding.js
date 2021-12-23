@@ -1,15 +1,15 @@
 import "./CardBuilding.css";
 import { Card, Button, Row } from "react-bootstrap";
 import { Rating } from "react-simple-star-rating";
+import { Link } from "react-router-dom";
 
 export default function CardBuilding({
-  clickView,
-  clickEnquire,
   rating,
   img,
   price,
   complex,
   name,
+  id,
 }) {
   const formatRupiah = () => {
     return new Intl.NumberFormat("id-ID", {
@@ -85,14 +85,16 @@ export default function CardBuilding({
           >
             {" "}
             <Button
-              onClick={clickEnquire}
+              as={Link}
+              to={`/chat?building=${id}`}
               variant="dark"
               style={{ width: "80%", textAlign: "center", fontSize: "11px" }}
             >
               ENQUIRE
             </Button>{" "}
             <Button
-              onClick={clickView}
+              as={Link}
+              to={`/bulding/detail?id=${id}`}
               variant="light"
               style={{
                 width: "80%",
