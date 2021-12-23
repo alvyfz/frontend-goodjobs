@@ -1,5 +1,5 @@
 {
-  "complex": [
+"complex": [
     {
       "id": 1,
       "name": "Thamrin, CBD",
@@ -31,7 +31,8 @@
       "img": "https://cdn-2.tstatic.net/tribunnews/foto/bank/images/kawasan-perkantoran-dan-hunian-high-rise-di-tb-simatupang.jpg"
     }
   ],
-  "building": [
+  "building":
+  [
     {
       "id": 1,
       "complex_id": 1,
@@ -39,12 +40,21 @@
       "description": "The Plaza is a tall building of 38 storeys that is of walking distance to Plaza Indonesia, Grand Indonesia Shopping Town and Sarinah Plaza. The Plaza is equipped with 20 lifts that is split into 3 zones, namely Low Zone, Mid Zone and High Zone, and a dedicated service lift and executive lift.",
       "building_size": "30.085 m²",
       "floor": "39",
-      "office_hours": "Mon - Fri : 07:00 - 18:00 Sat : 07:00 - 13:00 Sun : N/A",
+      "office_hours": {
+        "weekday": "07.00-17.00",
+        "saturday":"07.00-12.00",
+        "sunday":"libur"
+      },
       "address": "Jl. M.H. Thamrin No. 28-30 Jakarta Pusat, Jakarta, Indonesia",
       "toilet": "8",
-      "img": "https://images.squarespace-cdn.com/content/v1/59635cf28419c269d9cf741b/1499694854631-9MDXK0TA49NM52MI714V/img2.png",
-      "latitude": "-6.209132",
-      "longitude": "106.819702"
+      "img": [
+        "https://images.squarespace-cdn.com/content/v1/59635cf28419c269d9cf741b/1499694854631-9MDXK0TA49NM52MI714V/img2.png",
+        "https://sewakantorjakarta.asia/wp-content/uploads/2017/11/plaza-indonesia.jpg",
+        "https://static-id.lamudi.com/static/media/bm9uZS9ub25l/2x2x5x880x396/9475b13da09bc1.jpg",
+        "https://images.squarespace-cdn.com/content/v1/59635cf28419c269d9cf741b/1499694865415-GO6V5SLLI9IDTNZ48Y0V/img1.png"
+      ],
+      "latitude": "-6.192553",
+      "longitude": "106.822353"
     },
     {
       "id": 2,
@@ -53,12 +63,21 @@
       "description": "Equity Tower adalah gedung pencakar langit yang terletak di Sudirman Central Business District, Senayan, Kebayoran Baru, Jakarta Selatan. Gedung ini memiliki ketinggian 220 meter dengan 50 lantai. Gedung ini memiliki ketinggian 220 meter. Gedung ini berfungsi sebagai gedung perkantoran komersial",
       "building_size": "30.085 m²",
       "floor": "39",
-      "office_hours": "Mon - Fri : 07:00 - 18:00 Sat : 07:00 - 13:00 Sun : N/A",
+      "office_hours": {
+        "weekday": "07.00-17.00",
+        "saturday":"07.00-12.00",
+        "sunday":"libur"
+      },
       "address": "Sudirman Central Busines District Lot 9 JRT.5, Jl. Jend. Sudirman No.Kav.52-53, RT.5/RW.3, Senayan, Kec. Kby. Baru, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 12190",
       "toilet": "8",
-      "img": "https://equitytower.co.id/img/03.jpg",
-      "latitude": "-6.209132",
-      "longitude": "106.819702"
+      "img": [
+        "https://equitytower.co.id/img/03.jpg",
+        "https://sewajualkantor.id/wp-content/uploads/2017/01/20141104-Equity-Tower-for-lease-fitted-out_004.jpg",
+        "https://s3-ap-southeast-1.amazonaws.com/xwork-bucket/buildings/images/197/Equity%20Tower.1522233183.111.ori.jpg",
+        "https://www.sewakantor-update.com/wp-content/uploads/2017/02/Equity-tower.jpg"
+      ],
+      "latitude": "-6.250567",
+      "longitude": "106.830254"
     },
     {
       "id": 3,
@@ -67,12 +86,21 @@
       "description": "The City Tower, Jl. M.H. Thamrin No.81, RT.1/RW.6, Dukuh Atas, Menteng, Kec. Menteng, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10310",
       "building_size": "30.085 m²",
       "floor": "39",
-      "office_hours": "Mon - Fri : 07:00 - 18:00 Sat : 07:00 - 13:00 Sun : N/A",
+      "office_hours": {
+        "weekday": "07.00-17.00",
+        "saturday":"07.00-12.00",
+        "sunday":"libur"
+      },
       "address": "The City Tower, Jl. M.H. Thamrin No.81, RT.1/RW.6, Dukuh Atas, Menteng, Kec. Menteng, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10310",
       "toilet": "8",
-      "img": "https://voffice.co.id/jakarta-virtual-office/img/virtual-office/tct.jpg",
-      "latitude": "-6.209132",
-      "longitude": "106.819702"
+      "img": [
+      "https://sewaruangkantor.net/wp-content/uploads/2014/04/The-City-Tower.jpg",
+      "https://s3.amazonaws.com/images.skyscrapercenter.com/thumbs/75638_500x650.jpg",
+      "https://voffice.co.id/jakarta-virtual-office/img/locations/city-tower/tct-meet.jpg",
+      "https://static-id.lamudi.com/static/media/cXVhbGl0eS82NQ%3D%3D/2x2x5x881x390/28a0ab40136963.jpg"
+      ],
+      "latitude": "-6.192553",
+      "longitude": "106.822353"
     },
     {
       "id": 4,
@@ -81,12 +109,21 @@
       "description": "Sinarmas Land Plaza Menara 3 is a medium sized office building that is of walking distance to Sarinah Plaza, Plaza Indonesia and Grand Indonesia Shopping Town. Sinarmas Land Plaza Menara 3 is equipped with 5 lifts, and a dedicated service lift.",
       "building_size": "12.594 m2",
       "floor": "39",
-      "office_hours": "Mon - Fri : 07:00 - 18:00 Sat : 07:00 - 13:00 Sun : N/A",
+      "office_hours": {
+        "weekday": "07.00-17.00",
+        "saturday":"07.00-12.00",
+        "sunday":"libur"
+      },
       "address": "Jl. M.H. Thamrin No.51",
       "toilet": "8",
-      "img": "https://voffice.co.id/jakarta-virtual-office/img/virtual-office/tct.jpg",
-      "latitude": "-6.209132",
-      "longitude": "106.819702"
+      "img": [
+        "https://jll-global-gdim-res.cloudinary.com/image/upload/t_test-ap-property-detail-web/v1615571575/AP_ML20210312/Sinarmas-Land-Plaza--Tower-2-_20210312_38abd102-b35c-e711-8118-e0071b710a01_001.jpg",
+        "https://fastly.4sqi.net/img/general/600x600/2253797_q7FYARkRSVL-j-gBB0bg_sjGCFYs4X01MIHREC0dT9g.jpg",
+        "https://www.cariruangkantor.com/wp-content/uploads/2020/09/sinarmas-640x386-1-350x220.jpg",
+        "https://sinarmasland.com/app/uploads/2020/04/Thamrin-Cover.jpg"
+      ],
+      "latitude": "-6.18966225233",
+      "longitude": "106.823812994"
     },
     {
       "id": 5,
@@ -95,12 +132,21 @@
       "description": "Patra Jasa is a Grade B office building located at the heart of Jakarta's Central Business District. With a total building size of 51.269 sqm, the office building in Jl. Jend. Gatot Subroto No. 32-34 is available for lease only.",
       "building_size": "51.269 m2",
       "floor": "22",
-      "office_hours": "Mon - Fri : 07:00 - 18:00 Sat : 07:00 - 13:00 Sun : N/A",
+      "office_hours": {
+        "weekday": "07.00-17.00",
+        "saturday":"07.00-12.00",
+        "sunday":"libur"
+      },
       "address": "Jl. Jend. Gatot Subroto No. 32-34 ",
       "toilet": "8",
-      "img": "https://image2.sewakantorcbd.com/800x0/upload/office-leasing/building-photos/157_sinarmas-land-plaza-ex-plaza-bii-sinarmas-land-plaza-menara-3_20180413080103_45465.jpg",
-      "latitude": "-6.209132",
-      "longitude": "106.819702"
+      "img": [
+        "https://images.bisnis-cdn.com/posts/2018/04/13/784164/patra-jasa-patra-jasa.com-.jpg",
+        "https://patra-jasa.com/wp-content/uploads/2021/05/patrajasaofficetower.jpg",
+        "https://kfmap.asia/thumbs/photos/ID.JKT.OF.GPJ1/ID.JKT.OF.GPJ1_2.png",
+        "https://sg2-cdn.pgimgs.com/projectnet-project/30746/ZPPHO.99220303.R800X800.jpg"
+      ],
+      "latitude": "-6.2334716",
+      "longitude": "106.8235217"
     },
     {
       "id": 6,
@@ -109,12 +155,21 @@
       "description": "Menara Global is a Grade B office building located at the heart of Jakarta's Central Business District. With a total building size of 22.169 sqm, the office building in Jl. Jend. Gatot Subroto No. 27 is available for lease only.",
       "building_size": "22.169 m2",
       "floor": "24",
-      "office_hours": "Mon - Fri : 07:00 - 18:00 Sat : 07:00 - 13:00 Sun : N/A",
+      "office_hours": {
+        "weekday": "07.00-17.00",
+        "saturday":"07.00-12.00",
+        "sunday":"libur"
+      },
       "address": "Jl. Jend. Gatot Subroto No. 27 Setiabudi, Jakarta Selatan",
       "toilet": "24",
-      "img": "https://image2.sewakantorcbd.com/800x0/upload/office-leasing/building-photos/11_menara-global-menara-global_20160914044222_13139.jpg",
-      "latitude": "-6.209132",
-      "longitude": "106.819702"
+      "img": [
+        "https://qrlab.id/wp-content/uploads/2021/01/MenaraGlobal-600x400.jpg",
+        "https://www.cariruangkantor.com/wp-content/uploads/2020/11/menara-globall-350x220.jpg",
+        "https://picture.urbanindo.com/listing/881990356/01/01773f34/dijual-menara-global-gatot-subroto-shgb-harga-14-trilyun/618/412.jpg",
+        "https://ocicio.com/uploads/images/2021/03/9071/menara-global-dijual-3Q1AIG.jpg"
+      ],
+      "latitude": "-6.234848",
+      "longitude": "106.823779"
     },
     {
       "id": 7,
@@ -123,12 +178,21 @@
       "description": "Centennial Tower is a Grade B office building located at the heart of Jakarta's Central Business District. With a total building size of 22.169 sqm, the office building in Jl. Jend. Gatot Subroto No. 27 is available for lease only.",
       "building_size": "22.169 m2",
       "floor": "24",
-      "office_hours": "Mon - Fri : 07:00 - 18:00 Sat : 07:00 - 13:00 Sun : N/A",
+      "office_hours": {
+        "weekday": "07.00-17.00",
+        "saturday":"07.00-12.00",
+        "sunday":"libur"
+      },
       "address": "Jl. Jend Gatot Subroto No 27 Setiabudi, Jakarta Selatan",
       "toilet": "24",
-      "img": "https://image2.sewakantorcbd.com/300x400/upload/office-leasing/building-photos/2_centennial-tower-centennial-tower_20160914043747_36742.JPG",
-      "latitude": "-6.209132",
-      "longitude": "106.819702"
+      "img": [
+        "https://id2-cdn.pgimgs.com/listing/16580187/UPHO.91084483.V800/Centennial-Tower-Jakarta-Selatan-Indonesia.jpg",
+        "https://lh3.googleusercontent.com/proxy/dfwy6ppvb7wgb5mxVPFsSepatnG0CQIgaZR3kJ0abaQQjuhVUcazdu4N0C8OwWJYQ1dC4oR7rr9nqt8z4Vrs3apBrwmvku54rpK0pf9dRQ94oBZftQtlF1P2lXmFboDICAR66aCgCMOttaFDrQ",
+        "https://static-id.lamudi.com/static/media/bm9uZS9ub25l/2x2x5x880x396/ff910fb3ac4b3d.jpg",
+        "https://cw-gbl-gws-prod.azureedge.net/-/pmedia/87577/p/centennial-tower.webp?rev=0775716c53500f52694d608377b9a1daa55b9f3702fe061a5a1b5336c563d10f6725967b1ee734d143b5a5513d2797642165f904a67920afe390d8b507bcbf83"
+      ],
+      "latitude": "-6.2302",
+      "longitude": "106.8208"
     },
     {
       "id": 8,
@@ -137,12 +201,21 @@
       "description": "Menara Anugrah is a Grade B office building located at the heart of Jakarta's Central Business District. With a total building size of 15.309 sqm, the office building in Jl. Mega Kuningan Lot E. 33 No. 1&2 is available for lease only.",
       "building_size": "15.309 m2",
       "floor": "28",
-      "office_hours": "Mon - Fri : 07:00 - 18:00 Sat : 07:00 - 13:00 Sun : N/A",
+      "office_hours": {
+        "weekday": "07.00-17.00",
+        "saturday":"07.00-12.00",
+        "sunday":"libur"
+      },
       "address": "Jl. Mega Kuningan Lot E. 33 No. 1&2 Setiabudi, Jakarta Selatan",
       "toilet": "28",
-      "img": "https://image2.sewakantorcbd.com/800x0/upload/office-leasing/building-photos/68_menara-anugrah-menara-anugrah_20161124034717_67258.jpg",
-      "latitude": "-6.209132",
-      "longitude": "106.819702"
+      "img": [
+        "https://static-id.lamudi.com/static/media/bm9uZS9ub25l/2x2x5x880x396/b03adfaf214971.jpg",
+        "https://static-id.lamudi.com/static/media/bm9uZS9ub25l/2x2x5x880x396/31854ef2ecefd2.jpg",
+        "https://sewaruangkantor.net/wp-content/uploads/2014/04/Menara-Anugerah-Mega-Kuningan.jpg",
+        "https://static-id.lamudi.com/static/media/bm9uZS9ub25l/2x2x2x380x244/c5381a5c41b84f.jpg"
+      ],
+      "latitude": "-6.23003",
+      "longitude": "106.82482"
     },
     {
       "id": 9,
@@ -151,12 +224,21 @@
       "description": "Noble House is a new Grade A office building located at the heart of Jakarta's Central Business District. With a total building size of 50.000 sqm, the office building in Jl. Dr Ide Anak Agung Gde Agung Kav E 4.2 No. 2 is available for lease only.",
       "building_size": "50.000 m²",
       "floor": "39",
-      "office_hours": "Mon - Fri : 07:00 - 18:00 Sat : 07:00 - 13:00 Sun : N/A",
+      "office_hours": {
+        "weekday": "07.00-17.00",
+        "saturday":"07.00-12.00",
+        "sunday":"libur"
+      },
       "address": "Jl. Mega Kuningan Lot E. 33 No. 1&2 Setiabudi, Jakarta Selatan",
       "toilet": "39",
-      "img": "https://image2.sewakantorcbd.com/800x0/upload/office-leasing/building-photos/75_noble-house-noble-house_20160914044332_79418.JPG",
-      "latitude": "-6.209132",
-      "longitude": "106.819702"
+      "img": [
+        "https://lh3.googleusercontent.com/proxy/v3IGOB-elmXNgDYQ-njsy38hyH8WHU16NA4v7MArB3CjzoWe0JD_qahQzn37Wid_6W5yDVCYqh_7VaAKDzEN9XaSZrX6CJZQ6SuWvsAKPNqWNv0vYNd71XfivoanCOk41On7OGsK",
+        "http://garuda.industry.co.id/uploads/berita/detail/699.jpg",
+        "http://noblehouse.co.id/v0/wp-content/uploads/2018/03/unnamed.jpg",
+        "https://davysukamta.com/wp-content/uploads/2020/09/noble-house-mega-kuningan-lot-67-jakarta.jpg"
+      ],
+      "latitude": "-6.211544",
+      "longitude": "106.845172"
     },
     {
       "id": 10,
@@ -165,12 +247,21 @@
       "description": "Menara Rajawali is a new Grade A office building located at the heart of Jakarta's Central Business District. With a total building size of 50.000 sqm, the office building in Jl. Dr Ide Anak Agung Gde Agung Kav E 4.2 No. 2 is available for lease only.",
       "building_size": "50.000 m²",
       "floor": "39",
-      "office_hours": "Mon - Fri : 07:00 - 18:00 Sat : 07:00 - 13:00 Sun : N/A",
+      "office_hours": {
+        "weekday": "07.00-17.00",
+        "saturday":"07.00-12.00",
+        "sunday":"libur"
+      },
       "address": "Jl. Lingkar Mega Kuningan Lot 5.1 Setiabudi, Jakarta Selatan",
       "toilet": "39",
-      "img": "https://image2.sewakantorcbd.com/300x400/upload/office-leasing/building-photos/74_menara-rajawali-menara-rajawali_20160914044303_77705.JPG",
-      "latitude": "-6.209132",
-      "longitude": "106.819702"
+      "img": [
+        "http://officespace.co.id/wp-content/uploads/2017/07/sewa-kantor-di-mega-kuningan-jakarta-selatan.jpg",
+        "https://www.sewakantor-update.com/wp-content/uploads/2017/10/Menara-Rajawali.png",
+        "https://voffice.co.id/jakarta-virtual-office/img/locations/menara-rajawali/lobby-1.jpg",
+        "https://www.realoka.com/pictures/10/ruko-gudang-kantor-menara-rajawali-cbd-mega-142533nufgp.jpg"
+      ],
+      "latitude": "-6.226993",
+      "longitude": "106.82628"
     },
     {
       "id": 11,
@@ -179,12 +270,21 @@
       "description": "Wisma KEIAI is a new Grade A office building located at the heart of Jakarta's Central Business District. With a total building size of 50.000 sqm, the office building in Jl. Dr Ide Anak Agung Gde Agung Kav E 4.2 No. 2 is available for lease only.",
       "building_size": "50.000 m²",
       "floor": "39",
-      "office_hours": "Mon - Fri : 07:00 - 18:00 Sat : 07:00 - 13:00 Sun : N/A",
+      "office_hours": {
+        "weekday": "07.00-17.00",
+        "saturday":"07.00-12.00",
+        "sunday":"libur"
+      },
       "address": "Jl. Jend Sudirman Kav 3 Tanah Abang, Jakarta Pusat",
       "toilet": "39",
-      "img": "https://image2.sewakantorcbd.com/300x400/upload/office-leasing/building-photos/139_wisma-keiai-wisma-keiai_20160914044755_14749.jpg",
-      "latitude": "-6.209132",
-      "longitude": "106.819702"
+      "img": [
+        "https://lh3.googleusercontent.com/proxy/vRV5oKC7hJHIzN1-u6Ak4N97xYAg8p-I0IHcXuX1gDfhxrneyM5xBSWWws7t3V4JbxsNpxVdLnYlB767YVw2SuJMgrm9R1mZh37qgWZJG3F-DsfTmpW8oI1jTEo0bt7Y",
+        "https://static-id.lamudi.com/static/media/bm9uZS9ub25l/2x2x2x380x244/5c219193db93ab.jpg",
+        "https://www.sewakantor-update.com/wp-content/uploads/2016/03/Wisma-KEIAI.jpg",
+        "http://sewajualkantor.id/wp-content/uploads/2017/06/WISMA-KEIAI-6.jpg"
+      ],
+      "latitude": "-6.205978",
+      "longitude": "106.821461"
     },
     {
       "id": 12,
@@ -193,10 +293,19 @@
       "description": "Atria at Sudirman is a new Grade A office building located at the heart of Jakarta's Central Business District. With a total building size of 50.000 sqm, the office building in Jl. Dr Ide Anak Agung Gde Agung Kav E 4.2 No. 2 is available for lease only.",
       "building_size": "50.000 m²",
       "floor": "39",
-      "office_hours": "Mon - Fri : 07:00 - 18:00 Sat : 07:00 - 13:00 Sun : N/A",
+      "office_hours": {
+        "weekday": "07.00-17.00",
+        "saturday":"07.00-12.00",
+        "sunday":"libur"
+      },
       "address": "Jl. Jend Sudirman Kav 33A Tanah Abang, Jakarta Pusat",
       "toilet": "39",
-      "img": "https://image2.sewakantorcbd.com/300x400/upload/office-leasing/building-photos/87_anz-tower-anz-tower_20160914043659_79488.jpg",
+      "img": [
+        "https://www.cariruangkantor.com/wp-content/uploads/2020/09/anz.jpg",
+        "https://live.staticflickr.com/1454/23898339511_f11b05bc8c_b.jpg",
+        "https://jll-global-gdim-res.cloudinary.com/image/upload/t_test-ap-property-detail-web/v1598543254/AP_ML20200827/Atria--Sudirman_20200827_c29ed03e-b35c-e711-8118-e0071b710a01_001.jpg",
+        "https://pinhome.id/blog/wp-content/uploads/2021/08/img_611a69d1bf52f.png"
+      ],
       "latitude": "-6.209132",
       "longitude": "106.819702"
     },
@@ -207,12 +316,21 @@
       "description": "Menara Hijau is a new Grade A office building located at the heart of Jakarta's Central Business District. With a total building size of 50.000 sqm, the office building in Jl. Dr Ide Anak Agung Gde Agung Kav E 4.2 No. 2 is available for lease only.",
       "building_size": "50.000 m²",
       "floor": "39",
-      "office_hours": "Mon - Fri : 07:00 - 18:00 Sat : 07:00 - 13:00 Sun : N/A",
+      "office_hours": {
+        "weekday": "07.00-17.00",
+        "saturday":"07.00-12.00",
+        "sunday":"libur"
+      },
       "address": "Jl. Let. Jend. M.T Haryono Kav 33 Pancoran, Jakarta Selatan",
       "toilet": "39",
-      "img": "https://image2.sewakantorcbd.com/300x400/upload/office-leasing/building-photos/262_menara-hijau-menara-hijau_20160914044227_61234.JPG",
-      "latitude": "-6.209132",
-      "longitude": "106.819702"
+      "img": [
+        "https://www.menarahijau.com/assets/uploads/home/eb9e8-71db9-4.jpg",
+        "https://api.osvas.com/api/v1/image-size/large/property/master/images/iywURqUVAvvm0lChzbyMPtkJlRP6rXPxyKtkZqK8.jpeg",
+        "https://www.sewakantor-update.com/wp-content/uploads/2017/10/Menara-Hijau.png",
+        "https://rumahdijual.com/attachments/jakarta-selatan/22530012d1523525890-menara-hijau-office-space-building-available-hub-jelly-083117958985-menara-hijauu.jpg"
+      ],
+      "latitude": "-6.24268828",
+      "longitude": "106.855027424"
     },
     {
       "id": 14,
@@ -221,12 +339,21 @@
       "description": "L'Avenue Office Park is a new Grade A office building located at the heart of Jakarta's Central Business District. With a total building size of 50.000 sqm, the office building in Jl. Dr Ide Anak Agung Gde Agung Kav E 4.2 No. 2 is available for lease only.",
       "building_size": "50.000 m²",
       "floor": "39",
-      "office_hours": "Mon - Fri : 07:00 - 18:00 Sat : 07:00 - 13:00 Sun : N/A",
+      "office_hours": {
+        "weekday": "07.00-17.00",
+        "saturday":"07.00-12.00",
+        "sunday":"libur"
+      },
       "address": "Jl. Raya Pasar Minggu Kav. 16,Pancoran ,Jakarta Selatan",
       "toilet": "39",
-      "img": "https://image2.sewakantorcbd.com/300x400/upload/office-leasing/building-photos/426_l-avenue-office-park-l-avenue-office_20170502060109_11014.jpg",
-      "latitude": "-6.209132",
-      "longitude": "106.819702"
+      "img": [
+        "http://lavenue.co.id/storage/uploads/2017/03/home-DJI_0127.jpg",
+        "https://lh3.googleusercontent.com/proxy/DOdvspEQa1xMEqLSkeeupH2ZDVcJqUUZh_-UE5vw7KCsiX0XZzqfLi2dhzUYPjTQ4AvuzLwuEgZOash2jMizXYeZ2M3rV2ath27RlzfT1DaZKu-5Meco7oJT_1Q",
+        "https://lh3.googleusercontent.com/proxy/KRu8k-S26NDUSAHeQoIhySNNtZhpBq_HWdWuanUv-RQCUTgaR6h610p3tAXCK7JSHuwpaeWjh3fCqv39C_-qzW_Ew4Jbv5MH-H40QldujLjrMB7e6DaOlMewg09qyA",
+        "https://www.sewa-kantor.net/images1/3834_1.jpg"
+      ],
+      "latitude": "-6.2485",
+      "longitude": "106.8441"
     },
     {
       "id": 15,
@@ -235,12 +362,21 @@
       "description": "Wisma Korindo is a new Grade A office building located at the heart of Jakarta's Central Business District. With a total building size of 50.000 sqm, the office building in Jl. Dr Ide Anak Agung Gde Agung Kav E 4.2 No. 2 is available for lease only.",
       "building_size": "50.000 m²",
       "floor": "39",
-      "office_hours": "Mon - Fri : 07:00 - 18:00 Sat : 07:00 - 13:00 Sun : N/A",
+      "office_hours": {
+        "weekday": "07.00-17.00",
+        "saturday":"07.00-12.00",
+        "sunday":"libur"
+      },
       "address": "Jl. Let. Jend. M.T Haryono Kav 62 Pancoran, Jakarta Selatan",
       "toilet": "39",
-      "img": "https://image2.sewakantorcbd.com/300x400/upload/office-leasing/building-photos/264_wisma-korindo-wisma-korindo_20160914044804_53547.JPG",
-      "latitude": "-6.209132",
-      "longitude": "106.819702"
+      "img": [
+        "http://sewajualkantor.id/wp-content/uploads/2019/09/WISMA-KORINDO-6.jpg",
+        "http://sewajualkantor.id/wp-content/uploads/2019/09/WISMA-KORINDO-3.jpg",
+        "https://live.staticflickr.com/5630/22436742046_54080f4dea_b.jpg",
+        "http://photos.wikimapia.org/p/00/02/21/38/88_big.jpg"
+      ],
+      "latitude": "-6.24363",
+      "longitude": "106.84439"
     },
     {
       "id": 16,
@@ -249,12 +385,21 @@
       "description": "AD Premier is a new Grade A office building located at the heart of Jakarta's Central Business District. With a total building size of 50.000 sqm, the office building in Jl. Dr Ide Anak Agung Gde Agung Kav E 4.2 No. 2 is available for lease only.",
       "building_size": "50.000 m²",
       "floor": "39",
-      "office_hours": "Mon - Fri : 07:00 - 18:00 Sat : 07:00 - 13:00 Sun : N/A",
+      "office_hours": {
+        "weekday": "07.00-17.00",
+        "saturday":"07.00-12.00",
+        "sunday":"libur"
+      },
       "address": "Jl. T.B. Simatupang No. 5 Pasar Minggu, Jakarta Selatan",
       "toilet": "39",
-      "img": "https://image2.sewakantorcbd.com/300x400/upload/office-leasing/building-photos/200_ad-premier-ad-premier_20160914043656_21630.JPG",
-      "latitude": "-6.209132",
-      "longitude": "106.819702"
+      "img": [
+        "http://adpremier.id/wp-content/uploads/2019/02/ADPremier-exterior.jpg",
+        "https://www.indoplaces.com/foto/region/ad-premiere.jpg",
+        "https://adpremier.id/wp-content/uploads/2018/10/ADPremier-ballroomgallery-02.jpg",
+        "https://images.weddingku.com/images/upload/partners/73033/product/100763/images800/100763-ej04dpocbvdy.jpeg"
+      ],
+      "latitude": "-6.291936",
+      "longitude": "106.811358"
     },
     {
       "id": 17,
@@ -263,12 +408,21 @@
       "description": "Menara 165 is a new Grade A office building located at the heart of Jakarta's Central Business District. With a total building size of 50.000 sqm, the office building in Jl. Dr Ide Anak Agung Gde Agung Kav E 4.2 No. 2 is available for lease only.",
       "building_size": "50.000 m²",
       "floor": "39",
-      "office_hours": "Mon - Fri : 07:00 - 18:00 Sat : 07:00 - 13:00 Sun : N/A",
+      "office_hours": {
+        "weekday": "07.00-17.00",
+        "saturday":"07.00-12.00",
+        "sunday":"libur"
+      },
       "address": "Jl. T.B. Simatupang No. 1 , Jakarta Selatan",
       "toilet": "39",
-      "img": "https://image2.sewakantorcbd.com/300x400/upload/office-leasing/building-photos/200_ad-premier-ad-premier_20160914043656_21630.JPG",
-      "latitude": "-6.209132",
-      "longitude": "106.819702"
+      "img": [
+        "https://esqtours.com/wp-content/uploads/2018/05/ESQ-Tours-Travel-Menara-165.jpg",
+        "https://165suite.com/wp-content/uploads/2018/02/165-SUITE-VO-Post-Just-Menara-500x500.jpg",
+        "https://kristalin.co.id/wp-content/uploads/2019/10/WhatsApp-Image-2019-09-23-at-13.32.52-1.jpeg",
+        "https://cw-gbl-gws-prod.azureedge.net/-/pmedia/90505/p/menara-165.webp?rev=665bd2fa79ac621a86c837364c054049592323689c87deee37dcea17afd1c8e92eed457a724c367f1aba106ab3ea7d6f20a82a563414124cc68f76961b0587e5"
+      ],
+      "latitude": "-6.29093220015",
+      "longitude": "106.809640279"
     },
     {
       "id": 18,
@@ -277,12 +431,21 @@
       "description": "Plaza Oleos is a new Grade A office building located at the heart of Jakarta's Central Business District. With a total building size of 50.000 sqm, the office building in Jl. Dr Ide Anak Agung Gde Agung Kav E 4.2 No. 2 is available for lease only.",
       "building_size": "50.000 m²",
       "floor": "39",
-      "office_hours": "Mon - Fri : 07:00 - 18:00 Sat : 07:00 - 13:00 Sun : N/A",
+      "office_hours": {
+        "weekday": "07.00-17.00",
+        "saturday":"07.00-12.00",
+        "sunday":"libur"
+      },
       "address": "Jl. T.B. Simatupang No. 53 Pasar Minggu, Jakarta Selatan",
       "toilet": "39",
-      "img": "https://image2.sewakantorcbd.com/300x400/upload/office-leasing/building-photos/230_plaza-oleos-plaza-oleos_20160914044459_64991.JPG",
-      "latitude": "-6.209132",
-      "longitude": "106.819702"
+      "img": [
+        "https://www.indoplaces.com/foto/region/plaza-oleos.jpg",
+        "https://www.sewakantor-update.com/wp-content/uploads/2018/07/Plaza-Oleos.png",
+        "https://static-id.lamudi.com/static/media/bm9uZS9ub25l/2x2x5x880x396/00a3d3d35e348f.jpg",
+        "https://lh3.googleusercontent.com/proxy/iguHfJ0Uov472pmqXvT9t3a0nBJVsXRtOV_xjqY6M_xWEk3w70hzS8F_hKAHCwEZRrLEWChEayyBeXHXb_7WI8MKGoLfhgbVJgr4ROvK0btTM6B4QSzQQwAuK_97ix9FrKyF6jTviw"
+      ],
+      "latitude": "-6.29917",
+      "longitude": "106.83225"
     }
   ],
   "unit": [
