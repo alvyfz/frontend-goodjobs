@@ -1,8 +1,19 @@
 import { Navbar, Container, Nav, NavDropdown } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Brand from "../brand/BrandWhiteNavbar";
-
-export default function NavBar({ home, complex, building, chat }) {
+import { parseCookies, destroyCookie } from "nookies";
+import jwt_decode from "jwt-decode";
+import { BsChatSquareText } from "react-icons/bs";
+import Swal from "sweetalert2";
+export default function NavBar({ home, complex, building, chat, myaccount }) {
+  const navigate = useNavigate();
+  const jwt = parseCookies("auth").auth;
+  console.log(jwt);
+  const handleLogout = () => {
+    destroyCookie(null, "auth");
+    Swal.fire("Sign out success!", "", "success");
+    navigate("/login");
+  };
   return (
     <>
       <Navbar
@@ -47,24 +58,55 @@ export default function NavBar({ home, complex, building, chat }) {
               >
                 BUILDING
               </Nav.Link>
-              {/* <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
-                <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">
-                  Another action
-                </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">
-                  Something
-                </NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="#action/3.4">
-                  Separated link
-                </NavDropdown.Item>
-              </NavDropdown> */}
             </Nav>
             <Nav>
-              <Nav.Link as={Link} to="/login">
-                LOGIN/SIGNUP
-              </Nav.Link>
+              {jwt ? (
+                <>
+                  <Nav.Link
+                    as={Link}
+                    to="/chat"
+                    active={chat}
+                    style={{ marginRight: "23px" }}
+                  >
+                    <BsChatSquareText /> CHAT
+                  </Nav.Link>
+                  <NavDropdown
+                    active={myaccount}
+                    title="MY ACCOUNT"
+                    id="collasible-nav-dropdown"
+                  >
+                    <NavDropdown.Item
+                      as={Link}
+                      to="/myaccount"
+                      style={{ fontSize: "14px" }}
+                    >
+                      MY ACCOUNT
+                    </NavDropdown.Item>{" "}
+                    <NavDropdown.Item
+                      onClick={handleLogout}
+                      style={{ fontSize: "14px" }}
+                    >
+                      LOGOUT
+                    </NavDropdown.Item>
+                    {/* <NavDropdown.Item href="#action/3.2">
+                      Another action
+                    </NavDropdown.Item>
+                    <NavDropdown.Item href="#action/3.3">
+                      Something
+                    </NavDropdown.Item>
+                    <NavDropdown.Divider />
+                    <NavDropdown.Item href="#action/3.4">
+                      Separated link
+                    </NavDropdown.Item> */}
+                  </NavDropdown>
+                </>
+              ) : (
+                <>
+                  <Nav.Link as={Link} to="/login">
+                    LOGIN/SIGNUP
+                  </Nav.Link>
+                </>
+              )}
               {/* <Nav.Link eventKey={2} href="#memes">
                 Dank memes
               </Nav.Link> */}

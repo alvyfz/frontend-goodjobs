@@ -7,6 +7,8 @@ import App from "../App";
 import Complex from "./complex/Complex";
 import NotFound from "./error/NotFound";
 import Login from "./login/Login";
+import AddComplex from "./complex/AddComplex";
+
 export default function Routing() {
   // let path = useLocation();
 
@@ -19,6 +21,7 @@ export default function Routing() {
         <Route path="/building/detail" element={<Home />} />
         <Route path="/complex/detail" element={<App />} />
         <Route path="/complex" element={<Complex />} />
+        <Route path="/complex/add" element={<AddComplex />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       {/* {path.pathname === "/login" || "*" ? null : <Footer />} */}

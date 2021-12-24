@@ -31,7 +31,7 @@ export default function CardBuilding({
 
   return (
     <>
-      <Card className="card" style={{ width: "18rem", padding: "0" }}>
+      <Card className="cardbuild" style={{ width: "18rem", padding: "0" }}>
         <Card.Img
           variant="top"
           src={img}
