@@ -47,18 +47,12 @@ const Login = () => {
 
   const handleLogin = (event) => {
     event.preventDefault();
-    const postLogin = async () => {
-      const response = await axios({
-        method: "post",
-        url: "http://13.213.57.122:8080/user/login",
-        headers: {},
-        data: {
-          email: emailIn.toLowerCase(),
-          password: passwordIn,
-        },
-      });
-
-      if (response) {
+    axios
+      .post("http://13.213.57.122:8080/user/login", {
+        email: emailIn.toLowerCase(),
+        password: passwordIn,
+      })
+      .then(function (response) {
         const jwt = response.data.data.token;
         setCookie(null, "auth", jwt, {
           maxAge: 3 * 60 * 60,
@@ -66,13 +60,12 @@ const Login = () => {
           // path: "/",
           // secure: process.env.SECURE_COOKIE === "true",
         });
-
         navigate(-1);
         Swal.fire("Sign In Success!", "", "success");
-        // setEmailIn("");
-        // setPasswordIn("");
-        // console.log(response);
-      } else {
+        setEmailIn("");
+        setPasswordIn("");
+      })
+      .catch(function (error) {
         Swal.fire({
           icon: "error",
           title: "Oops...",
@@ -80,9 +73,7 @@ const Login = () => {
         });
         setEmailIn("");
         setPasswordIn("");
-      }
-    };
-    postLogin();
+      });
   };
   const handleSignup = (e) => {
     e.preventDefault();
