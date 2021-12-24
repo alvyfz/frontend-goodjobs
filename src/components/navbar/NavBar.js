@@ -8,7 +8,6 @@ import Swal from "sweetalert2";
 export default function NavBar({ home, complex, building, chat, myaccount }) {
   const navigate = useNavigate();
   const jwt = parseCookies("auth").auth;
-  console.log(jwt);
   const handleLogout = () => {
     destroyCookie(null, "auth");
     Swal.fire("Sign out success!", "", "success");
@@ -52,7 +51,7 @@ export default function NavBar({ home, complex, building, chat, myaccount }) {
               </Nav.Link>
               <Nav.Link
                 as={Link}
-                to="/building"
+                to="/buildings"
                 active={building}
                 style={{ marginRight: "10%" }}
               >

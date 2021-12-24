@@ -119,7 +119,12 @@ const Home = () => {
                 return (
                   <Col lg={4} key={v.id}>
                     <Link to={`/building/detail?id=${v.id}`} className="link">
-                      <CardComplex img={v.img} name={v.name} as width="100%" />{" "}
+                      <CardComplex
+                        img={v.img[0]}
+                        name={v.name}
+                        as
+                        width="100%"
+                      />{" "}
                     </Link>
                   </Col>
                 );
