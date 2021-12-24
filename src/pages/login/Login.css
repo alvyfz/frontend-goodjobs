@@ -1,0 +1,11 @@
+.btnn {
+  border: 1px solid #dee2e6;
+  background-color: white;
+  border-left: none;
+  color: gray;
+  /* padding: 14px 28px; */
+  font-size: 16px;
+}
+.borderRightNone {
+  border-right: none;
+}
