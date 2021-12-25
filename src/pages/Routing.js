@@ -10,6 +10,7 @@ import Login from "./login/Login";
 import AddComplex from "./complex/AddComplex";
 
 import AllBuilding from "./building/AllBuilding";
+import BuildingComplex from "./building/BuildingComplex";
 
 
 export default function Routing() {
@@ -22,8 +23,9 @@ export default function Routing() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/building/detail" element={<Home />} />
-        <Route path="/complex/detail" element={<App />} />
+
         <Route path="/complex" element={<Complex />} />
+        <Route path="/complex/detail" element={<BuildingComplex />} />
         <Route path="/complex/add" element={<AddComplex />} />
         <Route path="/buildings" element={<AllBuilding />} />
  
