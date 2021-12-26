@@ -1,7 +1,9 @@
 import "./CardBuilding.css";
-import { Card, Button, Row } from "react-bootstrap";
+import { Card, Button, Row, Col } from "react-bootstrap";
 import { Rating } from "react-simple-star-rating";
 import { Link } from "react-router-dom";
+import { FiEdit } from "react-icons/fi";
+import { AiOutlineDelete } from "react-icons/ai";
 
 export default function CardBuilding({
   rating,
@@ -10,6 +12,7 @@ export default function CardBuilding({
   complex,
   name,
   id,
+  role_id,
 }) {
   const formatRupiah = () => {
     return new Intl.NumberFormat("id-ID", {
@@ -28,6 +31,7 @@ export default function CardBuilding({
     var NewValue = ((OldValue - OldMin) * NewRange) / (OldRange + NewMin);
     return NewValue;
   };
+  const handleDelete = () => {};
 
   return (
     <>
@@ -53,30 +57,97 @@ export default function CardBuilding({
             backgroundColor: "rgba(0, 0, 0, 0.66)",
           }}
         >
-          <p style={{ paddingLeft: "10px", color: "white" }}>
+          <p style={{ paddingLeft: "20px", color: "white" }}>
             {" "}
-            <span style={{ fontSize: "12px" }}>Star from (per sqm/month) </span>
-            <br /> <span style={{ fontWeight: "550" }}>{formatRupiah()}</span>
+            <span style={{ fontSize: "12px" }}>
+              Start from (per sqm/month){" "}
+            </span>
+            <br />{" "}
+            <span style={{ fontWeight: "550", fontSize: "18px" }}>
+              {formatRupiah()}
+            </span>
           </p>
         </Card.ImgOverlay>
         <Card.Body style={{ color: "black" }}>
-          <Card.Title
-            style={{ fontWeight: "600", fontSize: "24px", margin: "0" }}
-          >
-            {name}
-          </Card.Title>
-          <Rating ratingValue={rating} allowHover={false} size={25}></Rating>
-          <span
-            style={{
-              paddingLeft: "10px",
-              fontSize: "16px",
-              paddingTop: "10px",
-            }}
-          >
-            {conversiValue(rating)}{" "}
-          </span>
+          {role_id === 1 || role_id === 2 ? (
+            <>
+              {" "}
+              <Row>
+                <Col lg={8}>
+                  <Card.Title
+                    style={{ fontWeight: "600", fontSize: "18px", margin: "0" }}
+                  >
+                    {name}
+                  </Card.Title>
+                  <Rating
+                    ratingValue={rating}
+                    allowHover={false}
+                    size={18}
+                  ></Rating>
+                  <span
+                    style={{
+                      paddingLeft: "10px",
+                      fontSize: "14px",
+                      paddingTop: "15px",
+                    }}
+                  >
+                    {conversiValue(rating)}{" "}
+                  </span>
 
-          <Card.Text style={{ fontSize: "13px" }}>{complex}</Card.Text>
+                  <Card.Text style={{ fontSize: "12px" }}>{complex}</Card.Text>
+                </Col>
+                <Col lg={4}>
+                  <Row>
+                    <Col>
+                      <Button
+                        style={{ padding: "0", paddingLeft: "5px" }}
+                        variant="fa"
+                        type="button"
+                        as={Link}
+                        to={`/building/edit?key=${id}`}
+                      >
+                        {" "}
+                        <FiEdit size={24} />{" "}
+                      </Button>
+
+                      <Button
+                        type="button"
+                        onClick={handleDelete}
+                        variant="ds"
+                        style={{ padding: "0", marginLeft: "5px" }}
+                      >
+                        <AiOutlineDelete size={27} color="red" />
+                      </Button>
+                    </Col>
+                  </Row>
+                </Col>
+              </Row>{" "}
+            </>
+          ) : (
+            <>
+              {" "}
+              <Card.Title
+                style={{ fontWeight: "600", fontSize: "20px", margin: "0" }}
+              >
+                {name}
+              </Card.Title>
+              <Rating
+                ratingValue={rating}
+                allowHover={false}
+                size={18}
+              ></Rating>
+              <span
+                style={{
+                  paddingLeft: "10px",
+                  fontSize: "14px",
+                  paddingTop: "15px",
+                }}
+              >
+                {conversiValue(rating)}{" "}
+              </span>
+              <Card.Text style={{ fontSize: "14px" }}>{complex}</Card.Text>{" "}
+            </>
+          )}
         </Card.Body>
         <div style={{ padding: "0", backgroundColor: "#E5E5E5" }}>
           <Row
@@ -84,22 +155,23 @@ export default function CardBuilding({
             style={{ padding: "20px 0px 20px 0px" }}
           >
             {" "}
-            <Button
+            {/* <Button
               as={Link}
               to={`/chat?building=${id}`}
               variant="dark"
               style={{ width: "80%", textAlign: "center", fontSize: "11px" }}
             >
               ENQUIRE
-            </Button>{" "}
+            </Button>{" "} */}
             <Button
               as={Link}
-              to={`/bulding/detail?id=${id}`}
-              variant="light"
+              to={`/bulding/detail?key=${id}`}
+              variant="dark"
               style={{
                 width: "80%",
+
                 align: "center",
-                fontSize: "11px",
+                fontSize: "14px",
               }}
             >
               VIEW DETAIL
