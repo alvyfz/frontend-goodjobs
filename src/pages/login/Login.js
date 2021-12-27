@@ -48,10 +48,13 @@ const Login = () => {
   const handleLogin = (event) => {
     event.preventDefault();
     axios
-      .post("http://13.213.57.122:8080/user/login", {
-        email: emailIn.toLowerCase(),
-        password: passwordIn,
-      })
+      .post(
+        "ec2-13-213-57-122.ap-southeast-1.compute.amazonaws.com:8080/user/login",
+        {
+          email: emailIn.toLowerCase(),
+          password: passwordIn,
+        }
+      )
       .then(function (response) {
         const auth = response.data.data.token;
         setCookie(null, "auth", auth, {
