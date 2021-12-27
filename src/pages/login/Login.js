@@ -48,7 +48,7 @@ const Login = () => {
   const handleLogin = (event) => {
     event.preventDefault();
     axios
-      .post("http://13.213.57.122:8080/user/login", {
+      .post("http://localhost:8080/user/login", {
         email: emailIn.toLowerCase(),
         password: passwordIn,
       })

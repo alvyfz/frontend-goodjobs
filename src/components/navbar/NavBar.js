@@ -2,7 +2,6 @@ import { Navbar, Container, Nav, NavDropdown } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Brand from "../brand/BrandWhiteNavbar";
 import { parseCookies, destroyCookie } from "nookies";
-import jwt_decode from "jwt-decode";
 import { BsChatSquareText } from "react-icons/bs";
 import Swal from "sweetalert2";
 export default function NavBar({ home, complex, building, chat, myaccount }) {
