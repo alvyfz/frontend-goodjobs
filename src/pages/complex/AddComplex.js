@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import Footer from "../../components/footer/Footer";
 import NavBar from "../../components/navbar/NavBar";
 import "./AddComplex.css";
@@ -8,14 +9,20 @@ import ImageUploading from "react-images-uploading";
 import { useState, useEffect } from "react";
 import { FiEdit } from "react-icons/fi";
 import { GrClose } from "react-icons/gr";
-
+import { parseCookies } from "nookies";
+import jwt_decode from "jwt-decode";
+import NotFound from "../error/NotFound";
 const AddComplex = () => {
   const Navigate = useNavigate();
-  const role_id = 2;
+  const auth = parseCookies("auth").auth;
+  const jwtDefault =
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MCwicm9sZV9pZCI6MCwiZXhwIjoxNjQwNTIzODE1fQ.RTtmDJ2fXyxY4N9GXWJnH-beaFIuHsgUSF3hJHHRXqU";
+  const jwt = jwt_decode(auth || jwtDefault);
+  const role_id = jwt.role_id;
 
   useEffect(() => {
     if (role_id !== 1 && role_id !== 2) {
-      Navigate(-1);
+      <NotFound />;
     }
   }, []);
   const [name, setName] = useState("");

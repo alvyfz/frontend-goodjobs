@@ -9,7 +9,15 @@ import { Link } from "react-router-dom";
 import NavBar from "../../components/navbar/NavBar";
 import Footer from "../../components/footer/Footer";
 import { MdOutlineAddCircleOutline } from "react-icons/md";
+import { parseCookies } from "nookies";
+import jwt_decode from "jwt-decode";
+
 const Complex = () => {
+  const auth = parseCookies("auth").auth;
+  const jwtDefault =
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MCwicm9sZV9pZCI6MCwiZXhwIjoxNjQwNTIzODE1fQ.RTtmDJ2fXyxY4N9GXWJnH-beaFIuHsgUSF3hJHHRXqU";
+  const jwt = jwt_decode(auth || jwtDefault);
+  const role_id = jwt.role_id;
   const [complex, setComplex] = useState();
   const [isError, setIsError] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
@@ -42,8 +50,6 @@ const Complex = () => {
   if (isError) {
     return <Error500 />;
   }
-
-  const role_id = 1;
 
   return (
     <>
@@ -86,7 +92,7 @@ const Complex = () => {
               {complex?.map((v, i) => {
                 return (
                   <Col lg={4} key={v.id}>
-                    <Link to={`/complex/detail?id=${v.id}`} className="link">
+                    <Link to={`/complex/detail?key=${v.id}`} className="link">
                       <CardComplex img={v.img} name={v.name} as width="100%" />{" "}
                     </Link>
                   </Col>

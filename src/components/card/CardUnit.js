@@ -1,6 +1,6 @@
 import "./CardBuilding.css";
 import { Card, Button, Row } from "react-bootstrap";
-import { Rating } from "react-simple-star-rating";
+
 
 export default function CardUnit({
   clickView,

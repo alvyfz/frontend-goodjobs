@@ -9,8 +9,15 @@ import Error500 from "../../components/error/Error500";
 import CardBuilding from "../../components/card/CardBuilding";
 import Footer from "../../components/footer/Footer";
 import Paginations from "../../components/pagination/Paginations";
+import { parseCookies } from "nookies";
+import jwt_decode from "jwt-decode";
 
 const AllBuilding = () => {
+  const auth = parseCookies("auth").auth;
+  const jwtDefault =
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MCwicm9sZV9pZCI6MCwiZXhwIjoxNjQwNTIzODE1fQ.RTtmDJ2fXyxY4N9GXWJnH-beaFIuHsgUSF3hJHHRXqU";
+  const jwt = jwt_decode(auth || jwtDefault);
+  const role_id = jwt.role_id;
   const [building, setBuilding] = useState();
   const [isLoading, setIsLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
@@ -34,6 +41,9 @@ const AllBuilding = () => {
         setIsLoading(false);
       });
   }, []);
+  useEffect(() => {
+    window.scrollTo(0, 390);
+  }, [currentPage]);
   if (isLoading) {
     return (
       <div id="spinner">
@@ -75,6 +85,7 @@ const AllBuilding = () => {
                 return (
                   <Col lg={4} key={v.id} className="allbuildingcard">
                     <CardBuilding
+                      role_id={role_id}
                       img={v.img[0]}
                       name={v.name}
                       price={450000}

@@ -53,9 +53,10 @@ const Login = () => {
         password: passwordIn,
       })
       .then(function (response) {
-        const jwt = response.data.data.token;
-        setCookie(null, "auth", jwt, {
+        const auth = response.data.data.token;
+        setCookie(null, "auth", auth, {
           maxAge: 3 * 60 * 60,
+          // encode: (val = "gatau") => val,
           // httpOnly: true,
           // path: "/",
           // secure: process.env.SECURE_COOKIE === "true",
