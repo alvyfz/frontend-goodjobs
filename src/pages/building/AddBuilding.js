@@ -3,7 +3,7 @@ import Footer from "../../components/footer/Footer";
 import NavBar from "../../components/navbar/NavBar";
 import { Container, Row, Col, Button, Form, Card } from "react-bootstrap";
 import { IoIosArrowBack } from "react-icons/io";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import ImageUploading from "react-images-uploading";
 import { useState } from "react";
 import { FiEdit } from "react-icons/fi";
@@ -18,6 +18,9 @@ const AddBuilding = () => {
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MCwicm9sZV9pZCI6MCwiZXhwIjoxNjQwNTIzODE1fQ.RTtmDJ2fXyxY4N9GXWJnH-beaFIuHsgUSF3hJHHRXqU";
   const jwt = jwt_decode(auth || jwtDefault);
   const role_id = jwt.role_id;
+  const { search } = useLocation();
+  const query = new URLSearchParams(search);
+  const idComplex = parseInt(query.get("key"));
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
   const [description, setDescription] = useState("");
@@ -37,6 +40,9 @@ const AddBuilding = () => {
   };
 
   if (role_id !== 1 && role_id !== 2) {
+    return <NotFound />;
+  }
+  if (!idComplex) {
     return <NotFound />;
   }
   const handleSubmit = () => {
