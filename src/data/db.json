@@ -36,6 +36,7 @@
       "id": 1,
       "complex_id": 1,
       "name": "The Plaza",
+      "price": 350.000,
       "description": "The Plaza is a tall building of 38 storeys that is of walking distance to Plaza Indonesia, Grand Indonesia Shopping Town and Sarinah Plaza. The Plaza is equipped with 20 lifts that is split into 3 zones, namely Low Zone, Mid Zone and High Zone, and a dedicated service lift and executive lift.",
       "building_size": "30.085 m²",
       "floor": "39",
@@ -59,6 +60,7 @@
       "id": 2,
       "complex_id": 4,
       "name": "Equity Tower",
+      "price": 300.000,
       "description": "Equity Tower adalah gedung pencakar langit yang terletak di Sudirman Central Business District, Senayan, Kebayoran Baru, Jakarta Selatan. Gedung ini memiliki ketinggian 220 meter dengan 50 lantai. Gedung ini memiliki ketinggian 220 meter. Gedung ini berfungsi sebagai gedung perkantoran komersial",
       "building_size": "30.085 m²",
       "floor": "39",
@@ -82,6 +84,7 @@
       "id": 3,
       "complex_id": 1,
       "name": "City Tower",
+      "price": 250.000,
       "description": "The City Tower, Jl. M.H. Thamrin No.81, RT.1/RW.6, Dukuh Atas, Menteng, Kec. Menteng, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10310",
       "building_size": "30.085 m²",
       "floor": "39",
@@ -105,6 +108,7 @@
       "id": 4,
       "complex_id": 1,
       "name": "Sinarmas Land",
+      "price": 450.000,
       "description": "Sinarmas Land Plaza Menara 3 is a medium sized office building that is of walking distance to Sarinah Plaza, Plaza Indonesia and Grand Indonesia Shopping Town. Sinarmas Land Plaza Menara 3 is equipped with 5 lifts, and a dedicated service lift.",
       "building_size": "12.594 m2",
       "floor": "39",
@@ -128,6 +132,7 @@
       "id": 5,
       "complex_id": 2,
       "name": "Patra Jasa",
+      "price": 360.000,
       "description": "Patra Jasa is a Grade B office building located at the heart of Jakarta's Central Business District. With a total building size of 51.269 sqm, the office building in Jl. Jend. Gatot Subroto No. 32-34 is available for lease only.",
       "building_size": "51.269 m2",
       "floor": "22",
@@ -151,6 +156,7 @@
       "id": 6,
       "complex_id": 2,
       "name": "Menara Global",
+      "price": 350.000,
       "description": "Menara Global is a Grade B office building located at the heart of Jakarta's Central Business District. With a total building size of 22.169 sqm, the office building in Jl. Jend. Gatot Subroto No. 27 is available for lease only.",
       "building_size": "22.169 m2",
       "floor": "24",
@@ -174,6 +180,7 @@
       "id": 7,
       "complex_id": 2,
       "name": "Centennial Tower",
+      "price": 250.000,
       "description": "Centennial Tower is a Grade B office building located at the heart of Jakarta's Central Business District. With a total building size of 22.169 sqm, the office building in Jl. Jend. Gatot Subroto No. 27 is available for lease only.",
       "building_size": "22.169 m2",
       "floor": "24",
@@ -197,6 +204,7 @@
       "id": 8,
       "complex_id": 3,
       "name": "Menara Anugrah",
+      "price": 450.000,
       "description": "Menara Anugrah is a Grade B office building located at the heart of Jakarta's Central Business District. With a total building size of 15.309 sqm, the office building in Jl. Mega Kuningan Lot E. 33 No. 1&2 is available for lease only.",
       "building_size": "15.309 m2",
       "floor": "28",
@@ -220,6 +228,7 @@
       "id": 9,
       "complex_id": 3,
       "name": "Noble House",
+      "price": 290.000,
       "description": "Noble House is a new Grade A office building located at the heart of Jakarta's Central Business District. With a total building size of 50.000 sqm, the office building in Jl. Dr Ide Anak Agung Gde Agung Kav E 4.2 No. 2 is available for lease only.",
       "building_size": "50.000 m²",
       "floor": "39",
@@ -231,7 +240,7 @@
       "address": "Jl. Mega Kuningan Lot E. 33 No. 1&2 Setiabudi, Jakarta Selatan",
       "toilet": "39",
       "img": [
-        "https://lh3.googleusercontent.com/proxy/v3IGOB-elmXNgDYQ-njsy38hyH8WHU16NA4v7MArB3CjzoWe0JD_qahQzn37Wid_6W5yDVCYqh_7VaAKDzEN9XaSZrX6CJZQ6SuWvsAKPNqWNv0vYNd71XfivoanCOk41On7OGsK",
+        "http://officespace.co.id/wp-content/uploads/2018/03/noble-house-1024x683.jpg",
         "http://garuda.industry.co.id/uploads/berita/detail/699.jpg",
         "http://noblehouse.co.id/v0/wp-content/uploads/2018/03/unnamed.jpg",
         "https://davysukamta.com/wp-content/uploads/2020/09/noble-house-mega-kuningan-lot-67-jakarta.jpg"
@@ -243,6 +252,7 @@
       "id": 10,
       "complex_id": 3,
       "name": "Menara Rajawali",
+      "price": 420.000,
       "description": "Menara Rajawali is a new Grade A office building located at the heart of Jakarta's Central Business District. With a total building size of 50.000 sqm, the office building in Jl. Dr Ide Anak Agung Gde Agung Kav E 4.2 No. 2 is available for lease only.",
       "building_size": "50.000 m²",
       "floor": "39",
@@ -266,6 +276,7 @@
       "id": 11,
       "complex_id": 4,
       "name": "Wisma KEIAI",
+      "price": 340.000,
       "description": "Wisma KEIAI is a new Grade A office building located at the heart of Jakarta's Central Business District. With a total building size of 50.000 sqm, the office building in Jl. Dr Ide Anak Agung Gde Agung Kav E 4.2 No. 2 is available for lease only.",
       "building_size": "50.000 m²",
       "floor": "39",
@@ -277,7 +288,7 @@
       "address": "Jl. Jend Sudirman Kav 3 Tanah Abang, Jakarta Pusat",
       "toilet": "39",
       "img": [
-        "https://lh3.googleusercontent.com/proxy/vRV5oKC7hJHIzN1-u6Ak4N97xYAg8p-I0IHcXuX1gDfhxrneyM5xBSWWws7t3V4JbxsNpxVdLnYlB767YVw2SuJMgrm9R1mZh37qgWZJG3F-DsfTmpW8oI1jTEo0bt7Y",
+        "https://static-id.lamudi.com/static/media/bm9uZS9ub25l/2x2x5x880x396/e6078747c829da.jpg",
         "https://static-id.lamudi.com/static/media/bm9uZS9ub25l/2x2x2x380x244/5c219193db93ab.jpg",
         "https://www.sewakantor-update.com/wp-content/uploads/2016/03/Wisma-KEIAI.jpg",
         "http://sewajualkantor.id/wp-content/uploads/2017/06/WISMA-KEIAI-6.jpg"
@@ -289,6 +300,7 @@
       "id": 12,
       "complex_id": 4,
       "name": "Atria at Sudirman",
+      "price": 150.000,
       "description": "Atria at Sudirman is a new Grade A office building located at the heart of Jakarta's Central Business District. With a total building size of 50.000 sqm, the office building in Jl. Dr Ide Anak Agung Gde Agung Kav E 4.2 No. 2 is available for lease only.",
       "building_size": "50.000 m²",
       "floor": "39",
@@ -312,6 +324,7 @@
       "id": 13,
       "complex_id": 5,
       "name": "Menara Hijau",
+      "price": 290.000,
       "description": "Menara Hijau is a new Grade A office building located at the heart of Jakarta's Central Business District. With a total building size of 50.000 sqm, the office building in Jl. Dr Ide Anak Agung Gde Agung Kav E 4.2 No. 2 is available for lease only.",
       "building_size": "50.000 m²",
       "floor": "39",
@@ -335,6 +348,7 @@
       "id": 14,
       "complex_id": 5,
       "name": "L'Avenue Office Park",
+      "price": 225.000,
       "description": "L'Avenue Office Park is a new Grade A office building located at the heart of Jakarta's Central Business District. With a total building size of 50.000 sqm, the office building in Jl. Dr Ide Anak Agung Gde Agung Kav E 4.2 No. 2 is available for lease only.",
       "building_size": "50.000 m²",
       "floor": "39",
@@ -358,6 +372,7 @@
       "id": 15,
       "complex_id": 5,
       "name": "Wisma Korindo",
+      "price": 335.000,
       "description": "Wisma Korindo is a new Grade A office building located at the heart of Jakarta's Central Business District. With a total building size of 50.000 sqm, the office building in Jl. Dr Ide Anak Agung Gde Agung Kav E 4.2 No. 2 is available for lease only.",
       "building_size": "50.000 m²",
       "floor": "39",
@@ -381,6 +396,7 @@
       "id": 16,
       "complex_id": 6,
       "name": "AD Premier",
+      "price": 410.000,
       "description": "AD Premier is a new Grade A office building located at the heart of Jakarta's Central Business District. With a total building size of 50.000 sqm, the office building in Jl. Dr Ide Anak Agung Gde Agung Kav E 4.2 No. 2 is available for lease only.",
       "building_size": "50.000 m²",
       "floor": "39",
@@ -404,6 +420,7 @@
       "id": 17,
       "complex_id": 6,
       "name": "Menara 165",
+      "price": 400.000,
       "description": "Menara 165 is a new Grade A office building located at the heart of Jakarta's Central Business District. With a total building size of 50.000 sqm, the office building in Jl. Dr Ide Anak Agung Gde Agung Kav E 4.2 No. 2 is available for lease only.",
       "building_size": "50.000 m²",
       "floor": "39",
@@ -427,6 +444,7 @@
       "id": 18,
       "complex_id": 6,
       "name": "Plaza Oleos",
+      "price": 380.000,
       "description": "Plaza Oleos is a new Grade A office building located at the heart of Jakarta's Central Business District. With a total building size of 50.000 sqm, the office building in Jl. Dr Ide Anak Agung Gde Agung Kav E 4.2 No. 2 is available for lease only.",
       "building_size": "50.000 m²",
       "floor": "39",
@@ -451,7 +469,7 @@
     {
       "id": 1,
       "building_id": 1,
-      "price": "Rp. 450.000 per sqm/month",
+      "price": 450.000 ,
       "name": "Unit Type A",
       "description": "The Plaza is a tall building of 38 storeys that is of walking distance to Plaza Indonesia, Grand Indonesia Shopping Town and Sarinah Plaza. The Plaza is equipped with 20 lifts that is split into 3 zones, namely Low Zone, Mid Zone and High Zone, and a dedicated service lift and executive lift.",
       "unit_size": "200 m²",
@@ -460,7 +478,7 @@
     {
       "id": 2,
       "building_id": 1,
-      "price": "Rp. 400.000 per sqm/month",
+      "price": 400.000 ,
       "name": "Unit Type B",
       "description": "The Plaza is a tall building of 38 storeys that is of walking distance to Plaza Indonesia, Grand Indonesia Shopping Town and Sarinah Plaza. The Plaza is equipped with 20 lifts that is split into 3 zones, namely Low Zone, Mid Zone and High Zone, and a dedicated service lift and executive lift.",
       "unit_size": "200 m²",
@@ -469,7 +487,7 @@
     {
       "id": 3,
       "building_id": 1,
-      "price": "Rp. 350.000 per sqm/month",
+      "price": 350.000 ,
       "name": "Unit Type C",
       "description": "The Plaza is a tall building of 38 storeys that is of walking distance to Plaza Indonesia, Grand Indonesia Shopping Town and Sarinah Plaza. The Plaza is equipped with 20 lifts that is split into 3 zones, namely Low Zone, Mid Zone and High Zone, and a dedicated service lift and executive lift.",
       "unit_size": "200 m²",
@@ -478,7 +496,7 @@
     {
       "id": 4,
       "building_id": 2,
-      "price": "Rp. 450.000 per sqm/month",
+      "price": 450.000 ,
       "name": "Unit Type A",
       "description": "Unit ini sangat cocok digunakan untuk keperluan bisnis seperti rapat dan bertemu dengan client.",
       "unit_size": "200 m²",
@@ -487,7 +505,7 @@
     {
       "id": 5,
       "building_id": 2,
-      "price": "Rp. 450.000 per sqm/month",
+      "price": 450.000 ,
       "name": "Unit Type B",
       "description": "Unit ini sangat cocok digunakan untuk keperluan bisnis seperti rapat dan bertemu dengan client.",
       "unit_size": "200 m²",
@@ -496,7 +514,7 @@
     {
       "id": 6,
       "building_id": 2,
-      "price": "Rp. 450.000 per sqm/month",
+      "price": 300.000 ,
       "name": "Unit Type C",
       "description": "Unit ini sangat cocok digunakan untuk keperluan bisnis seperti rapat dan bertemu dengan client.",
       "unit_size": "200 m²",
@@ -505,7 +523,7 @@
     {
       "id": 7,
       "building_id": 3,
-      "price": "Rp. 450.000 per sqm/month",
+      "price": 450.000 ,
       "name": "Unit Type A",
       "description": "Unit ini sangat cocok digunakan untuk keperluan bisnis seperti rapat dan bertemu dengan client.",
       "unit_size": "200 m²",
@@ -514,7 +532,7 @@
     {
       "id": 8,
       "building_id": 3,
-      "price": "Rp. 450.000 per sqm/month",
+      "price": 350.000 ,
       "name": "Unit Type B",
       "description": "Unit ini sangat cocok digunakan untuk keperluan bisnis seperti rapat dan bertemu dengan client.",
       "unit_size": "200 m²",
@@ -523,7 +541,7 @@
     {
       "id": 9,
       "building_id": 3,
-      "price": "Rp. 450.000 per sqm/month",
+      "price": 250.000 ,
       "name": "Unit Type C",
       "description": "Unit ini sangat cocok digunakan untuk keperluan bisnis seperti rapat dan bertemu dengan client.",
       "unit_size": "200 m²",
@@ -532,7 +550,7 @@
     {
       "id": 10,
       "building_id": 4,
-      "price": "Rp. 450.000 per sqm/month",
+      "price": 470.000 ,
       "name": "Unit Type A",
       "description": "Unit ini sangat cocok digunakan untuk keperluan bisnis seperti rapat dan bertemu dengan client.",
       "unit_size": "200 m²",
@@ -541,7 +559,7 @@
     {
       "id": 11,
       "building_id": 4,
-      "price": "Rp. 450.000 per sqm/month",
+      "price": 460.000 ,
       "name": "Unit Type B",
       "description": "Unit ini sangat cocok digunakan untuk keperluan bisnis seperti rapat dan bertemu dengan client.",
       "unit_size": "200 m²",
@@ -550,7 +568,7 @@
     {
       "id": 12,
       "building_id": 4,
-      "price": "Rp. 450.000 per sqm/month",
+      "price": 450.000 ,
       "name": "Unit Type C",
       "description": "Unit ini sangat cocok digunakan untuk keperluan bisnis seperti rapat dan bertemu dengan client.",
       "unit_size": "200 m²",
@@ -559,7 +577,7 @@
     {
       "id": 13,
       "building_id": 5,
-      "price": "Rp. 450.000 per sqm/month",
+      "price": 450.000 ,
       "name": "Unit Type A",
       "description": "Unit ini sangat cocok digunakan untuk keperluan bisnis seperti rapat dan bertemu dengan client.",
       "unit_size": "200 m²",
@@ -568,7 +586,7 @@
     {
       "id": 14,
       "building_id": 5,
-      "price": "Rp. 450.000 per sqm/month",
+      "price": 450.000 ,
       "name": "Unit Type B",
       "description": "Unit ini sangat cocok digunakan untuk keperluan bisnis seperti rapat dan bertemu dengan client.",
       "unit_size": "200 m²",
@@ -577,7 +595,7 @@
     {
       "id": 15,
       "building_id": 5,
-      "price": "Rp. 450.000 per sqm/month",
+      "price": 360.000 ,
       "name": "Unit Type C",
       "description": "Unit ini sangat cocok digunakan untuk keperluan bisnis seperti rapat dan bertemu dengan client.",
       "unit_size": "200 m²",
@@ -586,7 +604,7 @@
     {
       "id": 16,
       "building_id": 6,
-      "price": "Rp. 450.000 per sqm/month",
+      "price": 450.000 ,
       "name": "Unit Type A",
       "description": "Unit ini sangat cocok digunakan untuk keperluan bisnis seperti rapat dan bertemu dengan client.",
       "unit_size": "200 m²",
@@ -595,7 +613,7 @@
     {
       "id": 17,
       "building_id": 6,
-      "price": "Rp. 450.000 per sqm/month",
+      "price": 450.000 ,
       "name": "Unit Type B",
       "description": "Unit ini sangat cocok digunakan untuk keperluan bisnis seperti rapat dan bertemu dengan client.",
       "unit_size": "200 m²",
@@ -604,7 +622,7 @@
     {
       "id": 18,
       "building_id": 6,
-      "price": "Rp. 450.000 per sqm/month",
+      "price": 350.000 ,
       "name": "Unit Type C",
       "description": "Unit ini sangat cocok digunakan untuk keperluan bisnis seperti rapat dan bertemu dengan client.",
       "unit_size": "200 m²",
@@ -613,7 +631,7 @@
     {
       "id": 19,
       "building_id": 7,
-      "price": "Rp. 450.000 per sqm/month",
+      "price": 520.000 ,
       "name": "Unit Type A",
       "description": "Unit ini sangat cocok digunakan untuk keperluan bisnis seperti rapat dan bertemu dengan client.",
       "unit_size": "200 m²",
@@ -622,7 +640,7 @@
     {
       "id": 20,
       "building_id": 7,
-      "price": "Rp. 450.000 per sqm/month",
+      "price": 430.000 ,
       "name": "Unit Type B",
       "description": "Unit ini sangat cocok digunakan untuk keperluan bisnis seperti rapat dan bertemu dengan client.",
       "unit_size": "200 m²",
@@ -631,7 +649,7 @@
     {
       "id": 21,
       "building_id": 7,
-      "price": "Rp. 450.000 per sqm/month",
+      "price": 250.000 ,
       "name": "Unit Type C",
       "description": "Unit ini sangat cocok digunakan untuk keperluan bisnis seperti rapat dan bertemu dengan client.",
       "unit_size": "200 m²",
@@ -640,7 +658,7 @@
     {
       "id": 22,
       "building_id": 8,
-      "price": "Rp. 450.000 per sqm/month",
+      "price": 450.000 ,
       "name": "Unit Type A",
       "description": "Unit ini sangat cocok digunakan untuk keperluan bisnis seperti rapat dan bertemu dengan client.",
       "unit_size": "200 m²",
@@ -649,7 +667,7 @@
     {
       "id": 23,
       "building_id": 8,
-      "price": "Rp. 450.000 per sqm/month",
+      "price": 450.000 ,
       "name": "Unit Type B",
       "description": "Unit ini sangat cocok digunakan untuk keperluan bisnis seperti rapat dan bertemu dengan client.",
       "unit_size": "200 m²",
@@ -658,7 +676,7 @@
     {
       "id": 24,
       "building_id": 8,
-      "price": "Rp. 450.000 per sqm/month",
+      "price": 450.000 ,
       "name": "Unit Type C",
       "description": "Unit ini sangat cocok digunakan untuk keperluan bisnis seperti rapat dan bertemu dengan client.",
       "unit_size": "200 m²",
@@ -667,7 +685,7 @@
     {
       "id": 25,
       "building_id": 9,
-      "price": "Rp. 450.000 per sqm/month",
+      "price": 290.000 ,
       "name": "Unit Type A",
       "description": "Unit ini sangat cocok digunakan untuk keperluan bisnis seperti rapat dan bertemu dengan client.",
       "unit_size": "200 m²",
@@ -676,7 +694,7 @@
     {
       "id": 26,
       "building_id": 9,
-      "price": "Rp. 450.000 per sqm/month",
+      "price": 450.000 ,
       "name": "Unit Type B",
       "description": "Unit ini sangat cocok digunakan untuk keperluan bisnis seperti rapat dan bertemu dengan client.",
       "unit_size": "200 m²",
@@ -685,7 +703,7 @@
     {
       "id": 27,
       "building_id": 9,
-      "price": "Rp. 450.000 per sqm/month",
+      "price": 450.000 ,
       "name": "Unit Type C",
       "description": "Unit ini sangat cocok digunakan untuk keperluan bisnis seperti rapat dan bertemu dengan client.",
       "unit_size": "200 m²",
@@ -694,7 +712,7 @@
     {
       "id": 28,
       "building_id": 10,
-      "price": "Rp. 450.000 per sqm/month",
+      "price": 450.000 ,
       "name": "Unit Type A",
       "description": "Unit ini sangat cocok digunakan untuk keperluan bisnis seperti rapat dan bertemu dengan client.",
       "unit_size": "200 m²",
@@ -703,7 +721,7 @@
     {
       "id": 29,
       "building_id": 10,
-      "price": "Rp. 450.000 per sqm/month",
+      "price": 450.000 ,
       "name": "Unit Type B",
       "description": "Unit ini sangat cocok digunakan untuk keperluan bisnis seperti rapat dan bertemu dengan client.",
       "unit_size": "200 m²",
@@ -712,7 +730,7 @@
     {
       "id": 30,
       "building_id": 10,
-      "price": "Rp. 450.000 per sqm/month",
+      "price": 420.000 ,
       "name": "Unit Type C",
       "description": "Unit ini sangat cocok digunakan untuk keperluan bisnis seperti rapat dan bertemu dengan client.",
       "unit_size": "200 m²",
@@ -721,7 +739,7 @@
     {
       "id": 31,
       "building_id": 11,
-      "price": "Rp. 450.000 per sqm/month",
+      "price": 450.000 ,
       "name": "Unit Type A",
       "description": "Unit ini sangat cocok digunakan untuk keperluan bisnis seperti rapat dan bertemu dengan client.",
       "unit_size": "200 m²",
@@ -730,7 +748,7 @@
     {
       "id": 32,
       "building_id": 11,
-      "price": "Rp. 450.000 per sqm/month",
+      "price": 400.000 ,
       "name": "Unit Type B",
       "description": "Unit ini sangat cocok digunakan untuk keperluan bisnis seperti rapat dan bertemu dengan client.",
       "unit_size": "200 m²",
@@ -739,7 +757,7 @@
     {
       "id": 33,
       "building_id": 11,
-      "price": "Rp. 450.000 per sqm/month",
+      "price": 340.000 ,
       "name": "Unit Type C",
       "description": "Unit ini sangat cocok digunakan untuk keperluan bisnis seperti rapat dan bertemu dengan client.",
       "unit_size": "200 m²",
@@ -748,7 +766,7 @@
     {
       "id": 34,
       "building_id": 12,
-      "price": "Rp. 450.000 per sqm/month",
+      "price": 400.000 ,
       "name": "Unit Type A",
       "description": "Unit ini sangat cocok digunakan untuk keperluan bisnis seperti rapat dan bertemu dengan client.",
       "unit_size": "200 m²",
@@ -757,7 +775,7 @@
     {
       "id": 35,
       "building_id": 12,
-      "price": "Rp. 450.000 per sqm/month",
+      "price": 250.000 ,
       "name": "Unit Type B",
       "description": "Unit ini sangat cocok digunakan untuk keperluan bisnis seperti rapat dan bertemu dengan client.",
       "unit_size": "200 m²",
@@ -766,7 +784,7 @@
     {
       "id": 36,
       "building_id": 12,
-      "price": "Rp. 450.000 per sqm/month",
+      "price": 150.000 ,
       "name": "Unit Type C",
       "description": "Unit ini sangat cocok digunakan untuk keperluan bisnis seperti rapat dan bertemu dengan client.",
       "unit_size": "200 m²",
@@ -775,7 +793,7 @@
     {
       "id": 37,
       "building_id": 13,
-      "price": "Rp. 450.000 per sqm/month",
+      "price": 500.000 ,
       "name": "Unit Type A",
       "description": "Unit ini sangat cocok digunakan untuk keperluan bisnis seperti rapat dan bertemu dengan client.",
       "unit_size": "200 m²",
@@ -784,7 +802,7 @@
     {
       "id": 38,
       "building_id": 13,
-      "price": "Rp. 450.000 per sqm/month",
+      "price": 450.000 ,
       "name": "Unit Type B",
       "description": "Unit ini sangat cocok digunakan untuk keperluan bisnis seperti rapat dan bertemu dengan client.",
       "unit_size": "200 m²",
@@ -793,7 +811,7 @@
     {
       "id": 39,
       "building_id": 13,
-      "price": "Rp. 450.000 per sqm/month",
+      "price": 290.000 ,
       "name": "Unit Type C",
       "description": "Unit ini sangat cocok digunakan untuk keperluan bisnis seperti rapat dan bertemu dengan client.",
       "unit_size": "200 m²",
@@ -802,7 +820,7 @@
     {
       "id": 40,
       "building_id": 14,
-      "price": "Rp. 450.000 per sqm/month",
+      "price": 455.000 ,
       "name": "Unit Type A",
       "description": "Unit ini sangat cocok digunakan untuk keperluan bisnis seperti rapat dan bertemu dengan client.",
       "unit_size": "200 m²",
@@ -811,7 +829,7 @@
     {
       "id": 41,
       "building_id": 14,
-      "price": "Rp. 450.000 per sqm/month",
+      "price": 355.000 ,
       "name": "Unit Type B",
       "description": "Unit ini sangat cocok digunakan untuk keperluan bisnis seperti rapat dan bertemu dengan client.",
       "unit_size": "200 m²",
@@ -820,7 +838,7 @@
     {
       "id": 42,
       "building_id": 14,
-      "price": "Rp. 450.000 per sqm/month",
+      "price": 225.000 ,
       "name": "Unit Type C",
       "description": "Unit ini sangat cocok digunakan untuk keperluan bisnis seperti rapat dan bertemu dengan client.",
       "unit_size": "200 m²",
@@ -829,7 +847,7 @@
     {
       "id": 43,
       "building_id": 15,
-      "price": "Rp. 450.000 per sqm/month",
+      "price": 550.000 ,
       "name": "Unit Type A",
       "description": "Unit ini sangat cocok digunakan untuk keperluan bisnis seperti rapat dan bertemu dengan client.",
       "unit_size": "200 m²",
@@ -838,7 +856,7 @@
     {
       "id": 44,
       "building_id": 15,
-      "price": "Rp. 450.000 per sqm/month",
+      "price": 350.000 ,
       "name": "Unit Type B",
       "description": "Unit ini sangat cocok digunakan untuk keperluan bisnis seperti rapat dan bertemu dengan client.",
       "unit_size": "200 m²",
@@ -847,7 +865,7 @@
     {
       "id": 45,
       "building_id": 15,
-      "price": "Rp. 450.000 per sqm/month",
+      "price": 335.000 ,
       "name": "Unit Type C",
       "description": "Unit ini sangat cocok digunakan untuk keperluan bisnis seperti rapat dan bertemu dengan client.",
       "unit_size": "200 m²",
@@ -856,7 +874,7 @@
     {
       "id": 46,
       "building_id": 16,
-      "price": "Rp. 450.000 per sqm/month",
+      "price": 450.000 ,
       "name": "Unit Type A",
       "description": "Unit ini sangat cocok digunakan untuk keperluan bisnis seperti rapat dan bertemu dengan client.",
       "unit_size": "200 m²",
@@ -865,7 +883,7 @@
     {
       "id": 47,
       "building_id": 16,
-      "price": "Rp. 450.000 per sqm/month",
+      "price": 450.000 ,
       "name": "Unit Type B",
       "description": "Unit ini sangat cocok digunakan untuk keperluan bisnis seperti rapat dan bertemu dengan client.",
       "unit_size": "200 m²",
@@ -874,7 +892,7 @@
     {
       "id": 48,
       "building_id": 16,
-      "price": "Rp. 450.000 per sqm/month",
+      "price": 410.000 ,
       "name": "Unit Type C",
       "description": "Unit ini sangat cocok digunakan untuk keperluan bisnis seperti rapat dan bertemu dengan client.",
       "unit_size": "200 m²",
@@ -883,7 +901,7 @@
     {
       "id": 49,
       "building_id": 17,
-      "price": "Rp. 450.000 per sqm/month",
+      "price": 450.000 ,
       "name": "Unit Type A",
       "description": "Unit ini sangat cocok digunakan untuk keperluan bisnis seperti rapat dan bertemu dengan client.",
       "unit_size": "200 m²",
@@ -892,7 +910,7 @@
     {
       "id": 50,
       "building_id": 17,
-      "price": "Rp. 450.000 per sqm/month",
+      "price": 450.000 ,
       "name": "Unit Type B",
       "description": "Unit ini sangat cocok digunakan untuk keperluan bisnis seperti rapat dan bertemu dengan client.",
       "unit_size": "200 m²",
@@ -901,7 +919,7 @@
     {
       "id": 51,
       "building_id": 17,
-      "price": "Rp. 450.000 per sqm/month",
+      "price": 400.000 ,
       "name": "Unit Type C",
       "description": "Unit ini sangat cocok digunakan untuk keperluan bisnis seperti rapat dan bertemu dengan client.",
       "unit_size": "200 m²",
@@ -910,7 +928,7 @@
     {
       "id": 52,
       "building_id": 18,
-      "price": "Rp. 450.000 per sqm/month",
+      "price": 430.000 ,
       "name": "Unit Type A",
       "description": "Unit ini sangat cocok digunakan untuk keperluan bisnis seperti rapat dan bertemu dengan client.",
       "unit_size": "200 m²",
@@ -919,7 +937,7 @@
     {
       "id": 53,
       "building_id": 18,
-      "price": "Rp. 450.000 per sqm/month",
+      "price": 400.000 ,
       "name": "Unit Type B",
       "description": "Unit ini sangat cocok digunakan untuk keperluan bisnis seperti rapat dan bertemu dengan client.",
       "unit_size": "200 m²",
@@ -928,7 +946,7 @@
     {
       "id": 54,
       "building_id": 18,
-      "price": "Rp. 450.000 per sqm/month",
+      "price": 380.000 ,
       "name": "Unit Type C",
       "description": "Unit ini sangat cocok digunakan untuk keperluan bisnis seperti rapat dan bertemu dengan client.",
       "unit_size": "200 m²",
