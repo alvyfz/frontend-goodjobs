@@ -20,8 +20,9 @@ const Complex = () => {
   const role_id = jwt.Role_ID;
   const [complex, setComplex] = useState();
   const [isError, setIsError] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   useEffect(() => {
+    setIsLoading(true);
     var options = {
       method: "GET",
       url: "http://13.213.57.122:8080/complexes",
@@ -37,16 +38,8 @@ const Complex = () => {
         setIsError(true);
         setIsLoading(false);
       });
-    setIsLoading(false);
   }, []);
 
-  if (isLoading) {
-    return (
-      <div id="spinner">
-        <Spinner animation="border" />
-      </div>
-    );
-  }
   if (isError) {
     return <Error500 />;
   }
@@ -85,28 +78,34 @@ const Complex = () => {
             ) : null}{" "}
           </Row>
         </div>
-        <Row className="justify-content-center">
-          <Col lg={2}></Col>
-          <Col lg={8}>
-            <Row className="justify-content-center">
-              {complex?.map((v, i) => {
-                return (
-                  <Col lg={4} key={v.id}>
-                    <Link to={`/complex/detail?key=${v.id}`} className="link">
-                      <CardComplex
-                        img={JSON.parse(v.img)[0].data_url}
-                        name={v.name}
-                        as
-                        width="100%"
-                      />{" "}
-                    </Link>
-                  </Col>
-                );
-              })}
-            </Row>
-          </Col>
-          <Col lg={2}> </Col>
-        </Row>
+        {isLoading ? (
+          <div id="spinner">
+            <Spinner animation="border" />
+          </div>
+        ) : (
+          <Row className="justify-content-center">
+            <Col lg={2}></Col>
+            <Col lg={8}>
+              <Row className="justify-content-center">
+                {complex?.map((v, i) => {
+                  return (
+                    <Col lg={4} key={v.id}>
+                      <Link to={`/complex/detail?key=${v.id}`} className="link">
+                        <CardComplex
+                          img={JSON.parse(v.img)[0].data_url}
+                          name={v.name}
+                          as
+                          width="100%"
+                        />{" "}
+                      </Link>
+                    </Col>
+                  );
+                })}
+              </Row>
+            </Col>
+            <Col lg={2}> </Col>
+          </Row>
+        )}
       </Container>
       <Footer />
     </>
