@@ -49,6 +49,7 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            docker pull alvyfauzi/goodjobs-react; \
             docker rm -f goodjobs_react; \
+            docker rmi alvyfauzi/goodjobs-react:latest; \
+            docker pull alvyfauzi/goodjobs-react; \
             docker run -d -p 3000:3000 --name goodjobs_react alvyfauzi/goodjobs-react
