@@ -33,7 +33,7 @@ const BuildingComplex = () => {
     setIsLoading(true);
     var options = {
       method: "GET",
-      url: "http://localhost:8000/complex",
+      url: `http://13.213.57.122:8080/complex/${idComplex}`,
     };
     axios
       .request(options)
@@ -47,13 +47,13 @@ const BuildingComplex = () => {
       });
     var option = {
       method: "GET",
-      url: "http://localhost:8000/building",
+      url: "http://13.213.57.122:8080/buildings",
     };
 
     axios
       .request(option)
       .then(function (response) {
-        setBuilding(response.data);
+        setBuilding(response.data.data);
         setIsLoading(false);
       })
       .catch(function (error) {
@@ -75,7 +75,6 @@ const BuildingComplex = () => {
     return <Error500 />;
   }
 
-  const complexById = complex?.find((v) => v.id === idComplex);
   const indexOfLastPost = currentPage * cardsPerPage;
   const indexOfFirstPost = indexOfLastPost - cardsPerPage;
   const filteredBuilding = building?.filter((v) => v.complex_id === idComplex);
@@ -84,7 +83,7 @@ const BuildingComplex = () => {
     indexOfLastPost
   );
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
-
+  console.log(filteredBuilding);
   return (
     <>
       <NavBar complex={true} />
@@ -103,7 +102,7 @@ const BuildingComplex = () => {
                   <span>/ COMPLEX / </span>
                 </Link>
                 <span className="spancon">
-                  {complexById?.name.toUpperCase()}
+                  {complex?.data.name.toUpperCase()}
                 </span>
               </h3>
             </Col>
@@ -133,12 +132,13 @@ const BuildingComplex = () => {
                   <Col lg={4} key={v.id} className="allbuildingcard">
                     <CardBuilding
                       role_id={role_id}
-                      img={v.img[0]}
+                      img={JSON.parse(v.img)[0].data_url}
                       name={v.name}
-                      price={450000}
+                      price={v.pricestart}
                       rating={90}
                       id={v.id}
-                    />{" "}
+                      complex={v.complex.name}
+                    />
                   </Col>
                 );
               })}
