@@ -37,6 +37,9 @@ const AddBuilding = () => {
   const [longitude, setLongitude] = useState("");
   const [toilet, setToilet] = useState("");
   const [images, setImages] = useState([]);
+  const [errName, setErrName] = useState("");
+  const [validate, setValidate] = useState("");
+  const nameRegex = /^[a-zA-Z\s]{2,15}$/;
   const maxNumber = 4;
   const handleImages = (imageList, addUpdateIndex) => {
     setImages(imageList);
@@ -59,46 +62,63 @@ const AddBuilding = () => {
     officeHours.weekday.push(weekday);
     officeHours.saturday.push(saturday);
     officeHours.weekday.push(sunday);
-    axios
-      .post("http://13.213.57.122:8080/building", {
-        name: name,
-        address: address,
-        img: JSON.stringify(images),
-        description: description,
-        size: parseInt(size),
-        floor: parseInt(floor),
-        toilet: parseInt(toilet),
-        officehours: JSON.stringify(officeHours),
-        latitude: parseFloat(latitude),
-        longitude: parseFloat(longitude),
-        pricestart: parseInt(price),
-        complex_id: parseInt(idComplex),
-      })
-      .then(function (response) {
-        Swal.fire("Add new building success!", "", "success");
-        setImages([]);
-        setWeekday("");
-        setAddress("");
-        setDescription("");
-        setFloor("");
-        setLatitude("");
-        setLongitude("");
-        setName("");
-        setPrice("");
-        setSaturday("");
-        setSunday("");
-        setToilet("");
-        setSize("");
-      })
-      .catch(function (error) {
-        Swal.fire({
-          icon: "error",
-          title: "Oops...",
-          text: "Something Wrong :( !",
+    if (validate) {
+      axios
+        .post("http://13.213.57.122:8080/building", {
+          name: name,
+          address: address,
+          img: JSON.stringify(images),
+          description: description,
+          size: parseInt(size),
+          floor: parseInt(floor),
+          toilet: parseInt(toilet),
+          officehours: JSON.stringify(officeHours),
+          latitude: parseFloat(latitude),
+          longitude: parseFloat(longitude),
+          pricestart: parseInt(price),
+          complex_id: parseInt(idComplex),
+        })
+        .then(function (response) {
+          Swal.fire("Add new building success!", "", "success");
+          setImages([]);
+          setWeekday("");
+          setAddress("");
+          setDescription("");
+          setFloor("");
+          setLatitude("");
+          setLongitude("");
+          setName("");
+          setPrice("");
+          setSaturday("");
+          setSunday("");
+          setToilet("");
+          setSize("");
+        })
+        .catch(function (error) {
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Something Wrong :( !",
+          });
         });
+    } else {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Something Wrong :( !",
       });
+    }
   };
-
+  const handleChangeName = (e) => {
+    setName(e.target.value);
+    if (!nameRegex.test(e.target.value)) {
+      setValidate(false);
+      setErrName("Name length maximum 15 character");
+    } else {
+      setErrName("");
+      setValidate(true);
+    }
+  };
   return (
     <>
       {" "}
@@ -130,8 +150,11 @@ const AddBuilding = () => {
                       type="text"
                       required
                       value={name}
-                      onChange={(e) => setName(e.target.value)}
+                      onChange={handleChangeName}
                     />
+                    <Form.Text className="formText formErr">
+                      {errName}
+                    </Form.Text>
                   </Col>
                 </Form.Group>{" "}
                 <Form.Group
@@ -334,7 +357,8 @@ const AddBuilding = () => {
                             Remove all
                           </Button>
                           <p className="ketImg">
-                            *The first image will be the main image
+                            *The first image will be the main image(Max 4
+                            picture)
                           </p>
                           <Row>
                             {imageList.map((image, index) => (

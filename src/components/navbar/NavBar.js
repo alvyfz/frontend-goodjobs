@@ -4,13 +4,18 @@ import Brand from "../brand/BrandWhiteNavbar";
 import { parseCookies, destroyCookie } from "nookies";
 import { BsChatSquareText } from "react-icons/bs";
 import Swal from "sweetalert2";
+import jwt_decode from "jwt-decode";
 export default function NavBar({ home, complex, building, chat, myaccount }) {
   const jwt = parseCookies("auth").auth;
+  const jwtDefault =
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MCwicm9sZV9pZCI6MCwiZXhwIjoxNjQwNTIzODE1fQ.RTtmDJ2fXyxY4N9GXWJnH-beaFIuHsgUSF3hJHHRXqU";
+  const user = jwt_decode(jwt || jwtDefault);
   const handleLogout = () => {
     destroyCookie(null, "auth");
     Swal.fire("Sign out success!", "", "success");
     window.location.reload();
   };
+
   return (
     <>
       <Navbar
@@ -69,7 +74,7 @@ export default function NavBar({ home, complex, building, chat, myaccount }) {
                   </Nav.Link>
                   <NavDropdown
                     active={myaccount}
-                    title="MY ACCOUNT"
+                    title={user.Name.toUpperCase()}
                     id="collasible-nav-dropdown"
                   >
                     <NavDropdown.Item

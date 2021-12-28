@@ -29,6 +29,10 @@ const AddComplex = () => {
   const [name, setName] = useState("");
   const [images, setImages] = useState([]);
   const [address, setAddres] = useState("");
+  const [errName, setErrName] = useState("");
+  const [validate, setValidate] = useState(false);
+  const nameRegex = /^[a-zA-Z\s]{2,15}$/;
+
   const maxNumber = 1;
   const handleImages = (imageList, addUpdateIndex) => {
     // data for submit
@@ -38,27 +42,44 @@ const AddComplex = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios
-      .post("http://13.213.57.122:8080/complex", {
-        name: name,
-        address: address,
-        img: JSON.stringify(images),
-      })
-      .then(function (response) {
-        Swal.fire("Add new complex success!", "", "success");
-        setName("");
-        setImages([]);
-        setAddres("");
-      })
-      .catch(function (error) {
-        Swal.fire({
-          icon: "error",
-          title: "Oops...",
-          text: "Something Wrong :( !",
+    if (validate) {
+      axios
+        .post("http://13.213.57.122:8080/complex", {
+          name: name,
+          address: address,
+          img: JSON.stringify(images),
+        })
+        .then(function (response) {
+          Swal.fire("Add new complex success!", "", "success");
+          setName("");
+          setImages([]);
+          setAddres("");
+        })
+        .catch(function (error) {
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Something Wrong :( !",
+          });
         });
+    } else {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Something Wrong :( !",
       });
+    }
   };
-
+  const handleChangeNameUp = (e) => {
+    setName(e.target.value);
+    if (!nameRegex.test(e.target.value)) {
+      setValidate(false);
+      setErrName("Name length maximum 15 character");
+    } else {
+      setErrName("");
+      setValidate(true);
+    }
+  };
   return (
     <>
       {" "}
@@ -90,8 +111,11 @@ const AddComplex = () => {
                       type="text"
                       required
                       value={name}
-                      onChange={(e) => setName(e.target.value)}
+                      onChange={handleChangeNameUp}
                     />
+                    <Form.Text className="formText formErr">
+                      {errName}
+                    </Form.Text>
                   </Col>
                 </Form.Group>
                 <Form.Group

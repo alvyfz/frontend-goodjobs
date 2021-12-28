@@ -83,7 +83,13 @@ const AllBuilding = () => {
             <Row className="justify-content-center">
               {currentCards?.map((v, i) => {
                 return (
-                  <Col lg={4} key={v.id} className="allbuildingcard">
+                  <Col
+                    lg={4}
+                    md={6}
+                    sm={12}
+                    key={v.id}
+                    className="allbuildingcard"
+                  >
                     <CardBuilding
                       role_id={role_id}
                       img={v.img[0]}
@@ -91,6 +97,7 @@ const AllBuilding = () => {
                       price={450000}
                       rating={90}
                       id={v.id}
+                      complex="Thamrin SCBD"
                     />{" "}
                   </Col>
                 );

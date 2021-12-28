@@ -35,7 +35,7 @@ export default function CardBuilding({
 
   return (
     <>
-      <Card className="cardbuild" style={{ width: "18rem", padding: "0" }}>
+      <Card className="cardbuild" style={{ width: "100%", padding: "0" }}>
         <Card.Img
           variant="top"
           src={img}
@@ -52,7 +52,7 @@ export default function CardBuilding({
             fontSize: "18px",
             textAlign: "left !important",
             height: "60px",
-            marginTop: "49%",
+            marginTop: "140px",
 
             backgroundColor: "rgba(0, 0, 0, 0.66)",
           }}
@@ -93,6 +93,7 @@ export default function CardBuilding({
                   >
                     {conversiValue(rating)}{" "}
                   </span>
+                  <br />
 
                   <Card.Text style={{ fontSize: "14px" }}>{complex}</Card.Text>
                 </Col>
@@ -107,7 +108,7 @@ export default function CardBuilding({
                         to={`/building/edit?key=${id}`}
                       >
                         {" "}
-                        <FiEdit size={24} />{" "}
+                        <FiEdit size={19} />{" "}
                       </Button>
 
                       <Button
@@ -116,7 +117,7 @@ export default function CardBuilding({
                         variant="ds"
                         style={{ padding: "0", marginLeft: "5px" }}
                       >
-                        <AiOutlineDelete size={27} color="red" />
+                        <AiOutlineDelete size={23} color="red" />
                       </Button>
                     </Col>
                   </Row>
@@ -148,36 +149,27 @@ export default function CardBuilding({
               <Card.Text style={{ fontSize: "14px" }}>{complex}</Card.Text>{" "}
             </>
           )}
-        </Card.Body>
-        <div style={{ padding: "0", backgroundColor: "#E5E5E5" }}>
-          <Row
-            className="justify-content-center"
-            style={{ padding: "20px 0px 20px 0px" }}
-          >
-            {" "}
-            {/* <Button
-              as={Link}
-              to={`/chat?building=${id}`}
-              variant="dark"
-              style={{ width: "80%", textAlign: "center", fontSize: "11px" }}
-            >
-              ENQUIRE
-            </Button>{" "} */}
-            <Button
-              as={Link}
-              to={`/bulding/detail?key=${id}`}
-              variant="dark"
-              style={{
-                width: "80%",
 
-                align: "center",
-                fontSize: "14px",
-              }}
+          <div style={{ padding: "0" }}>
+            <Row
+              className="justify-content-center"
+              style={{ padding: "15px 0px 5px 0px" }}
             >
-              VIEW DETAIL
-            </Button>{" "}
-          </Row>
-        </div>
+              <Button
+                as={Link}
+                to={`/bulding/detail?key=${id}`}
+                variant="dark"
+                style={{
+                  width: "91%",
+                  align: "center",
+                  fontSize: "14px",
+                }}
+              >
+                VIEW DETAIL
+              </Button>{" "}
+            </Row>
+          </div>
+        </Card.Body>
       </Card>
     </>
   );
