@@ -11,6 +11,9 @@ import { GrClose } from "react-icons/gr";
 import { parseCookies } from "nookies";
 import jwt_decode from "jwt-decode";
 import NotFound from "../error/NotFound";
+import axios from "axios";
+import Swal from "sweetalert2";
+
 const AddBuilding = () => {
   const Navigate = useNavigate();
   const auth = parseCookies("auth").auth;
@@ -45,7 +48,9 @@ const AddBuilding = () => {
   if (!idComplex) {
     return <NotFound />;
   }
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
     var officeHours = {
       weekday: [],
       saturday: [],
@@ -54,9 +59,46 @@ const AddBuilding = () => {
     officeHours.weekday.push(weekday);
     officeHours.saturday.push(saturday);
     officeHours.weekday.push(sunday);
-    console.log(officeHours);
+    axios
+      .post("http://13.213.57.122:8080/building", {
+        name: name,
+        address: address,
+        img: JSON.stringify(images),
+        description: description,
+        size: parseInt(size),
+        floor: parseInt(floor),
+        toilet: parseInt(toilet),
+        officehours: JSON.stringify(officeHours),
+        latitude: parseFloat(latitude),
+        longitude: parseFloat(longitude),
+        pricestart: parseInt(price),
+        complex_id: parseInt(idComplex),
+      })
+      .then(function (response) {
+        Swal.fire("Add new building success!", "", "success");
+        setImages([]);
+        setWeekday("");
+        setAddress("");
+        setDescription("");
+        setFloor("");
+        setLatitude("");
+        setLongitude("");
+        setName("");
+        setPrice("");
+        setSaturday("");
+        setSunday("");
+        setToilet("");
+        setSize("");
+      })
+      .catch(function (error) {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Something Wrong :( !",
+        });
+      });
   };
-  handleSubmit();
+
   return (
     <>
       {" "}
@@ -368,7 +410,7 @@ const AddBuilding = () => {
                     <Button
                       variant="dark"
                       style={{ width: "100%" }}
-                      onSubmit={handleSubmit}
+                      onClick={handleSubmit}
                     >
                       Save
                     </Button>

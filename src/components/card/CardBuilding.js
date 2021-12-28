@@ -94,7 +94,7 @@ export default function CardBuilding({
                     {conversiValue(rating)}{" "}
                   </span>
 
-                  <Card.Text style={{ fontSize: "12px" }}>{complex}</Card.Text>
+                  <Card.Text style={{ fontSize: "14px" }}>{complex}</Card.Text>
                 </Col>
                 <Col lg={4}>
                   <Row>
