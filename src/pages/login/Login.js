@@ -94,7 +94,6 @@ const Login = () => {
           roles_id: 4,
         })
         .then(function (response) {
-          console.log(response);
           Swal.fire("Sign up success!", "You can Sign In now!", "success");
           setEmailUp("");
           setPassword1Up("");
