@@ -6,19 +6,21 @@ import { Container, Row, Col, Button, Form, Card } from "react-bootstrap";
 import { IoIosArrowBack } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 import ImageUploading from "react-images-uploading";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { FiEdit } from "react-icons/fi";
 import { GrClose } from "react-icons/gr";
 import { parseCookies } from "nookies";
 import jwt_decode from "jwt-decode";
 import NotFound from "../error/NotFound";
+import axios from "axios";
+import Swal from "sweetalert2";
 const AddComplex = () => {
   const Navigate = useNavigate();
   const auth = parseCookies("auth").auth;
   const jwtDefault =
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MCwicm9sZV9pZCI6MCwiZXhwIjoxNjQwNTIzODE1fQ.RTtmDJ2fXyxY4N9GXWJnH-beaFIuHsgUSF3hJHHRXqU";
   const jwt = jwt_decode(auth || jwtDefault);
-  const role_id = jwt.role_id;
+  const role_id = jwt.Role_ID;
 
   if (role_id !== 1 && role_id !== 2) {
     <NotFound />;
@@ -26,6 +28,7 @@ const AddComplex = () => {
 
   const [name, setName] = useState("");
   const [images, setImages] = useState([]);
+  const [address, setAddres] = useState("");
   const maxNumber = 1;
   const handleImages = (imageList, addUpdateIndex) => {
     // data for submit
@@ -33,7 +36,28 @@ const AddComplex = () => {
     setImages(imageList);
   };
 
-  const handleSubmit = () => {};
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    axios
+      .post("http://13.213.57.122:8080/complex", {
+        name: name,
+        address: address,
+        img: JSON.stringify(images),
+      })
+      .then(function (response) {
+        Swal.fire("Add new complex success!", "", "success");
+        setName("");
+        setImages([]);
+        setAddres("");
+      })
+      .catch(function (error) {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Something Wrong :( !",
+        });
+      });
+  };
 
   return (
     <>
@@ -51,7 +75,7 @@ const AddComplex = () => {
               <IoIosArrowBack size={40} onClick={() => Navigate(-1)} />
             </Button>
             <Container fluid className="conformcomplex">
-              <Form className="formComplex">
+              <Form className="formComplex" onSubmit={handleSubmit}>
                 {" "}
                 <Form.Group
                   as={Row}
@@ -67,6 +91,24 @@ const AddComplex = () => {
                       required
                       value={name}
                       onChange={(e) => setName(e.target.value)}
+                    />
+                  </Col>
+                </Form.Group>
+                <Form.Group
+                  as={Row}
+                  className="mb-3"
+                  controlId="formPlaintextEmail"
+                >
+                  <Form.Label column sm="2">
+                    Address
+                  </Form.Label>
+                  <Col sm="10">
+                    <Form.Control
+                      as="textarea"
+                      rows={4}
+                      required
+                      value={address}
+                      onChange={(e) => setAddres(e.target.value)}
                     />
                   </Col>
                 </Form.Group>
@@ -185,7 +227,7 @@ const AddComplex = () => {
                     <Button
                       variant="dark"
                       style={{ width: "100%" }}
-                      onSubmit={handleSubmit}
+                      onClick={handleSubmit}
                     >
                       Save
                     </Button>

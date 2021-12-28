@@ -17,7 +17,7 @@ const AllBuilding = () => {
   const jwtDefault =
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MCwicm9sZV9pZCI6MCwiZXhwIjoxNjQwNTIzODE1fQ.RTtmDJ2fXyxY4N9GXWJnH-beaFIuHsgUSF3hJHHRXqU";
   const jwt = jwt_decode(auth || jwtDefault);
-  const role_id = jwt.role_id;
+  const role_id = jwt.Role_ID;
   const [building, setBuilding] = useState();
   const [isLoading, setIsLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);

@@ -17,20 +17,20 @@ const Complex = () => {
   const jwtDefault =
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MCwicm9sZV9pZCI6MCwiZXhwIjoxNjQwNTIzODE1fQ.RTtmDJ2fXyxY4N9GXWJnH-beaFIuHsgUSF3hJHHRXqU";
   const jwt = jwt_decode(auth || jwtDefault);
-  const role_id = jwt.role_id;
+  const role_id = jwt.Role_ID;
   const [complex, setComplex] = useState();
   const [isError, setIsError] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     var options = {
       method: "GET",
-      url: "http://localhost:8000/complex",
+      url: "http://13.213.57.122:8080/complexes",
     };
 
     axios
       .request(options)
       .then(function (response) {
-        setComplex(response.data);
+        setComplex(response.data.data);
         setIsLoading(false);
       })
       .catch(function (error) {
@@ -93,7 +93,12 @@ const Complex = () => {
                 return (
                   <Col lg={4} key={v.id}>
                     <Link to={`/complex/detail?key=${v.id}`} className="link">
-                      <CardComplex img={v.img} name={v.name} as width="100%" />{" "}
+                      <CardComplex
+                        img={JSON.parse(v.img)[0].data_url}
+                        name={v.name}
+                        as
+                        width="100%"
+                      />{" "}
                     </Link>
                   </Col>
                 );
