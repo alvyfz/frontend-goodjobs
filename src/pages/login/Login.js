@@ -48,7 +48,7 @@ const Login = () => {
   const handleLogin = (event) => {
     event.preventDefault();
     axios
-      .post("http://13.213.57.122:8080/user/login", {
+      .post("http://13.213.57.122:8080/login", {
         email: emailIn.toLowerCase(),
         password: passwordIn,
       })
@@ -86,7 +86,7 @@ const Login = () => {
       validPhone
     ) {
       axios
-        .post("http://13.213.57.122:8080/user/register", {
+        .post("http://13.213.57.122:8080/register", {
           name: nameUp,
           email: emailUp.toLowerCase(),
           phone: phone,
