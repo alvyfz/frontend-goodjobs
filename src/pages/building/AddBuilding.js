@@ -4,14 +4,15 @@ import NavBar from "../../components/navbar/NavBar";
 import { Container, Row, Col, Button, Form, Card } from "react-bootstrap";
 import { IoIosArrowBack } from "react-icons/io";
 import { useNavigate, useLocation } from "react-router-dom";
-import ImageUploading from "react-images-uploading";
+
 import { useState } from "react";
-import { FiEdit } from "react-icons/fi";
+// import { FiEdit } from "react-icons/fi";
 import { GrClose } from "react-icons/gr";
 import { parseCookies } from "nookies";
 import jwt_decode from "jwt-decode";
 import NotFound from "../error/NotFound";
 import axios from "axios";
+import { storage } from "../../apps/firebase";
 import Swal from "sweetalert2";
 
 const AddBuilding = () => {
@@ -41,9 +42,6 @@ const AddBuilding = () => {
   const [validate, setValidate] = useState("");
   const nameRegex = /^[a-zA-Z\s]{2,15}$/;
   const maxNumber = 4;
-  const handleImages = (imageList, addUpdateIndex) => {
-    setImages(imageList);
-  };
 
   if (role_id !== 1 && role_id !== 2) {
     return <NotFound />;
@@ -69,7 +67,7 @@ const AddBuilding = () => {
           address: address,
           img: JSON.stringify(images),
           description: description,
-          size: parseInt(size),
+          size: parseFloat(size),
           floor: parseInt(floor),
           toilet: parseInt(toilet),
           officehours: JSON.stringify(officeHours),
@@ -118,6 +116,72 @@ const AddBuilding = () => {
       setErrName("");
       setValidate(true);
     }
+  };
+  const handleChangeUploadImage = (e) => {
+    const image = e.target.files[0];
+
+    if (image) {
+      const uploadTask = storage.ref(`complex/${image.name}`).put(image);
+      uploadTask.on(
+        "state_change",
+        (snapshot) => {},
+        (error) => {
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Something Wrong :( !",
+          });
+        },
+        () => {
+          storage
+            .ref("complex")
+            .child(image.name)
+            .getDownloadURL()
+            .then((url) => {
+              setImages((currentImage) => [...currentImage, url]);
+            });
+        }
+      );
+    }
+  };
+  // console.log(images);
+  // const handleChangeUpdateImage = (img) => (e) => {
+  //   const imageUpdate = e.target.files[0];
+  //   if (imageUpdate) {
+  //     const uploadTask = storage
+  //       .ref(`complex/${imageUpdate.name}`)
+  //       .put(imageUpdate);
+  //     uploadTask.on(
+  //       "state_change",
+  //       (snapshot) => {},
+  //       (error) => {
+  //         Swal.fire({
+  //           icon: "error",
+  //           title: "Oops...",
+  //           text: "Something Wrong :( !",
+  //         });
+  //       },
+  //       () => {
+  //         storage
+  //           .ref("complex")
+  //           .child(imageUpdate.name)
+  //           .getDownloadURL()
+  //           .then((url) => {
+  //             images.map((v, i) => {
+  //               if (v === img) {
+  //                 let newArr = [...images];
+  //                 newArr[i] = url;
+  //                 setImages(newArr);
+  //               }
+  //             });
+  //           });
+  //       }
+  //     );
+  //   }
+  // };
+  const handleRemove = (image) => {
+    var newArray = images.filter((item) => item !== image);
+    setImages(newArray);
   };
   return (
     <>
@@ -246,177 +310,92 @@ const AddBuilding = () => {
                     Office Hours
                   </Form.Label>
                   <Col sm="10">
-                    <Form.Control
-                      className="mb-3"
-                      type="text"
-                      required
-                      placeholder="Week Days"
-                      value={weekday}
-                      onChange={(e) => setWeekday(e.target.value)}
-                    />{" "}
-                    <Form.Control
-                      className="mb-3"
-                      type="text"
-                      required
-                      placeholder="Saturday"
-                      value={saturday}
-                      onChange={(e) => setSaturday(e.target.value)}
-                    />{" "}
-                    <Form.Control
-                      type="text"
-                      required
-                      placeholder="Sunday"
-                      value={sunday}
-                      onChange={(e) => setSunday(e.target.value)}
+                    {" "}
+                    <input
+                      type="file"
+                      id="filee"
+                      className="filee"
+                      accept="image/*"
+                      onChange={handleChangeUploadImage}
                     />
-                  </Col>
-                </Form.Group>{" "}
-                <Form.Group
-                  as={Row}
-                  className="mb-3"
-                  controlId="formPlaintextEmail"
-                >
-                  <Form.Label column sm="2">
-                    Address
-                  </Form.Label>
-                  <Col sm="10">
-                    <Form.Control
-                      as="textarea"
-                      rows={4}
-                      required
-                      value={address}
-                      onChange={(e) => setAddress(e.target.value)}
-                    />
-                  </Col>
-                </Form.Group>
-                <Form.Group
-                  as={Row}
-                  className="mb-3"
-                  controlId="formPlaintextEmail"
-                >
-                  <Form.Label column sm="2">
-                    Latitude
-                  </Form.Label>
-                  <Col sm="4">
-                    <Form.Control
-                      type="number"
-                      required
-                      value={latitude}
-                      onChange={(e) => setLatitude(e.target.value)}
-                    />
-                  </Col>{" "}
-                  <Form.Label column sm="2">
-                    Longitude
-                  </Form.Label>
-                  <Col sm="4">
-                    <Form.Control
-                      type="number"
-                      required
-                      value={longitude}
-                      onChange={(e) => setLongitude(e.target.value)}
-                    />
-                  </Col>
-                </Form.Group>{" "}
-                <Form.Group
-                  as={Row}
-                  className="mb-3"
-                  controlId="formPlaintextPassword"
-                >
-                  <Form.Label column sm="2">
-                    Image
-                  </Form.Label>
-                  <Col sm="10">
-                    <ImageUploading
-                      multiple
-                      value={images}
-                      onChange={handleImages}
-                      maxNumber={maxNumber}
-                      dataURLKey="data_url"
+                    <Button
+                      variant="outline-dark"
+                      disabled={images.length === maxNumber ? true : false}
                     >
-                      {({
-                        imageList,
-                        onImageUpload,
-                        onImageRemoveAll,
-                        onImageUpdate,
-                        onImageRemove,
-                        isDragging,
-                        dragProps,
-                      }) => (
-                        // write your building UI
-                        <div className="upload__image-wrapper">
-                          <Button
-                            variant="outline-dark"
-                            style={isDragging ? { color: "red" } : null}
-                            onClick={onImageUpload}
-                            {...dragProps}
-                          >
-                            Upload
-                          </Button>
-                          &nbsp;
-                          <Button onClick={onImageRemoveAll} variant="dark">
-                            Remove all
-                          </Button>
-                          <p className="ketImg">
-                            *The first image will be the main image(Max 4
-                            picture)
-                          </p>
-                          <Row>
-                            {imageList.map((image, index) => (
-                              <Col lg={4}>
-                                <div key={index} className="image-item">
-                                  <Card width="50px">
-                                    <Card.Img
-                                      src={image.data_url}
-                                      alt=""
+                      <label for="filee" className="fileee">
+                        Upload
+                      </label>
+                    </Button>{" "}
+                    &nbsp;
+                    <Button onClick={() => setImages([])} variant="dark">
+                      Remove all
+                    </Button>
+                    <p className="ketImg">
+                      *The first image will be the main image(Max 4 picture)
+                    </p>
+                    <Row>
+                      {images.map((image, index) => (
+                        <Col lg={4}>
+                          <div key={index} className="image-item">
+                            <Card width="50px">
+                              <Card.Img
+                                src={image}
+                                alt=""
+                                style={{
+                                  width: "100%",
+                                  height: "120px",
+                                  objectFit: "cover",
+                                }}
+                              />
+                              <Card.ImgOverlay
+                                className="image-item__btn-wrapper"
+                                style={{
+                                  textAlign: "right",
+                                  padding: "0",
+                                }}
+                              >
+                                <Button
+                                  style={{
+                                    backgroundColor:
+                                      "rgba(255, 255, 255, 0.15)",
+                                  }}
+                                  className="buttomimgform"
+                                  variant=""
+                                  onClick={() => handleRemove(image)}
+                                  // onClick={() => onImageRemove(index)}
+                                >
+                                  <GrClose color="white" />
+                                </Button>{" "}
+                                {/* <br />
+                                <input
+                                  type="file"
+                                  id="fileeee"
+                                  className="fileeee"
+                                  accept="image/*"
+                                  onChange={handleChangeUpdateImage(image)}
+                                />
+                                <Button
+                                  style={{
+                                    backgroundColor:
+                                      "rgba(255, 255, 255, 0.15)",
+                                  }}
+                                  className="buttomimgform"
+                                >
+                                  {" "}
+                                  <label for="fileeee" className="fileeeee">
+                                    <FiEdit
                                       style={{
-                                        width: "100%",
-                                        height: "120px",
-                                        objectFit: "cover",
+                                        color: "black",
                                       }}
                                     />
-                                    <Card.ImgOverlay
-                                      className="image-item__btn-wrapper"
-                                      style={{
-                                        textAlign: "right",
-                                        padding: "0",
-                                      }}
-                                    >
-                                      <Button
-                                        style={{
-                                          backgroundColor:
-                                            "rgba(255, 255, 255, 0.15)",
-                                        }}
-                                        className="buttomimgform"
-                                        variant=""
-                                        onClick={() => onImageRemove(index)}
-                                      >
-                                        <GrClose color="white" />
-                                      </Button>{" "}
-                                      <br />
-                                      <Button
-                                        style={{
-                                          backgroundColor:
-                                            "rgba(255, 255, 255, 0.15)",
-                                        }}
-                                        className="buttomimgform"
-                                        variant=""
-                                        onClick={() => onImageUpdate(index)}
-                                      >
-                                        <FiEdit
-                                          style={{
-                                            color: "black",
-                                          }}
-                                        />
-                                      </Button>
-                                    </Card.ImgOverlay>
-                                  </Card>
-                                </div>
-                              </Col>
-                            ))}
-                          </Row>
-                        </div>
-                      )}
-                    </ImageUploading>
+                                  </label>
+                                </Button> */}
+                              </Card.ImgOverlay>
+                            </Card>
+                          </div>
+                        </Col>
+                      ))}
+                    </Row>
                   </Col>
                 </Form.Group>
                 <Row>
