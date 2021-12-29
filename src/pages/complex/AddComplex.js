@@ -5,15 +5,15 @@ import "./AddComplex.css";
 import { Container, Row, Col, Button, Form, Card } from "react-bootstrap";
 import { IoIosArrowBack } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
-import ImageUploading from "react-images-uploading";
 import { useState } from "react";
-import { FiEdit } from "react-icons/fi";
+// import { FiEdit } from "react-icons/fi";
 import { GrClose } from "react-icons/gr";
 import { parseCookies } from "nookies";
 import jwt_decode from "jwt-decode";
 import NotFound from "../error/NotFound";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { storage } from "../../apps/firebase";
 const AddComplex = () => {
   const Navigate = useNavigate();
   const auth = parseCookies("auth").auth;
@@ -28,17 +28,12 @@ const AddComplex = () => {
 
   const [name, setName] = useState("");
   const [images, setImages] = useState([]);
+  // const [image, setImage] = useState([]);
   const [address, setAddres] = useState("");
   const [errName, setErrName] = useState("");
   const [validate, setValidate] = useState(false);
   const nameRegex = /^[a-zA-Z\s]{2,15}$/;
-
   const maxNumber = 1;
-  const handleImages = (imageList, addUpdateIndex) => {
-    // data for submit
-    console.log(imageList, addUpdateIndex);
-    setImages(imageList);
-  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -79,6 +74,72 @@ const AddComplex = () => {
       setErrName("");
       setValidate(true);
     }
+  };
+  const handleChangeUploadImage = (e) => {
+    const image = e.target.files[0];
+
+    if (image) {
+      const uploadTask = storage.ref(`complex/${image.name}`).put(image);
+      uploadTask.on(
+        "state_change",
+        (snapshot) => {},
+        (error) => {
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Something Wrong :( !",
+          });
+        },
+        () => {
+          storage
+            .ref("complex")
+            .child(image.name)
+            .getDownloadURL()
+            .then((url) => {
+              setImages((currentImage) => [...currentImage, url]);
+            });
+        }
+      );
+    }
+  };
+  // console.log(images);
+  // const handleChangeUpdateImage = (img) => (e) => {
+  //   const imageUpdate = e.target.files[0];
+  //   if (imageUpdate) {
+  //     const uploadTask = storage
+  //       .ref(`complex/${imageUpdate.name}`)
+  //       .put(imageUpdate);
+  //     uploadTask.on(
+  //       "state_change",
+  //       (snapshot) => {},
+  //       (error) => {
+  //         Swal.fire({
+  //           icon: "error",
+  //           title: "Oops...",
+  //           text: "Something Wrong :( !",
+  //         });
+  //       },
+  //       () => {
+  //         storage
+  //           .ref("complex")
+  //           .child(imageUpdate.name)
+  //           .getDownloadURL()
+  //           .then((url) => {
+  //             images.map((v, i) => {
+  //               if (v === img) {
+  //                 let newArr = [...images];
+  //                 newArr[i] = url;
+  //                 setImages(newArr);
+  //               }
+  //             });
+  //           });
+  //       }
+  //     );
+  //   }
+  // };
+  const handleRemove = (image) => {
+    var newArray = images.filter((item) => item !== image);
+    setImages(newArray);
   };
   return (
     <>
@@ -145,95 +206,88 @@ const AddComplex = () => {
                     Image
                   </Form.Label>
                   <Col sm="10">
-                    <ImageUploading
-                      multiple
-                      value={images}
-                      onChange={handleImages}
-                      maxNumber={maxNumber}
-                      dataURLKey="data_url"
+                    <input
+                      type="file"
+                      id="filee"
+                      className="filee"
+                      accept="image/*"
+                      onChange={handleChangeUploadImage}
+                    />
+                    <Button
+                      variant="outline-dark"
+                      disabled={images.length === maxNumber ? true : false}
                     >
-                      {({
-                        imageList,
-                        onImageUpload,
-                        onImageRemoveAll,
-                        onImageUpdate,
-                        onImageRemove,
-                        isDragging,
-                        dragProps,
-                      }) => (
-                        // write your building UI
-                        <div className="upload__image-wrapper">
-                          <Button
-                            variant="outline-dark"
-                            style={isDragging ? { color: "red" } : null}
-                            onClick={onImageUpload}
-                            {...dragProps}
-                          >
-                            Upload
-                          </Button>
-                          &nbsp;
-                          <Button onClick={onImageRemoveAll} variant="dark">
-                            Remove all
-                          </Button>
-                          <br />
-                          <br />
-                          <Row>
-                            {imageList.map((image, index) => (
-                              <Col lg={4}>
-                                <div key={index} className="image-item">
-                                  <Card width="50px">
-                                    <Card.Img
-                                      src={image.data_url}
-                                      alt=""
+                      <label for="filee" className="fileee">
+                        Upload
+                      </label>
+                    </Button>{" "}
+                    &nbsp;
+                    <Button onClick={() => setImages([])} variant="dark">
+                      Remove all
+                    </Button>
+                    <Row style={{ marginTop: "15px" }}>
+                      {images.map((image, index) => (
+                        <Col lg={4}>
+                          <div key={index} className="image-item">
+                            <Card width="50px">
+                              <Card.Img
+                                src={image}
+                                alt=""
+                                style={{
+                                  width: "100%",
+                                  height: "120px",
+                                  objectFit: "cover",
+                                }}
+                              />
+                              <Card.ImgOverlay
+                                className="image-item__btn-wrapper"
+                                style={{
+                                  textAlign: "right",
+                                  padding: "0",
+                                }}
+                              >
+                                <Button
+                                  style={{
+                                    backgroundColor:
+                                      "rgba(255, 255, 255, 0.15)",
+                                  }}
+                                  className="buttomimgform"
+                                  variant=""
+                                  onClick={() => handleRemove(image)}
+                                  // onClick={() => onImageRemove(index)}
+                                >
+                                  <GrClose color="white" />
+                                </Button>{" "}
+                                {/* <br />
+                                <input
+                                  type="file"
+                                  id="fileeee"
+                                  className="fileeee"
+                                  accept="image/*"
+                                  onChange={handleChangeUpdateImage(image)}
+                                />
+                                <Button
+                                  style={{
+                                    backgroundColor:
+                                      "rgba(255, 255, 255, 0.15)",
+                                  }}
+                                  className="buttomimgform"
+                                >
+                                  {" "}
+                                  <label for="fileeee" className="fileeeee">
+                                    <FiEdit
                                       style={{
-                                        width: "100%",
-                                        height: "120px",
-                                        objectFit: "cover",
+                                        color: "black",
                                       }}
                                     />
-                                    <Card.ImgOverlay
-                                      className="image-item__btn-wrapper"
-                                      style={{
-                                        textAlign: "right",
-                                        padding: "0",
-                                      }}
-                                    >
-                                      <Button
-                                        style={{
-                                          backgroundColor:
-                                            "rgba(255, 255, 255, 0.15)",
-                                        }}
-                                        className="buttomimgform"
-                                        variant=""
-                                        onClick={() => onImageRemove(index)}
-                                      >
-                                        <GrClose color="white" />
-                                      </Button>{" "}
-                                      <br />
-                                      <Button
-                                        style={{
-                                          backgroundColor:
-                                            "rgba(255, 255, 255, 0.15)",
-                                        }}
-                                        className="buttomimgform"
-                                        variant=""
-                                        onClick={() => onImageUpdate(index)}
-                                      >
-                                        <FiEdit
-                                          style={{
-                                            color: "black",
-                                          }}
-                                        />
-                                      </Button>
-                                    </Card.ImgOverlay>
-                                  </Card>
-                                </div>
-                              </Col>
-                            ))}
-                          </Row>
-                        </div>
-                      )}
-                    </ImageUploading>
+                                  </label>
+                                </Button> */}
+                              </Card.ImgOverlay>
+                            </Card>
+                          </div>
+                        </Col>
+                      ))}
+                    </Row>
                   </Col>
                 </Form.Group>
                 <Row>

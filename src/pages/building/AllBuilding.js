@@ -42,6 +42,26 @@ const AllBuilding = () => {
       });
   }, []);
   useEffect(() => {
+    setIsLoading(true);
+    var option = {
+      method: "GET",
+      url: `http://13.213.57.122:8080/building/complex/9`,
+    };
+
+    axios
+      .request(option)
+      .then(function (response) {
+        console.log(response.data);
+
+        setIsLoading(false);
+      })
+      .catch(function (error) {
+        setIsError(true);
+        setIsLoading(false);
+      });
+  }, []);
+
+  useEffect(() => {
     window.scrollTo(0, 390);
   }, [currentPage]);
   if (isLoading) {

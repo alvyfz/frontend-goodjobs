@@ -5,7 +5,7 @@ import { Container, Row, Col, Spinner, Button } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Error500 from "../../components/error/Error500";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import NavBar from "../../components/navbar/NavBar";
 import Footer from "../../components/footer/Footer";
 import { MdOutlineAddCircleOutline } from "react-icons/md";
@@ -13,6 +13,7 @@ import { parseCookies } from "nookies";
 import jwt_decode from "jwt-decode";
 
 const Complex = () => {
+  const Navigate = useNavigate();
   const auth = parseCookies("auth").auth;
   const jwtDefault =
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MCwicm9sZV9pZCI6MCwiZXhwIjoxNjQwNTIzODE1fQ.RTtmDJ2fXyxY4N9GXWJnH-beaFIuHsgUSF3hJHHRXqU";
@@ -39,7 +40,7 @@ const Complex = () => {
         setIsLoading(false);
       });
   }, []);
-
+  console.log(complex);
   if (isError) {
     return <Error500 />;
   }
@@ -85,28 +86,50 @@ const Complex = () => {
         ) : (
           <Row className="justify-content-center">
             <Col lg={2}></Col>
-            <Col lg={8}>
-              <Row className="justify-content-center">
-                {complex?.map((v, i) => {
-                  return (
-                    <Col lg={4} key={v.id}>
-                      <Link to={`/complex/detail?key=${v.id}`} className="link">
-                        <CardComplex
-                          img={JSON.parse(v.img)[0].data_url}
-                          name={v.name}
-                          as
-                          width="100%"
-                        />{" "}
-                      </Link>
-                    </Col>
-                  );
-                })}
-              </Row>
-            </Col>
-            <Col lg={2}> </Col>
+            {complex?.length === 0 || complex === null ? (
+              <>
+                <Container style={{ margin: "100px", textAlign: "center" }}>
+                  <h1 style={{ fontSize: "80px", fontWeight: "bold" }}>OPPS</h1>
+                  <h2>Building not found</h2>
+                  <h3>
+                    {" "}
+                    Go back ?{" "}
+                    <Button variant="dark" onClick={() => Navigate(-1)}>
+                      Back
+                    </Button>
+                  </h3>
+                </Container>
+              </>
+            ) : (
+              <>
+                <Col lg={8}>
+                  <Row className="justify-content-center">
+                    {complex?.map((v, i) => {
+                      return (
+                        <Col lg={4} key={v.id}>
+                          <Link
+                            to={`/complex/detail?key=${v.id}`}
+                            className="link"
+                          >
+                            <CardComplex
+                              img={JSON.parse(v.img)[0]}
+                              name={v.name}
+                              as
+                              width="100%"
+                            />{" "}
+                          </Link>
+                        </Col>
+                      );
+                    })}
+                  </Row>
+                </Col>
+                <Col lg={2}> </Col>
+              </>
+            )}
           </Row>
         )}
       </Container>
+
       <Footer />
     </>
   );

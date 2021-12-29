@@ -72,7 +72,6 @@ const Login = () => {
           title: "Oops...",
           text: "Email or  Password is wrong!",
         });
-        setEmailIn("");
         setPasswordIn("");
       });
   };

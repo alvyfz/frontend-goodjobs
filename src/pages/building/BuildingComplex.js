@@ -24,7 +24,7 @@ const BuildingComplex = () => {
   const role_id = jwt.Role_ID;
   const { search } = useLocation();
   const query = new URLSearchParams(search);
-  const [complex, setComplex] = useState();
+
   const [isError, setIsError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [building, setBuilding] = useState();
@@ -34,29 +34,17 @@ const BuildingComplex = () => {
 
   useEffect(() => {
     setIsLoading(true);
-    var options = {
-      method: "GET",
-      url: `http://13.213.57.122:8080/complex/${idComplex}`,
-    };
-    axios
-      .request(options)
-      .then(function (response) {
-        setComplex(response.data);
-        setIsLoading(false);
-      })
-      .catch(function (error) {
-        setIsError(true);
-        setIsLoading(false);
-      });
     var option = {
       method: "GET",
-      url: "http://13.213.57.122:8080/buildings",
+      url: `http://13.213.57.122:8080/building/complex/${idComplex}`,
     };
 
     axios
       .request(option)
       .then(function (response) {
         setBuilding(response.data.data);
+        console.log(building);
+
         setIsLoading(false);
       })
       .catch(function (error) {
@@ -64,6 +52,7 @@ const BuildingComplex = () => {
         setIsLoading(false);
       });
   }, []);
+
   useEffect(() => {
     window.scrollTo(0, 390);
   }, [currentPage]);
@@ -74,26 +63,20 @@ const BuildingComplex = () => {
 
   const indexOfLastPost = currentPage * cardsPerPage;
   const indexOfFirstPost = indexOfLastPost - cardsPerPage;
-  const filteredBuilding = building?.filter((v) => v.complex_id === idComplex);
-  const currentCards = filteredBuilding?.slice(
-    indexOfFirstPost,
-    indexOfLastPost
-  );
+  const currentCards = building?.slice(indexOfFirstPost, indexOfLastPost);
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
-  console.log(filteredBuilding);
+  console.log(currentCards);
   return (
     <>
       <NavBar complex={true} />
-      <Searching />
-      <Container fluid className="complexcon">
-        {" "}
-        {isLoading ? (
-          <div id="spinner">
-            <Spinner animation="border" />
-          </div>
-        ) : (
-          <>
-            {" "}
+      <Searching />{" "}
+      {isLoading ? (
+        <div id="spinner">
+          <Spinner animation="border" />
+        </div>
+      ) : (
+        <>
+          <Container fluid className="complexcon">
             <div className="title">
               <Row>
                 <Col lg={2}></Col>
@@ -106,7 +89,7 @@ const BuildingComplex = () => {
                       <span>/ COMPLEX / </span>
                     </Link>
                     <span className="spancon">
-                      {complex?.data.name.toUpperCase()}
+                      {building?.[0].complex.name.toUpperCase()}
                     </span>
                   </h3>
                 </Col>
@@ -127,7 +110,7 @@ const BuildingComplex = () => {
                 ) : null}
               </Row>
             </div>
-            {filteredBuilding?.length === 0 ? (
+            {building?.length === 0 || building === null ? (
               <>
                 <Container style={{ margin: "100px", textAlign: "center" }}>
                   <h1 style={{ fontSize: "80px", fontWeight: "bold" }}>OPPS</h1>
@@ -154,16 +137,16 @@ const BuildingComplex = () => {
                             lg={4}
                             md={6}
                             sm={12}
-                            key={v.id}
+                            key={v.Id}
                             className="allbuildingcard"
                           >
                             <CardBuilding
                               role_id={role_id}
-                              img={JSON.parse(v.img)[0].data_url}
+                              img={JSON.parse(v.img)[0]}
                               name={v.name}
                               price={v.pricestart}
                               rating={90}
-                              id={v.id}
+                              id={v.Id}
                               complex={v.complex.name}
                             />
                           </Col>
@@ -177,7 +160,7 @@ const BuildingComplex = () => {
                   <Col md={1}>
                     <Paginations
                       className="paginationStyle"
-                      totalCards={filteredBuilding?.length}
+                      totalCards={building?.length}
                       cardsPerPage={cardsPerPage}
                       paginate={paginate}
                       active={currentPage}
@@ -186,9 +169,9 @@ const BuildingComplex = () => {
                 </Row>
               </>
             )}
-          </>
-        )}
-      </Container>
+          </Container>
+        </>
+      )}
       <Footer />
     </>
   );

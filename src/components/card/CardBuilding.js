@@ -4,6 +4,8 @@ import { Rating } from "react-simple-star-rating";
 import { Link } from "react-router-dom";
 import { FiEdit } from "react-icons/fi";
 import { AiOutlineDelete } from "react-icons/ai";
+import Swal from "sweetalert2";
+import axios from "axios";
 
 export default function CardBuilding({
   rating,
@@ -13,6 +15,7 @@ export default function CardBuilding({
   name,
   id,
   role_id,
+  // review_data,
 }) {
   const formatRupiah = () => {
     return new Intl.NumberFormat("id-ID", {
@@ -21,6 +24,9 @@ export default function CardBuilding({
       minimumFractionDigits: 0,
     }).format(price);
   };
+  // const filteredReview = review_data?.filter((v) => v.building_id === id);
+  // const avg = (array) => array.reduce((a, b) => a + b) / array.length;
+  // const avgReview = avg(filteredReview?.rating);
   const conversiValue = (OldValue) => {
     var OldMax = 100;
     var OldMin = 0;
@@ -31,7 +37,37 @@ export default function CardBuilding({
     var NewValue = ((OldValue - OldMin) * NewRange) / (OldRange + NewMin);
     return NewValue;
   };
-  const handleDelete = () => {};
+  const handleDelete = () => {
+    Swal.fire({
+      title: `Do you want to delete building ${name} ?`,
+      showCancelButton: true,
+      cancelButtonColor: "#DDDDDD",
+      confirmButtonColor: "#A9333A",
+      confirmButtonText: "Delete",
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        var options = {
+          method: "DELETE",
+          url: `http://13.213.57.122:8080/building/${id}`,
+        };
+        axios
+          .request(options)
+          .then(function (response) {
+            Swal.fire(`Delete building ${name} success!`, "", "success");
+          })
+          .catch(function (error) {
+            Swal.fire({
+              icon: "error",
+              title: "Oops...",
+              text: "Something went wrong!",
+            });
+          });
+      } else if (result.isDenied) {
+        Swal.fire("Changes are not saved", "", "info");
+      }
+    });
+  };
 
   return (
     <>
@@ -80,7 +116,7 @@ export default function CardBuilding({
                     {name}
                   </Card.Title>
                   <Rating
-                    ratingValue={rating}
+                    ratingValue={80}
                     allowHover={false}
                     size={18}
                   ></Rating>
@@ -91,7 +127,7 @@ export default function CardBuilding({
                       paddingTop: "15px",
                     }}
                   >
-                    {conversiValue(rating)}{" "}
+                    {conversiValue(80)}{" "}
                   </span>
                   <br />
 
@@ -133,7 +169,7 @@ export default function CardBuilding({
                 {name}
               </Card.Title>
               <Rating
-                ratingValue={rating}
+                ratingValue={rating || 0}
                 allowHover={false}
                 size={18}
               ></Rating>
