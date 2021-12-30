@@ -40,7 +40,6 @@ const Complex = () => {
         setIsLoading(false);
       });
   }, []);
-  console.log(complex);
   if (isError) {
     return <Error500 />;
   }

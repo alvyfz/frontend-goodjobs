@@ -1,6 +1,7 @@
+// eslint-disable-next-line
 import { Container, Row, Col, Spinner, Button } from "react-bootstrap";
 import NavBar from "../../components/navbar/NavBar";
-import Searching from "../../components/searching/Searching";
+// import Searching from "../../components/searching/Searching";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import "./Search.css";
 import { useEffect, useState } from "react";
@@ -49,7 +50,6 @@ const Search = () => {
           setBuilding(response.data.data);
           setIsError(false);
           setIsLoading(false);
-          console.log("building", response.data.data);
         })
         .catch(function (error) {
           setIsError(true);
@@ -68,7 +68,7 @@ const Search = () => {
         .then(function (response) {
           setComplex(response.data.data);
           setIsError(false);
-          console.log("complex", response.data.data);
+
           setIsLoading(false);
         })
         .catch(function (error) {
@@ -134,7 +134,9 @@ const Search = () => {
             {filter === "complex" ? (
               <>
                 <Col lg={2}></Col>
-                {filteredComplex?.length === 0 || complex === null ? (
+                {filteredComplex?.length === 0 ||
+                complex === null ||
+                filteredComplex === null ? (
                   <>
                     <Container style={{ margin: "100px", textAlign: "center" }}>
                       <h1 style={{ fontSize: "80px", fontWeight: "bold" }}>
@@ -188,7 +190,9 @@ const Search = () => {
               <>
                 {" "}
                 <Col lg={2}></Col>
-                {filteredBuilding?.length === 0 || building === null ? (
+                {filteredBuilding?.length === 0 ||
+                building === null ||
+                filteredBuilding === null ? (
                   <>
                     <Container style={{ margin: "100px", textAlign: "center" }}>
                       <h1 style={{ fontSize: "80px", fontWeight: "bold" }}>
