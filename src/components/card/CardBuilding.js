@@ -80,6 +80,7 @@ export default function CardBuilding({
           .request(options)
           .then(function (response) {
             Swal.fire(`Delete building ${name} success!`, "", "success");
+            window.location.reload();
           })
           .catch(function (error) {
             Swal.fire({

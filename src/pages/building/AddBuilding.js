@@ -310,6 +310,86 @@ const AddBuilding = () => {
                     Office Hours
                   </Form.Label>
                   <Col sm="10">
+                    <Form.Control
+                      className="mb-3"
+                      type="text"
+                      required
+                      placeholder="Week Days"
+                      value={weekday}
+                      onChange={(e) => setWeekday(e.target.value)}
+                    />{" "}
+                    <Form.Control
+                      className="mb-3"
+                      type="text"
+                      required
+                      placeholder="Saturday"
+                      value={saturday}
+                      onChange={(e) => setSaturday(e.target.value)}
+                    />{" "}
+                    <Form.Control
+                      type="text"
+                      required
+                      placeholder="Sunday"
+                      value={sunday}
+                      onChange={(e) => setSunday(e.target.value)}
+                    />
+                  </Col>
+                </Form.Group>{" "}
+                <Form.Group
+                  as={Row}
+                  className="mb-3"
+                  controlId="formPlaintextEmail"
+                >
+                  <Form.Label column sm="2">
+                    Address
+                  </Form.Label>
+                  <Col sm="10">
+                    <Form.Control
+                      as="textarea"
+                      rows={4}
+                      required
+                      value={address}
+                      onChange={(e) => setAddress(e.target.value)}
+                    />
+                  </Col>
+                </Form.Group>
+                <Form.Group
+                  as={Row}
+                  className="mb-3"
+                  controlId="formPlaintextEmail"
+                >
+                  <Form.Label column sm="2">
+                    Latitude
+                  </Form.Label>
+                  <Col sm="4">
+                    <Form.Control
+                      type="number"
+                      required
+                      value={latitude}
+                      onChange={(e) => setLatitude(e.target.value)}
+                    />
+                  </Col>{" "}
+                  <Form.Label column sm="2">
+                    Longitude
+                  </Form.Label>
+                  <Col sm="4">
+                    <Form.Control
+                      type="number"
+                      required
+                      value={longitude}
+                      onChange={(e) => setLongitude(e.target.value)}
+                    />
+                  </Col>
+                </Form.Group>{" "}
+                <Form.Group
+                  as={Row}
+                  className="mb-3"
+                  controlId="formPlaintextEmail"
+                >
+                  <Form.Label column sm="2">
+                    Image
+                  </Form.Label>
+                  <Col sm="10">
                     {" "}
                     <input
                       type="file"
