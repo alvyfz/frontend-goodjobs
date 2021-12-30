@@ -121,6 +121,10 @@ const Search = () => {
                 </Link>
                 <span className="spancon"> {value.toUpperCase()}</span>
               </h3>
+              <Button variant="\f" className="buttonBack">
+                <IoIosArrowBack size={40} onClick={() => Navigate(-1)} />
+              </Button>
+              ;
             </Col>
           </Row>{" "}
         </div>{" "}
@@ -161,7 +165,7 @@ const Search = () => {
                         />
                       </Button>
                       ;
-                      <Row className="justify-content-center">
+                      <Row>
                         {filteredComplex?.map((v, i) => {
                           return (
                             <Col lg={4} key={v.id}>
@@ -210,14 +214,7 @@ const Search = () => {
                 ) : (
                   <>
                     <Col lg={8}>
-                      <Button variant="\f" className="buttonBack">
-                        <IoIosArrowBack
-                          size={40}
-                          onClick={() => Navigate(-1)}
-                        />
-                      </Button>
-                      ;
-                      <Row className="justify-content-center">
+                      <Row>
                         {filteredBuilding?.map((v, i) => {
                           return (
                             <Col

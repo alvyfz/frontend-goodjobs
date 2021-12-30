@@ -52,7 +52,7 @@ const Complex = () => {
         <div className="title">
           <Row>
             <Col lg={2}></Col>
-            <Col lg={3}>
+            <Col lg={6}>
               <h3>
                 <Link className="spanhome" to="/">
                   <span>HOME</span>{" "}
@@ -61,20 +61,23 @@ const Complex = () => {
               </h3>
             </Col>
             {role_id === 2 || role_id === 1 ? (
-              <Col>
-                <span>
-                  <Button
-                    variant="dark"
-                    className="bcc"
-                    size="sm"
-                    as={Link}
-                    to="/complex/add"
-                  >
-                    {" "}
-                    <MdOutlineAddCircleOutline size={28} /> Add Complex
-                  </Button>
-                </span>
-              </Col>
+              <>
+                <Col lg={2}>
+                  <span>
+                    <Button
+                      variant="dark"
+                      className="bcc"
+                      size="sm"
+                      as={Link}
+                      to="/complex/add"
+                    >
+                      {" "}
+                      <MdOutlineAddCircleOutline size={28} /> Add Complex
+                    </Button>
+                  </span>
+                </Col>
+                <Col lg={2}></Col>
+              </>
             ) : null}{" "}
           </Row>
         </div>
@@ -90,13 +93,6 @@ const Complex = () => {
                 <Container style={{ margin: "100px", textAlign: "center" }}>
                   <h1 style={{ fontSize: "80px", fontWeight: "bold" }}>OPPS</h1>
                   <h2>Building not found</h2>
-                  <h3>
-                    {" "}
-                    Go back ?{" "}
-                    <Button variant="dark" onClick={() => Navigate(-1)}>
-                      Back
-                    </Button>
-                  </h3>
                 </Container>
               </>
             ) : (

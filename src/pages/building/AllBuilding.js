@@ -23,36 +23,18 @@ const AllBuilding = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [cardsPerPage] = useState(6);
   const [isError, setIsError] = useState(false);
-  useEffect(() => {
-    setIsLoading(true);
-    var options = {
-      method: "GET",
-      url: "http://localhost:8000/building",
-    };
 
-    axios
-      .request(options)
-      .then(function (response) {
-        setBuilding(response.data);
-        setIsLoading(false);
-      })
-      .catch(function (error) {
-        setIsError(true);
-        setIsLoading(false);
-      });
-  }, []);
   useEffect(() => {
     setIsLoading(true);
     var option = {
       method: "GET",
-      url: `http://13.213.57.122:8080/building/complex/9`,
+      url: `http://13.213.57.122:8080/buildings`,
     };
 
     axios
       .request(option)
       .then(function (response) {
-        console.log(response.data);
-
+        setBuilding(response.data.data);
         setIsLoading(false);
       })
       .catch(function (error) {
@@ -97,10 +79,10 @@ const AllBuilding = () => {
             </Col>
           </Row>
         </div>
-        <Row className="justify-content-center">
+        <Row>
           <Col lg={2}></Col>
           <Col lg={8}>
-            <Row className="justify-content-center">
+            <Row>
               {currentCards?.map((v, i) => {
                 return (
                   <Col
@@ -112,12 +94,11 @@ const AllBuilding = () => {
                   >
                     <CardBuilding
                       role_id={role_id}
-                      img={v.img[0]}
+                      img={JSON.parse(v.img)[0]}
                       name={v.name}
-                      price={450000}
-                      rating={90}
-                      id={v.id}
-                      complex="Thamrin SCBD"
+                      price={v.pricestart}
+                      id={v.Id}
+                      complex={v.complex.name}
                     />{" "}
                   </Col>
                 );

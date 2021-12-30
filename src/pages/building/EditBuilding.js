@@ -1,10 +1,16 @@
-import "./AddBuilding.css";
 import Footer from "../../components/footer/Footer";
 import NavBar from "../../components/navbar/NavBar";
-import { Container, Row, Col, Button, Form, Card } from "react-bootstrap";
+import {
+  Container,
+  Row,
+  Col,
+  Button,
+  Form,
+  Card,
+  Spinner,
+} from "react-bootstrap";
 import { IoIosArrowBack } from "react-icons/io";
 import { useNavigate, useLocation } from "react-router-dom";
-
 import { useState } from "react";
 // import { FiEdit } from "react-icons/fi";
 import { GrClose } from "react-icons/gr";
@@ -14,8 +20,10 @@ import NotFound from "../error/NotFound";
 import axios from "axios";
 import { storage } from "../../apps/firebase";
 import Swal from "sweetalert2";
+import { useEffect } from "react";
+import Error500 from "../../components/error/Error500";
 
-const AddBuilding = () => {
+const EditBuilding = () => {
   const Navigate = useNavigate();
   const auth = parseCookies("auth").auth;
   const jwtDefault =
@@ -24,7 +32,7 @@ const AddBuilding = () => {
   const role_id = jwt.Role_ID;
   const { search } = useLocation();
   const query = new URLSearchParams(search);
-  const idComplex = parseInt(query.get("key"));
+  const idBuilding = parseInt(query.get("key"));
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
   const [description, setDescription] = useState("");
@@ -40,14 +48,60 @@ const AddBuilding = () => {
   const [images, setImages] = useState([]);
   const [errName, setErrName] = useState("");
   const [validate, setValidate] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
   const nameRegex = /^[a-zA-Z\s]{2,15}$/;
   const maxNumber = 4;
+  const [idComplex, setIdComplex] = useState();
 
+  useEffect(() => {
+    setIsLoading(true);
+    var option = {
+      method: "GET",
+      url: `http://13.213.57.122:8080/building/${idBuilding}`,
+    };
+
+    axios
+      .request(option)
+      .then(function (response) {
+        var d = response.data.data;
+        console.log(d);
+        setImages(JSON.parse(d.img));
+        setWeekday(JSON.parse(d.officehours).weekday);
+        setAddress(d.address);
+        setDescription(d.description);
+        setFloor(d.floor);
+        setLatitude(d.latitude);
+        setLongitude(d.longitude);
+        setName(d.name);
+        setPrice(d.pricestart);
+        setSaturday(JSON.parse(d.officehours).saturday);
+        setSunday(JSON.parse(d.officehours).sunday);
+        setToilet(d.toilet);
+        setSize(d.size);
+        setIdComplex(d.complex_id);
+        setIsLoading(false);
+      })
+      .catch(function (error) {
+        setIsError(true);
+        setIsLoading(false);
+      });
+  }, []);
   if (role_id !== 1 && role_id !== 2) {
     return <NotFound />;
   }
-  if (!idComplex) {
+  if (!idBuilding) {
     return <NotFound />;
+  }
+  if (isLoading) {
+    return (
+      <div id="spinner">
+        <Spinner animation="border" />
+      </div>
+    );
+  }
+  if (isError) {
+    return <Error500 />;
   }
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -61,49 +115,63 @@ const AddBuilding = () => {
     officeHours.saturday.push(saturday);
     officeHours.weekday.push(sunday);
     if (validate) {
-      axios
-        .post("http://13.213.57.122:8080/building", {
-          name: name,
-          address: address,
-          img: JSON.stringify(images),
-          description: description,
-          size: parseFloat(size),
-          floor: parseInt(floor),
-          toilet: parseInt(toilet),
-          officehours: JSON.stringify(officeHours),
-          latitude: parseFloat(latitude),
-          longitude: parseFloat(longitude),
-          pricestart: parseInt(price),
-          complex_id: parseInt(idComplex),
-        })
-        .then(function (response) {
-          Swal.fire("Add new building success!", "", "success");
-          setImages([]);
-          setWeekday("");
-          setAddress("");
-          setDescription("");
-          setFloor("");
-          setLatitude("");
-          setLongitude("");
-          setName("");
-          setPrice("");
-          setSaturday("");
-          setSunday("");
-          setToilet("");
-          setSize("");
-        })
-        .catch(function (error) {
-          Swal.fire({
-            icon: "error",
-            title: "Oops...",
-            text: "Something Wrong :( !",
-          });
-        });
+      Swal.fire({
+        title: `Are you sure to edit building ${name} ?`,
+        showCancelButton: true,
+        cancelButtonColor: "#DDDDDD",
+        confirmButtonColor: "black",
+        confirmButtonText: "Sure",
+      }).then((result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+          axios
+            .put(`http://13.213.57.122:8080/building/${idBuilding}`, {
+              name: name,
+              address: address,
+              img: JSON.stringify(images),
+              description: description,
+              size: parseFloat(size),
+              floor: parseInt(floor),
+              toilet: parseInt(toilet),
+              officehours: JSON.stringify(officeHours),
+              latitude: parseFloat(latitude),
+              longitude: parseFloat(longitude),
+              pricestart: parseInt(price),
+              complex_id: parseInt(idComplex),
+            })
+            .then(function (response) {
+              Swal.fire(`edit building ${name} success !`, "", "success");
+              setImages([]);
+              setWeekday("");
+              setAddress("");
+              setDescription("");
+              setFloor("");
+              setLatitude("");
+              setLongitude("");
+              setName("");
+              setPrice("");
+              setSaturday("");
+              setSunday("");
+              setToilet("");
+              setSize("");
+              Navigate(-1);
+            })
+            .catch(function (error) {
+              Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Something Wrong :( !",
+              });
+            });
+        } else if (result.isDenied) {
+          Swal.fire("Changes are not saved", "", "info");
+        }
+      });
     } else {
       Swal.fire({
         icon: "error",
         title: "Oops...",
-        text: "Something Wrong :( !",
+        text: "Format Wrong :( !",
       });
     }
   };
@@ -508,4 +576,4 @@ const AddBuilding = () => {
     </>
   );
 };
-export default AddBuilding;
+export default EditBuilding;

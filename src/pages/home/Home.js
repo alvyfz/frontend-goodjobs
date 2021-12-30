@@ -16,14 +16,15 @@ const Home = () => {
   useEffect(() => {
     var options = {
       method: "GET",
-      url: "http://localhost:8000/building",
+      url: "http://13.213.57.122:8080/buildings",
     };
 
     axios
       .request(options)
       .then(function (response) {
-        setbuilding(response.data);
+        setbuilding(response.data.data);
         setIsLoading(false);
+        console.log(building);
       })
       .catch(function (error) {
         setIsError(true);
@@ -120,7 +121,7 @@ const Home = () => {
                   <Col lg={4} key={v.id}>
                     <Link to={`/building/detail?id=${v.id}`} className="link">
                       <CardComplex
-                        img={v.img[0]}
+                        img={JSON.parse(v.img)[0]}
                         name={v.name}
                         as
                         width="100%"

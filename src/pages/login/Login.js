@@ -62,8 +62,12 @@ const Login = () => {
           // secure: process.env.SECURE_COOKIE === "true",
         });
         navigate(-1);
-        Swal.fire("Sign In Success!", "", "success");
-        setEmailIn("");
+        Swal.fire({
+          icon: "success",
+          title: "Sign In success!",
+          text: "",
+          confirmButtonColor: "black",
+        });
         setPasswordIn("");
       })
       .catch(function (error) {
@@ -71,6 +75,7 @@ const Login = () => {
           icon: "error",
           title: "Oops...",
           text: "Email or  Password is wrong!",
+          confirmButtonColor: "black",
         });
         setPasswordIn("");
       });
