@@ -75,7 +75,7 @@ const Search = () => {
           setIsLoading(false);
         });
     }
-  }, []);
+  }, [filter]);
 
   const filteredComplex = complex?.filter((v) => {
     if (v.name.toLowerCase().includes(value.toLowerCase())) {

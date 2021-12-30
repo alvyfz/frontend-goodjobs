@@ -5,7 +5,7 @@ import { Container, Row, Col, Spinner, Button } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Error500 from "../../components/error/Error500";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import NavBar from "../../components/navbar/NavBar";
 import Footer from "../../components/footer/Footer";
 import { MdOutlineAddCircleOutline } from "react-icons/md";
@@ -13,7 +13,6 @@ import { parseCookies } from "nookies";
 import jwt_decode from "jwt-decode";
 
 const Complex = () => {
-  const Navigate = useNavigate();
   const auth = parseCookies("auth").auth;
   const jwtDefault =
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MCwicm9sZV9pZCI6MCwiZXhwIjoxNjQwNTIzODE1fQ.RTtmDJ2fXyxY4N9GXWJnH-beaFIuHsgUSF3hJHHRXqU";

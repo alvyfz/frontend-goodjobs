@@ -86,7 +86,7 @@ const EditBuilding = () => {
         setIsError(true);
         setIsLoading(false);
       });
-  }, []);
+  }, [idBuilding]);
   if (role_id !== 1 && role_id !== 2) {
     return <NotFound />;
   }
