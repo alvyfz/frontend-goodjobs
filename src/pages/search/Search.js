@@ -1,7 +1,6 @@
 // eslint-disable-next-line
 import { Container, Row, Col, Spinner, Button } from "react-bootstrap";
 import NavBar from "../../components/navbar/NavBar";
-// import Searching from "../../components/searching/Searching";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import "./Search.css";
 import { useEffect, useState } from "react";
@@ -98,7 +97,7 @@ const Search = () => {
   return (
     <>
       <NavBar />
-      {/* <Searching /> */}
+
       <Container fluid className="conheader">
         <div className="textheader">
           <h1 style={{ fontWeight: "700" }}>SEARCH</h1>

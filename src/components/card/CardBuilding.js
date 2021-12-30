@@ -50,7 +50,7 @@ export default function CardBuilding({
     <Error500 />;
   }
   const filteredReview = review?.filter((v) => v.building_id === id);
-  const avg = (array) => array.reduce((a, b) => a + b) / array.length;
+  const avg = (array) => array?.reduce((a, b) => a + b) / array?.length;
   const avgReview = avg(filteredReview?.rating);
   const conversiValue = (OldValue) => {
     var OldMax = 100;
