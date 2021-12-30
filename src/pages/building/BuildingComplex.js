@@ -43,8 +43,6 @@ const BuildingComplex = () => {
       .request(option)
       .then(function (response) {
         setBuilding(response.data.data);
-        console.log(building);
-
         setIsLoading(false);
       })
       .catch(function (error) {

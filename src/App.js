@@ -8,6 +8,7 @@ import AddComplex from "./pages/complex/AddComplex";
 import AddBuilding from "./pages/building/AddBuilding";
 import AllBuilding from "./pages/building/AllBuilding";
 import BuildingComplex from "./pages/building/BuildingComplex";
+import Search from "./pages/search/Search";
 
 export default function App() {
   // let path = useLocation();
@@ -20,12 +21,11 @@ export default function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/building/detail" element={<Home />} />
         <Route path="/building/add" element={<AddBuilding />} />
-
+        <Route path="/search" element={<Search />} />
         <Route path="/complex" element={<Complex />} />
         <Route path="/complex/detail" element={<BuildingComplex />} />
         <Route path="/complex/add" element={<AddComplex />} />
         <Route path="/buildings" element={<AllBuilding />} />
-
         <Route path="*" element={<NotFound />} />
       </Routes>
       {/* {path.pathname === "/login" || "*" ? null : <Footer />} */}
