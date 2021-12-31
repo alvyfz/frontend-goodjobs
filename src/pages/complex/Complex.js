@@ -11,7 +11,7 @@ import Footer from "../../components/footer/Footer";
 import { MdOutlineAddCircleOutline } from "react-icons/md";
 import { parseCookies } from "nookies";
 import jwt_decode from "jwt-decode";
-
+import Paginations from "../../components/pagination/Paginations";
 const Complex = () => {
   const auth = parseCookies("auth").auth;
   const jwtDefault =
@@ -21,6 +21,11 @@ const Complex = () => {
   const [complex, setComplex] = useState();
   const [isError, setIsError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [cardsPerPage] = useState(6);
+  useEffect(() => {
+    window.scrollTo(0, 390);
+  }, [currentPage]);
   useEffect(() => {
     setIsLoading(true);
     var options = {
@@ -42,6 +47,10 @@ const Complex = () => {
   if (isError) {
     return <Error500 />;
   }
+  const indexOfLastPost = currentPage * cardsPerPage;
+  const indexOfFirstPost = indexOfLastPost - cardsPerPage;
+  const currentCards = complex?.slice(indexOfFirstPost, indexOfLastPost);
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
     <>
@@ -98,7 +107,7 @@ const Complex = () => {
               <>
                 <Col lg={8}>
                   <Row className="justify-content-center">
-                    {complex?.map((v, i) => {
+                    {currentCards?.map((v, i) => {
                       return (
                         <Col lg={4} key={v.id}>
                           <Link
@@ -122,6 +131,17 @@ const Complex = () => {
             )}
           </Row>
         )}
+        <Row className="justify-content-center">
+          <Col md={1}>
+            <Paginations
+              className="paginationStyle"
+              totalCards={complex?.length}
+              cardsPerPage={cardsPerPage}
+              paginate={paginate}
+              active={currentPage}
+            />
+          </Col>
+        </Row>
       </Container>
 
       <Footer />

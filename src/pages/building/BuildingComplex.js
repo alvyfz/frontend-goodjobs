@@ -16,7 +16,6 @@ import { MdOutlineAddCircleOutline } from "react-icons/md";
 import Footer from "../../components/footer/Footer";
 
 const BuildingComplex = () => {
-  
   const auth = parseCookies("auth").auth;
   const jwtDefault =
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MCwicm9sZV9pZCI6MCwiZXhwIjoxNjQwNTIzODE1fQ.RTtmDJ2fXyxY4N9GXWJnH-beaFIuHsgUSF3hJHHRXqU";
@@ -31,7 +30,9 @@ const BuildingComplex = () => {
   const idComplex = parseInt(query.get("key"));
   const [currentPage, setCurrentPage] = useState(1);
   const [cardsPerPage] = useState(6);
-
+  useEffect(() => {
+    window.scrollTo(0, 390);
+  }, [currentPage]);
   useEffect(() => {
     setIsLoading(true);
     var option = {

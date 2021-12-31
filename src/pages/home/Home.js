@@ -119,7 +119,7 @@ const Home = () => {
               {building?.slice(0, 6).map((v, i) => {
                 return (
                   <Col lg={4} key={v.id}>
-                    <Link to={`/building/detail?id=${v.id}`} className="link">
+                    <Link to={`/bulding/detail?key=${v.Id}`} className="link">
                       <CardComplex
                         img={JSON.parse(v.img)[0]}
                         name={v.name}
