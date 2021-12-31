@@ -12,7 +12,12 @@ export default function NavBar({ home, complex, building, chat, myaccount }) {
   const user = jwt_decode(jwt || jwtDefault);
   const handleLogout = () => {
     destroyCookie(null, "auth");
-    Swal.fire("Sign out success!", "", "success");
+    Swal.fire({
+      icon: "success",
+      title: "Logout success!",
+      text: "",
+      confirmButtonColor: "black",
+    });
     window.location.reload();
   };
 

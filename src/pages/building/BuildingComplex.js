@@ -2,8 +2,8 @@
 import NavBar from "../../components/navbar/NavBar";
 import Searching from "../../components/searching/Searching";
 import { Container, Row, Col, Spinner, Button } from "react-bootstrap";
-import { Link, useNavigate } from "react-router-dom";
-import "./BuildingComplex.css";
+import { Link } from "react-router-dom";
+
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Error500 from "../../components/error/Error500";
@@ -16,7 +16,6 @@ import { MdOutlineAddCircleOutline } from "react-icons/md";
 import Footer from "../../components/footer/Footer";
 
 const BuildingComplex = () => {
-  const Navigate = useNavigate();
   const auth = parseCookies("auth").auth;
   const jwtDefault =
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MCwicm9sZV9pZCI6MCwiZXhwIjoxNjQwNTIzODE1fQ.RTtmDJ2fXyxY4N9GXWJnH-beaFIuHsgUSF3hJHHRXqU";
@@ -31,7 +30,9 @@ const BuildingComplex = () => {
   const idComplex = parseInt(query.get("key"));
   const [currentPage, setCurrentPage] = useState(1);
   const [cardsPerPage] = useState(6);
-
+  useEffect(() => {
+    window.scrollTo(0, 390);
+  }, [currentPage]);
   useEffect(() => {
     setIsLoading(true);
     var option = {
@@ -58,12 +59,12 @@ const BuildingComplex = () => {
   if (isError) {
     return <Error500 />;
   }
-
+  const nameComplex = building?.[0];
   const indexOfLastPost = currentPage * cardsPerPage;
   const indexOfFirstPost = indexOfLastPost - cardsPerPage;
   const currentCards = building?.slice(indexOfFirstPost, indexOfLastPost);
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
-  console.log(currentCards);
+
   return (
     <>
       <NavBar complex={true} />
@@ -78,7 +79,7 @@ const BuildingComplex = () => {
             <div className="title">
               <Row>
                 <Col lg={2}></Col>
-                <Col lg={3}>
+                <Col lg={6}>
                   <h3>
                     <Link className="spanhome" to="/">
                       <span>HOME</span>{" "}
@@ -87,16 +88,18 @@ const BuildingComplex = () => {
                       <span>/ COMPLEX / </span>
                     </Link>
                     <span className="spancon">
-                      {building?.[0].complex.name.toUpperCase()}
+                      {nameComplex?.complex.name.toUpperCase()}
                     </span>
                   </h3>
                 </Col>
+
                 {role_id === 1 || role_id === 2 ? (
                   <>
                     <Col lg={2}>
                       <Button
                         variant="dark"
                         size="sm"
+                        className="bcc"
                         as={Link}
                         to={`/building/add?key=${idComplex}`} //key id complex
                       >
@@ -104,31 +107,31 @@ const BuildingComplex = () => {
                         <MdOutlineAddCircleOutline size={28} /> Add Building
                       </Button>
                     </Col>
+                    <Col lg={2}></Col>
                   </>
                 ) : null}
               </Row>
             </div>
             {building?.length === 0 || building === null ? (
               <>
-                <Container style={{ margin: "100px", textAlign: "center" }}>
+                <Container
+                  style={{
+                    margin: "100px",
+                    marginBottom: "200px",
+                    textAlign: "center",
+                  }}
+                >
                   <h1 style={{ fontSize: "80px", fontWeight: "bold" }}>OPPS</h1>
                   <h2>Building not found</h2>
-                  <h3>
-                    {" "}
-                    Go back ?{" "}
-                    <Button variant="dark" onClick={() => Navigate(-1)}>
-                      Back
-                    </Button>
-                  </h3>
                 </Container>
               </>
             ) : (
               <>
                 {" "}
-                <Row className="justify-content-center">
+                <Row>
                   <Col lg={2}></Col>
                   <Col lg={8}>
-                    <Row className="justify-content-center">
+                    <Row>
                       {currentCards?.map((v, i) => {
                         return (
                           <Col

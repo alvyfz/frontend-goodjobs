@@ -36,5 +36,8 @@ h3 {
   height: inherit;
 }
 .bcc {
+  /* margin-left: 85px; */
+
+  width: 100%;
   font-size: 14px;
 }

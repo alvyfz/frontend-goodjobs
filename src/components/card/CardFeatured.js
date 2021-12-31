@@ -4,7 +4,10 @@ import "./CardFeatured.css";
 export default function CardFeatured({ click, name, img, width, idx }) {
   return (
     <>
-      <Link to={`/complex/detail?id=${idx}`} style={{ textDecoration: "none" }}>
+      <Link
+        to={`/complex/detail?key=${idx}`}
+        style={{ textDecoration: "none" }}
+      >
         <div
           onClick={click}
           className="ho card"

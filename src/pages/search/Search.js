@@ -13,6 +13,7 @@ import { parseCookies } from "nookies";
 import jwt_decode from "jwt-decode";
 import Error500 from "../../components/error/Error500";
 import Footer from "../../components/footer/Footer";
+import Paginations from "../../components/pagination/Paginations";
 const Search = () => {
   const Navigate = useNavigate();
   const { search } = useLocation();
@@ -28,6 +29,11 @@ const Search = () => {
   const [complex, setComplex] = useState();
   const [building, setBuilding] = useState();
   const [isError, setIsError] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [cardsPerPage] = useState(6);
+  useEffect(() => {
+    window.scrollTo(0, 390);
+  }, [currentPage]);
   if (value === null || filter === null) {
     Navigate("/");
   }
@@ -75,7 +81,7 @@ const Search = () => {
           setIsLoading(false);
         });
     }
-  }, []);
+  }, [filter]);
 
   const filteredComplex = complex?.filter((v) => {
     if (v.name.toLowerCase().includes(value.toLowerCase())) {
@@ -91,6 +97,17 @@ const Search = () => {
       return false;
     }
   });
+  const indexOfLastPost = currentPage * cardsPerPage;
+  const indexOfFirstPost = indexOfLastPost - cardsPerPage;
+  const currentCardsBuilding = filteredBuilding?.slice(
+    indexOfFirstPost,
+    indexOfLastPost
+  );
+  const currentCardsComplex = filteredComplex?.slice(
+    indexOfFirstPost,
+    indexOfLastPost
+  );
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
   if (isError) {
     <Error500 />;
   }
@@ -111,7 +128,7 @@ const Search = () => {
             <Col>
               <h3>
                 <Link className="spanhome" to="/">
-                  <span>HOME</span>{" "}
+                  <span>SEARCH</span>
                 </Link>{" "}
                 <Link
                   className="spanhome"
@@ -121,6 +138,9 @@ const Search = () => {
                 </Link>
                 <span className="spancon"> {value.toUpperCase()}</span>
               </h3>
+              <Button variant="\f" className="buttonBack">
+                <IoIosArrowBack size={40} onClick={() => Navigate(-1)} />
+              </Button>
             </Col>
           </Row>{" "}
         </div>{" "}
@@ -133,9 +153,9 @@ const Search = () => {
             {filter === "complex" ? (
               <>
                 <Col lg={2}></Col>
-                {filteredComplex?.length === 0 ||
+                {currentCardsComplex?.length === 0 ||
                 complex === null ||
-                filteredComplex === null ? (
+                currentCardsComplex === null ? (
                   <>
                     <Container style={{ margin: "100px", textAlign: "center" }}>
                       <h1 style={{ fontSize: "80px", fontWeight: "bold" }}>
@@ -161,8 +181,8 @@ const Search = () => {
                         />
                       </Button>
                       ;
-                      <Row className="justify-content-center">
-                        {filteredComplex?.map((v, i) => {
+                      <Row>
+                        {currentCardsComplex?.map((v, i) => {
                           return (
                             <Col lg={4} key={v.id}>
                               <Link
@@ -189,9 +209,9 @@ const Search = () => {
               <>
                 {" "}
                 <Col lg={2}></Col>
-                {filteredBuilding?.length === 0 ||
+                {currentCardsBuilding?.length === 0 ||
                 building === null ||
-                filteredBuilding === null ? (
+                currentCardsBuilding === null ? (
                   <>
                     <Container style={{ margin: "100px", textAlign: "center" }}>
                       <h1 style={{ fontSize: "80px", fontWeight: "bold" }}>
@@ -210,15 +230,8 @@ const Search = () => {
                 ) : (
                   <>
                     <Col lg={8}>
-                      <Button variant="\f" className="buttonBack">
-                        <IoIosArrowBack
-                          size={40}
-                          onClick={() => Navigate(-1)}
-                        />
-                      </Button>
-                      ;
-                      <Row className="justify-content-center">
-                        {filteredBuilding?.map((v, i) => {
+                      <Row>
+                        {currentCardsBuilding?.map((v, i) => {
                           return (
                             <Col
                               lg={4}
@@ -247,6 +260,17 @@ const Search = () => {
             )}
           </Row>
         )}
+        <Row className="justify-content-center">
+          <Col md={1}>
+            <Paginations
+              className="paginationStyle"
+              totalCards={filteredBuilding?.length || filteredComplex?.length}
+              cardsPerPage={cardsPerPage}
+              paginate={paginate}
+              active={currentPage}
+            />
+          </Col>
+        </Row>
       </Container>
       <Footer />
     </>

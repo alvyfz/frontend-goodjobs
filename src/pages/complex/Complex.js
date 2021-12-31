@@ -5,15 +5,14 @@ import { Container, Row, Col, Spinner, Button } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Error500 from "../../components/error/Error500";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import NavBar from "../../components/navbar/NavBar";
 import Footer from "../../components/footer/Footer";
 import { MdOutlineAddCircleOutline } from "react-icons/md";
 import { parseCookies } from "nookies";
 import jwt_decode from "jwt-decode";
-
+import Paginations from "../../components/pagination/Paginations";
 const Complex = () => {
-  const Navigate = useNavigate();
   const auth = parseCookies("auth").auth;
   const jwtDefault =
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MCwicm9sZV9pZCI6MCwiZXhwIjoxNjQwNTIzODE1fQ.RTtmDJ2fXyxY4N9GXWJnH-beaFIuHsgUSF3hJHHRXqU";
@@ -22,6 +21,11 @@ const Complex = () => {
   const [complex, setComplex] = useState();
   const [isError, setIsError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [cardsPerPage] = useState(6);
+  useEffect(() => {
+    window.scrollTo(0, 390);
+  }, [currentPage]);
   useEffect(() => {
     setIsLoading(true);
     var options = {
@@ -43,6 +47,10 @@ const Complex = () => {
   if (isError) {
     return <Error500 />;
   }
+  const indexOfLastPost = currentPage * cardsPerPage;
+  const indexOfFirstPost = indexOfLastPost - cardsPerPage;
+  const currentCards = complex?.slice(indexOfFirstPost, indexOfLastPost);
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
     <>
@@ -52,7 +60,7 @@ const Complex = () => {
         <div className="title">
           <Row>
             <Col lg={2}></Col>
-            <Col lg={3}>
+            <Col lg={6}>
               <h3>
                 <Link className="spanhome" to="/">
                   <span>HOME</span>{" "}
@@ -61,20 +69,23 @@ const Complex = () => {
               </h3>
             </Col>
             {role_id === 2 || role_id === 1 ? (
-              <Col>
-                <span>
-                  <Button
-                    variant="dark"
-                    className="bcc"
-                    size="sm"
-                    as={Link}
-                    to="/complex/add"
-                  >
-                    {" "}
-                    <MdOutlineAddCircleOutline size={28} /> Add Complex
-                  </Button>
-                </span>
-              </Col>
+              <>
+                <Col lg={2}>
+                  <span>
+                    <Button
+                      variant="dark"
+                      className="bcc"
+                      size="sm"
+                      as={Link}
+                      to="/complex/add"
+                    >
+                      {" "}
+                      <MdOutlineAddCircleOutline size={28} /> Add Complex
+                    </Button>
+                  </span>
+                </Col>
+                <Col lg={2}></Col>
+              </>
             ) : null}{" "}
           </Row>
         </div>
@@ -90,20 +101,13 @@ const Complex = () => {
                 <Container style={{ margin: "100px", textAlign: "center" }}>
                   <h1 style={{ fontSize: "80px", fontWeight: "bold" }}>OPPS</h1>
                   <h2>Building not found</h2>
-                  <h3>
-                    {" "}
-                    Go back ?{" "}
-                    <Button variant="dark" onClick={() => Navigate(-1)}>
-                      Back
-                    </Button>
-                  </h3>
                 </Container>
               </>
             ) : (
               <>
                 <Col lg={8}>
                   <Row className="justify-content-center">
-                    {complex?.map((v, i) => {
+                    {currentCards?.map((v, i) => {
                       return (
                         <Col lg={4} key={v.id}>
                           <Link
@@ -127,6 +131,17 @@ const Complex = () => {
             )}
           </Row>
         )}
+        <Row className="justify-content-center">
+          <Col md={1}>
+            <Paginations
+              className="paginationStyle"
+              totalCards={complex?.length}
+              cardsPerPage={cardsPerPage}
+              paginate={paginate}
+              active={currentPage}
+            />
+          </Col>
+        </Row>
       </Container>
 
       <Footer />

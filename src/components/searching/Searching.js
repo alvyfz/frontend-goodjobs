@@ -1,4 +1,4 @@
-import "./Search.css";
+import "./Searching.css";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import { useState } from "react";
 
