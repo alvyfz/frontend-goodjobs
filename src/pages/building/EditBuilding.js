@@ -65,7 +65,6 @@ const EditBuilding = () => {
       .request(option)
       .then(function (response) {
         var d = response.data.data;
-        console.log(d);
         setImages(JSON.parse(d.img));
         setWeekday(JSON.parse(d.officehours).weekday);
         setAddress(d.address);

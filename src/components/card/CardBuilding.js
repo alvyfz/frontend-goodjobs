@@ -248,7 +248,7 @@ export default function CardBuilding({
                 >
                   <Button
                     as={Link}
-                    to={`/bulding/detail?key=${id}`}
+                    to={`/building/detail?key=${id}`}
                     variant="dark"
                     style={{
                       width: "91%",

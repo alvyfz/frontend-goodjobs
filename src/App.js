@@ -10,7 +10,7 @@ import AllBuilding from "./pages/building/AllBuilding";
 import BuildingComplex from "./pages/building/BuildingComplex";
 import Search from "./pages/search/Search";
 import EditBuilding from "./pages/building/EditBuilding";
-
+import DetailBuilding from "./pages/building/DetailBuilding";
 export default function App() {
   // let path = useLocation();
 
@@ -20,7 +20,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/building/detail" element={<Home />} />
+        <Route path="/building/detail" element={<DetailBuilding />} />
         <Route path="/building/add" element={<AddBuilding />} />
         <Route path="/search" element={<Search />} />
         <Route path="/complex" element={<Complex />} />
