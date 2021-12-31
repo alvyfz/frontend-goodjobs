@@ -29,10 +29,11 @@ const BuildingComplex = () => {
   const [building, setBuilding] = useState();
   const idComplex = parseInt(query.get("key"));
   const [currentPage, setCurrentPage] = useState(1);
+  const [currentPages, setCurrentPages] = useState();
   const [cardsPerPage] = useState(6);
   useEffect(() => {
     window.scrollTo(0, 390);
-  }, [currentPage]);
+  }, [currentPages]);
   useEffect(() => {
     setIsLoading(true);
     var option = {
@@ -63,8 +64,10 @@ const BuildingComplex = () => {
   const indexOfLastPost = currentPage * cardsPerPage;
   const indexOfFirstPost = indexOfLastPost - cardsPerPage;
   const currentCards = building?.slice(indexOfFirstPost, indexOfLastPost);
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
-
+  const paginate = (pageNumber) => {
+    setCurrentPage(pageNumber);
+    setCurrentPages(pageNumber);
+  };
   return (
     <>
       <NavBar complex={true} />

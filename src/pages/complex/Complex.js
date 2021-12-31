@@ -23,9 +23,11 @@ const Complex = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [cardsPerPage] = useState(6);
+  const [currentPages, setCurrentPages] = useState();
+
   useEffect(() => {
     window.scrollTo(0, 390);
-  }, [currentPage]);
+  }, [currentPages]);
   useEffect(() => {
     setIsLoading(true);
     var options = {
@@ -50,7 +52,10 @@ const Complex = () => {
   const indexOfLastPost = currentPage * cardsPerPage;
   const indexOfFirstPost = indexOfLastPost - cardsPerPage;
   const currentCards = complex?.slice(indexOfFirstPost, indexOfLastPost);
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+  const paginate = (pageNumber) => {
+    setCurrentPage(pageNumber);
+    setCurrentPages(pageNumber);
+  };
 
   return (
     <>

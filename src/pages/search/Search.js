@@ -31,9 +31,11 @@ const Search = () => {
   const [isError, setIsError] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [cardsPerPage] = useState(6);
+  const [currentPages, setCurrentPages] = useState();
+
   useEffect(() => {
     window.scrollTo(0, 390);
-  }, [currentPage]);
+  }, [currentPages]);
   if (value === null || filter === null) {
     Navigate("/");
   }
@@ -107,7 +109,10 @@ const Search = () => {
     indexOfFirstPost,
     indexOfLastPost
   );
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+  const paginate = (pageNumber) => {
+    setCurrentPage(pageNumber);
+    setCurrentPages(pageNumber);
+  };
   if (isError) {
     <Error500 />;
   }
