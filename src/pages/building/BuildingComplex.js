@@ -14,6 +14,7 @@ import { parseCookies } from "nookies";
 import jwt_decode from "jwt-decode";
 import { MdOutlineAddCircleOutline } from "react-icons/md";
 import Footer from "../../components/footer/Footer";
+import NotFound from "../error/NotFound";
 
 const BuildingComplex = () => {
   const auth = parseCookies("auth").auth;
@@ -23,7 +24,6 @@ const BuildingComplex = () => {
   const role_id = jwt.Role_ID;
   const { search } = useLocation();
   const query = new URLSearchParams(search);
-
   const [isError, setIsError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [building, setBuilding] = useState();
@@ -56,7 +56,9 @@ const BuildingComplex = () => {
   useEffect(() => {
     window.scrollTo(0, 390);
   }, [currentPage]);
-
+  if (!idComplex) {
+    return <NotFound />;
+  }
   if (isError) {
     return <Error500 />;
   }

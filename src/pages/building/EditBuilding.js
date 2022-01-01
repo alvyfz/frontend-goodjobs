@@ -112,7 +112,7 @@ const EditBuilding = () => {
     };
     officeHours.weekday.push(weekday);
     officeHours.saturday.push(saturday);
-    officeHours.weekday.push(sunday);
+    officeHours.sunday.push(sunday);
     if (validate) {
       Swal.fire({
         title: `Are you sure to edit building ${name} ?`,

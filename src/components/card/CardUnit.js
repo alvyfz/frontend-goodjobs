@@ -1,14 +1,8 @@
 import "./CardBuilding.css";
 import { Card, Button, Row } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
-
-export default function CardUnit({
-  clickView,
-  clickEnquire,
-  img,
-  price,
-  name,
-}) {
+export default function CardUnit({ img, price, name, id }) {
   const formatRupiah = () => {
     return new Intl.NumberFormat("id-ID", {
       style: "currency",
@@ -19,7 +13,10 @@ export default function CardUnit({
 
   return (
     <>
-      <Card className="card" style={{ width: "18rem", padding: "0" }}>
+      <Card
+        className="card"
+        style={{ width: "18rem", padding: "0", margin: "0" }}
+      >
         <Card.Img
           variant="top"
           src={img}
@@ -50,14 +47,16 @@ export default function CardUnit({
           >
             {" "}
             <Button
-              onClick={clickEnquire}
+              as={Link}
+              to={`chat?key=${id}`}
               variant="dark"
               style={{ width: "80%", textAlign: "center", fontSize: "11px" }}
             >
               ENQUIRE
             </Button>{" "}
             <Button
-              onClick={clickView}
+              as={Link}
+              to={`unit/detail?key=${id}`}
               variant="light"
               style={{
                 width: "80%",

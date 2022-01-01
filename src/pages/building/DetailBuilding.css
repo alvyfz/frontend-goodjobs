@@ -1,6 +1,9 @@
 .con-fitur {
   background-color: white;
   margin-top: 30px;
+  padding-bottom: 10px;
+  color: #4f4f4f;
+  border-radius: 10px;
 }
 .row-fitur {
   padding-top: 15px;
@@ -9,8 +12,70 @@
   height: 350px;
   width: 350px;
   object-fit: cover;
+  border-radius: 2%;
+}
+
+.col-no {
+  padding: 0;
+  margin: 0;
+}
+.activeIMG {
+  margin-top: 10px;
+  margin-left: 11px;
+  height: 79px;
+  width: 79px;
+  object-fit: cover;
+  border-radius: 2%;
+  padding: 0;
+  border: 3px solid gray;
 }
 .imgs {
-  height: 83px;
-  width: 116px;
+  margin-top: 10px;
+  margin-left: 11px;
+  height: 79px;
+  width: 79px;
+  object-fit: cover;
+  padding: 0;
+  border-radius: 2%;
+}
+.con-fitur p {
+  margin: 0;
+}
+.startprice {
+  font-size: 40px;
+  font-weight: 500;
+}
+.textPrice {
+  font-weight: 500;
+}
+.textdescription {
+  max-height: 140px;
+  padding-bottom: 10px;
+}
+.rowDetail {
+  font-weight: 500;
+  font-size: 18px;
+}
+.bccc {
+  margin-left: 44px;
+}
+.colbccc {
+  padding: 0;
+}
+
+.slick-arrow {
+  color: red;
+  background-color: black;
+}
+.sliderr {
+  margin-left: 11px;
+}
+.conUnit {
+  height: 490px;
+}
+.rowTextUnit {
+  margin-bottom: 13px;
+}
+.bccc1 {
+  margin-top: 20px;
 }

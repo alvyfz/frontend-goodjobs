@@ -237,7 +237,9 @@ export default function CardBuilding({
                   >
                     {conversiValue(avgReview || 0)}{" "}
                   </span>
-                  <Card.Text style={{ fontSize: "14px" }}>{complex}</Card.Text>{" "}
+                  <Card.Text style={{ fontSize: "14px", color: "#4F4F4F" }}>
+                    {complex}
+                  </Card.Text>{" "}
                 </>
               )}
 
