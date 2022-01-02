@@ -13,7 +13,7 @@ import "slick-carousel/slick/slick-theme.css";
 import NotFound from "../error/NotFound";
 import Slider from "react-slick";
 import { MdOutlineAddCircleOutline } from "react-icons/md";
-
+import GMaps from "../../components/gmaps/GMaps";
 const DetailBuilding = () => {
   const auth = parseCookies("auth").auth;
   const jwtDefault =
@@ -30,7 +30,7 @@ const DetailBuilding = () => {
   const [mainImg, setMainImg] = useState();
   const [officeHours, setOfficeHours] = useState();
   const [unit, setUnit] = useState();
-  const [imageUnit, setImageUnit] = useState();
+
   useEffect(() => {
     setIsLoading(true);
     var option = {
@@ -51,7 +51,7 @@ const DetailBuilding = () => {
         setIsError(true);
         setIsLoading(false);
       });
-  }, []);
+  }, [idBuilding]);
   useEffect(() => {
     setIsLoading(true);
     var option = {
@@ -64,13 +64,12 @@ const DetailBuilding = () => {
       .then(function (response) {
         setUnit(response.data.data);
         setIsLoading(false);
-        setImageUnit(JSON.parse(response.data.data.img));
       })
       .catch(function (error) {
         setIsError(true);
         setIsLoading(false);
       });
-  }, []);
+  }, [idBuilding]);
 
   if (isError) {
     <Error500 />;
@@ -115,6 +114,7 @@ const DetailBuilding = () => {
       />
     );
   }
+
   return (
     <>
       <NavBar building={true} />{" "}
@@ -169,16 +169,20 @@ const DetailBuilding = () => {
                   <Row className="row-fitur">
                     <Col lg={5}>
                       <Image src={mainImg} alt="main" className="main-img" />
-                      <Row>
+                      <Row className="row-img">
                         {images?.map((v, i) => {
                           return (
                             <>
-                              <Image
-                                src={v}
-                                alt={i}
-                                className={mainImg === v ? "activeIMG" : "imgs"}
-                                onClick={() => setMainImg(images[i])}
-                              />
+                              <Col>
+                                <Image
+                                  src={v}
+                                  alt={i}
+                                  className={
+                                    mainImg === v ? "activeIMG" : "imgs"
+                                  }
+                                  onClick={() => setMainImg(images[i])}
+                                />
+                              </Col>
                             </>
                           );
                         })}
@@ -283,6 +287,19 @@ const DetailBuilding = () => {
                     </Row>
                   </Container>
                 ) : null}
+                <Container className="con-fitur con-building">
+                  <Row className="row-fitur " style={{ height: "400px" }}>
+                    <h3>NEARBY FACILITIES</h3>
+                    <div className="map-building">
+                      <GMaps
+                        style={{ height: "100%", width: "100%" }}
+                        lat={building?.latitude}
+                        lng={building?.longitude}
+                        name={building?.name}
+                      />
+                    </div>
+                  </Row>
+                </Container>
               </Col>
               <Col lg={2}></Col>
             </Row>

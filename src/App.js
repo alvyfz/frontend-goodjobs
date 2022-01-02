@@ -11,6 +11,7 @@ import BuildingComplex from "./pages/building/BuildingComplex";
 import Search from "./pages/search/Search";
 import EditBuilding from "./pages/building/EditBuilding";
 import DetailBuilding from "./pages/building/DetailBuilding";
+import GMaps from "./components/gmaps/GMaps";
 export default function App() {
   // let path = useLocation();
 
@@ -28,6 +29,7 @@ export default function App() {
         <Route path="/building/edit" element={<EditBuilding />} />
         <Route path="/complex/add" element={<AddComplex />} />
         <Route path="/buildings" element={<AllBuilding />} />
+        <Route path="/test" element={<GMaps />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       {/* {path.pathname === "/login" || "*" ? null : <Footer />} */}
