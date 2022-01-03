@@ -86,12 +86,99 @@
   margin-top: 20px;
 }
 .map-building {
-  height: 700px;
-  margin: 20px 20px 30px 0px;
+  margin: 20px 20px 20px 0px;
 }
 .con-building {
-  height: 72vh;
+  height: 75vh;
 }
 .con-fitur .col {
   padding: 0;
+}
+.p-isi {
+  font-weight: normal;
+}
+.kotak-review {
+  height: 122px;
+  width: 122px;
+  background-color: #f2f2f2;
+  border-radius: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
+  text-align: center;
+}
+.rowRev {
+  margin-top: 30px;
+  padding: 0;
+}
+.limaper {
+  font-size: 30px;
+  color: #ccc62a;
+  font-weight: normal;
+}
+.h1-rev {
+  padding-top: 7px;
+  font-size: 36px;
+  color: #ccc62a;
+  font-weight: bold;
+}
+.font-bold {
+  font-weight: bold;
+}
+.length-rev {
+  font-size: 14px;
+  color: #bdbdbd;
+  font-weight: 500;
+}
+.kotak-bintang {
+  height: 66px;
+  background-color: #f2f2f2;
+  width: 213px;
+  margin-top: 27px;
+  border-radius: 20px;
+  text-align: center;
+}
+.row-rev {
+  margin-left: 30px;
+}
+.rating-building {
+  margin-top: 18px;
+}
+.buttom-detail {
+  margin-top: 40px;
+  font-weight: 500;
+}
+.col-bd {
+  padding: 0;
+}
+.writeReview {
+  font-weight: 550;
+  font-size: 20px;
+}
+.formareare {
+  font-weight: 550;
+  margin: 0px;
+}
+.buttonreview {
+  width: 100%;
+
+  font-size: 13px;
+}
+.yourdescription {
+  /* padding-left: 5px; */
+  font-weight: 550;
+}
+.conyourdesc {
+  height: 122px;
+  width: 100%;
+  background-color: #f2f2f2;
+  border-radius: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
+  text-align: center;
+  padding: 10px;
+}
+.yourReview {
+  font-weight: 550;
+  font-size: 20px;
+  /* padding-top: 20px; */
 }

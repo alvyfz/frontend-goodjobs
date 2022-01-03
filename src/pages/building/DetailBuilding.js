@@ -4,7 +4,15 @@ import { parseCookies } from "nookies";
 import jwt_decode from "jwt-decode";
 import { Link, useLocation } from "react-router-dom";
 import NavBar from "../../components/navbar/NavBar";
-import { Container, Spinner, Row, Col, Image, Button } from "react-bootstrap";
+import {
+  Container,
+  Spinner,
+  Row,
+  Col,
+  Image,
+  Button,
+  Form,
+} from "react-bootstrap";
 import Error500 from "../../components/error/Error500";
 import "./DetailBuilding.css";
 import CardUnit from "../../components/card/CardUnit";
@@ -13,13 +21,19 @@ import "slick-carousel/slick/slick-theme.css";
 import NotFound from "../error/NotFound";
 import Slider from "react-slick";
 import { MdOutlineAddCircleOutline } from "react-icons/md";
+import { Rating } from "react-simple-star-rating";
 import GMaps from "../../components/gmaps/GMaps";
+import Swal from "sweetalert2";
+import Footer from "../../components/footer/Footer";
+
 const DetailBuilding = () => {
   const auth = parseCookies("auth").auth;
   const jwtDefault =
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MCwicm9sZV9pZCI6MCwiZXhwIjoxNjQwNTIzODE1fQ.RTtmDJ2fXyxY4N9GXWJnH-beaFIuHsgUSF3hJHHRXqU";
   const jwt = jwt_decode(auth || jwtDefault);
   const role_id = jwt.Role_ID;
+
+  const user_id = jwt.ID;
   const { search } = useLocation();
   const query = new URLSearchParams(search);
   const idBuilding = parseInt(query.get("key"));
@@ -30,7 +44,12 @@ const DetailBuilding = () => {
   const [mainImg, setMainImg] = useState();
   const [officeHours, setOfficeHours] = useState();
   const [unit, setUnit] = useState();
+  const [valueRating, setValueRating] = useState();
+  const [valueArea, setValueArea] = useState();
+  const [review, setReview] = useState();
+  const [avgReview, setAvgReview] = useState(0);
 
+  const [messageRating, setMessageRating] = useState("No Reviews");
   useEffect(() => {
     setIsLoading(true);
     var option = {
@@ -70,6 +89,73 @@ const DetailBuilding = () => {
         setIsLoading(false);
       });
   }, [idBuilding]);
+  useEffect(() => {
+    setIsLoading(true);
+    var option = {
+      method: "GET",
+      url: `http://13.213.57.122:8080/reviews/building/${idBuilding}`,
+    };
+
+    axios
+      .request(option)
+      .then(function (response) {
+        setReview(response.data.data);
+        setIsLoading(false);
+        const avg = (array) =>
+          array?.reduce((a, b) => a + b.rating, 0) / array?.length;
+        setAvgReview(avg(response.data.data));
+      })
+      .catch(function (error) {
+        setIsError(true);
+        setIsLoading(false);
+      });
+  }, [idBuilding]);
+
+  useEffect(() => {
+    if (avgReview === 0) {
+    } else if (avgReview <= 20 || review?.[0].rating <= 20) {
+      setMessageRating("Terrible");
+    } else if (avgReview <= 40 || review?.[0].rating <= 40) {
+      setMessageRating("Bad");
+    } else if (avgReview <= 60 || review?.[0].rating <= 60) {
+      setMessageRating("Good");
+    } else if (avgReview <= 80 || review?.[0].rating <= 80) {
+      setMessageRating("Great");
+    } else if (avgReview <= 100 || review?.[0].rating <= 100) {
+      setMessageRating("Awesome");
+    }
+  }, [avgReview, review]);
+  const addReviewHandle = (e) => {
+    e.preventDefault();
+    if (user_id) {
+      axios
+        .post("http://13.213.57.122:8080/review", {
+          User_ID: user_id,
+          Building_ID: idBuilding,
+          Rating: parseInt(valueRating),
+          Description: valueArea,
+        })
+        .then(function (response) {
+          Swal.fire("Add new building success!", "", "success");
+          setValueRating();
+          setValueArea();
+          window.location.reload();
+        })
+        .catch(function (error) {
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Something Wrong :( !",
+          });
+        });
+    } else {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Sorry, you have to login first !",
+      });
+    }
+  };
 
   if (isError) {
     <Error500 />;
@@ -114,6 +200,17 @@ const DetailBuilding = () => {
       />
     );
   }
+  const userReview = review?.find((element) => element.user_id === user_id);
+  const conversiValue = (OldValue) => {
+    var OldMax = 100;
+    var OldMin = 0;
+    var NewMax = 5;
+    var NewMin = 0;
+    var OldRange = OldMax - OldMin;
+    var NewRange = NewMax - NewMin;
+    var NewValue = ((OldValue - OldMin) * NewRange) / (OldRange + NewMin);
+    return NewValue;
+  };
 
   return (
     <>
@@ -199,7 +296,7 @@ const DetailBuilding = () => {
                           <p>Address :</p>
                         </Col>
                         <Col lg={8}>
-                          <p>{building?.address}</p>
+                          <p className="p-isi">{building?.address}</p>
                         </Col>
                       </Row>
                       <Row className="rowDetail">
@@ -207,7 +304,7 @@ const DetailBuilding = () => {
                           <p>Complex :</p>
                         </Col>
                         <Col lg={8}>
-                          <p>{building?.complex.name}</p>
+                          <p className="p-isi">{building?.complex.name}</p>
                         </Col>
                       </Row>
                       <Row className="rowDetail">
@@ -215,7 +312,7 @@ const DetailBuilding = () => {
                           <p>Building Size :</p>
                         </Col>
                         <Col lg={8}>
-                          <p>{building?.size} m²</p>
+                          <p className="p-isi">{building?.size} m²</p>
                         </Col>
                       </Row>
                       <Row className="rowDetail">
@@ -223,7 +320,7 @@ const DetailBuilding = () => {
                           <p>Count Floor :</p>
                         </Col>
                         <Col lg={8}>
-                          <p>{building?.floor}</p>
+                          <p className="p-isi">{building?.floor}</p>
                         </Col>
                       </Row>
                       <Row className="rowDetail">
@@ -231,7 +328,7 @@ const DetailBuilding = () => {
                           <p>Toilet :</p>
                         </Col>
                         <Col lg={8}>
-                          <p>{building?.toilet}</p>
+                          <p className="p-isi">{building?.toilet}</p>
                         </Col>
                       </Row>{" "}
                       <Row className="rowDetail">
@@ -239,9 +336,11 @@ const DetailBuilding = () => {
                           <p>Office Hours :</p>
                         </Col>
                         <Col lg={8}>
-                          <p>Mon - Fri : {officeHours?.weekday}</p>
-                          <p>Sat : {officeHours?.saturday}</p>
-                          <p>Sun : {officeHours?.sunday}</p>
+                          <p className="p-isi">
+                            Mon - Fri : {officeHours?.weekday}
+                          </p>
+                          <p className="p-isi">Sat : {officeHours?.saturday}</p>
+                          <p className="p-isi">Sun : {officeHours?.sunday}</p>
                         </Col>
                       </Row>
                     </Col>
@@ -288,7 +387,7 @@ const DetailBuilding = () => {
                   </Container>
                 ) : null}
                 <Container className="con-fitur con-building">
-                  <Row className="row-fitur " style={{ height: "400px" }}>
+                  <Row className="row-fitur ">
                     <h3>NEARBY FACILITIES</h3>
                     <div className="map-building">
                       <GMaps
@@ -300,10 +399,119 @@ const DetailBuilding = () => {
                     </div>
                   </Row>
                 </Container>
+                <Container className="con-fitur">
+                  <Row className="row-fitur ">
+                    {" "}
+                    <h3>REVIEWS</h3>
+                    <Row className="rowRev">
+                      <Col lg={5}>
+                        <Row className="row-rev">
+                          <Container className="kotak-review">
+                            <div className="h1-rev">
+                              {conversiValue(
+                                avgReview || review?.[0].rating || 0
+                              )}
+                              /<span className="limaper">5</span>
+                            </div>
+                            <div className="font-bold">{messageRating}</div>
+                            <div className="length-rev">
+                              {review?.length || 0} Reviews
+                            </div>
+                          </Container>
+                          <Container className="kotak-bintang">
+                            {" "}
+                            <Rating
+                              className="rating-building"
+                              ratingValue={avgReview || review?.[0].rating || 0}
+                              allowHover={false}
+                              readonly={true}
+                              size={30}
+                              fillColor="#ccc62a"
+                            />{" "}
+                          </Container>
+                        </Row>
+                      </Col>{" "}
+                      <Col lg={1} className="col-bd">
+                        <Button
+                          variant="sad"
+                          as={Link}
+                          to={`/review?key=${idBuilding}`}
+                          className="buttom-detail"
+                        >
+                          detail
+                        </Button>
+                      </Col>
+                      <Col lg={6}>
+                        {userReview ? (
+                          <>
+                            <Container className="conyourdesc">
+                              <Row className="justify-content-center">
+                                {/* <p className="yourReview">Your review</p> */}
+                                <Rating
+                                  size={30}
+                                  ratingValue={userReview}
+                                  fillColor="#ccc62a"
+                                  allowHover={false}
+                                  readonly={true}
+                                />
+
+                                <p className="yourdescription">
+                                  {userReview.description}
+                                </p>
+                              </Row>
+                            </Container>
+                          </>
+                        ) : (
+                          <>
+                            {" "}
+                            <p className="writeReview">Write Review</p>
+                            <Form>
+                              <Rating
+                                size={30}
+                                onClick={(rate) => setValueRating(rate)}
+                                ratingValue={valueRating}
+                                fillColor="#ccc62a"
+                              />
+                              <Form.Group
+                                className="mb-2"
+                                controlId="exampleForm.ControlTextarea1"
+                              >
+                                <Form.Label className="formareare">
+                                  What's your review of the building?
+                                </Form.Label>
+                                <Form.Control
+                                  as="textarea"
+                                  rows={2}
+                                  value={valueArea}
+                                  onChange={(e) => setValueArea(e.target.value)}
+                                  required
+                                />
+                              </Form.Group>
+                              <Row>
+                                {" "}
+                                <Col lg={9}></Col>
+                                <Col lg={3}>
+                                  <Button
+                                    className="buttonreview"
+                                    variant="dark"
+                                    onClick={addReviewHandle}
+                                  >
+                                    Submit
+                                  </Button>
+                                </Col>
+                              </Row>{" "}
+                            </Form>
+                          </>
+                        )}
+                      </Col>
+                    </Row>
+                  </Row>
+                </Container>
               </Col>
               <Col lg={2}></Col>
             </Row>
           </Container>{" "}
+          <Footer />
         </>
       )}
     </>
