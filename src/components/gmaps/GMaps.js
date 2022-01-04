@@ -2,12 +2,10 @@ import {
   GoogleMap,
   useLoadScript,
   Marker,
-  InfoWindow,
+  // InfoWindow,
 } from "@react-google-maps/api";
-import { useState } from "react";
-import { BiMap } from "react-icons/bi";
+
 function GMaps({ lat, lng, name }) {
-  const [selected, setSelected] = useState();
   const libraries = ["places"];
   const mapContainerStyle = { height: "60vh" };
   const { isLoaded, loadError } = useLoadScript({
@@ -49,7 +47,7 @@ function GMaps({ lat, lng, name }) {
           options={options}
         >
           <Marker
-            onClick={() => setSelected(true)}
+            // onClick={() => setSelected(true)}
             position={{ lat: lat, lng: lng }}
           />
           {/* 
