@@ -180,15 +180,23 @@ const Login = () => {
           <Image
             alt=""
             src="/images/login.png"
-            height="1000"
+            height="100%"
+            width="100%"
             className="d-none d-sm-block d-md-block d-lg-block d-xl-block d-xs-block"
           />
         </Col>
         <Col lg={6}>
           {" "}
           <Row className="justify-content-left" style={{ margin: "20px " }}>
+            <Col lg={3}></Col>
             <Col lg={6}>
-              <div style={{ textAlign: "center", padding: "45px" }}>
+              <div
+                style={{
+                  textAlign: "center",
+                  padding: "45px",
+                  marginRight: "10px",
+                }}
+              >
                 <Brand />
                 <br />
               </div>

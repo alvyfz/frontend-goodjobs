@@ -177,7 +177,7 @@ const DetailBuilding = () => {
     speed: 500,
     slidesToShow: 3,
     slidesToScroll: 3,
-    rtl: true,
+    initialSlide: 0,
     nextArrow: <SampleNextArrow />,
     prevArrow: <SampleNextArrow />,
     responsive: [
@@ -296,7 +296,7 @@ const DetailBuilding = () => {
                         {images?.map((v, i) => {
                           return (
                             <>
-                              <Col>
+                              <Col lg={3} className="padding0">
                                 <Image
                                   src={v}
                                   alt={i}
@@ -406,6 +406,7 @@ const DetailBuilding = () => {
                                 price={v.price}
                                 id={v.id}
                                 role_id={role_id}
+                                buildingName={building?.name}
                               />
                             );
                           })}

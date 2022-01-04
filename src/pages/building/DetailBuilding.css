@@ -185,3 +185,29 @@
 .slick-track {
   float: left;
 }
+.padding0 {
+  padding: 0;
+}
+.nameBuilding {
+  font-weight: 550;
+  margin-top: 50px;
+}
+.colUnit {
+  padding-left: 50px;
+}
+.conunit {
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+.p-isii {
+  font-weight: 550;
+}
+.startpriceunit {
+  font-weight: 600;
+  font-size: 46px;
+}
+.buttonenquire {
+  font-size: 13px;
+  width: 100%;
+  margin-top: 30px;
+}
