@@ -101,7 +101,7 @@ const AllBuilding = () => {
                       img={JSON.parse(v.img)[0]}
                       name={v.name}
                       price={v.pricestart}
-                      id={v.Id}
+                      id={v.id}
                       complex={v.complex.name}
                     />{" "}
                   </Col>

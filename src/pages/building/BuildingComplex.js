@@ -70,6 +70,7 @@ const BuildingComplex = () => {
     setCurrentPage(pageNumber);
     setCurrentPages(pageNumber);
   };
+  console.log(jwt);
   return (
     <>
       <NavBar complex={true} />
@@ -151,8 +152,7 @@ const BuildingComplex = () => {
                               img={JSON.parse(v.img)[0]}
                               name={v.name}
                               price={v.pricestart}
-                              rating={90}
-                              id={v.Id}
+                              id={v.id}
                               complex={v.complex.name}
                             />
                           </Col>
