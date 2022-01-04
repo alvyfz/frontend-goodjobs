@@ -32,7 +32,7 @@ export default function CardBuilding({
     setIsLoading(true);
     var options = {
       method: "GET",
-      url: `http://13.213.57.122:8080/reviews/building/{$id}`,
+      url: `http://13.213.57.122:8080/reviews/building/${id}`,
     };
 
     axios
@@ -50,9 +50,10 @@ export default function CardBuilding({
   if (isError) {
     <Error500 />;
   }
-  const filteredReview = review?.filter((v) => v.building_id === id);
-  const avg = (array) => array?.reduce((a, b) => a + b) / array?.length;
-  const avgReview = avg(filteredReview?.rating);
+  // const filteredReview = review?.filter((v) => v.building_id === id);
+  const avg = (array) =>
+    array?.reduce((a, b) => a + b.rating, 0) / array?.length;
+  const avgReview = avg(review);
   const conversiValue = (OldValue) => {
     var OldMax = 100;
     var OldMin = 0;
@@ -63,6 +64,7 @@ export default function CardBuilding({
     var NewValue = ((OldValue - OldMin) * NewRange) / (OldRange + NewMin);
     return NewValue;
   };
+
   const handleDelete = () => {
     Swal.fire({
       title: `Do you want to delete building ${name} ?`,
@@ -168,7 +170,7 @@ export default function CardBuilding({
                         {name}
                       </Card.Title>
                       <Rating
-                        ratingValue={avgReview || 0}
+                        ratingValue={avgReview || review?.[0].rating || 0}
                         allowHover={false}
                         readonly={true}
                         size={18}
@@ -180,7 +182,7 @@ export default function CardBuilding({
                           paddingTop: "15px",
                         }}
                       >
-                        {conversiValue(avgReview) || 0}{" "}
+                        {conversiValue(avgReview) || review?.[0].rating || 0}{" "}
                       </span>
                       <br />
 

@@ -130,13 +130,13 @@ const DetailBuilding = () => {
     if (user_id) {
       axios
         .post("http://13.213.57.122:8080/review", {
-          User_ID: user_id,
-          Building_ID: idBuilding,
-          Rating: parseInt(valueRating),
-          Description: valueArea,
+          user_id: user_id,
+          building_id: idBuilding,
+          rating: parseInt(valueRating),
+          description: valueArea,
         })
         .then(function (response) {
-          Swal.fire("Add new building success!", "", "success");
+          Swal.fire("Add review success!", "", "success");
           setValueRating();
           setValueArea();
           window.location.reload();
@@ -173,12 +173,39 @@ const DetailBuilding = () => {
   };
   const settings = {
     dots: true,
-    infinite: true,
+    infinite: false,
     speed: 500,
     slidesToShow: 3,
-    slidesToScroll: 2,
+    slidesToScroll: 3,
+    rtl: true,
     nextArrow: <SampleNextArrow />,
     prevArrow: <SampleNextArrow />,
+    responsive: [
+      {
+        breakpoint: 1200,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          infinite: true,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          initialSlide: 2,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
   function SampleNextArrow(props) {
     const { className, style, onClick } = props;
@@ -188,7 +215,7 @@ const DetailBuilding = () => {
         style={{
           ...style,
           display: "block",
-          background: "#4f4f4f",
+          background: "#B1AEAE",
           borderRadius: "50%",
           height: "20px",
           width: "20px",
@@ -211,7 +238,6 @@ const DetailBuilding = () => {
     var NewValue = ((OldValue - OldMin) * NewRange) / (OldRange + NewMin);
     return NewValue;
   };
-
   return (
     <>
       <NavBar building={true} />{" "}
@@ -378,6 +404,8 @@ const DetailBuilding = () => {
                                 name={v.name}
                                 img={JSON.parse(v.img)[0]}
                                 price={v.price}
+                                id={v.id}
+                                role_id={role_id}
                               />
                             );
                           })}
