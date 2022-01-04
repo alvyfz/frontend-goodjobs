@@ -14,6 +14,7 @@ import jwt_decode from "jwt-decode";
 import Error500 from "../../components/error/Error500";
 import Footer from "../../components/footer/Footer";
 import Paginations from "../../components/pagination/Paginations";
+import Searching from "../../components/searching/Searching";
 const Search = () => {
   const Navigate = useNavigate();
   const { search } = useLocation();
@@ -36,7 +37,7 @@ const Search = () => {
   useEffect(() => {
     window.scrollTo(0, 390);
   }, [currentPages]);
-  if (value === null || filter === null) {
+  if (!value || !filter) {
     Navigate("/");
   }
   if (filter !== "complex" || filter !== "building") {
@@ -119,6 +120,7 @@ const Search = () => {
   return (
     <>
       <NavBar />
+      {/* <Searching /> */}
 
       <Container fluid className="conheader">
         <div className="textheader">
@@ -139,9 +141,9 @@ const Search = () => {
                   className="spanhome"
                   to={filter === "building" ? "/buildings" : "/complex"}
                 >
-                  <span>/ {filter.toUpperCase()} /</span>{" "}
+                  <span>/ {filter?.toUpperCase()} /</span>{" "}
                 </Link>
-                <span className="spancon"> {value.toUpperCase()}</span>
+                <span className="spancon"> {value?.toUpperCase()}</span>
               </h3>
               <Button variant="\f" className="buttonBack">
                 <IoIosArrowBack size={40} onClick={() => Navigate(-1)} />
@@ -167,25 +169,11 @@ const Search = () => {
                         OPPS
                       </h1>
                       <h2>Complex not found</h2>
-                      <h3>
-                        {" "}
-                        Go back ?{" "}
-                        <Button variant="dark" onClick={() => Navigate(-1)}>
-                          Back
-                        </Button>
-                      </h3>
                     </Container>
                   </>
                 ) : (
                   <>
                     <Col lg={8}>
-                      <Button variant="\f" className="buttonBack">
-                        <IoIosArrowBack
-                          size={40}
-                          onClick={() => Navigate(-1)}
-                        />
-                      </Button>
-                      ;
                       <Row>
                         {currentCardsComplex?.map((v, i) => {
                           return (
@@ -223,13 +211,6 @@ const Search = () => {
                         OPPS
                       </h1>
                       <h2>Building not found</h2>
-                      <h3>
-                        {" "}
-                        Go back ?{" "}
-                        <Button variant="dark" onClick={() => Navigate(-1)}>
-                          Back
-                        </Button>
-                      </h3>
                     </Container>
                   </>
                 ) : (

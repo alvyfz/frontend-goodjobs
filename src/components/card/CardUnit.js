@@ -6,7 +6,14 @@ import { AiOutlineDelete } from "react-icons/ai";
 import Swal from "sweetalert2";
 import axios from "axios";
 
-export default function CardUnit({ img, price, name, id, role_id }) {
+export default function CardUnit({
+  img,
+  price,
+  name,
+  id,
+  role_id,
+  buildingName,
+}) {
   const Navigate = useNavigate();
 
   const formatRupiah = () => {
@@ -193,7 +200,7 @@ export default function CardUnit({ img, price, name, id, role_id }) {
                 </Button>{" "}
                 <Button
                   as={Link}
-                  to={`unit/detail?key=${id}`}
+                  to={`/unit/detail?key=${id}&b=${buildingName}`}
                   variant="light"
                   style={{
                     width: "80%",

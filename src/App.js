@@ -13,6 +13,7 @@ import EditBuilding from "./pages/building/EditBuilding";
 import DetailBuilding from "./pages/building/DetailBuilding";
 import AddUnit from "./pages/unit/AddUnit";
 import EditUnit from "./pages/unit/EditUnit";
+import DetailUnit from "./pages/unit/DetailUnit";
 export default function App() {
   // let path = useLocation();
 
@@ -32,6 +33,7 @@ export default function App() {
         <Route path="/buildings" element={<AllBuilding />} />
         <Route path="/unit/add" element={<AddUnit />} />
         <Route path="/unit/edit" element={<EditUnit />} />
+        <Route path="/unit/detail" element={<DetailUnit />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       {/* {path.pathname === "/login" || "*" ? null : <Footer />} */}
