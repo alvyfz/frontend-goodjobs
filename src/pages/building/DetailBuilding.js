@@ -227,6 +227,7 @@ const DetailBuilding = () => {
       />
     );
   }
+
   const userReview = review?.find((element) => element.user_id === user_id);
   const conversiValue = (OldValue) => {
     var OldMax = 100;
@@ -296,7 +297,7 @@ const DetailBuilding = () => {
                         {images?.map((v, i) => {
                           return (
                             <>
-                              <Col lg={3} className="padding0">
+                              <Col className="padding0">
                                 <Image
                                   src={v}
                                   alt={i}
@@ -464,7 +465,7 @@ const DetailBuilding = () => {
                         <Button
                           variant="sad"
                           as={Link}
-                          to={`/review?key=${idBuilding}`}
+                          to={`/review?key=${idBuilding}&b=${building?.name}`}
                           className="buttom-detail"
                         >
                           detail

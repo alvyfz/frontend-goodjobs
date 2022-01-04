@@ -1,9 +1,7 @@
 import "./Searching.css";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import { useState } from "react";
-
 import { useNavigate } from "react-router-dom";
-
 export default function Searching() {
   const Navigate = useNavigate();
   const [filter, setfilter] = useState("building");

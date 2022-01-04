@@ -14,6 +14,7 @@ import DetailBuilding from "./pages/building/DetailBuilding";
 import AddUnit from "./pages/unit/AddUnit";
 import EditUnit from "./pages/unit/EditUnit";
 import DetailUnit from "./pages/unit/DetailUnit";
+import DetailReview from "./pages/review/DetailReview";
 export default function App() {
   // let path = useLocation();
 
@@ -34,6 +35,7 @@ export default function App() {
         <Route path="/unit/add" element={<AddUnit />} />
         <Route path="/unit/edit" element={<EditUnit />} />
         <Route path="/unit/detail" element={<DetailUnit />} />
+        <Route path="/review" element={<DetailReview />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       {/* {path.pathname === "/login" || "*" ? null : <Footer />} */}
