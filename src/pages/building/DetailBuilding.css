@@ -1,0 +1,184 @@
+.con-fitur {
+  background-color: white;
+  margin-top: 30px;
+  padding-bottom: 10px;
+  color: #4f4f4f;
+  border-radius: 10px;
+}
+.row-fitur {
+  padding-top: 15px;
+}
+.main-img {
+  height: 350px;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 2%;
+}
+
+.col-no {
+  padding: 0;
+  margin: 0;
+}
+.activeIMG {
+  margin-top: 10px;
+  /* margin-left: 11px; */
+  height: 79px;
+  width: 79px;
+  object-fit: cover;
+  border-radius: 2%;
+  padding: 0;
+  border: 3px solid gray;
+}
+.row-img {
+  /* margin: 8px; */
+  /* margin: 0px 20px 0px 2px; */
+  margin-left: 5px;
+  margin-bottom: 10px;
+}
+.imgs {
+  margin-top: 10px;
+  /* margin-left: 11px; */
+  height: 79px;
+  width: 79px;
+  object-fit: cover;
+  padding: 0;
+  border-radius: 2%;
+}
+.con-fitur p {
+  margin: 0;
+}
+.startprice {
+  font-size: 40px;
+  font-weight: 500;
+}
+.textPrice {
+  font-weight: 500;
+}
+.textdescription {
+  /* max-height: 140px; */
+  padding-bottom: 10px;
+}
+.rowDetail {
+  font-weight: 500;
+  font-size: 18px;
+}
+.bccc {
+  margin-left: 44px;
+}
+.colbccc {
+  padding: 0;
+}
+
+.slick-arrow {
+  color: red;
+  background-color: black;
+}
+.sliderr {
+  margin-left: 11px;
+}
+.conUnit {
+  height: 490px;
+}
+.rowTextUnit {
+  margin-bottom: 13px;
+}
+.bccc1 {
+  margin-top: 20px;
+}
+.map-building {
+  margin: 20px 20px 20px 0px;
+}
+.con-building {
+  height: 75vh;
+}
+.con-fitur .col {
+  padding: 0;
+}
+.p-isi {
+  font-weight: normal;
+}
+.kotak-review {
+  height: 122px;
+  width: 122px;
+  background-color: #f2f2f2;
+  border-radius: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
+  text-align: center;
+}
+.rowRev {
+  margin-top: 30px;
+  padding: 0;
+}
+.limaper {
+  font-size: 30px;
+  color: #ccc62a;
+  font-weight: normal;
+}
+.h1-rev {
+  padding-top: 7px;
+  font-size: 36px;
+  color: #ccc62a;
+  font-weight: bold;
+}
+.font-bold {
+  font-weight: bold;
+}
+.length-rev {
+  font-size: 14px;
+  color: #bdbdbd;
+  font-weight: 500;
+}
+.kotak-bintang {
+  height: 66px;
+  background-color: #f2f2f2;
+  width: 213px;
+  margin-top: 27px;
+  border-radius: 20px;
+  text-align: center;
+}
+.row-rev {
+  margin-left: 30px;
+}
+.rating-building {
+  margin-top: 18px;
+}
+.buttom-detail {
+  margin-top: 40px;
+  font-weight: 500;
+}
+.col-bd {
+  padding: 0;
+}
+.writeReview {
+  font-weight: 550;
+  font-size: 20px;
+}
+.formareare {
+  font-weight: 550;
+  margin: 0px;
+}
+.buttonreview {
+  width: 100%;
+
+  font-size: 13px;
+}
+.yourdescription {
+  /* padding-left: 5px; */
+  font-weight: 550;
+}
+.conyourdesc {
+  height: 122px;
+  width: 100%;
+  background-color: #f2f2f2;
+  border-radius: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
+  text-align: center;
+  padding: 10px;
+}
+.yourReview {
+  font-weight: 550;
+  font-size: 20px;
+  /* padding-top: 20px; */
+}

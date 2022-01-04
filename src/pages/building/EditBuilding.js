@@ -65,7 +65,6 @@ const EditBuilding = () => {
       .request(option)
       .then(function (response) {
         var d = response.data.data;
-        console.log(d);
         setImages(JSON.parse(d.img));
         setWeekday(JSON.parse(d.officehours).weekday);
         setAddress(d.address);
@@ -113,7 +112,7 @@ const EditBuilding = () => {
     };
     officeHours.weekday.push(weekday);
     officeHours.saturday.push(saturday);
-    officeHours.weekday.push(sunday);
+    officeHours.sunday.push(sunday);
     if (validate) {
       Swal.fire({
         title: `Are you sure to edit building ${name} ?`,

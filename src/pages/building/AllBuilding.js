@@ -23,6 +23,7 @@ const AllBuilding = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [cardsPerPage] = useState(6);
   const [isError, setIsError] = useState(false);
+  const [currentPages, setCurrentPages] = useState();
 
   useEffect(() => {
     setIsLoading(true);
@@ -45,7 +46,7 @@ const AllBuilding = () => {
 
   useEffect(() => {
     window.scrollTo(0, 390);
-  }, [currentPage]);
+  }, [currentPages]);
   if (isLoading) {
     return (
       <div id="spinner">
@@ -59,7 +60,10 @@ const AllBuilding = () => {
   const indexOfLastPost = currentPage * cardsPerPage;
   const indexOfFirstPost = indexOfLastPost - cardsPerPage;
   const currentCards = building?.slice(indexOfFirstPost, indexOfLastPost);
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+  const paginate = (pageNumber) => {
+    setCurrentPage(pageNumber);
+    setCurrentPages(pageNumber);
+  };
   return (
     <>
       <NavBar building={true} />

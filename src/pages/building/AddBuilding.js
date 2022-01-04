@@ -41,7 +41,7 @@ const AddBuilding = () => {
   const [errName, setErrName] = useState("");
   const [validate, setValidate] = useState("");
   const nameRegex = /^[a-zA-Z\s]{2,15}$/;
-  const maxNumber = 4;
+  const maxNumber = 8;
 
   if (role_id !== 1 && role_id !== 2) {
     return <NotFound />;
@@ -59,7 +59,7 @@ const AddBuilding = () => {
     };
     officeHours.weekday.push(weekday);
     officeHours.saturday.push(saturday);
-    officeHours.weekday.push(sunday);
+    officeHours.sunday.push(sunday);
     if (validate) {
       axios
         .post("http://13.213.57.122:8080/building", {
@@ -411,7 +411,7 @@ const AddBuilding = () => {
                       Remove all
                     </Button>
                     <p className="ketImg">
-                      *The first image will be the main image(Max 4 picture)
+                      *The first image will be the main image(Max 8 picture)
                     </p>
                     <Row>
                       {images.map((image, index) => (

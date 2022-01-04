@@ -14,6 +14,7 @@ import { parseCookies } from "nookies";
 import jwt_decode from "jwt-decode";
 import { MdOutlineAddCircleOutline } from "react-icons/md";
 import Footer from "../../components/footer/Footer";
+import NotFound from "../error/NotFound";
 
 const BuildingComplex = () => {
   const auth = parseCookies("auth").auth;
@@ -23,16 +24,16 @@ const BuildingComplex = () => {
   const role_id = jwt.Role_ID;
   const { search } = useLocation();
   const query = new URLSearchParams(search);
-
   const [isError, setIsError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [building, setBuilding] = useState();
   const idComplex = parseInt(query.get("key"));
   const [currentPage, setCurrentPage] = useState(1);
+  const [currentPages, setCurrentPages] = useState();
   const [cardsPerPage] = useState(6);
   useEffect(() => {
     window.scrollTo(0, 390);
-  }, [currentPage]);
+  }, [currentPages]);
   useEffect(() => {
     setIsLoading(true);
     var option = {
@@ -55,7 +56,9 @@ const BuildingComplex = () => {
   useEffect(() => {
     window.scrollTo(0, 390);
   }, [currentPage]);
-
+  if (!idComplex) {
+    return <NotFound />;
+  }
   if (isError) {
     return <Error500 />;
   }
@@ -63,8 +66,10 @@ const BuildingComplex = () => {
   const indexOfLastPost = currentPage * cardsPerPage;
   const indexOfFirstPost = indexOfLastPost - cardsPerPage;
   const currentCards = building?.slice(indexOfFirstPost, indexOfLastPost);
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
-
+  const paginate = (pageNumber) => {
+    setCurrentPage(pageNumber);
+    setCurrentPages(pageNumber);
+  };
   return (
     <>
       <NavBar complex={true} />
