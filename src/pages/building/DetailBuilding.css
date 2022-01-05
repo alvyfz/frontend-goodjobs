@@ -146,9 +146,12 @@
 .buttom-detail {
   margin-top: 40px;
   font-weight: 500;
+  width: 100%;
+  margin-left: 20px;
 }
 .col-bd {
   padding: 0;
+  align-items: center;
 }
 .writeReview {
   font-weight: 550;

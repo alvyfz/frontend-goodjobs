@@ -14,7 +14,7 @@ import jwt_decode from "jwt-decode";
 import Error500 from "../../components/error/Error500";
 import Footer from "../../components/footer/Footer";
 import Paginations from "../../components/pagination/Paginations";
-import Searching from "../../components/searching/Searching";
+// import Searching from "../../components/searching/Searching";
 const Search = () => {
   const Navigate = useNavigate();
   const { search } = useLocation();

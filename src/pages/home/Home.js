@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import "./Home.css";
 import { Container, Row, Col, Spinner } from "react-bootstrap";
 import Searching from "../../components/searching/Searching";
