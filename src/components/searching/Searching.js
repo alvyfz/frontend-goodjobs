@@ -52,7 +52,7 @@ export default function Searching() {
                           width: "115px",
                           marginRight: "20px",
                           fontSize: "16px",
-                          margin: "auto",
+                          margin: "5px auto 0px auto",
                         }}
                       >
                         <option value="complex">Complex</option>
@@ -71,7 +71,7 @@ export default function Searching() {
                         required
                         style={{
                           height: "35px",
-                          marginBottom: "5px",
+                          marginTop: "5px",
                         }}
                       />
                     </Col>
@@ -83,6 +83,7 @@ export default function Searching() {
                           width: "115px",
 
                           height: "35px",
+                          marginTop: "5px",
                           fontSize: "15px",
                         }}
                       >

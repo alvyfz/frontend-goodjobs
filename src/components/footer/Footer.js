@@ -8,14 +8,15 @@ export default function Footer() {
         <Container
           style={{
             textAlign: "left",
-            marginBottom: "50px",
-            marginTop: "50px",
+            marginBottom: "30px",
+            marginTop: "30px",
           }}
         >
           <Row>
             <Col lg={5}>
-              <Brand />
-
+              <Link to="/">
+                <Brand />
+              </Link>
               <p style={{ fontSize: "14px" }}>
                 goodJobs is an web-based platform to rent office spaces across
                 Jakarta. goodjobs aims for the convenience of user when
@@ -41,7 +42,7 @@ export default function Footer() {
                       <dd>
                         <Link
                           style={{ textDecoration: "none", color: "inherit" }}
-                          to=""
+                          to="/complex"
                         >
                           {" "}
                           Complex{" "}
@@ -50,7 +51,7 @@ export default function Footer() {
                       <dd>
                         <Link
                           style={{ textDecoration: "none", color: "inherit" }}
-                          to=""
+                          to="/buildings"
                         >
                           {" "}
                           Building{" "}
@@ -61,10 +62,18 @@ export default function Footer() {
                 </Col>
                 <Col lg={4}>
                   <>
-                    <h6 style={{ fontWeight: "600" }}>MY ACCOUNT</h6>
+                    <h6 style={{ fontWeight: "600" }}>ACCOUNT</h6>
 
                     <dl style={{ fontSize: "14px" }}>
-                      <dd>My Account</dd>
+                      <dd>
+                        <Link
+                          style={{ textDecoration: "none", color: "inherit" }}
+                          to="/myaccount"
+                        >
+                          {" "}
+                          My Account{" "}
+                        </Link>
+                      </dd>
                     </dl>
                   </>
                 </Col>
@@ -77,7 +86,7 @@ export default function Footer() {
                       <dd>
                         <Link
                           style={{ textDecoration: "none", color: "inherit" }}
-                          to=""
+                          to="/chat"
                         >
                           {" "}
                           Chat{" "}
