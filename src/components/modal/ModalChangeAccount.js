@@ -16,7 +16,6 @@ function ModalChangeAccount(props) {
   const [validPhone, setValidPhone] = useState(true);
   const nameRegex = /^[a-zA-Z\s]{2,40}$/;
   const phoneRegex = /^[0-9]{9,12}$/;
-  console.log(user);
   const handleChangePhone = (e) => {
     setPhone(e.target.value);
     if (!phoneRegex.test(e.target.value)) {

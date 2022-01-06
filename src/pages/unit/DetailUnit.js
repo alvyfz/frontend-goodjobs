@@ -53,7 +53,7 @@ const DetailUnit = () => {
       minimumFractionDigits: 0,
     }).format(price);
   };
-  console.log(unit);
+
   return (
     <>
       <NavBar building={true} />
