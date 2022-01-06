@@ -32,7 +32,6 @@ export default function App() {
         <Route path="/chat" element={<Chat />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
-      {/* {path.pathname === "/login" || "*" ? null : <Footer />} */}
     </>
   );
 }

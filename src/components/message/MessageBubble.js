@@ -53,12 +53,9 @@ const useStyles = makeStyles((theme) => ({
     const MessageBubble = (props) => {
     const classes = useStyles(props);
     const { isMe, message, dataMessage } = props;
-
+        console.log(message)
     return (
         <div className={classes.root}>
-        {/* {!isMe && (
-            <img className={classes.img} alt="" src={message.fromUser.picture} />
-        )} */}
         <div className={classes.bubble}>
             <div>{message.message}</div>
             <DropDown  id={message.id} dataMessage={dataMessage} />
