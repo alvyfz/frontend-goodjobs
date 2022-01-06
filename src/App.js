@@ -16,6 +16,7 @@ import EditUnit from "./pages/unit/EditUnit";
 import DetailUnit from "./pages/unit/DetailUnit";
 import DetailReview from "./pages/review/DetailReview";
 import Account from "./pages/account/Account";
+import Admin from "./pages/account/admin";
 export default function App() {
   // let path = useLocation();
 
@@ -38,6 +39,7 @@ export default function App() {
         <Route path="/unit/detail" element={<DetailUnit />} />
         <Route path="/review" element={<DetailReview />} />
         <Route path="/myaccount" element={<Account />} />
+        <Route path="/admin" element={<Admin />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       {/* {path.pathname === "/login" || "*" ? null : <Footer />} */}

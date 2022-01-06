@@ -52,3 +52,20 @@
 .colButtom {
   margin-top: 13px;
 }
+.userListAdmin {
+  text-decoration: none;
+  border: 1px solid #bdbdbd;
+  margin-top: 10px;
+  margin-left: 12px;
+  padding: 20px;
+
+  width: 96%;
+  border-radius: 5px;
+  font-weight: 500;
+
+  color: #4f4f4f;
+}
+.buttonAdmin {
+  margin-top: 20px;
+  width: 100%;
+}
