@@ -2,19 +2,31 @@ import { Container, Row, Col, Spinner } from "react-bootstrap";
 import NavBar from "../../components/navbar/NavBar";
 import Footer from "../../components/footer/Footer";
 import "./Chat.css";
-import { Link } from "react-router-dom";
-import { parseCookies } from "nookies";
+import { Link, useNavigate } from "react-router-dom";
+import { parseCookies, destroyCookie } from "nookies";
 import jwt_decode from "jwt-decode";
 import MessageInput from "../../components/message/MessageInput";
 import Message from "./Message";
+import Swal from "sweetalert2";
 
 const Chat = () => {
+    const Navigate = useNavigate();
     const auth = parseCookies("auth").auth;
     const jwtDefault =
         "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MCwicm9sZV9pZCI6MCwiZXhwIjoxNjQwNTIzODE1fQ.RTtmDJ2fXyxY4N9GXWJnH-beaFIuHsgUSF3hJHHRXqU";
     const jwt = jwt_decode(auth || jwtDefault);
     const role_id = jwt.Role_ID;
-    console.log(jwt.Name)
+    const handleLogout = () => {
+    destroyCookie(null, "auth");
+    Swal.fire({
+        icon: "success",
+        title: "Logout success!",
+        text: "",
+        confirmButtonColor: "black",
+    });
+    Navigate("/");
+    window.location.reload();
+    };
     return(
         <>
             <NavBar chat={true} />
@@ -41,11 +53,21 @@ const Chat = () => {
                 <Row className="justify-content-center">
                     <Col lg={4}>
                         <Row>
-                            <Container>
-                                <div >
-                                    List Room Chat
-                                </div>
-                            </Container>
+                        <Container className="con-fitur">
+                            <Row className="row-fitur listrowacc">
+                                <p className="nameLeft">{jwt.Name}</p>
+                                <Row className="barLeft" as={Link} to="/chat">
+                                    <p>Chat</p>
+                                    </Row>
+                                    <Row
+                                    className="barLeftLog"
+                                    as="button"
+                                    onClick={handleLogout}
+                                    >
+                                        <p>Log out</p>
+                                    </Row>
+                                </Row>
+                        </Container>
                         </Row>
                     </Col>
                     <Col lg={6}>

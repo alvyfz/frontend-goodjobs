@@ -29,17 +29,6 @@ const getMessage = gql`
         let paramGetMessage = {
             "user_id": user_id
         };
-        // if (!user_id || user_id === "null") {
-        //     paramGetMessage = {
-        //         "user_id": user_id
-        //     };
-        // } else if (user_id) {
-        //     paramGetMessage = {
-        //     "FromUser": {
-        //         "_eq": "admin"
-        //     },
-        //     };
-        // }
         const { data: dataMessage } = useSubscription(getMessage, {
             variables: paramGetMessage,
         });
