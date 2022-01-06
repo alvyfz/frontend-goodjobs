@@ -47,7 +47,7 @@ const EditBuilding = () => {
   const [toilet, setToilet] = useState("");
   const [images, setImages] = useState([]);
   const [errName, setErrName] = useState("");
-  const [validate, setValidate] = useState("");
+  const [validate, setValidate] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const nameRegex = /^[a-zA-Z\s]{2,15}$/;

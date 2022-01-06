@@ -462,14 +462,16 @@ const DetailBuilding = () => {
                         </Row>
                       </Col>{" "}
                       <Col lg={1} className="col-bd">
-                        <Button
-                          variant="sad"
-                          as={Link}
-                          to={`/review?key=${idBuilding}&b=${building?.name}`}
-                          className="buttom-detail"
-                        >
-                          detail
-                        </Button>
+                        {review?.length === undefined ? null : (
+                          <Button
+                            variant="sad"
+                            as={Link}
+                            to={`/review?key=${idBuilding}&b=${building?.name}`}
+                            className="buttom-detail"
+                          >
+                            detail
+                          </Button>
+                        )}
                       </Col>
                       <Col lg={6}>
                         {userReview ? (

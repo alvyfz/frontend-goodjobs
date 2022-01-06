@@ -40,7 +40,7 @@ const EditUnit = () => {
   const [idBuilding, setIdBuilding] = useState();
   const [description, setDescription] = useState("");
   const [errName, setErrName] = useState("");
-  const [validate, setValidate] = useState(false);
+  const [validate, setValidate] = useState(true);
   const nameRegex = /^[a-zA-Z\s]{2,10}$/;
   const maxNumber = 4;
   const [isLoading, setIsLoading] = useState(false);
@@ -99,7 +99,7 @@ const EditUnit = () => {
           img: JSON.stringify(images),
         })
         .then(function (response) {
-          Swal.fire("Add new complex success!", "", "success");
+          Swal.fire("Add new unit success!", "", "success");
           setName("");
           setImages([]);
           setDescription("");
