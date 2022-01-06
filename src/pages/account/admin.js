@@ -29,7 +29,7 @@ const Admin = () => {
   const [text, settext] = useState();
   const [user, setUser] = useState();
   const [isLoading, setIsLoading] = useState(false);
-  const [role, setRole] = useState();
+  const [role, setRole] = useState(0);
 
   const handleLogout = () => {
     destroyCookie(null, "auth");
@@ -57,10 +57,21 @@ const Admin = () => {
         email: text.toLowerCase(),
       })
       .then(function (response) {
-        setUser(response.data.data);
-        setRole(response.data.data.role_id);
-        settext("");
-        setIsLoading(false);
+        if (response.data.data.email === "") {
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Email not found :( !",
+          });
+          setRole(0);
+          setUser([]);
+          setIsLoading(false);
+        } else {
+          setUser(response.data.data);
+          setRole(response.data.data.role_id);
+          settext("");
+          setIsLoading(false);
+        }
       })
       .catch(function (error) {
         setIsLoading(false);
@@ -177,7 +188,7 @@ const Admin = () => {
                           </Row>{" "}
                         </Form>
 
-                        {user ? (
+                        {role !== 0 ? (
                           <>
                             {isLoading ? (
                               <div id="spinner">
