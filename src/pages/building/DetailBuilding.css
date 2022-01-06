@@ -63,7 +63,7 @@
   font-size: 18px;
 }
 .bccc {
-  margin-left: 44px;
+  margin-left: 25px;
 }
 .colbccc {
   padding: 0;
@@ -171,7 +171,6 @@
   font-weight: 550;
 }
 .conyourdesc {
-  height: 122px;
   width: 100%;
   background-color: #f2f2f2;
   border-radius: 20px;
@@ -196,7 +195,7 @@
   margin-top: 50px;
 }
 .colUnit {
-  padding-left: 50px;
+  /* padding-left: 50px; */
 }
 .conunit {
   padding-top: 50px;

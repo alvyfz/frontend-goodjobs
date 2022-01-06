@@ -223,7 +223,7 @@ const Search = () => {
                               lg={4}
                               md={6}
                               sm={12}
-                              key={v.Id}
+                              key={v.id}
                               className="allbuildingcard"
                             >
                               <CardBuilding
@@ -231,7 +231,7 @@ const Search = () => {
                                 img={JSON.parse(v.img)[0]}
                                 name={v.name}
                                 price={v.pricestart}
-                                id={v.Id}
+                                id={v.id}
                                 complex={v.complex.name}
                               />
                             </Col>
