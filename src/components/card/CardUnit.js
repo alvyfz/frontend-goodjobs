@@ -140,7 +140,7 @@ export default function CardUnit({
                 {" "}
                 <Button
                   as={Link}
-                  to={`chat?key=${id}`}
+                  to={`/chat?key=${id}`}
                   variant="dark"
                   style={{
                     width: "80%",
@@ -152,7 +152,7 @@ export default function CardUnit({
                 </Button>{" "}
                 <Button
                   as={Link}
-                  to={`unit/detail?key=${id}`}
+                  to={`/unit/detail?key=${id}&b=${buildingName}`}
                   variant="light"
                   style={{
                     width: "80%",

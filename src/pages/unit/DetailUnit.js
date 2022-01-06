@@ -102,7 +102,7 @@ const DetailUnit = () => {
                         {images?.map((v, i) => {
                           return (
                             <>
-                              <Col lg={3} className="padding0">
+                              <Col className="padding0">
                                 <Image
                                   src={v}
                                   alt={i}
