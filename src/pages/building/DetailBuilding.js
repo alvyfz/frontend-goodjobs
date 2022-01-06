@@ -374,8 +374,11 @@ const DetailBuilding = () => {
                   </Row>{" "}
                 </Container>
                 {unit ? (
-                  <Container className="con-fitur conUnit">
-                    <Row className="row-fitur">
+                  <Container
+                    className="con-fitur conUnit"
+                    style={{ height: "540px" }}
+                  >
+                    <Row className="row-fitur" s>
                       <Row className="rowTextUnit">
                         <Col lg={10}>
                           <h3>UNIT</h3>{" "}

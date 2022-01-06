@@ -10,6 +10,7 @@ export default function NavBar({ home, complex, building, chat, myaccount }) {
   const jwtDefault =
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MCwicm9sZV9pZCI6MCwiZXhwIjoxNjQwNTIzODE1fQ.RTtmDJ2fXyxY4N9GXWJnH-beaFIuHsgUSF3hJHHRXqU";
   const user = jwt_decode(jwt || jwtDefault);
+
   const handleLogout = () => {
     destroyCookie(null, "auth");
     Swal.fire({
@@ -89,22 +90,21 @@ export default function NavBar({ home, complex, building, chat, myaccount }) {
                     >
                       MY ACCOUNT
                     </NavDropdown.Item>{" "}
+                    {user?.Role_ID === 1 ? (
+                      <NavDropdown.Item
+                        as={Link}
+                        to="/admin"
+                        style={{ fontSize: "14px" }}
+                      >
+                        MANAGEMENT ADMIN
+                      </NavDropdown.Item>
+                    ) : null}
                     <NavDropdown.Item
                       onClick={handleLogout}
                       style={{ fontSize: "14px" }}
                     >
                       LOGOUT
                     </NavDropdown.Item>
-                    {/* <NavDropdown.Item href="#action/3.2">
-                      Another action
-                    </NavDropdown.Item>
-                    <NavDropdown.Item href="#action/3.3">
-                      Something
-                    </NavDropdown.Item>
-                    <NavDropdown.Divider />
-                    <NavDropdown.Item href="#action/3.4">
-                      Separated link
-                    </NavDropdown.Item> */}
                   </NavDropdown>
                 </>
               ) : (
@@ -114,9 +114,6 @@ export default function NavBar({ home, complex, building, chat, myaccount }) {
                   </Nav.Link>
                 </>
               )}
-              {/* <Nav.Link eventKey={2} href="#memes">
-                Dank memes
-              </Nav.Link> */}
             </Nav>
           </Navbar.Collapse>
         </Container>
