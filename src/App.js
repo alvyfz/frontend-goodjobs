@@ -17,6 +17,7 @@ import DetailUnit from "./pages/unit/DetailUnit";
 import DetailReview from "./pages/review/DetailReview";
 import Account from "./pages/account/Account";
 import Admin from "./pages/account/admin";
+import Chat from "./pages/chat/Chat";
 export default function App() {
   // let path = useLocation();
 
@@ -40,6 +41,7 @@ export default function App() {
         <Route path="/review" element={<DetailReview />} />
         <Route path="/myaccount" element={<Account />} />
         <Route path="/admin" element={<Admin />} />
+        <Route path="/chat" element={<Chat/>} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       {/* {path.pathname === "/login" || "*" ? null : <Footer />} */}
