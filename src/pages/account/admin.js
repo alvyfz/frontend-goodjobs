@@ -8,6 +8,7 @@ import {
   Form,
   InputGroup,
 } from "react-bootstrap";
+import { AiOutlineDelete } from "react-icons/ai";
 import NotFound from "../error/NotFound";
 import "./Account.css";
 import NavBar from "../../components/navbar/NavBar";
@@ -19,6 +20,7 @@ import jwt_decode from "jwt-decode";
 import Swal from "sweetalert2";
 import Footer from "../../components/footer/Footer";
 import { BiSearch } from "react-icons/bi";
+
 const Admin = () => {
   const Navigate = useNavigate();
   const auth = parseCookies("auth").auth;
@@ -30,6 +32,15 @@ const Admin = () => {
   const [user, setUser] = useState();
   const [isLoading, setIsLoading] = useState(false);
   const [role, setRole] = useState(0);
+  const [nameUp, setNameUp] = useState();
+  const [emailUp, setEmailUp] = useState();
+  const [phone, setPhone] = useState();
+  const [errorPhone, setErrorPhone] = useState();
+  const [errorName, setErrorName] = useState("");
+  const [validName, setValidName] = useState(true);
+  const [validPhone, setValidPhone] = useState(true);
+  const nameRegex = /^[a-zA-Z\s]{2,40}$/;
+  const phoneRegex = /^[0-9]{9,12}$/;
 
   const handleLogout = () => {
     destroyCookie(null, "auth");
@@ -69,6 +80,9 @@ const Admin = () => {
         } else {
           setUser(response.data.data);
           setRole(response.data.data.role_id);
+          setNameUp(response.data.data.name);
+          setPhone(response.data.data.phone);
+          setEmailUp(response.data.data.email);
           settext("");
           setIsLoading(false);
         }
@@ -82,30 +96,125 @@ const Admin = () => {
         });
       });
   };
-  const handleChangeAdmin = (e) => {
+  // const handleChangeAdmin = (e) => {
+  //   e.preventDefault();
+  //   axios
+  //     .put(`http://13.213.57.122:8080/user/${user.id}`, {
+  //       name: user.name,
+  //       email: user.email.toLowerCase(),
+  //       phone: user.phone,
+  //       roles_id: parseInt(role),
+  //     })
+  //     .then(function (response) {
+  //       Swal.fire({
+  //         icon: "success",
+  //         title: "Good",
+  //         text: "Change role success !",
+  //         confirmButtonColor: "black",
+  //       });
+  //     })
+  //     .catch(function (error) {
+  //       Swal.fire({
+  //         icon: "error",
+  //         title: "Oops...",
+  //         text: "Something wrong!",
+  //       });
+  //     });
+  // };
+  const handleChangePhone = (e) => {
+    setPhone(e.target.value);
+    if (!phoneRegex.test(e.target.value)) {
+      setErrorPhone("Phone number must be number and length 12.");
+      setValidPhone(false);
+    } else {
+      setErrorPhone("");
+      setValidPhone(true);
+    }
+  };
+  const handleChangeNameUp = (e) => {
+    setNameUp(e.target.value);
+    if (!nameRegex.test(e.target.value)) {
+      setErrorName("Name must be a letter 2-40.");
+      setValidName(false);
+    } else {
+      setErrorName("");
+      setValidName(true);
+    }
+  };
+  const handleChangeEmailUp = (e) => {
+    setEmailUp(e.target.value);
+  };
+
+  const handleChangeAccount = (e) => {
     e.preventDefault();
-    axios
-      .put(`http://13.213.57.122:8080/user/${user.id}`, {
-        name: user.name,
-        email: user.email.toLowerCase(),
-        phone: user.phone,
-        roles_id: parseInt(role),
-      })
-      .then(function (response) {
-        Swal.fire({
-          icon: "success",
-          title: "Good",
-          text: "Change role success !",
-          confirmButtonColor: "black",
+    if (validName && validPhone) {
+      axios
+        .put(`http://13.213.57.122:8080/user/${user.id}`, {
+          name: nameUp,
+          email: emailUp.toLowerCase(),
+          phone: phone,
+          roles_id: parseInt(role),
+        })
+        .then(function (response) {
+          Swal.fire({
+            icon: "success",
+            title: "Good",
+            text: "Change account success !",
+            confirmButtonColor: "black",
+          });
+
+          // Navigate("/myaccount");
+          // window.location.reload();
+        })
+        .catch(function (error) {
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Something wrong!",
+          });
         });
-      })
-      .catch(function (error) {
-        Swal.fire({
-          icon: "error",
-          title: "Oops...",
-          text: "Something wrong!",
-        });
+    } else {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Form format is wrong!",
       });
+    }
+  };
+  const handleDelete = () => {
+    Swal.fire({
+      title: `Do you want to delete building ${user.email} ?`,
+      showCancelButton: true,
+      cancelButtonColor: "#DDDDDD",
+      confirmButtonColor: "#A9333A",
+      confirmButtonText: "Delete",
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        var options = {
+          method: "DELETE",
+          url: `http://13.213.57.122:8080/user/${user.id}`,
+          headers: {
+            Authorization: `Bearer ${auth}`,
+          },
+        };
+        axios
+          .request(options)
+          .then(function (response) {
+            window.location.reload();
+            Swal.fire(`Delete building ${user.email} success!`, "", "success");
+          })
+          .catch(function (error) {
+            Swal.fire({
+              icon: "error",
+              title: "Oops...",
+              text: "Something went wrong!",
+            });
+          });
+      } else if (result.isDenied) {
+        Swal.fire("Changes are not saved", "", "info");
+      }
+    });
   };
   return (
     <>
@@ -113,12 +222,12 @@ const Admin = () => {
 
       <Container fluid className="conheader">
         <div className="textheader">
-          <h1 style={{ fontWeight: "700" }}>MANAGEMENT ADMIN</h1>
+          <h1 style={{ fontWeight: "700" }}>MANAGEMENT USER</h1>
           <h3>
             <Link className="spanhome" to="/">
               <span>HOME / </span>
             </Link>{" "}
-            <span className="spancon">MANAGEMENT ADMIN</span>
+            <span className="spancon">MANAGEMENT USER</span>
           </h3>
         </div>
       </Container>
@@ -198,33 +307,80 @@ const Admin = () => {
                               <>
                                 {" "}
                                 <div className="userListAdmin listdetail">
-                                  <p>{user?.name}</p>
-                                  <p>{user?.email}</p>
-                                  <p>{user?.phone}</p>
+                                  <Form>
+                                    <div className="mb-3">
+                                      <Form.Control
+                                        size="lg"
+                                        type="email"
+                                        placeholder="Email"
+                                        value={emailUp}
+                                        onChange={handleChangeEmailUp}
+                                        required
+                                      />
+                                    </div>
+                                    <div className="mb-3">
+                                      <Form.Control
+                                        size="lg"
+                                        type="text"
+                                        placeholder="Name"
+                                        value={nameUp}
+                                        onChange={handleChangeNameUp}
+                                      />
+                                      <Form.Text
+                                        className="formText"
+                                        style={{ color: "red" }}
+                                      >
+                                        {errorName}
+                                      </Form.Text>{" "}
+                                    </div>
 
-                                  <Form.Select
-                                    id="nationality"
-                                    name="Filter"
-                                    value={role}
-                                    onChange={(e) => setRole(e.target.value)}
-                                  >
-                                    {" "}
-                                    <option value={1}>Super admin</option>
-                                    <option selected value={2}>
-                                      Supervisor
-                                    </option>
-                                    <option selected value={3}>
-                                      Consultant
-                                    </option>
-                                    <option selected value={4}>
-                                      User
-                                    </option>
-                                  </Form.Select>
-                                  <Row>
-                                    <Col lg={10}></Col>
-                                    <Col lg={2}>
+                                    <div className="mb-3">
+                                      <Form.Control
+                                        size="lg"
+                                        type="text"
+                                        placeholder="Phone number"
+                                        value={phone}
+                                        onChange={handleChangePhone}
+                                      />
+                                      <Form.Text
+                                        className="formText"
+                                        style={{ color: "red" }}
+                                      >
+                                        {errorPhone}
+                                      </Form.Text>
+                                    </div>
+
+                                    <Form.Select
+                                      id="nationality"
+                                      name="Filter"
+                                      value={role}
+                                      onChange={(e) => setRole(e.target.value)}
+                                    >
+                                      {" "}
+                                      <option value={1}>Super admin</option>
+                                      <option selected value={2}>
+                                        Supervisor
+                                      </option>
+                                      <option selected value={3}>
+                                        Consultant
+                                      </option>
+                                      <option selected value={4}>
+                                        User
+                                      </option>
+                                    </Form.Select>
+                                  </Form>
+                                  <Row className="d-flex justify-content-end">
+                                    <Col lg={8}></Col>
+                                    <Col lg={4}>
                                       <Button
-                                        onClick={handleChangeAdmin}
+                                        variant="danger"
+                                        className="buttonAdmin"
+                                        onClick={handleDelete}
+                                      >
+                                        <AiOutlineDelete size={20} />
+                                      </Button>
+                                      <Button
+                                        onClick={handleChangeAccount}
                                         variant="dark"
                                         className="buttonAdmin"
                                       >

@@ -1,11 +1,8 @@
 import { Modal, Row, Col, Form, Button } from "react-bootstrap";
 import { useState } from "react";
-
 import Swal from "sweetalert2";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 function ModalChangeAccount(props) {
-  const Navigate = useNavigate();
   const [user] = useState(props.user);
   const [nameUp, setNameUp] = useState(user?.name);
   const [emailUp, setEmailUp] = useState(user?.email);
@@ -57,10 +54,8 @@ function ModalChangeAccount(props) {
             text: "Change account success !",
             confirmButtonColor: "black",
           });
-          setEmailUp("");
-          setNameUp("");
-          setPhone("");
-          Navigate("/myaccount");
+
+          // Navigate("/myaccount");
           window.location.reload();
         })
         .catch(function (error) {

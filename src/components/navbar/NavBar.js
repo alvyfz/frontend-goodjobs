@@ -96,7 +96,7 @@ export default function NavBar({ home, complex, building, chat, myaccount }) {
                         to="/admin"
                         style={{ fontSize: "14px" }}
                       >
-                        MANAGEMENT ADMIN
+                        MANAGEMENT USER
                       </NavDropdown.Item>
                     ) : null}
                     <NavDropdown.Item
