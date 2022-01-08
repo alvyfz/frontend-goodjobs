@@ -91,24 +91,26 @@ const DetailReview = () => {
                     {review?.map((v, i) => {
                       return (
                         <>
-                          <Col lg={4}>
-                            <div className="cardReview">
-                              <p className="cardrating">
-                                {conversiValue(v.rating)} / 5
-                              </p>
-                              <Rating
-                                size={30}
-                                ratingValue={v?.rating}
-                                fillColor="#ccc62a"
-                                allowHover={false}
-                                readonly={true}
-                              />
-                            </div>
-                          </Col>
-                          <Col lg={8}>
-                            <p className="name-p">{v.user.name}</p>
-                            <p className="desc-p">{v.description}</p>
-                          </Col>
+                          <Row>
+                            <Col lg={4}>
+                              <div className="cardReview">
+                                <p className="cardrating">
+                                  {conversiValue(v.rating)} / 5
+                                </p>
+                                <Rating
+                                  size={30}
+                                  ratingValue={v?.rating}
+                                  fillColor="#ccc62a"
+                                  allowHover={false}
+                                  readonly={true}
+                                />
+                              </div>
+                            </Col>
+                            <Col lg={8}>
+                              <p className="name-p">{v.user.name}</p>
+                              <p className="desc-p">{v.description}</p>
+                            </Col>
+                          </Row>
                         </>
                       );
                     })}
