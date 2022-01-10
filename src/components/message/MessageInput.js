@@ -1,9 +1,13 @@
-import { TextField } from "@material-ui/core";
+import { TextareaAutosize } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { gql, useMutation } from "@apollo/client";
 import { useState } from "react"; 
 import { parseCookies } from "nookies";
 import jwt_decode from "jwt-decode";
+import "./Message.css"
+import { RiLoader4Line } from "react-icons/ri"
+import { BiSend, BiLoaderCircle } from "react-icons/bi";
+import { Button,Spinner, Row, Col } from "react-bootstrap";
 
 const InsertMessage = gql`
     mutation MyMutation($message: String!, $to: String!, $user_id: Int!, $user_name: String!) {
@@ -13,11 +17,13 @@ const InsertMessage = gql`
     }
     `;
     const useStyles = makeStyles((theme) => ({
+        inputChat: {
+            "&.MuiInputBase-input":{ height:"1px" }
+        },
     messageForm: {
         overflow: "hidden",
-        margin: "20px",
-        padding: "5px",
-        // paddingBottom: "5px",
+        margin: "5px",
+        paddingTop: "5px",
     },
     }));
 
@@ -39,13 +45,12 @@ const InsertMessage = gql`
             message     : message,
             };
         
-        const [insertM] = useMutation(InsertMessage, {
+        const [insertM, {loading}] = useMutation(InsertMessage, {
             variables: paramInsertMessage,
         });
         const handleSubmit = (e) => {
             e.preventDefault();
             insertM();
-            console.log("insertM", insertM);
             setMessage("");
         };
 
@@ -60,15 +65,27 @@ const InsertMessage = gql`
                 autoComplete="off"
                 onSubmit={handleSubmit}
             >
-                <TextField
-                id="input-message"
-                variant="outlined"
-                placeholder="type your message..."
-                fullWidth={true}
-                value={message}
-                onChange={onChange}
-                style={{ background: "#fff" }}
-                />
+                <Row>
+                    <Col lg={11} xs={10}>
+                        <TextareaAutosize
+                            inputProps={{className:classes.inputChat}}
+                            id="input-message"
+                            size="sm"
+                            placeholder="  Write a message..."
+                            minRows={1}
+                            required
+                            value={message}
+                            onChange={onChange}
+                            style={{ background: "#fff", padding: "4px 0  0 5px" , width: "100%", height:"28px" , fontSize:"12px", borderRadius:"5px"}}
+                        />
+                    </Col>
+                    <Col  lg={1} xs={2} style={{padding: "0px"}}>
+                        <Button size="sm" variant="awdasd" style={{padding:"0px", margin: 0}}>
+                            {loading?  <div className="loading-custom"></div> : <BiSend onClick={handleSubmit} size={27}/>}
+                        </Button>
+                    </Col>
+                    
+                </Row>
             </form>
             </div>
         );

@@ -1,6 +1,7 @@
 import { useParams } from "react-router";
+import { Spinner } from "react-bootstrap";
 import { gql, useSubscription } from "@apollo/client";
-import MessageBubble from "../../components/message/MessageBubble";
+import MessageBubble from "./MessageBubble";
 import { parseCookies } from "nookies";
 import jwt_decode from "jwt-decode";
 
@@ -29,10 +30,14 @@ const getMessage = gql`
         let paramGetMessage = {
             "user_id": user_id
         };
-        const { data: dataMessage } = useSubscription(getMessage, {
+        if (jwt.ID === 0 ){
+                    window.location.reload();
+
+        }
+        const { data: dataMessage, loading } = useSubscription(getMessage, {
             variables: paramGetMessage,
         });
-        
+
         
         
         setTimeout(() => {
@@ -44,18 +49,22 @@ const getMessage = gql`
 
         return (
             <div id ="chat-content"  >
-            {dataMessage?.chat.map((m) => {
-                return (
-                <div >
-                    <MessageBubble
-                    key={m.id}
-                    message={m}
-                    isMe={m.to === "admin"}
-                    dataMessage={dataMessage}
-                    ></MessageBubble>
-                </div>
-                );
-            })}
+                {loading ? <div id="spinner">
+                    <Spinner size="xs" animation="border" />
+                </div> : <>
+                            {dataMessage?.chat.map((m) => {
+                                return (
+                                <div >
+                                    <MessageBubble
+                                    key={m.id}
+                                    message={m}
+                                    isMe={m.to === "admin"}
+                                    dataMessage={dataMessage}
+                                    ></MessageBubble>
+                                </div>
+                                );
+                        })}
+                </> } 
             </div>
         );
 };

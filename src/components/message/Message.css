@@ -1,0 +1,55 @@
+
+.loading-custom{
+    border: 4px solid #333333;
+    border-radius: 50%;
+    border-top: 3px solid #ffffff;
+    width: 21px;
+    height: 21px;
+    -webkit-animation: spin 2s linear infinite; /* Safari */
+    animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+0% { transform: rotate(0deg); }
+100% { transform: rotate(360deg); }
+}
+
+#root-bubble {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-end;
+    padding: 0 16px 4px;
+    /* paddingLeft: (props) => (props.isMe ? 40px : 16px); */
+    margin-top: 40px;
+};
+
+
+#bubble-bubble {
+    position: relative;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
+    max-width: 100%;
+    min-width: 25%;
+    border-radius: 20px;
+};
+
+#timestamp-bubble {
+    position: absolute;
+    width: 100%;
+    font-size: 8px;
+    margin-top: 6px;
+    top: 100%;
+    left: 0;
+    white-space: nowrap;
+    color: #999;
+}

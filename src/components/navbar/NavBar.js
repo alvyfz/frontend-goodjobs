@@ -5,7 +5,9 @@ import { parseCookies, destroyCookie } from "nookies";
 import { BsChatSquareText } from "react-icons/bs";
 import Swal from "sweetalert2";
 import jwt_decode from "jwt-decode";
+import { useNavigate } from "react-router-dom";
 export default function NavBar({ home, complex, building, chat, myaccount }) {
+    const Navigate = useNavigate()
   const jwt = parseCookies("auth").auth;
   const jwtDefault =
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MCwicm9sZV9pZCI6MCwiZXhwIjoxNjQwNTIzODE1fQ.RTtmDJ2fXyxY4N9GXWJnH-beaFIuHsgUSF3hJHHRXqU";
@@ -19,6 +21,7 @@ export default function NavBar({ home, complex, building, chat, myaccount }) {
       text: "",
       confirmButtonColor: "black",
     });
+    Navigate("/")
     window.location.reload();
   };
 

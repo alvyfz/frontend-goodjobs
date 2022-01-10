@@ -18,9 +18,15 @@ import DetailReview from "./pages/review/DetailReview";
 import Account from "./pages/account/Account";
 import Admin from "./pages/account/admin";
 import Chat from "./pages/chat/Chat";
+import { parseCookies, destroyCookie } from "nookies";
+import jwt_decode from "jwt-decode";
 export default function App() {
   // let path = useLocation();
-
+  const auth = parseCookies("auth").auth;
+    const jwtDefault =
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MCwicm9sZV9pZCI6MCwiZXhwIjoxNjQwNTIzODE1fQ.RTtmDJ2fXyxY4N9GXWJnH-beaFIuHsgUSF3hJHHRXqU";
+    const jwt = jwt_decode(auth || jwtDefault);
+    const role_id = jwt.Role_ID;
   return (
     <>
       {/* {path.pathname === "/login" || "*" ? null : <NavBar />} */}
@@ -41,7 +47,7 @@ export default function App() {
         <Route path="/review" element={<DetailReview />} />
         <Route path="/myaccount" element={<Account />} />
         <Route path="/admin" element={<Admin />} />
-        <Route path="/chat" element={<Chat/>} />
+        {role_id === 1 || role_id === 2 || role_id === 3 ?  <Route path="/dalwdhn" element={<Chat/>} />:<Route path="/chat" element={<Chat/>} />}
         <Route path="*" element={<NotFound />} />
       </Routes>
       {/* {path.pathname === "/login" || "*" ? null : <Footer />} */}

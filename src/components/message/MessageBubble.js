@@ -26,22 +26,24 @@ const useStyles = makeStyles((theme) => ({
 
     bubble: {
         position: "relative",
+        fontSize: "12px",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
         padding: "12px",
         maxWidth: "100%",
+        minWidth: "25%",
         borderRadius: "20px",
-        backgroundColor: (props) => (props.isMe ? "#C4C4C4" : "#3c4252"),
-        color: (props) => (props.isMe ? "rgba(0,0,0,.87)" : "#fff"),
+        backgroundColor: (props) => (props.isMe ? "#333333" : "white"),
+        color: (props) => (props.isMe ? "white" : "black"),
         marginLeft: (props) => (props.isMe ? "auto" : "initial"),
     },
 
     timestamp: {
         position: "absolute",
         width: "100%",
-        fontSize: "11px",
-        marginTop: "8px",
+        fontSize: "8px",
+        marginTop: "6px",
         top: "100%",
         left: "0",
         whiteSpace: "nowrap",
@@ -53,12 +55,11 @@ const useStyles = makeStyles((theme) => ({
     const MessageBubble = (props) => {
     const classes = useStyles(props);
     const { isMe, message, dataMessage } = props;
-        console.log(message)
     return (
         <div className={classes.root}>
         <div className={classes.bubble}>
             <div>{message.message}</div>
-            <DropDown  id={message.id} dataMessage={dataMessage} />
+            {/* <DropDown  id={message.id} dataMessage={dataMessage} /> */}
             <div className={classes.timestamp}>
             {moment(message.created_at).calendar()}
             </div>
