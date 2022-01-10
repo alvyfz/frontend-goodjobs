@@ -14,11 +14,12 @@ import NavBar from "../../components/navbar/NavBar";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
-import { parseCookies, destroyCookie } from "nookies";
+import { parseCookies } from "nookies";
 import jwt_decode from "jwt-decode";
 import Swal from "sweetalert2";
 import Footer from "../../components/footer/Footer";
 import { BiSearch } from "react-icons/bi";
+import LeftMenu from "../../components/menu/LeftMenu";
 
 const AdminEdit = () => {
   const Navigate = useNavigate();
@@ -40,18 +41,6 @@ const AdminEdit = () => {
   const [validPhone, setValidPhone] = useState(true);
   const nameRegex = /^[a-zA-Z\s]{2,40}$/;
   const phoneRegex = /^[0-9]{9,12}$/;
-
-  const handleLogout = () => {
-    destroyCookie(null, "auth");
-    Swal.fire({
-      icon: "success",
-      title: "Logout success!",
-      text: "",
-      confirmButtonColor: "black",
-    });
-    Navigate("/");
-    window.location.reload();
-  };
 
   if (!role_id) {
     Navigate("/");
@@ -95,31 +84,6 @@ const AdminEdit = () => {
         });
       });
   };
-  // const handleChangeAdmin = (e) => {
-  //   e.preventDefault();
-  //   axios
-  //     .put(`http://13.213.57.122:8080/user/${user.id}`, {
-  //       name: user.name,
-  //       email: user.email.toLowerCase(),
-  //       phone: user.phone,
-  //       roles_id: parseInt(role),
-  //     })
-  //     .then(function (response) {
-  //       Swal.fire({
-  //         icon: "success",
-  //         title: "Good",
-  //         text: "Change role success !",
-  //         confirmButtonColor: "black",
-  //       });
-  //     })
-  //     .catch(function (error) {
-  //       Swal.fire({
-  //         icon: "error",
-  //         title: "Oops...",
-  //         text: "Something wrong!",
-  //       });
-  //     });
-  // };
   const handleChangePhone = (e) => {
     setPhone(e.target.value);
     if (!phoneRegex.test(e.target.value)) {
@@ -243,38 +207,7 @@ const AdminEdit = () => {
               <Col lg={8}>
                 <Row>
                   <Col lg={4}>
-                    <Container className="con-fitur">
-                      <Row className="row-fitur listrowacc">
-                        <p className="nameLeft">{jwt?.Name}</p>
-                        <Row className="barLeft" as={Link} to="/chat">
-                          <p>Chat</p>
-                        </Row>{" "}
-                        <Row className="barLeft" as={Link} to="/myaccount">
-                          <p>My account</p>
-                        </Row>
-                        <Row
-                          className="barLeft"
-                          as={Link}
-                          to="/management-user"
-                        >
-                          <p>Management user</p>
-                        </Row>
-                        <Row
-                          className="barLeft"
-                          as={Link}
-                          to="/management-review"
-                        >
-                          <p>Management review</p>
-                        </Row>
-                        <Row
-                          className="barLeftLog"
-                          as="button"
-                          onClick={handleLogout}
-                        >
-                          <p>Log out</p>
-                        </Row>
-                      </Row>
-                    </Container>
+                    <LeftMenu />
                   </Col>
                   <Col lg={8}>
                     {" "}

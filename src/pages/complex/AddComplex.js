@@ -49,6 +49,7 @@ const AddComplex = () => {
           setName("");
           setImages([]);
           setAddres("");
+          Navigate(-1);
         })
         .catch(function (error) {
           Swal.fire({
