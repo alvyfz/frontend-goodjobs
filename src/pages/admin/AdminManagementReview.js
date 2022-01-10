@@ -1,4 +1,12 @@
-import { Container, Row, Col, Spinner, Form, Table } from "react-bootstrap";
+import {
+  Container,
+  Row,
+  Col,
+  Spinner,
+  Form,
+  Table,
+  Button,
+} from "react-bootstrap";
 import Paginations from "../../components/pagination/Paginations";
 import "./Admin.css";
 import NotFound from "../error/NotFound";
@@ -11,32 +19,32 @@ import jwt_decode from "jwt-decode";
 import Swal from "sweetalert2";
 import Footer from "../../components/footer/Footer";
 import Error500 from "../../components/error/Error500";
-const AdminManagementUser = () => {
+const AdminManagementReview = () => {
   const Navigate = useNavigate();
   const auth = parseCookies("auth").auth;
   const jwtDefault =
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MCwicm9sZV9pZCI6MCwiZXhwIjoxNjQwNTIzODE1fQ.RTtmDJ2fXyxY4N9GXWJnH-beaFIuHsgUSF3hJHHRXqU";
   const jwt = jwt_decode(auth || jwtDefault);
   const role_id = jwt.Role_ID;
-  const [user, setUser] = useState();
+  const [review, setReview] = useState();
   const [isLoading, setIsLoading] = useState(false);
   const [text, settext] = useState();
   const [filtered, setFiltered] = useState([]);
   const [isError, setIsError] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const [cardsPerPage] = useState(10);
+  const [cardsPerPage] = useState(8);
 
   useEffect(() => {
     setIsLoading(true);
     var option = {
       method: "GET",
-      url: "http://13.213.57.122:8080/users",
+      url: "http://13.213.57.122:8080/reviews",
     };
 
     axios
       .request(option)
       .then(function (response) {
-        setUser(response.data.data);
+        setReview(response.data.data);
         setIsLoading(false);
       })
       .catch(function (error) {
@@ -47,12 +55,12 @@ const AdminManagementUser = () => {
 
   useEffect(() => {
     if (text) {
-      var filter = user?.filter((v) => {
+      var filter = review?.filter((v) => {
         if (
-          v?.name.toLowerCase().includes(text?.toLowerCase()) ||
-          v?.email.toLowerCase().includes(text?.toLowerCase()) ||
-          v?.phone.toLowerCase().includes(text?.toLowerCase()) ||
-          String(v?.id).includes(text?.toLowerCase())
+          v?.description.toLowerCase().includes(text?.toLowerCase()) ||
+          String(v?.rating).includes(text?.toLowerCase()) ||
+          String(v?.user_id).includes(text?.toLowerCase()) ||
+          String(v?.building_id).includes(text?.toLowerCase())
         ) {
           return true;
         } else {
@@ -61,9 +69,9 @@ const AdminManagementUser = () => {
       });
       setFiltered(filter);
     } else {
-      setFiltered(user);
+      setFiltered(review);
     }
-  }, [text, user]);
+  }, [text, review]);
   if (!role_id) {
     Navigate("/");
   }
@@ -84,22 +92,44 @@ const AdminManagementUser = () => {
     Navigate("/");
     window.location.reload();
   };
-  const funcRole = (id) => {
-    if (id === 1) {
-      return "Super admin";
-    } else if (id === 2) {
-      return "Supervisor";
-    } else if (id === 3) {
-      return "Consultant";
-    } else if (id === 4) {
-      return "User";
-    }
-  };
+
   const indexOfLastPost = currentPage * cardsPerPage;
   const indexOfFirstPost = indexOfLastPost - cardsPerPage;
   const currentCards = filtered?.slice(indexOfFirstPost, indexOfLastPost);
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
+  };
+  const handleDelete = (id) => {
+    Swal.fire({
+      title: `Do you want to delete this review ?`,
+      showCancelButton: true,
+      cancelButtonColor: "#DDDDDD",
+      confirmButtonColor: "#A9333A",
+      confirmButtonText: "Delete",
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        var options = {
+          method: "DELETE",
+          url: `http://13.213.57.122:8080/review/${id}`,
+        };
+        axios
+          .request(options)
+          .then(function (response) {
+            Swal.fire(`Delete review success!`, "", "success");
+            window.location.reload();
+          })
+          .catch(function (error) {
+            Swal.fire({
+              icon: "error",
+              title: "Oops...",
+              text: "Something went wrong!",
+            });
+          });
+      } else if (result.isDenied) {
+        Swal.fire("Changes are not saved", "", "info");
+      }
+    });
   };
   return (
     <>
@@ -107,12 +137,12 @@ const AdminManagementUser = () => {
       <NavBar />
       <Container fluid className="conheader">
         <div className="textheader">
-          <h1 style={{ fontWeight: "700" }}>MANAGEMENT USER</h1>
+          <h1 style={{ fontWeight: "700" }}>MANAGEMENT REVIEW</h1>
           <h3>
             <Link className="spanhome" to="/">
               <span>HOME / </span>
             </Link>{" "}
-            <span className="spancon">MANAGEMENT USER</span>
+            <span className="spancon">MANAGEMENT REVIEW</span>
           </h3>
         </div>
       </Container>
@@ -137,6 +167,13 @@ const AdminManagementUser = () => {
                         </Row>{" "}
                         <Row className="barLeft" as={Link} to="/myaccount">
                           <p>My account</p>
+                        </Row>{" "}
+                        <Row
+                          className="barLeft"
+                          as={Link}
+                          to="/management-user"
+                        >
+                          <p>Management user</p>
                         </Row>
                         <Row
                           className="barLeft"
@@ -145,13 +182,6 @@ const AdminManagementUser = () => {
                         >
                           <p>Change user</p>
                         </Row>{" "}
-                        <Row
-                          className="barLeft"
-                          as={Link}
-                          to="/management-review"
-                        >
-                          <p>Management review</p>
-                        </Row>
                         <Row
                           className="barLeftLog"
                           as="button"
@@ -173,7 +203,7 @@ const AdminManagementUser = () => {
                             <Form.Control
                               value={text}
                               type="text"
-                              placeholder="Seach user by id, name , email or phone number"
+                              placeholder="Seach building id, user id , rating or description"
                               variant="light"
                               onChange={(e) => settext(e.target.value)}
                               required
@@ -196,11 +226,11 @@ const AdminManagementUser = () => {
                               <Table responsive striped bordered size="sm">
                                 <thead>
                                   <tr>
-                                    <th>ID</th>
-                                    <th>EMAIL</th>
-                                    <th>NAME</th>
-                                    <th>PHONE</th>
-                                    <th>ROLE</th>
+                                    <th>BUILDING ID</th>
+                                    <th>USER ID</th>
+                                    <th>RATING</th>
+                                    <th>DESCRIPTION</th>
+                                    <th>ACTION</th>
                                   </tr>
                                 </thead>
                                 <tbody>
@@ -208,11 +238,19 @@ const AdminManagementUser = () => {
                                     return (
                                       <>
                                         <tr>
-                                          <td>{v?.id}</td>
-                                          <td>{v?.email}</td>
-                                          <td>{v?.name}</td>
-                                          <td>{v?.phone}</td>
-                                          <td>{funcRole(v?.role_id)}</td>
+                                          <td>{v?.building_id}</td>
+                                          <td>{v?.user_id}</td>
+                                          <td>{v?.rating}</td>
+                                          <td>{v?.description}</td>
+                                          <td>
+                                            <Button
+                                              variant="sada"
+                                              className="buttondelete"
+                                              onClick={() => handleDelete(v.id)}
+                                            >
+                                              Delete
+                                            </Button>
+                                          </td>
                                         </tr>
                                       </>
                                     );
@@ -234,7 +272,9 @@ const AdminManagementUser = () => {
                           </>
                         ) : (
                           <>
-                            <h3 className="userNotFound">User not found :(</h3>
+                            <h3 className="userNotFound">
+                              Review not found :(
+                            </h3>
                           </>
                         )}
                       </Row>
@@ -251,4 +291,4 @@ const AdminManagementUser = () => {
     </>
   );
 };
-export default AdminManagementUser;
+export default AdminManagementReview;

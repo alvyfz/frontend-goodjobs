@@ -12,6 +12,9 @@
 tbody {
   font-size: 14px;
 }
+thead {
+  font-size: 14px;
+}
 .height400px {
   height: 90%;
 }
@@ -25,3 +28,8 @@ tbody {
 /* .conmanUser {
   height: 800px;
 } */
+.buttondelete {
+  color: red;
+  font-size: 14px;
+  padding: 0;
+}

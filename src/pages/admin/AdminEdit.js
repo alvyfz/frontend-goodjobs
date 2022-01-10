@@ -260,6 +260,13 @@ const AdminEdit = () => {
                           <p>Management user</p>
                         </Row>
                         <Row
+                          className="barLeft"
+                          as={Link}
+                          to="/management-review"
+                        >
+                          <p>Management review</p>
+                        </Row>
+                        <Row
                           className="barLeftLog"
                           as="button"
                           onClick={handleLogout}
