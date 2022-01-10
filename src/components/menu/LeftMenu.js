@@ -39,11 +39,11 @@ export default function LeftMenu() {
               <Row className="barLeft" as={Link} to="/management/user">
                 <p>Management user</p>
               </Row>{" "}
-              <Row className="barLeft" as={Link} to="/management/review">
-                <p>Management review</p>
-              </Row>
               <Row className="barLeft" as={Link} to="/management/building">
                 <p>Management building</p>
+              </Row>{" "}
+              <Row className="barLeft" as={Link} to="/management/review">
+                <p>Management review</p>
               </Row>
               <Row className="barLeft" as={Link} to="/management/user/edit">
                 <p>Change user</p>

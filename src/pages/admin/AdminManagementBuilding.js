@@ -61,10 +61,10 @@ const AdminManagementBuilding = () => {
     if (text) {
       var filter = building?.filter((v) => {
         if (
-          v?.description.toLowerCase().includes(text?.toLowerCase()) ||
-          String(v?.rating).includes(text?.toLowerCase()) ||
-          String(v?.user_id).includes(text?.toLowerCase()) ||
-          String(v?.building_id).includes(text?.toLowerCase())
+          v?.name.toLowerCase().includes(text?.toLowerCase()) ||
+          v?.complex.name.toLowerCase().includes(text?.toLowerCase()) ||
+          String(v?.id).includes(text?.toLowerCase()) ||
+          String(v?.complex_id).includes(text?.toLowerCase())
         ) {
           return true;
         } else {
@@ -148,12 +148,12 @@ const AdminManagementBuilding = () => {
       <NavBar />
       <Container fluid className="conheader">
         <div className="textheader">
-          <h1 style={{ fontWeight: "700" }}>MANAGEMENT REVIEW</h1>
+          <h1 style={{ fontWeight: "700" }}>MANAGEMENT BUILDING</h1>
           <h3>
             <Link className="spanhome" to="/">
               <span>HOME / </span>
             </Link>{" "}
-            <span className="spancon">MANAGEMENT REVIEW</span>
+            <span className="spancon">MANAGEMENT BUILDING</span>
           </h3>
         </div>
       </Container>
@@ -179,24 +179,15 @@ const AdminManagementBuilding = () => {
                       <Row className="row-fitur listrowacc ">
                         <Form onSubmit={""}>
                           <Row>
-                            {/* <InputGroup> */}
                             <Form.Control
                               value={text}
                               type="text"
-                              placeholder="Seach building id, user id , rating or description"
+                              placeholder="Seach id, name, complex id , or complex name"
                               variant="light"
                               onChange={(e) => settext(e.target.value)}
                               required
                               className="inputSearch"
                             />
-                            {/* <Button
-                                variant="dark"
-                                type="submit"
-                                className="buttonSearch"
-                              >
-                                <BiSearch size={20} />
-                              </Button>{" "}
-                            </InputGroup> */}
                           </Row>{" "}
                         </Form>
                         <br />

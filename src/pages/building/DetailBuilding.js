@@ -15,7 +15,7 @@ import {
 } from "react-bootstrap";
 import Error500 from "../../components/error/Error500";
 import "./DetailBuilding.css";
-import CardUnit from "../../components/card/CardUnit";
+
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import NotFound from "../error/NotFound";
@@ -25,6 +25,7 @@ import { Rating } from "react-simple-star-rating";
 import GMaps from "../../components/gmaps/GMaps";
 import Swal from "sweetalert2";
 import Footer from "../../components/footer/Footer";
+import CardUnit from "../../components/card/CardUnit";
 
 const DetailBuilding = () => {
   const auth = parseCookies("auth").auth;
@@ -48,7 +49,6 @@ const DetailBuilding = () => {
   const [valueArea, setValueArea] = useState();
   const [review, setReview] = useState();
   const [avgReview, setAvgReview] = useState(0);
-
   const [messageRating, setMessageRating] = useState("No Reviews");
   useEffect(() => {
     setIsLoading(true);

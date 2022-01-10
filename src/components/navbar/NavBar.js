@@ -1,11 +1,12 @@
 import { Navbar, Container, Nav, NavDropdown } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Brand from "../brand/BrandWhiteNavbar";
 import { parseCookies, destroyCookie } from "nookies";
 import { BsChatSquareText } from "react-icons/bs";
 import Swal from "sweetalert2";
 import jwt_decode from "jwt-decode";
 export default function NavBar({ home, complex, building, chat, myaccount }) {
+  const Navigate = useNavigate();
   const jwt = parseCookies("auth").auth;
   const jwtDefault =
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MCwicm9sZV9pZCI6MCwiZXhwIjoxNjQwNTIzODE1fQ.RTtmDJ2fXyxY4N9GXWJnH-beaFIuHsgUSF3hJHHRXqU";
@@ -19,6 +20,7 @@ export default function NavBar({ home, complex, building, chat, myaccount }) {
       text: "",
       confirmButtonColor: "black",
     });
+    Navigate("/");
     window.location.reload();
   };
 
@@ -94,24 +96,31 @@ export default function NavBar({ home, complex, building, chat, myaccount }) {
                       <>
                         <NavDropdown.Item
                           as={Link}
-                          to="/management-user"
+                          to="/management/user"
                           style={{ fontSize: "14px" }}
                         >
                           MANAGEMENT USER
                         </NavDropdown.Item>
                         <NavDropdown.Item
                           as={Link}
-                          to="/management-user-edit"
+                          to="/management/building"
                           style={{ fontSize: "14px" }}
                         >
-                          CHANGE USER
+                          MANAGEMENT BUILDING
                         </NavDropdown.Item>
                         <NavDropdown.Item
                           as={Link}
-                          to="/management-review"
+                          to="/management/review"
                           style={{ fontSize: "14px" }}
                         >
                           MANAGEMENT REVIEW
+                        </NavDropdown.Item>
+                        <NavDropdown.Item
+                          as={Link}
+                          to="/management/user/edit"
+                          style={{ fontSize: "14px" }}
+                        >
+                          CHANGE USER
                         </NavDropdown.Item>
                       </>
                     ) : null}
