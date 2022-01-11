@@ -18,6 +18,7 @@ import DetailReview from "./pages/review/DetailReview";
 import Account from "./pages/account/Account";
 import AdminEdit from "./pages/admin/AdminEdit";
 import AdminManagementUser from "./pages/admin/AdminManagementUser";
+import AdminManagementReview from "./pages/admin/AdminManagementReview";
 export default function App() {
   // let path = useLocation();
 
@@ -42,6 +43,8 @@ export default function App() {
         <Route path="/myaccount" element={<Account />} />
         <Route path="/management-user-edit" element={<AdminEdit />} />
         <Route path="/management-user" element={<AdminManagementUser />} />
+        <Route path="/management-review" element={<AdminManagementReview />} />
+
         <Route path="*" element={<NotFound />} />
       </Routes>
       {/* {path.pathname === "/login" || "*" ? null : <Footer />} */}

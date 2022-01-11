@@ -106,6 +106,13 @@ export default function NavBar({ home, complex, building, chat, myaccount }) {
                         >
                           CHANGE USER
                         </NavDropdown.Item>
+                        <NavDropdown.Item
+                          as={Link}
+                          to="/management-review"
+                          style={{ fontSize: "14px" }}
+                        >
+                          MANAGEMENT REVIEW
+                        </NavDropdown.Item>
                       </>
                     ) : null}
                     <NavDropdown.Item

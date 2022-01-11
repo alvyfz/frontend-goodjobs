@@ -119,6 +119,13 @@ const Account = () => {
                             >
                               <p>Change user</p>
                             </Row>{" "}
+                            <Row
+                              className="barLeft"
+                              as={Link}
+                              to="/management-review"
+                            >
+                              <p>Management review</p>
+                            </Row>
                           </>
                         ) : null}
                         <Row
