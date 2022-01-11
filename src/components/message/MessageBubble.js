@@ -34,6 +34,7 @@ const useStyles = makeStyles((theme) => ({
         maxWidth: "100%",
         minWidth: "25%",
         borderRadius: "20px",
+        border: "1px solid #333333",
         backgroundColor: (props) => (props.isMe ? "#333333" : "white"),
         color: (props) => (props.isMe ? "white" : "black"),
         marginLeft: (props) => (props.isMe ? "auto" : "initial"),

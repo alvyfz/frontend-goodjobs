@@ -47,7 +47,7 @@ export default function App() {
         <Route path="/review" element={<DetailReview />} />
         <Route path="/myaccount" element={<Account />} />
         <Route path="/admin" element={<Admin />} />
-        {role_id === 1 || role_id === 2 || role_id === 3 ?  <Route path="/dalwdhn" element={<Chat/>} />:<Route path="/chat" element={<Chat/>} />}
+        <Route path="/chat" element={ role_id === 1 || role_id === 2 || role_id === 3 ? <Home/> : <Chat/>} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       {/* {path.pathname === "/login" || "*" ? null : <Footer />} */}
