@@ -10,7 +10,6 @@ import {
 } from "react-bootstrap";
 import { AiOutlineDelete } from "react-icons/ai";
 import NotFound from "../error/NotFound";
-import "./Account.css";
 import NavBar from "../../components/navbar/NavBar";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
@@ -21,7 +20,7 @@ import Swal from "sweetalert2";
 import Footer from "../../components/footer/Footer";
 import { BiSearch } from "react-icons/bi";
 
-const Admin = () => {
+const AdminEdit = () => {
   const Navigate = useNavigate();
   const auth = parseCookies("auth").auth;
   const jwtDefault =
@@ -222,12 +221,12 @@ const Admin = () => {
 
       <Container fluid className="conheader">
         <div className="textheader">
-          <h1 style={{ fontWeight: "700" }}>MANAGEMENT USER</h1>
+          <h1 style={{ fontWeight: "700" }}>CHANGE USER</h1>
           <h3>
             <Link className="spanhome" to="/">
               <span>HOME / </span>
             </Link>{" "}
-            <span className="spancon">MANAGEMENT USER</span>
+            <span className="spancon">CHANGE USER</span>
           </h3>
         </div>
       </Container>
@@ -252,6 +251,13 @@ const Admin = () => {
                         </Row>{" "}
                         <Row className="barLeft" as={Link} to="/myaccount">
                           <p>My account</p>
+                        </Row>
+                        <Row
+                          className="barLeft"
+                          as={Link}
+                          to="/management-user"
+                        >
+                          <p>Management user</p>
                         </Row>
                         <Row
                           className="barLeftLog"
@@ -407,4 +413,4 @@ const Admin = () => {
     </>
   );
 };
-export default Admin;
+export default AdminEdit;

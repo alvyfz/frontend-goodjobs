@@ -91,13 +91,22 @@ export default function NavBar({ home, complex, building, chat, myaccount }) {
                       MY ACCOUNT
                     </NavDropdown.Item>{" "}
                     {user?.Role_ID === 1 ? (
-                      <NavDropdown.Item
-                        as={Link}
-                        to="/admin"
-                        style={{ fontSize: "14px" }}
-                      >
-                        MANAGEMENT USER
-                      </NavDropdown.Item>
+                      <>
+                        <NavDropdown.Item
+                          as={Link}
+                          to="/management-user"
+                          style={{ fontSize: "14px" }}
+                        >
+                          MANAGEMENT USER
+                        </NavDropdown.Item>
+                        <NavDropdown.Item
+                          as={Link}
+                          to="/management-user-edit"
+                          style={{ fontSize: "14px" }}
+                        >
+                          CHANGE USER
+                        </NavDropdown.Item>
+                      </>
                     ) : null}
                     <NavDropdown.Item
                       onClick={handleLogout}

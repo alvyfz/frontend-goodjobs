@@ -104,9 +104,22 @@ const Account = () => {
                           <p>Chat</p>
                         </Row>
                         {role_id === 1 ? (
-                          <Row className="barLeft" as={Link} to="/admin">
-                            <p>Management admin</p>
-                          </Row>
+                          <>
+                            <Row
+                              className="barLeft"
+                              as={Link}
+                              to="/management-user"
+                            >
+                              <p>Management user</p>
+                            </Row>
+                            <Row
+                              className="barLeft"
+                              as={Link}
+                              to="/management-user-edit"
+                            >
+                              <p>Change user</p>
+                            </Row>{" "}
+                          </>
                         ) : null}
                         <Row
                           className="barLeftLog"

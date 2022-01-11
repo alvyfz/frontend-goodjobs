@@ -1,0 +1,27 @@
+.buttonSearch {
+  height: 35px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  font-size: 15px;
+}
+.inputSearch {
+  height: 35px;
+  margin: 5px 12px 10px 12px;
+  width: 96%;
+}
+tbody {
+  font-size: 14px;
+}
+.height400px {
+  height: 90%;
+}
+.tablesUser {
+  min-height: 350px;
+}
+.userNotFound {
+  text-align: center;
+  padding: 160px 100px;
+}
+/* .conmanUser {
+  height: 800px;
+} */
