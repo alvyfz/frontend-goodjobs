@@ -11,7 +11,7 @@ import Swal from "sweetalert2";
 import BrandChat from "../../components/brand/BrandChat";
 import {MdVerifiedUser} from "react-icons/md"
 
-const Chat = () => {
+const ChatAdmin = () => {
     const Navigate = useNavigate();
     const auth = parseCookies("auth").auth;
     const jwtDefault =
@@ -115,4 +115,4 @@ const Chat = () => {
     );
 };
 
-export default Chat
+export default ChatAdmin
