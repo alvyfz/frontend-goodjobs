@@ -6,7 +6,7 @@ import { IoIosArrowBack } from "react-icons/io";
 import { useNavigate, useLocation } from "react-router-dom";
 
 import { useState } from "react";
-// import { FiEdit } from "react-icons/fi";
+import { FiEdit } from "react-icons/fi";
 import { GrClose } from "react-icons/gr";
 import { parseCookies } from "nookies";
 import jwt_decode from "jwt-decode";
@@ -145,40 +145,39 @@ const AddBuilding = () => {
     }
   };
   // console.log(images);
-  // const handleChangeUpdateImage = (img) => (e) => {
-  //   const imageUpdate = e.target.files[0];
-  //   if (imageUpdate) {
-  //     const uploadTask = storage
-  //       .ref(`complex/${imageUpdate.name}`)
-  //       .put(imageUpdate);
-  //     uploadTask.on(
-  //       "state_change",
-  //       (snapshot) => {},
-  //       (error) => {
-  //         Swal.fire({
-  //           icon: "error",
-  //           title: "Oops...",
-  //           text: "Something Wrong :( !",
-  //         });
-  //       },
-  //       () => {
-  //         storage
-  //           .ref("complex")
-  //           .child(imageUpdate.name)
-  //           .getDownloadURL()
-  //           .then((url) => {
-  //             images.map((v, i) => {
-  //               if (v === img) {
-  //                 let newArr = [...images];
-  //                 newArr[i] = url;
-  //                 setImages(newArr);
-  //               }
-  //             });
-  //           });
-  //       }
-  //     );
-  //   }
-  // };
+  //funtion nya
+  const handleChangeUpdateImage = (index) => (e) => {
+    const imageUpdate = e.target.files[0];
+    console.log("e", e);
+    console.log("index", index);
+    if (imageUpdate) {
+      const uploadTask = storage
+        .ref(`complex/${imageUpdate.name}`)
+        .put(imageUpdate);
+      uploadTask.on(
+        "state_change",
+        (snapshot) => {},
+        (error) => {
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Something Wrong :( !",
+          });
+        },
+        () => {
+          storage
+            .ref("complex")
+            .child(imageUpdate.name)
+            .getDownloadURL()
+            .then((url) => {
+              let newArr = [...images];
+              newArr[index] = url;
+              setImages(newArr);
+            });
+        }
+      );
+    }
+  };
   const handleRemove = (image) => {
     var newArray = images.filter((item) => item !== image);
     setImages(newArray);
@@ -446,13 +445,13 @@ const AddBuilding = () => {
                                 >
                                   <GrClose color="white" />
                                 </Button>{" "}
-                                {/* <br />
+                                <br />
                                 <input
                                   type="file"
                                   id="fileeee"
                                   className="fileeee"
                                   accept="image/*"
-                                  onChange={handleChangeUpdateImage(image)}
+                                  onChange={handleChangeUpdateImage(index)}
                                 />
                                 <Button
                                   style={{
@@ -469,7 +468,7 @@ const AddBuilding = () => {
                                       }}
                                     />
                                   </label>
-                                </Button> */}
+                                </Button>
                               </Card.ImgOverlay>
                             </Card>
                           </div>
