@@ -6,11 +6,11 @@ import NavBar from "../../components/navbar/NavBar";
 import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { parseCookies, destroyCookie } from "nookies";
+import { parseCookies } from "nookies";
 import jwt_decode from "jwt-decode";
-import Swal from "sweetalert2";
 import Footer from "../../components/footer/Footer";
 import Error500 from "../../components/error/Error500";
+import LeftMenu from "../../components/menu/LeftMenu";
 const AdminManagementUser = () => {
   const Navigate = useNavigate();
   const auth = parseCookies("auth").auth;
@@ -73,17 +73,7 @@ const AdminManagementUser = () => {
   if (isError) {
     <Error500 />;
   }
-  const handleLogout = () => {
-    destroyCookie(null, "auth");
-    Swal.fire({
-      icon: "success",
-      title: "Logout success!",
-      text: "",
-      confirmButtonColor: "black",
-    });
-    Navigate("/");
-    window.location.reload();
-  };
+
   const funcRole = (id) => {
     if (id === 1) {
       return "Super admin";
@@ -129,38 +119,7 @@ const AdminManagementUser = () => {
                 <Row>
                   {" "}
                   <Col lg={4}>
-                    <Container className="con-fitur">
-                      <Row className="row-fitur listrowacc">
-                        <p className="nameLeft">{jwt?.Name}</p>
-                        <Row className="barLeft" as={Link} to="/chat">
-                          <p>Chat</p>
-                        </Row>{" "}
-                        <Row className="barLeft" as={Link} to="/myaccount">
-                          <p>My account</p>
-                        </Row>
-                        <Row
-                          className="barLeft"
-                          as={Link}
-                          to="/management-user-edit"
-                        >
-                          <p>Change user</p>
-                        </Row>{" "}
-                        <Row
-                          className="barLeft"
-                          as={Link}
-                          to="/management-review"
-                        >
-                          <p>Management review</p>
-                        </Row>
-                        <Row
-                          className="barLeftLog"
-                          as="button"
-                          onClick={handleLogout}
-                        >
-                          <p>Log out</p>
-                        </Row>
-                      </Row>
-                    </Container>
+                    <LeftMenu />
                   </Col>
                   <Col lg={8}>
                     {" "}
@@ -169,7 +128,6 @@ const AdminManagementUser = () => {
                       <Row className="row-fitur listrowacc ">
                         <Form onSubmit={""}>
                           <Row>
-                            {/* <InputGroup> */}
                             <Form.Control
                               value={text}
                               type="text"
@@ -179,14 +137,6 @@ const AdminManagementUser = () => {
                               required
                               className="inputSearch"
                             />
-                            {/* <Button
-                                variant="dark"
-                                type="submit"
-                                className="buttonSearch"
-                              >
-                                <BiSearch size={20} />
-                              </Button>{" "}
-                            </InputGroup> */}
                           </Row>{" "}
                         </Form>
                         <br />

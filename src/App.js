@@ -19,6 +19,7 @@ import Account from "./pages/account/Account";
 import AdminEdit from "./pages/admin/AdminEdit";
 import AdminManagementUser from "./pages/admin/AdminManagementUser";
 import AdminManagementReview from "./pages/admin/AdminManagementReview";
+import AdminManagementBuilding from "./pages/admin/AdminManagementBuilding";
 export default function App() {
   // let path = useLocation();
 
@@ -41,9 +42,13 @@ export default function App() {
         <Route path="/unit/detail" element={<DetailUnit />} />
         <Route path="/review" element={<DetailReview />} />
         <Route path="/myaccount" element={<Account />} />
-        <Route path="/management-user-edit" element={<AdminEdit />} />
-        <Route path="/management-user" element={<AdminManagementUser />} />
-        <Route path="/management-review" element={<AdminManagementReview />} />
+        <Route path="/management/user/edit" element={<AdminEdit />} />
+        <Route path="/management/user" element={<AdminManagementUser />} />
+        <Route path="/management/review" element={<AdminManagementReview />} />
+        <Route
+          path="/management/building"
+          element={<AdminManagementBuilding />}
+        />
 
         <Route path="*" element={<NotFound />} />
       </Routes>

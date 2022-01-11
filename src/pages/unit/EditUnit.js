@@ -105,6 +105,7 @@ const EditUnit = () => {
           setDescription("");
           setSize("");
           setPrice("");
+          Navigate(-1);
         })
         .catch(function (error) {
           Swal.fire({

@@ -7,9 +7,16 @@ import { Container, Spinner, Row, Col, Image, Button } from "react-bootstrap";
 import NotFound from "../error/NotFound";
 import Footer from "../../components/footer/Footer";
 import { IoIosArrowBack } from "react-icons/io";
-
+import { parseCookies } from "nookies";
+import jwt_decode from "jwt-decode";
+import Swal from "sweetalert2";
 const DetailUnit = () => {
   const Navigate = useNavigate();
+  const auth = parseCookies("auth").auth;
+  const jwtDefault =
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MCwicm9sZV9pZCI6MCwiZXhwIjoxNjQwNTIzODE1fQ.RTtmDJ2fXyxY4N9GXWJnH-beaFIuHsgUSF3hJHHRXqU";
+  const jwt = jwt_decode(auth || jwtDefault);
+  const role_id = jwt.Role_ID;
   const { search } = useLocation();
   const query = new URLSearchParams(search);
   const idUnit = parseInt(query.get("key"));
@@ -53,7 +60,26 @@ const DetailUnit = () => {
       minimumFractionDigits: 0,
     }).format(price);
   };
-
+  const handleEnquired = () => {
+    if (!role_id) {
+      Swal.fire({
+        title: `Sorry, you have to login first !`,
+        showCancelButton: true,
+        cancelButtonColor: "#DDDDDD",
+        confirmButtonColor: "black",
+        confirmButtonText: "Login?",
+      }).then((result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+          Navigate(`/login`);
+        } else if (result.isDenied) {
+          Swal.fire("Changes are not saved", "", "info");
+        }
+      });
+    } else {
+      Navigate(`/chat?key=${idUnit}`);
+    }
+  };
   return (
     <>
       <NavBar building={true} />
@@ -137,8 +163,7 @@ const DetailUnit = () => {
                       <Button
                         className="buttonenquire"
                         variant="dark"
-                        as={Link}
-                        to={`/chat?key=${unit?.id}`}
+                        onClick={handleEnquired}
                       >
                         ENQUIRE
                       </Button>
