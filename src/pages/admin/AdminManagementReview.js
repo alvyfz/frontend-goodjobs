@@ -28,7 +28,7 @@ const AdminManagementReview = () => {
   const auth = parseCookies("auth").auth;
   const jwtDefault =
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MCwicm9sZV9pZCI6MCwiZXhwIjoxNjQwNTIzODE1fQ.RTtmDJ2fXyxY4N9GXWJnH-beaFIuHsgUSF3hJHHRXqU";
-  const jwt = jwt_decode(base64.decode(auth) || jwtDefault);
+  const jwt = jwt_decode(auth ? base64.decode(auth) : null || jwtDefault);
   const role_id = jwt.Role_ID;
   const [review, setReview] = useState();
   const [isLoading, setIsLoading] = useState(false);

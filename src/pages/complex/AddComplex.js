@@ -21,7 +21,7 @@ const AddComplex = () => {
   const auth = parseCookies("auth").auth;
   const jwtDefault =
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MCwicm9sZV9pZCI6MCwiZXhwIjoxNjQwNTIzODE1fQ.RTtmDJ2fXyxY4N9GXWJnH-beaFIuHsgUSF3hJHHRXqU";
-  const jwt = jwt_decode(base64.decode(auth) || jwtDefault);
+  const jwt = jwt_decode(auth ? base64.decode(auth) : null || jwtDefault);
   const role_id = jwt.Role_ID;
 
   if (role_id !== 1 && role_id !== 2) {

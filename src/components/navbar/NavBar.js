@@ -11,7 +11,7 @@ export default function NavBar({ home, complex, building, chat, myaccount }) {
   const jwt = parseCookies("auth").auth;
   const jwtDefault =
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MCwicm9sZV9pZCI6MCwiZXhwIjoxNjQwNTIzODE1fQ.RTtmDJ2fXyxY4N9GXWJnH-beaFIuHsgUSF3hJHHRXqU";
-  const user = jwt_decode(base64.decode(jwt) || jwtDefault);
+  const user = jwt_decode(jwt ? base64.decode(jwt) : null || jwtDefault);
 
   const handleLogout = () => {
     destroyCookie(null, "auth");
