@@ -33,6 +33,7 @@ const useStyles = makeStyles(() => ({
         maxWidth: '100%',
         minWidth: '25%',
         borderRadius: '20px',
+        wordBreak: 'break-word',
         border: '1px solid #333333',
         backgroundColor: (props) =>
             props.isMe ? '#333333' : 'white',

@@ -56,9 +56,12 @@ const MessageList = (props) => {
                     style={{
                         backgroundColor: `${
                             userId === user?.user_id
-                                ? 'gray'
+                                ? '#EFEFEF'
                                 : 'transparent'
                         }`,
+                        border: '2px solid #E5E5E5',
+                        borderRadius: '15px',
+                        margin: '5px',
                     }}
                 >
                     <ListItemText primary={user?.user_name} />
