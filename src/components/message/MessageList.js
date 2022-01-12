@@ -10,8 +10,10 @@ const GetHistoryUniqueUser = gql`
     subscription MySubscription {
         chat(distinct_on: user_id, where: { to: { _eq: "admin" } }) {
             id
+            message
             user_name
             user_id
+            created_at
         }
     }
 `;
@@ -28,45 +30,55 @@ const useStyles = makeStyles((theme) => ({
 
 const MessageList = (props) => {
     const classes = useStyles(props);
-    const { setUserId, userId } = props;
+    const { setUser, user } = props;
     const { data: dataUsers, loading } = useSubscription(
         GetHistoryUniqueUser,
     );
     useEffect(() => {
         if (dataUsers?.chat?.length > 0) {
-            setUserId(dataUsers?.chat[0]?.user_id);
+            setUser(dataUsers?.chat[0]);
         }
     }, [dataUsers?.chat]);
-
+    console.log('dari list', user);
     return (
         <>
-            {loading && (
-                <div id="spinner">
-                    <Spinner size="xs" animation="border" />
+            {loading ? (
+                <div id="spinner" style={{ margin: 'auto' }}>
+                    <Spinner animation="border" />
                 </div>
+            ) : (
+                <>
+                    {' '}
+                    {dataUsers?.chat?.map((v) => (
+                        <div
+                            key={v?.user_id}
+                            className={classes.root}
+                            onClick={() => {
+                                setUser(v);
+                            }}
+                            style={{
+                                backgroundColor: `${
+                                    user.user_id === v?.user_id
+                                        ? '#333333'
+                                        : 'transparent'
+                                }`,
+                                color: `${
+                                    user.user_id === v?.user_id
+                                        ? 'white'
+                                        : 'black'
+                                }`,
+
+                                border: '3px solid #E5E5E5',
+                                borderRadius: '20px',
+                                margin: '5px',
+                            }}
+                        >
+                            <div> {v?.user_name}</div>
+                            <div>{v?.message}</div>
+                        </div>
+                    ))}{' '}
+                </>
             )}
-            {dataUsers?.chat?.map((user) => (
-                <ListItem
-                    button
-                    key={user?.user_id}
-                    className={classes.root}
-                    onClick={() => {
-                        setUserId(user?.user_id);
-                    }}
-                    style={{
-                        backgroundColor: `${
-                            userId === user?.user_id
-                                ? '#EFEFEF'
-                                : 'transparent'
-                        }`,
-                        border: '2px solid #E5E5E5',
-                        borderRadius: '15px',
-                        margin: '5px',
-                    }}
-                >
-                    <ListItemText primary={user?.user_name} />
-                </ListItem>
-            ))}
         </>
     );
 };

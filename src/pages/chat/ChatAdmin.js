@@ -6,11 +6,10 @@ import { Link, useNavigate } from 'react-router-dom';
 import { parseCookies, destroyCookie } from 'nookies';
 import jwt_decode from 'jwt-decode';
 import Message from '../../components/message/Message';
-import MessageInput from '../../components/message/MessageInput';
+import MessageInputAdmin from '../../components/message/MessageInputAdmin';
 import Swal from 'sweetalert2';
 import BrandChat from '../../components/brand/BrandChat';
 import { MdVerifiedUser } from 'react-icons/md';
-import LeftMenu from '../../components/menu/LeftMenu';
 import MessageList from '../../components/message/MessageList';
 import { useState } from 'react';
 
@@ -20,7 +19,6 @@ const ChatAdmin = () => {
     const jwtDefault =
         'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MCwicm9sZV9pZCI6MCwiZXhwIjoxNjQwNTIzODE1fQ.RTtmDJ2fXyxY4N9GXWJnH-beaFIuHsgUSF3hJHHRXqU';
     const jwt = jwt_decode(auth || jwtDefault);
-    const role_id = jwt.Role_ID;
     // useEffect(() => {
     //    if(!parseCookies("auth").auth){
     //        Navigate("/")
@@ -47,7 +45,9 @@ const ChatAdmin = () => {
         Navigate('/');
     }
 
-    const [userId, setUserId] = useState(null);
+    // const [userId, setUserId] = useState(null);
+    const [user, setUser] = useState(null);
+    console.log('ini dari chat admin', user);
 
     return (
         <>
@@ -70,12 +70,24 @@ const ChatAdmin = () => {
                         <Row className="justify-content-center">
                             <Col lg={4}>
                                 <Row>
-                                    <Container className="con-fitur ">
-                                        <Row className="row-fitur listrowacc">
-                                            <div>Contact List</div>
+                                    <Container
+                                        className="con-fitur "
+                                        style={{
+                                            padding: '20px',
+                                            height: '621px',
+                                        }}
+                                    >
+                                        <div className="contactlist">
+                                            Contact List
+                                        </div>
+                                        <hr className="hrChat" />
+
+                                        <Row className="row-fitur listrowacc containerScroll ">
                                             <MessageList
-                                                setUserId={setUserId}
-                                                userId={userId}
+                                                // setUserId={setUserId}
+                                                // userId={userId}
+                                                setUser={setUser}
+                                                user={user}
                                             />
                                         </Row>
                                     </Container>
@@ -94,15 +106,16 @@ const ChatAdmin = () => {
 
                                     <Row className="row-fitur containerScroll">
                                         <Message
-                                            userId={userId}
+                                            userId={user.user_id}
                                             isAdmin
                                         ></Message>
                                     </Row>
                                     <Col>
-                                        <MessageInput
+                                        <MessageInputAdmin
                                             isAdmin
-                                            userId={userId}
-                                        ></MessageInput>
+                                            user={user}
+                                            // userName={}
+                                        ></MessageInputAdmin>
                                     </Col>
                                 </Container>
                             </Col>

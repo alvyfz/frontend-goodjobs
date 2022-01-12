@@ -30,7 +30,7 @@ const useStyles = makeStyles(() => ({
         alignItems: 'center',
         justifyContent: 'center',
         padding: '12px',
-        maxWidth: '100%',
+        maxWidth: '90%',
         minWidth: '25%',
         borderRadius: '20px',
         wordBreak: 'break-word',
