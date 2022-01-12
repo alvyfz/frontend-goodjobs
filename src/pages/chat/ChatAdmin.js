@@ -5,13 +5,13 @@ import './Chat.css';
 import { Link, useNavigate } from 'react-router-dom';
 import { parseCookies, destroyCookie } from 'nookies';
 import jwt_decode from 'jwt-decode';
-import Message from '../../components/message/Message';
 import MessageInputAdmin from '../../components/message/MessageInputAdmin';
 import Swal from 'sweetalert2';
 import BrandChat from '../../components/brand/BrandChat';
 import { MdVerifiedUser } from 'react-icons/md';
 import MessageList from '../../components/message/MessageList';
 import { useState } from 'react';
+import MessageAdmin from '../../components/message/MessageAdmin';
 
 const ChatAdmin = () => {
     const Navigate = useNavigate();
@@ -26,17 +26,6 @@ const ChatAdmin = () => {
     //     }
     // }, [])
 
-    const handleLogout = () => {
-        destroyCookie(null, 'auth');
-        Swal.fire({
-            icon: 'success',
-            title: 'Logout success!',
-            text: '',
-            confirmButtonColor: 'black',
-        });
-        Navigate('/');
-        window.location.reload();
-    };
     // if (role_id === 0){
     //     window.location.reload();
     // }
@@ -105,17 +94,12 @@ const ChatAdmin = () => {
                                     </Row>
 
                                     <Row className="row-fitur containerScroll">
-                                        <Message
-                                            userId={user.user_id}
-                                            isAdmin
-                                        ></Message>
+                                        <MessageAdmin user={user} />
                                     </Row>
                                     <Col>
                                         <MessageInputAdmin
-                                            isAdmin
                                             user={user}
-                                            // userName={}
-                                        ></MessageInputAdmin>
+                                        />
                                     </Col>
                                 </Container>
                             </Col>

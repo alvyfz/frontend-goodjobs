@@ -50,11 +50,9 @@ const MessageInput = ({ isAdmin, userId }) => {
     const [message, setMessage] = useState('');
     let paramInsertMessage = {};
     paramInsertMessage = {
-        // user_id: isAdmin ? 58 : user_id?.toString(),
-        user_id: user_id?.toString(),
+        user_id: user_id,
         user_name: user_name,
         to: 'admin',
-        // to: isAdmin && userId ? userId?.toString() : 'admin',
         message: message,
     };
 

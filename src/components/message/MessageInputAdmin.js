@@ -39,25 +39,21 @@ const useStyles = makeStyles(() => ({
     },
 }));
 
-const MessageInput = ({ isAdmin, user }) => {
+const MessageInputAdmin = ({ user }) => {
     const auth = parseCookies('auth').auth;
     const jwtDefault =
         'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MCwicm9sZV9pZCI6MCwiZXhwIjoxNjQwNTIzODE1fQ.RTtmDJ2fXyxY4N9GXWJnH-beaFIuHsgUSF3hJHHRXqU';
     const jwt = jwt_decode(auth || jwtDefault);
-    const user_id = jwt.ID;
-    const user_name = jwt.Name;
+
     const classes = useStyles();
     const [message, setMessage] = useState('');
     let paramInsertMessage = {};
     paramInsertMessage = {
-        // user_id: isAdmin ? 58 : user_id?.toString(),
-        user_id: user?.user_id.toString(),
-        user_name: user?.user_name,
-        to: user?.user_id,
-        // to: isAdmin && userId ? userId?.toString() : 'admin',
+        user_id: parseInt(user?.user_id),
+        user_name: user?.user_name.toString(),
+        to: user?.user_id.toString(),
         message: message,
     };
-    console.log('ini dari input admin', user);
     const [insertM, { loading }] = useMutation(InsertMessage, {
         variables: paramInsertMessage,
     });
@@ -66,7 +62,6 @@ const MessageInput = ({ isAdmin, user }) => {
         insertM();
         setMessage('');
     };
-
     const onChange = (e) => {
         setMessage(e.target.value);
     };
@@ -122,4 +117,4 @@ const MessageInput = ({ isAdmin, user }) => {
         </div>
     );
 };
-export default MessageInput;
+export default MessageInputAdmin;

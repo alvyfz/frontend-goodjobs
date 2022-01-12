@@ -19,14 +19,14 @@ const getMessage = gql`
     }
 `;
 
-const Message = () => {
+const MessageAdmin = ({ user }) => {
     const auth = parseCookies('auth').auth;
     const jwtDefault =
         'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MCwicm9sZV9pZCI6MCwiZXhwIjoxNjQwNTIzODE1fQ.RTtmDJ2fXyxY4N9GXWJnH-beaFIuHsgUSF3hJHHRXqU';
     const jwt = jwt_decode(auth || jwtDefault);
-    const user_id = jwt.ID;
+
     let paramGetMessage = {
-        user_id: user_id,
+        user_id: user?.user_id,
     };
     if (jwt.ID === 0) {
         window.location.reload();
@@ -45,7 +45,6 @@ const Message = () => {
             scroll.scrollTop = scroll.scrollHeight;
         }
     }, 200);
-
     return (
         <div id="chat-content">
             {loading ? (
@@ -56,7 +55,7 @@ const Message = () => {
                 <>
                     {dataMessage?.chat.map((m) => {
                         return (
-                            <div key={m.id}>
+                            <div key={m?.id}>
                                 {/* {m.to === 'admin' ? (
                                     <p>Admin : {m.Message}</p>
                                 ) : (
@@ -64,12 +63,14 @@ const Message = () => {
                                         {m?.user_name} : {m.Message}
                                     </p>
                                 )} */}
-
                                 <MessageBubble
                                     message={m}
-                                    isMe={m.to === 'admin'}
+                                    isMe={
+                                        m?.to ===
+                                        user?.user_id.toString()
+                                    }
                                     dataMessage={dataMessage}
-                                ></MessageBubble>
+                                />
                             </div>
                         );
                     })}
@@ -78,4 +79,4 @@ const Message = () => {
         </div>
     );
 };
-export default Message;
+export default MessageAdmin;

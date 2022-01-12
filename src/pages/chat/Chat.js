@@ -26,17 +26,7 @@ const Chat = () => {
     //     }
     // }, [])
 
-    const handleLogout = () => {
-        destroyCookie(null, 'auth');
-        Swal.fire({
-            icon: 'success',
-            title: 'Logout success!',
-            text: '',
-            confirmButtonColor: 'black',
-        });
-        Navigate('/');
-        window.location.reload();
-    };
+    
     // if (role_id === 0){
     //     window.location.reload();
     // }

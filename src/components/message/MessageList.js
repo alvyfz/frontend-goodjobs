@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
 
 const MessageList = (props) => {
     const classes = useStyles(props);
-    const { setUser, user } = props;
+    const { user, setUser } = props;
     const { data: dataUsers, loading } = useSubscription(
         GetHistoryUniqueUser,
     );
@@ -58,12 +58,12 @@ const MessageList = (props) => {
                             }}
                             style={{
                                 backgroundColor: `${
-                                    user.user_id === v?.user_id
+                                    user?.user_id === v?.user_id
                                         ? '#333333'
                                         : 'transparent'
                                 }`,
                                 color: `${
-                                    user.user_id === v?.user_id
+                                    user?.user_id === v?.user_id
                                         ? 'white'
                                         : 'black'
                                 }`,
