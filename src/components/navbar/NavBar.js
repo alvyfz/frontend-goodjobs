@@ -5,12 +5,13 @@ import { parseCookies, destroyCookie } from "nookies";
 import { BsChatSquareText } from "react-icons/bs";
 import Swal from "sweetalert2";
 import jwt_decode from "jwt-decode";
+import base64 from "base-64";
 export default function NavBar({ home, complex, building, chat, myaccount }) {
   const Navigate = useNavigate();
   const jwt = parseCookies("auth").auth;
   const jwtDefault =
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MCwicm9sZV9pZCI6MCwiZXhwIjoxNjQwNTIzODE1fQ.RTtmDJ2fXyxY4N9GXWJnH-beaFIuHsgUSF3hJHHRXqU";
-  const user = jwt_decode(jwt || jwtDefault);
+  const user = jwt_decode(base64.decode(jwt) || jwtDefault);
 
   const handleLogout = () => {
     destroyCookie(null, "auth");

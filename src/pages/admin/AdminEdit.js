@@ -20,13 +20,14 @@ import Swal from "sweetalert2";
 import Footer from "../../components/footer/Footer";
 import { BiSearch } from "react-icons/bi";
 import LeftMenu from "../../components/menu/LeftMenu";
+import base64 from "base-64";
 
 const AdminEdit = () => {
   const Navigate = useNavigate();
   const auth = parseCookies("auth").auth;
   const jwtDefault =
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MCwicm9sZV9pZCI6MCwiZXhwIjoxNjQwNTIzODE1fQ.RTtmDJ2fXyxY4N9GXWJnH-beaFIuHsgUSF3hJHHRXqU";
-  const jwt = jwt_decode(auth || jwtDefault);
+  const jwt = jwt_decode(base64.decode(auth) || jwtDefault);
   const role_id = jwt.Role_ID;
   const [text, settext] = useState();
   const [user, setUser] = useState();

@@ -3,13 +3,14 @@ import { Link, useNavigate } from "react-router-dom";
 import { parseCookies, destroyCookie } from "nookies";
 import jwt_decode from "jwt-decode";
 import Swal from "sweetalert2";
+import base64 from "base-64";
 
 export default function LeftMenu() {
   const Navigate = useNavigate();
   const auth = parseCookies("auth").auth;
   const jwtDefault =
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MCwicm9sZV9pZCI6MCwiZXhwIjoxNjQwNTIzODE1fQ.RTtmDJ2fXyxY4N9GXWJnH-beaFIuHsgUSF3hJHHRXqU";
-  const jwt = jwt_decode(auth || jwtDefault);
+  const jwt = jwt_decode(base64.decode(auth) || jwtDefault);
   const role_id = jwt.Role_ID;
   const handleLogout = () => {
     destroyCookie(null, "auth");

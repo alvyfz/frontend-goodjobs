@@ -25,7 +25,6 @@ const Home = () => {
       .then(function (response) {
         setbuilding(response.data.data);
         setIsLoading(false);
-        console.log(building);
       })
       .catch(function (error) {
         setIsError(true);

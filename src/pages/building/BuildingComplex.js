@@ -15,12 +15,13 @@ import jwt_decode from "jwt-decode";
 import { MdOutlineAddCircleOutline } from "react-icons/md";
 import Footer from "../../components/footer/Footer";
 import NotFound from "../error/NotFound";
+import base64 from "base-64";
 
 const BuildingComplex = () => {
   const auth = parseCookies("auth").auth;
   const jwtDefault =
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MCwicm9sZV9pZCI6MCwiZXhwIjoxNjQwNTIzODE1fQ.RTtmDJ2fXyxY4N9GXWJnH-beaFIuHsgUSF3hJHHRXqU";
-  const jwt = jwt_decode(auth || jwtDefault);
+  const jwt = jwt_decode(base64.decode(auth) || jwtDefault);
   const role_id = jwt.Role_ID;
   const { search } = useLocation();
   const query = new URLSearchParams(search);
@@ -70,7 +71,6 @@ const BuildingComplex = () => {
     setCurrentPage(pageNumber);
     setCurrentPages(pageNumber);
   };
-  console.log(jwt);
   return (
     <>
       <NavBar complex={true} />

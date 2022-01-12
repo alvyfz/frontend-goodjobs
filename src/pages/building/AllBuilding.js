@@ -11,12 +11,13 @@ import Footer from "../../components/footer/Footer";
 import Paginations from "../../components/pagination/Paginations";
 import { parseCookies } from "nookies";
 import jwt_decode from "jwt-decode";
+import base64 from "base-64";
 
 const AllBuilding = () => {
   const auth = parseCookies("auth").auth;
   const jwtDefault =
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MCwicm9sZV9pZCI6MCwiZXhwIjoxNjQwNTIzODE1fQ.RTtmDJ2fXyxY4N9GXWJnH-beaFIuHsgUSF3hJHHRXqU";
-  const jwt = jwt_decode(auth || jwtDefault);
+  const jwt = jwt_decode(base64.decode(auth) || jwtDefault);
   const role_id = jwt.Role_ID;
   const [building, setBuilding] = useState();
   const [isLoading, setIsLoading] = useState(false);
