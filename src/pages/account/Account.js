@@ -5,12 +5,12 @@ import NavBar from "../../components/navbar/NavBar";
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { parseCookies, destroyCookie } from "nookies";
+import { parseCookies } from "nookies";
 import jwt_decode from "jwt-decode";
 import Error500 from "../../components/error/Error500";
-import Swal from "sweetalert2";
 import Footer from "../../components/footer/Footer";
 import ModalChangeAccount from "../../components/modal/ModalChangeAccount";
+import LeftMenu from "../../components/menu/LeftMenu";
 const Account = () => {
   const Navigate = useNavigate();
   const auth = parseCookies("auth").auth;
@@ -52,17 +52,7 @@ const Account = () => {
       setRole("User");
     }
   }, []);
-  const handleLogout = () => {
-    destroyCookie(null, "auth");
-    Swal.fire({
-      icon: "success",
-      title: "Logout success!",
-      text: "",
-      confirmButtonColor: "black",
-    });
-    Navigate("/");
-    window.location.reload();
-  };
+  
   if (isError) {
     <Error500 />;
   }
@@ -97,26 +87,7 @@ const Account = () => {
               <Col lg={8}>
                 <Row>
                   <Col lg={4}>
-                    <Container className="con-fitur">
-                      <Row className="row-fitur listrowacc">
-                        <p className="nameLeft">{user?.name}</p>
-                        <Row className="barLeft" as={Link} to="/chat">
-                          <p>Chat</p>
-                        </Row>
-                        {role_id === 1 ? (
-                          <Row className="barLeft" as={Link} to="/admin">
-                            <p>Management admin</p>
-                          </Row>
-                        ) : null}
-                        <Row
-                          className="barLeftLog"
-                          as="button"
-                          onClick={handleLogout}
-                        >
-                          <p>Log out</p>
-                        </Row>
-                      </Row>
-                    </Container>
+                    <LeftMenu />
                   </Col>
                   <Col lg={8}>
                     {" "}

@@ -91,6 +91,7 @@ const AddBuilding = () => {
           setSunday("");
           setToilet("");
           setSize("");
+          Navigate(-1)
         })
         .catch(function (error) {
           Swal.fire({

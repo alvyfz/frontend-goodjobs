@@ -318,9 +318,15 @@ export default function Error500() {
           </svg>
         </div>
         <div class="text">
-          <h1>500 Error</h1>
+          <h1>Error</h1>
           <h3>Couldn't launch :(</h3>
-          <h2>INTERNAL SERVER ERROR</h2>
+          <h2>
+            SOMETHING WRONG YOUR CONNECTION
+            <br />
+            OR
+            <br />
+            OUR INTERNAL SERVER ERROR
+          </h2>
         </div>
       </body>
     </>

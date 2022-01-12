@@ -71,6 +71,27 @@ export default function CardUnit({
       }
     });
   };
+  const handleEnquired = () => {
+    if (!role_id) {
+      Swal.fire({
+        title: `Sorry, you have to login first !`,
+        showCancelButton: true,
+        cancelButtonColor: "#DDDDDD",
+        confirmButtonColor: "black",
+        confirmButtonText: "Login?",
+      }).then((result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+          Navigate(`/login`);
+        } else if (result.isDenied) {
+          Swal.fire("Changes are not saved", "", "info");
+        }
+      });
+    } else {
+      Navigate(`/chat?key=${id}`);
+    }
+  };
+
   return (
     <>
       <Card
@@ -137,19 +158,18 @@ export default function CardUnit({
                 className="justify-content-center"
                 style={{ padding: "20px 0px 20px 0px" }}
               >
-                {" "}
                 <Button
-                  as={Link}
-                  to={`/chat?key=${id}`}
-                  variant="dark"
                   style={{
                     width: "80%",
                     textAlign: "center",
                     fontSize: "11px",
                   }}
+                  variant="dark"
+                  as={Link}
+                  to={`chat?key=${id}`}
                 >
                   ENQUIRE
-                </Button>{" "}
+                </Button>
                 <Button
                   as={Link}
                   to={`/unit/detail?key=${id}&b=${buildingName}`}
@@ -187,8 +207,8 @@ export default function CardUnit({
               >
                 {" "}
                 <Button
-                  as={Link}
-                  to={`chat?key=${id}`}
+                  as="button"
+                  onClick={handleEnquired}
                   variant="dark"
                   style={{
                     width: "80%",

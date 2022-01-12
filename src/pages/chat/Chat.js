@@ -10,6 +10,7 @@ import Message from "../../components/message/Message";
 import Swal from "sweetalert2";
 import BrandChat from "../../components/brand/BrandChat";
 import {MdVerifiedUser} from "react-icons/md"
+import LeftMenu from "../../components/menu/LeftMenu";
 
 const Chat = () => {
     const Navigate = useNavigate();
@@ -63,23 +64,7 @@ const Chat = () => {
                     <Col lg={8}>
                         <Row className="justify-content-center">
                     <Col lg={4}>
-                        <Row>
-                        <Container className="con-fitur ">
-                            <Row className="row-fitur listrowacc">
-                                <p className="nameLeft">{jwt.Name}</p>
-                                <Row className="barLeft" as={Link} to="/myaccount">
-                                    <p>My Account</p>
-                                    </Row>
-                                    <Row
-                                    className="barLeftLog"
-                                    as="button"
-                                    onClick={handleLogout}
-                                    >
-                                        <p>Log out</p>
-                                    </Row>
-                                </Row>
-                        </Container>
-                        </Row>
+                        <LeftMenu/>
                     </Col>
                     <Col lg={6}>
                     
