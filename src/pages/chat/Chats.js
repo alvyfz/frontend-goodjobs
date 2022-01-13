@@ -8,13 +8,14 @@ import jwt_decode from 'jwt-decode';
 import Chat from './Chat';
 import ChatAdmin from './ChatAdmin';
 import NotFound from '../error/NotFound';
+import base64 from "base-64";
 
 const Chats = () => {
     const Navigate = useNavigate();
     const auth = parseCookies('auth').auth;
     const jwtDefault =
         'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MCwicm9sZV9pZCI6MCwiZXhwIjoxNjQwNTIzODE1fQ.RTtmDJ2fXyxY4N9GXWJnH-beaFIuHsgUSF3hJHHRXqU';
-    const jwt = jwt_decode(auth || jwtDefault);
+    const jwt = jwt_decode(auth ? base64.decode(auth) : null  || jwtDefault);
     const role_id = jwt.Role_ID;
     if (role_id === 0) {
         <NotFound />;

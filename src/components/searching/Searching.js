@@ -6,7 +6,6 @@ export default function Searching() {
   const Navigate = useNavigate();
   const [filter, setfilter] = useState("building");
   const [text, settext] = useState();
-  console.log(text);
   const handleSearching = () => {
     Navigate(`/search?key=${text}&filter=${filter}`);
     setfilter("");

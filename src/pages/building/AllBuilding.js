@@ -11,12 +11,13 @@ import Footer from "../../components/footer/Footer";
 import Paginations from "../../components/pagination/Paginations";
 import { parseCookies } from "nookies";
 import jwt_decode from "jwt-decode";
+import base64 from "base-64";
 
 const AllBuilding = () => {
   const auth = parseCookies("auth").auth;
   const jwtDefault =
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MCwicm9sZV9pZCI6MCwiZXhwIjoxNjQwNTIzODE1fQ.RTtmDJ2fXyxY4N9GXWJnH-beaFIuHsgUSF3hJHHRXqU";
-  const jwt = jwt_decode(auth || jwtDefault);
+  const jwt = jwt_decode(auth ? base64.decode(auth) : null || jwtDefault);
   const role_id = jwt.Role_ID;
   const [building, setBuilding] = useState();
   const [isLoading, setIsLoading] = useState(false);
@@ -47,13 +48,7 @@ const AllBuilding = () => {
   useEffect(() => {
     window.scrollTo(0, 390);
   }, [currentPages]);
-  if (isLoading) {
-    return (
-      <div id="spinner">
-        <Spinner animation="border" />
-      </div>
-    );
-  }
+
   if (isError) {
     return <Error500 />;
   }
@@ -68,63 +63,74 @@ const AllBuilding = () => {
     <>
       <NavBar building={true} />
       <Searching />
-      <Container fluid className="complexcon">
-        {" "}
-        <div className="title">
-          <Row>
-            <Col lg={2}></Col>
-            <Col lg={3}>
-              <h3>
-                <Link className="spanhome" to="/">
-                  <span>HOME</span>{" "}
-                </Link>
-                <span className="spancon"> / ALL BUILDING</span>
-              </h3>
-            </Col>
-          </Row>
-        </div>
-        <Row>
-          <Col lg={2}></Col>
-          <Col lg={8}>
+      {isLoading ? (
+        <>
+          {" "}
+          <div id="spinner">
+            <Spinner animation="border" />
+          </div>
+        </>
+      ) : (
+        <>
+          <Container fluid className="complexcon">
+            {" "}
+            <div className="title">
+              <Row>
+                <Col lg={2}></Col>
+                <Col lg={3}>
+                  <h3>
+                    <Link className="spanhome" to="/">
+                      <span>HOME</span>{" "}
+                    </Link>
+                    <span className="spancon"> / ALL BUILDING</span>
+                  </h3>
+                </Col>
+              </Row>
+            </div>
             <Row>
-              {currentCards?.map((v, i) => {
-                return (
-                  <Col
-                    lg={4}
-                    md={6}
-                    sm={12}
-                    key={v.id}
-                    className="allbuildingcard"
-                  >
-                    <CardBuilding
-                      role_id={role_id}
-                      img={JSON.parse(v.img)[0]}
-                      name={v.name}
-                      price={v.pricestart}
-                      id={v.id}
-                      complex={v.complex.name}
-                    />{" "}
-                  </Col>
-                );
-              })}
+              <Col lg={2}></Col>
+              <Col lg={8}>
+                <Row>
+                  {currentCards?.map((v, i) => {
+                    return (
+                      <Col
+                        lg={4}
+                        md={6}
+                        sm={12}
+                        key={v.id}
+                        className="allbuildingcard"
+                      >
+                        <CardBuilding
+                          role_id={role_id}
+                          img={JSON.parse(v.img)[0]}
+                          name={v.name}
+                          price={v.pricestart}
+                          id={v.id}
+                          complex={v.complex.name}
+                        />{" "}
+                      </Col>
+                    );
+                  })}
+                </Row>
+              </Col>
+              <Col lg={2}> </Col>
             </Row>
-          </Col>
-          <Col lg={2}> </Col>
-        </Row>
-        <Row className="justify-content-center">
-          <Col md={1}>
-            <Paginations
-              className="paginationStyle"
-              totalCards={building?.length}
-              cardsPerPage={cardsPerPage}
-              paginate={paginate}
-              active={currentPage}
-            />
-          </Col>
-        </Row>
-      </Container>
+            <Row className="justify-content-center">
+              <Col md={1}>
+                <Paginations
+                  className="paginationStyle"
+                  totalCards={building?.length}
+                  cardsPerPage={cardsPerPage}
+                  paginate={paginate}
+                  active={currentPage}
+                />
+              </Col>
+            </Row>
+          </Container>
 
-      <Footer />
+          <Footer />
+        </>
+      )}
     </>
   );
 };

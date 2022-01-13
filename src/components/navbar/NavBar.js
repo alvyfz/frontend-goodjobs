@@ -4,7 +4,7 @@ import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import { BsChatSquareText } from 'react-icons/bs';
 import { Link, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
-
+import base64 from 'base-64';
 import Brand from '../brand/BrandWhiteNavbar';
 export default function NavBar({
     home,
@@ -17,8 +17,9 @@ export default function NavBar({
     const jwt = parseCookies('auth').auth;
     const jwtDefault =
         'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MCwicm9sZV9pZCI6MCwiZXhwIjoxNjQwNTIzODE1fQ.RTtmDJ2fXyxY4N9GXWJnH-beaFIuHsgUSF3hJHHRXqU';
-    const user = jwt_decode(jwt || jwtDefault);
-
+    const user = jwt_decode(
+        jwt ? base64.decode(jwt) : null || jwtDefault,
+    );
     const handleLogout = () => {
         destroyCookie(null, 'auth');
         Swal.fire({

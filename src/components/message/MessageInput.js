@@ -8,6 +8,7 @@ import { parseCookies } from 'nookies';
 import { useState } from 'react';
 import { Button, Col, Row } from 'react-bootstrap';
 import { BiSend } from 'react-icons/bi';
+import base64 from 'base-64';
 
 const InsertMessage = gql`
     mutation MyMutation(
@@ -43,7 +44,9 @@ const MessageInput = ({ isAdmin, userId }) => {
     const auth = parseCookies('auth').auth;
     const jwtDefault =
         'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MCwicm9sZV9pZCI6MCwiZXhwIjoxNjQwNTIzODE1fQ.RTtmDJ2fXyxY4N9GXWJnH-beaFIuHsgUSF3hJHHRXqU';
-    const jwt = jwt_decode(auth || jwtDefault);
+    const jwt = jwt_decode(
+        auth ? base64.decode(auth) : null || jwtDefault,
+    );
     const user_id = jwt.ID;
     const user_name = jwt.Name;
     const classes = useStyles();
@@ -99,7 +102,7 @@ const MessageInput = ({ isAdmin, userId }) => {
                             }}
                         />
                     </Col>
-                    <Col lg={1} xs={2} style={{ padding: '0px' }}>
+                    <Col lg={1} xs={1} style={{ padding: '0px' }}>
                         <Button
                             size="sm"
                             variant="awdasd"

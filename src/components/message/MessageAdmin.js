@@ -39,7 +39,7 @@ const MessageAdmin = ({ user }) => {
     return (
         <div id="chat-content">
             {loading ? (
-                <div id="spinner" style={{ marginTop: '240px' }}>
+                <div id="spinner" style={{ marginTop: '255px' }}>
                     <Spinner size="xs" animation="border" />
                 </div>
             ) : (

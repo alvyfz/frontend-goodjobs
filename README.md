@@ -20,8 +20,7 @@ goodJobs is an web-based platform to rent office spaces across Jakarta. goodjobs
 * Manage complex -> building ->Unit data
 * Manage customer data
 * Manage building review from customer
-* Manage area and nearby facilities
-* For superadmin: manage user
+* Manage nearby facilities by map
 
 ## Prototype
 

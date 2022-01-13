@@ -4,6 +4,7 @@ import { parseCookies } from 'nookies';
 import { Spinner } from 'react-bootstrap';
 
 import MessageBubble from './MessageBubble';
+import base64 from 'base-64';
 
 const getMessage = gql`
     subscription MySubscription($user_id: Int!) {
@@ -23,7 +24,9 @@ const Message = () => {
     const auth = parseCookies('auth').auth;
     const jwtDefault =
         'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MCwicm9sZV9pZCI6MCwiZXhwIjoxNjQwNTIzODE1fQ.RTtmDJ2fXyxY4N9GXWJnH-beaFIuHsgUSF3hJHHRXqU';
-    const jwt = jwt_decode(auth || jwtDefault);
+    const jwt = jwt_decode(
+        auth ? base64.decode(auth) : null || jwtDefault,
+    );
     const user_id = jwt.ID;
     let paramGetMessage = {
         user_id: user_id,

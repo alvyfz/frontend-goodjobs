@@ -16,7 +16,7 @@ import Brand from "../../components/brand/Brand";
 import Swal from "sweetalert2";
 import { setCookie } from "nookies";
 import { BiShow, BiHide } from "react-icons/bi";
-
+import base64 from "base-64";
 const Login = () => {
   const navigate = useNavigate();
   const [key, setKey] = useState("signin");
@@ -53,7 +53,7 @@ const Login = () => {
         password: passwordIn,
       })
       .then(function (response) {
-        const auth = response.data.data.token;
+        const auth = base64.encode(response.data.data.token);
         setCookie(null, "auth", auth, {
           maxAge: 3 * 60 * 60,
           // encode: (val = "gatau") => val,

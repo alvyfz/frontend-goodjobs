@@ -13,7 +13,7 @@ const Chat = () => {
                 <Col lg={4}>
                     <LeftMenu />
                 </Col>
-                <Col lg={6}>
+                <Col lg={8}>
                     <Container className="con-fitur ">
                         <Row className="brandChat">
                             <Col>

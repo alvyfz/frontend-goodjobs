@@ -34,7 +34,7 @@ const ChatAdmin = () => {
                         </Container>
                     </Row>
                 </Col>
-                <Col lg={6}>
+                <Col lg={8}>
                     <Container className="con-fitur ">
                         <Row className="brandChat heighRowChat">
                             <Col>

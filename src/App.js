@@ -57,7 +57,6 @@ export default function App() {
                 <Route path="/review" element={<DetailReview />} />
                 <Route path="/myaccount" element={<Account />} />
                 <Route path="/chat" element={<Chats />} />
-                {/* <Route path="/chat" element={<ChatAdmin />} /> */}
                 <Route
                     path="/management/user/edit"
                     element={<AdminEdit />}
