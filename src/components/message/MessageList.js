@@ -1,5 +1,6 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { gql, useSubscription } from '@apollo/client';
-import { makeStyles } from '@material-ui/core';
+// import { makeStyles } from '@material-ui/core';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 
@@ -8,28 +9,19 @@ import { Spinner } from 'react-bootstrap';
 
 const GetHistoryUniqueUser = gql`
     subscription MySubscription {
-        chat(distinct_on: user_id, where: { to: { _eq: "admin" } }) {
+        chat(distinct_on: user_id) {
+            created_at
             id
             message
+            to
+            updated_at
             user_name
             user_id
-            created_at
         }
     }
 `;
 
-const useStyles = makeStyles((theme) => ({
-    root: {
-        color: 'black',
-    },
-    img: {
-        height: '40px',
-        marginRight: theme.spacing(2),
-    },
-}));
-
 const MessageList = (props) => {
-    const classes = useStyles(props);
     const { user, setUser } = props;
     const { data: dataUsers, loading } = useSubscription(
         GetHistoryUniqueUser,
@@ -39,7 +31,6 @@ const MessageList = (props) => {
             setUser(dataUsers?.chat[0]);
         }
     }, [dataUsers?.chat]);
-    console.log('dari list', user);
     return (
         <>
             {loading ? (
@@ -50,9 +41,8 @@ const MessageList = (props) => {
                 <>
                     {' '}
                     {dataUsers?.chat?.map((v) => (
-                        <div
+                        <ListItem
                             key={v?.user_id}
-                            className={classes.root}
                             onClick={() => {
                                 setUser(v);
                             }}
@@ -62,20 +52,44 @@ const MessageList = (props) => {
                                         ? '#333333'
                                         : 'transparent'
                                 }`,
-                                color: `${
-                                    user?.user_id === v?.user_id
-                                        ? 'white'
-                                        : 'black'
-                                }`,
 
                                 border: '3px solid #E5E5E5',
-                                borderRadius: '20px',
-                                margin: '5px',
+                                borderRadius: '15px',
+                                margin: '4px',
+                                padding: '0px 15px 0px 15px',
                             }}
                         >
-                            <div> {v?.user_name}</div>
-                            <div>{v?.message}</div>
-                        </div>
+                            <ListItemText
+                                button
+                                className="wrapListContact"
+                                disableTypography
+                                style={{
+                                    color: `${
+                                        user?.user_id === v?.user_id
+                                            ? 'white'
+                                            : 'black'
+                                    }`,
+                                }}
+                                primary={v?.user_name}
+                                secondary={
+                                    <div
+                                        style={{
+                                            color: `${
+                                                user?.user_id ===
+                                                v?.user_id
+                                                    ? 'white'
+                                                    : 'black'
+                                            }`,
+                                            fontSize: '12px',
+                                        }}
+                                    >
+                                        {v?.to === 'admin'
+                                            ? `${v.message}`
+                                            : `me: ${v.message}`}
+                                    </div>
+                                }
+                            />
+                        </ListItem>
                     ))}{' '}
                 </>
             )}

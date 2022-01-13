@@ -3,8 +3,6 @@ import './Message.css';
 import { gql, useMutation } from '@apollo/client';
 import { TextareaAutosize } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import jwt_decode from 'jwt-decode';
-import { parseCookies } from 'nookies';
 import { useState } from 'react';
 import { Button, Col, Row } from 'react-bootstrap';
 import { BiSend } from 'react-icons/bi';
@@ -40,11 +38,6 @@ const useStyles = makeStyles(() => ({
 }));
 
 const MessageInputAdmin = ({ user }) => {
-    const auth = parseCookies('auth').auth;
-    const jwtDefault =
-        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MCwicm9sZV9pZCI6MCwiZXhwIjoxNjQwNTIzODE1fQ.RTtmDJ2fXyxY4N9GXWJnH-beaFIuHsgUSF3hJHHRXqU';
-    const jwt = jwt_decode(auth || jwtDefault);
-
     const classes = useStyles();
     const [message, setMessage] = useState('');
     let paramInsertMessage = {};

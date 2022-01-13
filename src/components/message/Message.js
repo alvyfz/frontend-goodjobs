@@ -57,14 +57,6 @@ const Message = () => {
                     {dataMessage?.chat.map((m) => {
                         return (
                             <div key={m.id}>
-                                {/* {m.to === 'admin' ? (
-                                    <p>Admin : {m.Message}</p>
-                                ) : (
-                                    <p>
-                                        {m?.user_name} : {m.Message}
-                                    </p>
-                                )} */}
-
                                 <MessageBubble
                                     message={m}
                                     isMe={m.to === 'admin'}

@@ -16,21 +16,15 @@ import EditUnit from './pages/unit/EditUnit';
 import DetailUnit from './pages/unit/DetailUnit';
 import DetailReview from './pages/review/DetailReview';
 import Account from './pages/account/Account';
-import ChatAdmin from './pages/chat/ChatAdmin';
-import Chat from './pages/chat/Chat';
-import { parseCookies, destroyCookie } from 'nookies';
-import jwt_decode from 'jwt-decode';
+
 import AdminEdit from './pages/admin/AdminEdit';
 import AdminManagementUser from './pages/admin/AdminManagementUser';
 import AdminManagementReview from './pages/admin/AdminManagementReview';
 import AdminManagementBuilding from './pages/admin/AdminManagementBuilding';
+import Chats from './pages/chat/Chats';
 export default function App() {
     // let path = useLocation();
-    const auth = parseCookies('auth').auth;
-    const jwtDefault =
-        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MCwicm9sZV9pZCI6MCwiZXhwIjoxNjQwNTIzODE1fQ.RTtmDJ2fXyxY4N9GXWJnH-beaFIuHsgUSF3hJHHRXqU';
-    const jwt = jwt_decode(auth || jwtDefault);
-    const role_id = jwt.Role_ID;
+
     return (
         <>
             {/* {path.pathname === "/login" || "*" ? null : <NavBar />} */}
@@ -62,18 +56,7 @@ export default function App() {
                 <Route path="/unit/detail" element={<DetailUnit />} />
                 <Route path="/review" element={<DetailReview />} />
                 <Route path="/myaccount" element={<Account />} />
-                <Route
-                    path="/chat"
-                    element={
-                        role_id === 1 ||
-                        role_id === 2 ||
-                        role_id === 3 ? (
-                            <ChatAdmin />
-                        ) : (
-                            <Chat />
-                        )
-                    }
-                />
+                <Route path="/chat" element={<Chats />} />
                 {/* <Route path="/chat" element={<ChatAdmin />} /> */}
                 <Route
                     path="/management/user/edit"

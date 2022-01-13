@@ -56,7 +56,7 @@ const useStyles = makeStyles(() => ({
 
 const MessageBubble = (props) => {
     const classes = useStyles(props);
-    const { message, isMe } = props;
+    const { message } = props;
     return (
         <div className={classes.root}>
             <div className={classes.bubble}>
