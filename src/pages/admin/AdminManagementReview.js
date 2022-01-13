@@ -28,7 +28,9 @@ const AdminManagementReview = () => {
   const auth = parseCookies("auth").auth;
   const jwtDefault =
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MCwicm9sZV9pZCI6MCwiZXhwIjoxNjQwNTIzODE1fQ.RTtmDJ2fXyxY4N9GXWJnH-beaFIuHsgUSF3hJHHRXqU";
-  const jwt = jwt_decode(auth ? base64.decode(auth) : null || jwtDefault);
+  const jwt = jwt_decode(
+    auth ? base64.decode(auth) : null || jwtDefault,
+  );
   const role_id = jwt.Role_ID;
   const [review, setReview] = useState();
   const [isLoading, setIsLoading] = useState(false);
@@ -61,7 +63,9 @@ const AdminManagementReview = () => {
     if (text) {
       var filter = review?.filter((v) => {
         if (
-          v?.description.toLowerCase().includes(text?.toLowerCase()) ||
+          v?.description
+            .toLowerCase()
+            .includes(text?.toLowerCase()) ||
           String(v?.rating).includes(text?.toLowerCase()) ||
           String(v?.user_id).includes(text?.toLowerCase()) ||
           String(v?.building_id).includes(text?.toLowerCase())
@@ -88,7 +92,10 @@ const AdminManagementReview = () => {
 
   const indexOfLastPost = currentPage * cardsPerPage;
   const indexOfFirstPost = indexOfLastPost - cardsPerPage;
-  const currentCards = filtered?.slice(indexOfFirstPost, indexOfLastPost);
+  const currentCards = filtered?.slice(
+    indexOfFirstPost,
+    indexOfLastPost,
+  );
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
@@ -167,7 +174,9 @@ const AdminManagementReview = () => {
                               type="text"
                               placeholder="Seach building id, user id , rating or description"
                               variant="light"
-                              onChange={(e) => settext(e.target.value)}
+                              onChange={(e) =>
+                                settext(e.target.value)
+                              }
                               required
                               className="inputSearch"
                             />
@@ -185,7 +194,7 @@ const AdminManagementReview = () => {
                         {currentCards.length !== 0 ? (
                           <>
                             <div className="tablesUser">
-                              <Table responsive striped bordered size="sm">
+                              <Table responsive bordered size="sm">
                                 <thead>
                                   <tr>
                                     <th>BUILDING ID</th>
@@ -208,7 +217,9 @@ const AdminManagementReview = () => {
                                             <Button
                                               variant="sada"
                                               className="buttondelete"
-                                              onClick={() => handleDelete(v.id)}
+                                              onClick={() =>
+                                                handleDelete(v.id)
+                                              }
                                             >
                                               <AiOutlineDelete
                                                 size={22}

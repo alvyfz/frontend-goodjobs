@@ -30,7 +30,9 @@ const AdminManagementBuilding = () => {
   const auth = parseCookies("auth").auth;
   const jwtDefault =
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MCwicm9sZV9pZCI6MCwiZXhwIjoxNjQwNTIzODE1fQ.RTtmDJ2fXyxY4N9GXWJnH-beaFIuHsgUSF3hJHHRXqU";
-  const jwt = jwt_decode(auth ? base64.decode(auth) : null || jwtDefault);
+  const jwt = jwt_decode(
+    auth ? base64.decode(auth) : null || jwtDefault,
+  );
   const role_id = jwt.Role_ID;
   const [building, setBuilding] = useState();
   const [isLoading, setIsLoading] = useState(false);
@@ -64,7 +66,9 @@ const AdminManagementBuilding = () => {
       var filter = building?.filter((v) => {
         if (
           v?.name.toLowerCase().includes(text?.toLowerCase()) ||
-          v?.complex.name.toLowerCase().includes(text?.toLowerCase()) ||
+          v?.complex.name
+            .toLowerCase()
+            .includes(text?.toLowerCase()) ||
           String(v?.id).includes(text?.toLowerCase()) ||
           String(v?.complex_id).includes(text?.toLowerCase())
         ) {
@@ -105,7 +109,10 @@ const AdminManagementBuilding = () => {
   };
   const indexOfLastPost = currentPage * cardsPerPage;
   const indexOfFirstPost = indexOfLastPost - cardsPerPage;
-  const currentCards = filtered?.slice(indexOfFirstPost, indexOfLastPost);
+  const currentCards = filtered?.slice(
+    indexOfFirstPost,
+    indexOfLastPost,
+  );
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
@@ -126,7 +133,11 @@ const AdminManagementBuilding = () => {
         axios
           .request(options)
           .then(function (response) {
-            Swal.fire(`Delete building ${v.name} success!`, "", "success");
+            Swal.fire(
+              `Delete building ${v.name} success!`,
+              "",
+              "success",
+            );
             window.location.reload();
           })
           .catch(function (error) {
@@ -186,7 +197,9 @@ const AdminManagementBuilding = () => {
                               type="text"
                               placeholder="Seach id, name, complex id , or complex name"
                               variant="light"
-                              onChange={(e) => settext(e.target.value)}
+                              onChange={(e) =>
+                                settext(e.target.value)
+                              }
                               required
                               className="inputSearch"
                             />
@@ -196,7 +209,7 @@ const AdminManagementBuilding = () => {
                         {currentCards.length !== 0 ? (
                           <>
                             <div className="tablesUser">
-                              <Table responsive striped bordered size="sm">
+                              <Table responsive bordered size="sm">
                                 <thead>
                                   <tr>
                                     <th>ID</th>
@@ -222,7 +235,9 @@ const AdminManagementBuilding = () => {
                                             <Button
                                               variant="sada"
                                               className="buttondelete"
-                                              onClick={() => handleDetail(v)}
+                                              onClick={() =>
+                                                handleDetail(v)
+                                              }
                                             >
                                               <BiDetail
                                                 size={19}
@@ -232,14 +247,21 @@ const AdminManagementBuilding = () => {
                                             <Button
                                               variant="sada"
                                               className="buttondelete"
-                                              onClick={() => handleEdit(v)}
+                                              onClick={() =>
+                                                handleEdit(v)
+                                              }
                                             >
-                                              <FiEdit size={19} color="black" />{" "}
+                                              <FiEdit
+                                                size={19}
+                                                color="black"
+                                              />{" "}
                                             </Button>
                                             <Button
                                               variant="sada"
                                               className="buttondelete"
-                                              onClick={() => handleDelete(v)}
+                                              onClick={() =>
+                                                handleDelete(v)
+                                              }
                                             >
                                               <AiOutlineDelete
                                                 size={22}
