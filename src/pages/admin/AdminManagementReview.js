@@ -21,13 +21,14 @@ import Footer from "../../components/footer/Footer";
 import Error500 from "../../components/error/Error500";
 import { AiOutlineDelete } from "react-icons/ai";
 import LeftMenu from "../../components/menu/LeftMenu";
+import base64 from "base-64";
 
 const AdminManagementReview = () => {
   const Navigate = useNavigate();
   const auth = parseCookies("auth").auth;
   const jwtDefault =
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MCwicm9sZV9pZCI6MCwiZXhwIjoxNjQwNTIzODE1fQ.RTtmDJ2fXyxY4N9GXWJnH-beaFIuHsgUSF3hJHHRXqU";
-  const jwt = jwt_decode(auth || jwtDefault);
+  const jwt = jwt_decode(auth ? base64.decode(auth) : null || jwtDefault);
   const role_id = jwt.Role_ID;
   const [review, setReview] = useState();
   const [isLoading, setIsLoading] = useState(false);

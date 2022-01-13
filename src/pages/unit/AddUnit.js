@@ -13,12 +13,14 @@ import NotFound from "../error/NotFound";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { storage } from "../../apps/firebase";
+import base64 from "base-64";
+
 const AddUnit = () => {
   const Navigate = useNavigate();
   const auth = parseCookies("auth").auth;
   const jwtDefault =
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MCwicm9sZV9pZCI6MCwiZXhwIjoxNjQwNTIzODE1fQ.RTtmDJ2fXyxY4N9GXWJnH-beaFIuHsgUSF3hJHHRXqU";
-  const jwt = jwt_decode(auth || jwtDefault);
+  const jwt = jwt_decode(auth ? base64.decode(auth) : null || jwtDefault);
   const role_id = jwt.Role_ID;
   const { search } = useLocation();
   const query = new URLSearchParams(search);
@@ -60,7 +62,6 @@ const AddUnit = () => {
           setSize("");
           setPrice("");
           Navigate(-1);
-
         })
         .catch(function (error) {
           Swal.fire({

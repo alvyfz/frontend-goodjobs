@@ -23,12 +23,14 @@ import { AiOutlineDelete } from "react-icons/ai";
 import LeftMenu from "../../components/menu/LeftMenu";
 import { FiEdit } from "react-icons/fi";
 import { BiDetail } from "react-icons/bi";
+import base64 from "base-64";
+
 const AdminManagementBuilding = () => {
   const Navigate = useNavigate();
   const auth = parseCookies("auth").auth;
   const jwtDefault =
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MCwicm9sZV9pZCI6MCwiZXhwIjoxNjQwNTIzODE1fQ.RTtmDJ2fXyxY4N9GXWJnH-beaFIuHsgUSF3hJHHRXqU";
-  const jwt = jwt_decode(auth || jwtDefault);
+  const jwt = jwt_decode(auth ? base64.decode(auth) : null || jwtDefault);
   const role_id = jwt.Role_ID;
   const [building, setBuilding] = useState();
   const [isLoading, setIsLoading] = useState(false);
@@ -107,9 +109,9 @@ const AdminManagementBuilding = () => {
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
-  const handleDelete = (id) => {
+  const handleDelete = (v) => {
     Swal.fire({
-      title: `Do you want to delete this review ?`,
+      title: `Do you want to delete building ${v.name}?`,
       showCancelButton: true,
       cancelButtonColor: "#DDDDDD",
       confirmButtonColor: "#A9333A",
@@ -119,12 +121,12 @@ const AdminManagementBuilding = () => {
       if (result.isConfirmed) {
         var options = {
           method: "DELETE",
-          url: `http://13.213.57.122:8080/review/${id}`,
+          url: `http://13.213.57.122:8080/building/${v.id}`,
         };
         axios
           .request(options)
           .then(function (response) {
-            Swal.fire(`Delete review success!`, "", "success");
+            Swal.fire(`Delete building ${v.name} success!`, "", "success");
             window.location.reload();
           })
           .catch(function (error) {
@@ -139,8 +141,8 @@ const AdminManagementBuilding = () => {
       }
     });
   };
-  const handleDetail = (id) => {
-    Navigate(`/building/detail?key=${id}`);
+  const handleDetail = (v) => {
+    Navigate(`/building/detail?key=${v.id}`);
   };
   return (
     <>
@@ -220,7 +222,7 @@ const AdminManagementBuilding = () => {
                                             <Button
                                               variant="sada"
                                               className="buttondelete"
-                                              onClick={() => handleDetail(v.id)}
+                                              onClick={() => handleDetail(v)}
                                             >
                                               <BiDetail
                                                 size={19}
@@ -237,7 +239,7 @@ const AdminManagementBuilding = () => {
                                             <Button
                                               variant="sada"
                                               className="buttondelete"
-                                              onClick={() => handleDelete(v.id)}
+                                              onClick={() => handleDelete(v)}
                                             >
                                               <AiOutlineDelete
                                                 size={22}
