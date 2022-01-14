@@ -61,6 +61,7 @@ const Login = () => {
           // path: "/",
           // secure: process.env.SECURE_COOKIE === "true",
         });
+        
         navigate(-1);
         Swal.fire({
           icon: "success",
@@ -69,6 +70,7 @@ const Login = () => {
           confirmButtonColor: "black",
         });
         setPasswordIn("");
+            
       })
       .catch(function (error) {
         Swal.fire({
