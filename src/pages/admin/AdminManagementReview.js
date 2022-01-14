@@ -154,8 +154,8 @@ const AdminManagementReview = () => {
         <>
           <Container fluid className="complexcon conmanUser">
             <Row>
-              <Col lg={2}></Col>
-              <Col lg={8}>
+              <Col lg={1}></Col>
+              <Col lg={10}>
                 <Row>
                   {" "}
                   <Col lg={4}>
@@ -235,7 +235,7 @@ const AdminManagementReview = () => {
                               </Table>
                             </div>
                             <Row className="justify-content-center">
-                              <Col md={1}>
+                              <Col md={2}>
                                 <Paginations
                                   className="paginationStyle"
                                   totalCards={filtered?.length}
@@ -258,7 +258,7 @@ const AdminManagementReview = () => {
                   </Col>
                 </Row>
               </Col>
-              <Col lg={2}></Col>
+              <Col lg={1}></Col>
             </Row>
           </Container>
           <Footer />

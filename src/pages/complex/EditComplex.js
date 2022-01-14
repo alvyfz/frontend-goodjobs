@@ -1,5 +1,7 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import Footer from "../../components/footer/Footer";
 import NavBar from "../../components/navbar/NavBar";
+import "./AddComplex.css";
 import {
   Container,
   Row,
@@ -11,20 +13,19 @@ import {
 } from "react-bootstrap";
 import { IoIosArrowBack } from "react-icons/io";
 import { useNavigate, useLocation } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 // import { FiEdit } from "react-icons/fi";
 import { GrClose } from "react-icons/gr";
 import { parseCookies } from "nookies";
 import jwt_decode from "jwt-decode";
 import NotFound from "../error/NotFound";
 import axios from "axios";
-import { storage } from "../../apps/firebase";
 import Swal from "sweetalert2";
-import { useEffect } from "react";
-import Error500 from "../../components/error/Error500";
+import { storage } from "../../apps/firebase";
 import base64 from "base-64";
+import Error500 from "../../components/error/Error500";
 
-const EditBuilding = () => {
+const EditComplex = () => {
   const Navigate = useNavigate();
   const auth = parseCookies("auth").auth;
   const jwtDefault =
@@ -35,33 +36,28 @@ const EditBuilding = () => {
   const role_id = jwt.Role_ID;
   const { search } = useLocation();
   const query = new URLSearchParams(search);
-  const idBuilding = parseInt(query.get("key"));
+  const idComplex = parseInt(query.get("key"));
+
+  if (role_id !== 1 && role_id !== 2) {
+    <NotFound />;
+  }
+
   const [name, setName] = useState("");
-  const [price, setPrice] = useState("");
-  const [description, setDescription] = useState("");
-  const [size, setSize] = useState("");
-  const [floor, setFloor] = useState("");
-  const [weekday, setWeekday] = useState("");
-  const [saturday, setSaturday] = useState("");
-  const [sunday, setSunday] = useState("");
-  const [address, setAddress] = useState("");
-  const [latitude, setLatitude] = useState("");
-  const [longitude, setLongitude] = useState("");
-  const [toilet, setToilet] = useState("");
   const [images, setImages] = useState([]);
+  // const [image, setImage] = useState([]);
+  const [address, setAddres] = useState("");
   const [errName, setErrName] = useState("");
   const [validate, setValidate] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const nameRegex = /^[a-zA-Z\s]{2,15}$/;
-  const maxNumber = 4;
-  const [idComplex, setIdComplex] = useState();
+  const maxNumber = 1;
 
   useEffect(() => {
     setIsLoading(true);
     var option = {
       method: "GET",
-      url: `http://13.213.57.122:8080/building/${idBuilding}`,
+      url: `http://13.213.57.122:8080/complex/${idComplex}`,
     };
 
     axios
@@ -69,56 +65,20 @@ const EditBuilding = () => {
       .then(function (response) {
         var d = response.data.data;
         setImages(JSON.parse(d.img));
-        setWeekday(JSON.parse(d.officehours).weekday);
-        setAddress(d.address);
-        setDescription(d.description);
-        setFloor(d.floor);
-        setLatitude(d.latitude);
-        setLongitude(d.longitude);
+        setAddres(d.address);
         setName(d.name);
-        setPrice(d.pricestart);
-        setSaturday(JSON.parse(d.officehours).saturday);
-        setSunday(JSON.parse(d.officehours).sunday);
-        setToilet(d.toilet);
-        setSize(d.size);
-        setIdComplex(d.complex_id);
         setIsLoading(false);
       })
       .catch(function (error) {
         setIsError(true);
         setIsLoading(false);
       });
-  }, [idBuilding]);
-  if (role_id !== 1 && role_id !== 2) {
-    return <NotFound />;
-  }
-  if (!idBuilding) {
-    return <NotFound />;
-  }
-  if (isLoading) {
-    return (
-      <div id="spinner">
-        <Spinner animation="border" />
-      </div>
-    );
-  }
-  if (isError) {
-    return <Error500 />;
-  }
+  }, [idComplex]);
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    var officeHours = {
-      weekday: [],
-      saturday: [],
-      sunday: [],
-    };
-    officeHours.weekday.push(weekday);
-    officeHours.saturday.push(saturday);
-    officeHours.sunday.push(sunday);
     if (validate) {
       Swal.fire({
-        title: `Are you sure to edit building ${name} ?`,
+        title: `Are you sure to edit complex ${name} ?`,
         showCancelButton: true,
         cancelButtonColor: "#DDDDDD",
         confirmButtonColor: "black",
@@ -127,39 +87,20 @@ const EditBuilding = () => {
         /* Read more about isConfirmed, isDenied below */
         if (result.isConfirmed) {
           axios
-            .put(`http://13.213.57.122:8080/building/${idBuilding}`, {
+            .put(`http://13.213.57.122:8080/complex/${idComplex}`, {
               name: name,
               address: address,
               img: JSON.stringify(images),
-              description: description,
-              size: parseFloat(size),
-              floor: parseInt(floor),
-              toilet: parseInt(toilet),
-              officehours: JSON.stringify(officeHours),
-              latitude: parseFloat(latitude),
-              longitude: parseFloat(longitude),
-              pricestart: parseInt(price),
-              complex_id: parseInt(idComplex),
             })
             .then(function (response) {
               Swal.fire(
-                `edit building ${name} success !`,
+                `edit complex ${name} success !`,
                 "",
                 "success",
               );
               setImages([]);
-              setWeekday("");
-              setAddress("");
-              setDescription("");
-              setFloor("");
-              setLatitude("");
-              setLongitude("");
+              setAddres("");
               setName("");
-              setPrice("");
-              setSaturday("");
-              setSunday("");
-              setToilet("");
-              setSize("");
               Navigate(-1);
             })
             .catch(function (error) {
@@ -181,7 +122,7 @@ const EditBuilding = () => {
       });
     }
   };
-  const handleChangeName = (e) => {
+  const handleChangeNameUp = (e) => {
     setName(e.target.value);
     if (!nameRegex.test(e.target.value)) {
       setValidate(false);
@@ -196,7 +137,7 @@ const EditBuilding = () => {
 
     if (image) {
       const uploadTask = storage
-        .ref(`building/${image.name}`)
+        .ref(`complex/${image.name}`)
         .put(image);
       uploadTask.on(
         "state_change",
@@ -210,7 +151,7 @@ const EditBuilding = () => {
         },
         () => {
           storage
-            .ref("building")
+            .ref("complex")
             .child(image.name)
             .getDownloadURL()
             .then((url) => {
@@ -220,6 +161,19 @@ const EditBuilding = () => {
       );
     }
   };
+  if (!idComplex) {
+    return <NotFound />;
+  }
+  if (isLoading) {
+    return (
+      <div id="spinner">
+        <Spinner animation="border" />
+      </div>
+    );
+  }
+  if (isError) {
+    return <Error500 />;
+  }
   // console.log(images);
   // const handleChangeUpdateImage = (img) => (e) => {
   //   const imageUpdate = e.target.files[0];
@@ -262,17 +216,17 @@ const EditBuilding = () => {
   return (
     <>
       {" "}
-      <NavBar building={true} />
-      <Container fluid className="conheader addBuilding">
+      <NavBar complex={true} />
+      <Container fluid className="conheader">
         <div className="textheader">
           <h1 style={{ fontWeight: "700" }}>
-            EDIT BUILDING {name?.toUpperCase()}
+            EDIT COMPLEX {name?.toUpperCase()}
           </h1>
         </div>
       </Container>
       <Container fluid className="containermain">
         <Row className="justify-content-center">
-          <Col lg={7}>
+          <Col lg={6}>
             <Button variant="\f" className="buttonBack">
               <IoIosArrowBack
                 size={40}
@@ -280,7 +234,7 @@ const EditBuilding = () => {
               />
             </Button>
             <Container fluid className="conformcomplex">
-              <Form className="fromAddBuilding">
+              <Form className="formComplex" onSubmit={handleSubmit}>
                 {" "}
                 <Form.Group
                   as={Row}
@@ -295,129 +249,13 @@ const EditBuilding = () => {
                       type="text"
                       required
                       value={name}
-                      onChange={handleChangeName}
+                      onChange={handleChangeNameUp}
                     />
                     <Form.Text className="formText formErr">
                       {errName}
                     </Form.Text>
                   </Col>
-                </Form.Group>{" "}
-                <Form.Group
-                  as={Row}
-                  className="mb-3"
-                  controlId="formPlaintextEmail"
-                >
-                  <Form.Label column sm="2">
-                    Price Start{" "}
-                    <span className="spansqm">(sqm/month) </span>
-                  </Form.Label>
-                  <Col sm="10">
-                    <Form.Control
-                      type="number"
-                      required
-                      value={price}
-                      onChange={(e) => setPrice(e.target.value)}
-                    />
-                  </Col>
-                </Form.Group>{" "}
-                <Form.Group
-                  as={Row}
-                  className="mb-3"
-                  controlId="formPlaintextEmail"
-                >
-                  <Form.Label column sm="2">
-                    Description
-                  </Form.Label>
-                  <Col sm="10">
-                    <Form.Control
-                      as="textarea"
-                      rows={4}
-                      required
-                      value={description}
-                      onChange={(e) => setDescription(e.target.value)}
-                    />
-                  </Col>
                 </Form.Group>
-                <Form.Group
-                  as={Row}
-                  className="mb-3"
-                  controlId="formPlaintextEmail"
-                >
-                  <Form.Label column sm="2">
-                    Building Size{" "}
-                    <span className="spansqm">(m²) </span>
-                  </Form.Label>
-                  <Col sm="4">
-                    <Form.Control
-                      type="number"
-                      required
-                      value={size}
-                      onChange={(e) => setSize(e.target.value)}
-                    />
-                  </Col>{" "}
-                  <Form.Label column sm="2">
-                    Toilet
-                  </Form.Label>
-                  <Col sm="4">
-                    <Form.Control
-                      type="number"
-                      required
-                      value={toilet}
-                      onChange={(e) => setToilet(e.target.value)}
-                    />
-                  </Col>
-                </Form.Group>{" "}
-                <Form.Group
-                  as={Row}
-                  className="mb-3"
-                  controlId="formPlaintextEmail"
-                >
-                  <Form.Label column sm="2">
-                    Floor Count
-                  </Form.Label>
-                  <Col sm="4">
-                    <Form.Control
-                      type="number"
-                      required
-                      value={floor}
-                      onChange={(e) => setFloor(e.target.value)}
-                    />
-                  </Col>{" "}
-                </Form.Group>{" "}
-                <Form.Group
-                  as={Row}
-                  className="mb-3"
-                  controlId="formPlaintextEmail"
-                >
-                  <Form.Label column sm="2">
-                    Office Hours
-                  </Form.Label>
-                  <Col sm="10">
-                    <Form.Control
-                      className="mb-3"
-                      type="text"
-                      required
-                      placeholder="Week Days"
-                      value={weekday}
-                      onChange={(e) => setWeekday(e.target.value)}
-                    />{" "}
-                    <Form.Control
-                      className="mb-3"
-                      type="text"
-                      required
-                      placeholder="Saturday"
-                      value={saturday}
-                      onChange={(e) => setSaturday(e.target.value)}
-                    />{" "}
-                    <Form.Control
-                      type="text"
-                      required
-                      placeholder="Sunday"
-                      value={sunday}
-                      onChange={(e) => setSunday(e.target.value)}
-                    />
-                  </Col>
-                </Form.Group>{" "}
                 <Form.Group
                   as={Row}
                   className="mb-3"
@@ -432,48 +270,19 @@ const EditBuilding = () => {
                       rows={4}
                       required
                       value={address}
-                      onChange={(e) => setAddress(e.target.value)}
+                      onChange={(e) => setAddres(e.target.value)}
                     />
                   </Col>
                 </Form.Group>
                 <Form.Group
                   as={Row}
                   className="mb-3"
-                  controlId="formPlaintextEmail"
-                >
-                  <Form.Label column sm="2">
-                    Latitude
-                  </Form.Label>
-                  <Col sm="4">
-                    <Form.Control
-                      type="number"
-                      required
-                      value={latitude}
-                      onChange={(e) => setLatitude(e.target.value)}
-                    />
-                  </Col>{" "}
-                  <Form.Label column sm="2">
-                    Longitude
-                  </Form.Label>
-                  <Col sm="4">
-                    <Form.Control
-                      type="number"
-                      required
-                      value={longitude}
-                      onChange={(e) => setLongitude(e.target.value)}
-                    />
-                  </Col>
-                </Form.Group>{" "}
-                <Form.Group
-                  as={Row}
-                  className="mb-3"
-                  controlId="formPlaintextEmail"
+                  controlId="formPlaintextPassword"
                 >
                   <Form.Label column sm="2">
                     Image
                   </Form.Label>
                   <Col sm="10">
-                    {" "}
                     <input
                       type="file"
                       id="filee"
@@ -498,11 +307,7 @@ const EditBuilding = () => {
                     >
                       Remove all
                     </Button>
-                    <p className="ketImg">
-                      *The first image will be the main image(Max 4
-                      picture)
-                    </p>
-                    <Row>
+                    <Row style={{ marginTop: "15px" }}>
                       {images.map((image, index) => (
                         <Col lg={4}>
                           <div key={index} className="image-item">
@@ -597,4 +402,4 @@ const EditBuilding = () => {
     </>
   );
 };
-export default EditBuilding;
+export default EditComplex;

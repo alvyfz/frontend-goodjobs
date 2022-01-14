@@ -10,7 +10,9 @@ export default function LeftMenu() {
   const auth = parseCookies("auth").auth;
   const jwtDefault =
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MCwicm9sZV9pZCI6MCwiZXhwIjoxNjQwNTIzODE1fQ.RTtmDJ2fXyxY4N9GXWJnH-beaFIuHsgUSF3hJHHRXqU";
-  const jwt = jwt_decode(auth ? base64.decode(auth) : null || jwtDefault);
+  const jwt = jwt_decode(
+    auth ? base64.decode(auth) : null || jwtDefault,
+  );
   const role_id = jwt.Role_ID;
   const handleLogout = () => {
     destroyCookie(null, "auth");
@@ -37,21 +39,88 @@ export default function LeftMenu() {
           {role_id === 1 ? (
             <>
               {" "}
-              <Row className="barLeft" as={Link} to="/management/user">
+              <Row
+                className="barLeft"
+                as={Link}
+                to="/management/user"
+              >
                 <p>Management user</p>
               </Row>{" "}
-              <Row className="barLeft" as={Link} to="/management/building">
+              <Row
+                className="barLeft"
+                as={Link}
+                to="/management/complex"
+              >
+                <p>Management complex</p>
+              </Row>{" "}
+              <Row
+                className="barLeft"
+                as={Link}
+                to="/management/building"
+              >
                 <p>Management building</p>
               </Row>{" "}
-              <Row className="barLeft" as={Link} to="/management/review">
+              <Row
+                className="barLeft"
+                as={Link}
+                to="/management/unit"
+              >
+                <p>Management unit</p>
+              </Row>{" "}
+              <Row
+                className="barLeft"
+                as={Link}
+                to="/management/review"
+              >
                 <p>Management review</p>
               </Row>
-              <Row className="barLeft" as={Link} to="/management/user/edit">
+              <Row
+                className="barLeft"
+                as={Link}
+                to="/management/user/edit"
+              >
                 <p>Change user</p>
               </Row>{" "}
             </>
+          ) : null}{" "}
+          {role_id === 2 ? (
+            <>
+              {" "}
+              <Row
+                className="barLeft"
+                as={Link}
+                to="/management/complex"
+              >
+                <p>Management complex</p>
+              </Row>{" "}
+              <Row
+                className="barLeft"
+                as={Link}
+                to="/management/building"
+              >
+                <p>Management building</p>
+              </Row>{" "}
+              <Row
+                className="barLeft"
+                as={Link}
+                to="/management/unit"
+              >
+                <p>Management unit</p>
+              </Row>{" "}
+              <Row
+                className="barLeft"
+                as={Link}
+                to="/management/review"
+              >
+                <p>Management review</p>
+              </Row>
+            </>
           ) : null}
-          <Row className="barLeftLog" as="button" onClick={handleLogout}>
+          <Row
+            className="barLeftLog"
+            as="button"
+            onClick={handleLogout}
+          >
             <p>Log out</p>
           </Row>
         </Row>

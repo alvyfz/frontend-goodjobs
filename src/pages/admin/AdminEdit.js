@@ -27,7 +27,9 @@ const AdminEdit = () => {
   const auth = parseCookies("auth").auth;
   const jwtDefault =
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MCwicm9sZV9pZCI6MCwiZXhwIjoxNjQwNTIzODE1fQ.RTtmDJ2fXyxY4N9GXWJnH-beaFIuHsgUSF3hJHHRXqU";
-  const jwt = jwt_decode(auth ? base64.decode(auth) : null || jwtDefault);
+  const jwt = jwt_decode(
+    auth ? base64.decode(auth) : null || jwtDefault,
+  );
   const role_id = jwt.Role_ID;
   const [text, settext] = useState();
   const [user, setUser] = useState();
@@ -166,7 +168,11 @@ const AdminEdit = () => {
           .request(options)
           .then(function (response) {
             window.location.reload();
-            Swal.fire(`Delete building ${user.email} success!`, "", "success");
+            Swal.fire(
+              `Delete building ${user.email} success!`,
+              "",
+              "success",
+            );
           })
           .catch(function (error) {
             Swal.fire({
@@ -204,8 +210,8 @@ const AdminEdit = () => {
           {" "}
           <Container fluid className="complexcon">
             <Row>
-              <Col lg={2}></Col>
-              <Col lg={8}>
+              <Col lg={1}></Col>
+              <Col lg={10}>
                 <Row>
                   <Col lg={4}>
                     <LeftMenu />
@@ -222,7 +228,9 @@ const AdminEdit = () => {
                                 type="text"
                                 placeholder="Seach user by email"
                                 variant="light"
-                                onChange={(e) => settext(e.target.value)}
+                                onChange={(e) =>
+                                  settext(e.target.value)
+                                }
                                 required
                                 style={{
                                   height: "35px",
@@ -301,10 +309,14 @@ const AdminEdit = () => {
                                       id="nationality"
                                       name="Filter"
                                       value={role}
-                                      onChange={(e) => setRole(e.target.value)}
+                                      onChange={(e) =>
+                                        setRole(e.target.value)
+                                      }
                                     >
                                       {" "}
-                                      <option value={1}>Super admin</option>
+                                      <option value={1}>
+                                        Super admin
+                                      </option>
                                       <option selected value={2}>
                                         Supervisor
                                       </option>
@@ -345,7 +357,7 @@ const AdminEdit = () => {
                   </Col>
                 </Row>
               </Col>
-              <Col lg={2}></Col>
+              <Col lg={1}></Col>
             </Row>
           </Container>
           <Footer />
