@@ -1,5 +1,14 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 // eslint-disable-next-line
-import { Container, Row, Col, Spinner, Button } from "react-bootstrap";
+import {
+  Container,
+  Row,
+  Col,
+  Spinner,
+  Button,
+  InputGroup,
+  Form,
+} from "react-bootstrap";
 import NavBar from "../../components/navbar/NavBar";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import "./Search.css";
@@ -15,6 +24,7 @@ import Error500 from "../../components/error/Error500";
 import Footer from "../../components/footer/Footer";
 import Paginations from "../../components/pagination/Paginations";
 // import Searching from "../../components/searching/Searching";
+import { BiSearch } from "react-icons/bi";
 import base64 from "base-64";
 
 const Search = () => {
@@ -23,12 +33,15 @@ const Search = () => {
   const auth = parseCookies("auth").auth;
   const jwtDefault =
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MCwicm9sZV9pZCI6MCwiZXhwIjoxNjQwNTIzODE1fQ.RTtmDJ2fXyxY4N9GXWJnH-beaFIuHsgUSF3hJHHRXqU";
-  const jwt = jwt_decode(auth ? base64.decode(auth) : null || jwtDefault);
+  const jwt = jwt_decode(
+    auth ? base64.decode(auth) : null || jwtDefault,
+  );
   const role_id = jwt.Role_ID;
   const query = new URLSearchParams(search);
   const value = query.get("key");
   const filter = query.get("filter");
   const [isLoading, setIsLoading] = useState(false);
+  const [searching, setSearching] = useState();
   const [complex, setComplex] = useState();
   const [building, setBuilding] = useState();
   const [isError, setIsError] = useState(false);
@@ -87,16 +100,19 @@ const Search = () => {
         });
     }
   }, [filter]);
+  useEffect(() => {
+    setSearching(value);
+  }, []);
 
   const filteredComplex = complex?.filter((v) => {
-    if (v.name.toLowerCase().includes(value.toLowerCase())) {
+    if (v.name.toLowerCase().includes(searching.toLowerCase())) {
       return true;
     } else {
       return false;
     }
   });
   const filteredBuilding = building?.filter((v) => {
-    if (v.name.toLowerCase().includes(value.toLowerCase())) {
+    if (v.name.toLowerCase().includes(searching.toLowerCase())) {
       return true;
     } else {
       return false;
@@ -106,11 +122,11 @@ const Search = () => {
   const indexOfFirstPost = indexOfLastPost - cardsPerPage;
   const currentCardsBuilding = filteredBuilding?.slice(
     indexOfFirstPost,
-    indexOfLastPost
+    indexOfLastPost,
   );
   const currentCardsComplex = filteredComplex?.slice(
     indexOfFirstPost,
-    indexOfLastPost
+    indexOfLastPost,
   );
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
@@ -141,16 +157,63 @@ const Search = () => {
                 </Link>{" "}
                 <Link
                   className="spanhome"
-                  to={filter === "building" ? "/buildings" : "/complex"}
+                  to={
+                    filter === "building" ? "/buildings" : "/complex"
+                  }
                 >
                   <span>/ {filter?.toUpperCase()} /</span>{" "}
                 </Link>
-                <span className="spancon"> {value?.toUpperCase()}</span>
+                <span className="spancon">
+                  {" "}
+                  {searching ? searching?.toUpperCase() : "NOTHING"}
+                </span>
               </h3>
-              <Button variant="\f" className="buttonBack">
-                <IoIosArrowBack size={40} onClick={() => Navigate(-1)} />
-              </Button>
-            </Col>
+              <Row>
+                {" "}
+                <Col lg={1} className="colBack">
+                  {" "}
+                  <Button variant="\f" className="buttonBack">
+                    <IoIosArrowBack
+                      size={40}
+                      onClick={() => Navigate(-1)}
+                    />
+                  </Button>
+                </Col>{" "}
+                <Col lg={11} className="colSearch">
+                  {" "}
+                  <InputGroup>
+                    <Form.Control
+                      size="lg"
+                      value={searching}
+                      type="text"
+                      placeholder={`Search ${
+                        filter === "building" ? "building" : "complex"
+                      } `}
+                      variant="light"
+                      onChange={(e) => setSearching(e.target.value)}
+                      required
+                      style={{
+                        height: "35px",
+                        marginTop: "5px",
+                      }}
+                    />
+                    <Button
+                      size="lg"
+                      variant="dark"
+                      type="submit"
+                      style={{
+                        // height: "35px",
+                        marginTop: "5px",
+                        fontSize: "15px",
+                      }}
+                    >
+                      <BiSearch size={20} />
+                    </Button>{" "}
+                  </InputGroup>
+                </Col>
+              </Row>
+            </Col>{" "}
+            <Col lg={2}></Col>
           </Row>{" "}
         </div>{" "}
         {isLoading ? (
@@ -166,8 +229,15 @@ const Search = () => {
                 complex === null ||
                 currentCardsComplex === null ? (
                   <>
-                    <Container style={{ margin: "100px", textAlign: "center" }}>
-                      <h1 style={{ fontSize: "80px", fontWeight: "bold" }}>
+                    <Container
+                      style={{ margin: "100px", textAlign: "center" }}
+                    >
+                      <h1
+                        style={{
+                          fontSize: "80px",
+                          fontWeight: "bold",
+                        }}
+                      >
                         OPPS
                       </h1>
                       <h2>Complex not found</h2>
@@ -208,8 +278,15 @@ const Search = () => {
                 building === null ||
                 currentCardsBuilding === null ? (
                   <>
-                    <Container style={{ margin: "100px", textAlign: "center" }}>
-                      <h1 style={{ fontSize: "80px", fontWeight: "bold" }}>
+                    <Container
+                      style={{ margin: "100px", textAlign: "center" }}
+                    >
+                      <h1
+                        style={{
+                          fontSize: "80px",
+                          fontWeight: "bold",
+                        }}
+                      >
                         OPPS
                       </h1>
                       <h2>Building not found</h2>
@@ -252,7 +329,9 @@ const Search = () => {
           <Col md={1}>
             <Paginations
               className="paginationStyle"
-              totalCards={filteredBuilding?.length || filteredComplex?.length}
+              totalCards={
+                filteredBuilding?.length || filteredComplex?.length
+              }
               cardsPerPage={cardsPerPage}
               paginate={paginate}
               active={currentPage}

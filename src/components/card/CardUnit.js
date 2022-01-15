@@ -114,7 +114,11 @@ export default function CardUnit({
               <Row>
                 <Col lg={8}>
                   <Card.Title
-                    style={{ fontWeight: "600", fontSize: "24px", margin: "0" }}
+                    style={{
+                      fontWeight: "600",
+                      fontSize: "24px",
+                      margin: "0",
+                    }}
                   >
                     {name}
                   </Card.Title>
@@ -124,7 +128,9 @@ export default function CardUnit({
                     <span style={{ fontWeight: "550" }}>
                       {formatRupiah()}
                     </span>{" "}
-                    <span style={{ fontSize: "16px" }}>(per sqm/month)</span>
+                    <span style={{ fontSize: "16px" }}>
+                      (per sqm/month)
+                    </span>
                   </Card.Text>
                 </Col>
                 <Col lg={4}>
@@ -153,12 +159,12 @@ export default function CardUnit({
                 </Col>
               </Row>
             </Card.Body>
-            <div style={{ padding: "0", backgroundColor: "#E5E5E5" }}>
+            <div style={{ padding: "0" }}>
               <Row
                 className="justify-content-center"
                 style={{ padding: "20px 0px 20px 0px" }}
               >
-                <Button
+                {/* <Button
                   style={{
                     width: "80%",
                     textAlign: "center",
@@ -169,11 +175,11 @@ export default function CardUnit({
                   to={`chat?key=${id}`}
                 >
                   ENQUIRE
-                </Button>
+                </Button> */}
                 <Button
                   as={Link}
                   to={`/unit/detail?key=${id}&b=${buildingName}`}
-                  variant="light"
+                  variant="dark"
                   style={{
                     width: "80%",
                     align: "center",
@@ -189,15 +195,23 @@ export default function CardUnit({
           <>
             <Card.Body style={{ color: "black" }}>
               <Card.Title
-                style={{ fontWeight: "600", fontSize: "24px", margin: "0" }}
+                style={{
+                  fontWeight: "600",
+                  fontSize: "24px",
+                  margin: "0",
+                }}
               >
                 {name}
               </Card.Title>
 
               <Card.Text style={{ fontSize: "18px" }}>
                 {" "}
-                <span style={{ fontWeight: "550" }}>{formatRupiah()}</span>{" "}
-                <span style={{ fontSize: "16px" }}>(per sqm/month)</span>
+                <span style={{ fontWeight: "550" }}>
+                  {formatRupiah()}
+                </span>{" "}
+                <span style={{ fontSize: "16px" }}>
+                  (per sqm/month)
+                </span>
               </Card.Text>
             </Card.Body>
             <div style={{ padding: "0", backgroundColor: "#E5E5E5" }}>

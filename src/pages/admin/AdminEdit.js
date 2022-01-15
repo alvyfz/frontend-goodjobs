@@ -225,7 +225,7 @@ const AdminEdit = () => {
                             <InputGroup>
                               <Form.Control
                                 value={text}
-                                type="text"
+                                type="email"
                                 placeholder="Seach user by email"
                                 variant="light"
                                 onChange={(e) =>

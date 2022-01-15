@@ -17,7 +17,9 @@ const AllBuilding = () => {
   const auth = parseCookies("auth").auth;
   const jwtDefault =
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MCwicm9sZV9pZCI6MCwiZXhwIjoxNjQwNTIzODE1fQ.RTtmDJ2fXyxY4N9GXWJnH-beaFIuHsgUSF3hJHHRXqU";
-  const jwt = jwt_decode(auth ? base64.decode(auth) : null || jwtDefault);
+  const jwt = jwt_decode(
+    auth ? base64.decode(auth) : null || jwtDefault,
+  );
   const role_id = jwt.Role_ID;
   const [building, setBuilding] = useState();
   const [isLoading, setIsLoading] = useState(false);
@@ -25,6 +27,10 @@ const AllBuilding = () => {
   const [cardsPerPage] = useState(6);
   const [isError, setIsError] = useState(false);
   const [currentPages, setCurrentPages] = useState();
+
+  useEffect(() => {
+    window.scrollTo(0, 390);
+  }, [currentPages]);
 
   useEffect(() => {
     setIsLoading(true);
@@ -45,16 +51,15 @@ const AllBuilding = () => {
       });
   }, []);
 
-  useEffect(() => {
-    window.scrollTo(0, 390);
-  }, [currentPages]);
-
   if (isError) {
     return <Error500 />;
   }
   const indexOfLastPost = currentPage * cardsPerPage;
   const indexOfFirstPost = indexOfLastPost - cardsPerPage;
-  const currentCards = building?.slice(indexOfFirstPost, indexOfLastPost);
+  const currentCards = building?.slice(
+    indexOfFirstPost,
+    indexOfLastPost,
+  );
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
     setCurrentPages(pageNumber);
