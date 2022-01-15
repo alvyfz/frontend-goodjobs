@@ -29,7 +29,9 @@ const EditUnit = () => {
   const auth = parseCookies("auth").auth;
   const jwtDefault =
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MCwicm9sZV9pZCI6MCwiZXhwIjoxNjQwNTIzODE1fQ.RTtmDJ2fXyxY4N9GXWJnH-beaFIuHsgUSF3hJHHRXqU";
-  const jwt = jwt_decode(auth ? base64.decode(auth) : null || jwtDefault);
+  const jwt = jwt_decode(
+    auth ? base64.decode(auth) : null || jwtDefault,
+  );
   const role_id = jwt.Role_ID;
   const { search } = useLocation();
   const query = new URLSearchParams(search);
@@ -100,7 +102,7 @@ const EditUnit = () => {
           img: JSON.stringify(images),
         })
         .then(function (response) {
-          Swal.fire("Add new unit success!", "", "success");
+          Swal.fire("Edit unit success!", "", "success");
           setName("");
           setImages([]);
           setDescription("");
@@ -156,7 +158,7 @@ const EditUnit = () => {
             .then((url) => {
               setImages((currentImage) => [...currentImage, url]);
             });
-        }
+        },
       );
     }
   };
@@ -205,14 +207,19 @@ const EditUnit = () => {
       <NavBar complex={true} />
       <Container fluid className="conheader">
         <div className="textheader">
-          <h1 style={{ fontWeight: "700" }}>ADD NEW UNIT </h1>
+          <h1 style={{ fontWeight: "700" }}>
+            EDIT UNIT {name?.toUpperCase()}
+          </h1>
         </div>
       </Container>
       <Container fluid className="containermain">
         <Row className="justify-content-center">
           <Col lg={6}>
             <Button variant="\f" className="buttonBack">
-              <IoIosArrowBack size={40} onClick={() => Navigate(-1)} />
+              <IoIosArrowBack
+                size={40}
+                onClick={() => Navigate(-1)}
+              />
             </Button>
             <Container fluid className="conformcomplex">
               <Form className="formComplex" onSubmit={handleSubmit}>
@@ -307,14 +314,19 @@ const EditUnit = () => {
                     />
                     <Button
                       variant="outline-dark"
-                      disabled={images.length === maxNumber ? true : false}
+                      disabled={
+                        images.length === maxNumber ? true : false
+                      }
                     >
                       <label for="filee" className="fileee">
                         Upload
                       </label>
                     </Button>{" "}
                     &nbsp;
-                    <Button onClick={() => setImages([])} variant="dark">
+                    <Button
+                      onClick={() => setImages([])}
+                      variant="dark"
+                    >
                       Remove all
                     </Button>
                     <Row style={{ marginTop: "15px" }}>

@@ -1,5 +1,11 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { Container, Row, Col, Spinner, Button } from "react-bootstrap";
+import {
+  Container,
+  Row,
+  Col,
+  Spinner,
+  Button,
+} from "react-bootstrap";
 import "./Account.css";
 import NavBar from "../../components/navbar/NavBar";
 import { Link, useNavigate } from "react-router-dom";
@@ -18,7 +24,9 @@ const Account = () => {
   const auth = parseCookies("auth").auth;
   const jwtDefault =
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MCwicm9sZV9pZCI6MCwiZXhwIjoxNjQwNTIzODE1fQ.RTtmDJ2fXyxY4N9GXWJnH-beaFIuHsgUSF3hJHHRXqU";
-  const jwt = jwt_decode(auth ? base64.decode(auth) : null || jwtDefault);
+  const jwt = jwt_decode(
+    auth ? base64.decode(auth) : null || jwtDefault,
+  );
   const role_id = jwt.Role_ID;
   const [role, setRole] = useState();
   const [user, setUser] = useState();
@@ -85,8 +93,8 @@ const Account = () => {
           {" "}
           <Container fluid className="complexcon">
             <Row>
-              <Col lg={2}></Col>
-              <Col lg={8}>
+              <Col lg={1}></Col>
+              <Col lg={10}>
                 <Row>
                   <Col lg={4}>
                     <LeftMenu />
@@ -107,13 +115,17 @@ const Account = () => {
                             <Button
                               className="buttonacc"
                               variant="outline-dark"
-                              onClick={() => setModalShowAccount(true)}
+                              onClick={() =>
+                                setModalShowAccount(true)
+                              }
                             >
                               Change account
                             </Button>
                             <ModalChangeAccount
                               show={modalShowAccount}
-                              onHide={() => setModalShowAccount(false)}
+                              onHide={() =>
+                                setModalShowAccount(false)
+                              }
                               user={user}
                             />
                           </Col>
@@ -129,7 +141,7 @@ const Account = () => {
                   </Col>
                 </Row>
               </Col>
-              <Col lg={2}></Col>
+              <Col lg={1}></Col>
             </Row>
           </Container>
           <Footer />
