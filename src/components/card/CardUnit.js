@@ -88,7 +88,7 @@ export default function CardUnit({
         }
       });
     } else {
-      Navigate(`/chat?key=${id}`);
+      Navigate(`/chat?key=${id}&n=${name}&b=${buildingName}`);
     }
   };
 
