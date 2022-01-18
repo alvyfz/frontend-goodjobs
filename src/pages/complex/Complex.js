@@ -1,7 +1,13 @@
 import "./Complex.css";
 import Searching from "../../components/searching/Searching";
 import CardComplex from "../../components/card/CardComplex";
-import { Container, Row, Col, Spinner, Button } from "react-bootstrap";
+import {
+  Container,
+  Row,
+  Col,
+  Spinner,
+  Button,
+} from "react-bootstrap";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Error500 from "../../components/error/Error500";
@@ -18,7 +24,9 @@ const Complex = () => {
   const auth = parseCookies("auth").auth;
   const jwtDefault =
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MCwicm9sZV9pZCI6MCwiZXhwIjoxNjQwNTIzODE1fQ.RTtmDJ2fXyxY4N9GXWJnH-beaFIuHsgUSF3hJHHRXqU";
-  const jwt = jwt_decode(auth ? base64.decode(auth) : null || jwtDefault);
+  const jwt = jwt_decode(
+    auth ? base64.decode(auth) : null || jwtDefault,
+  );
   const role_id = jwt.Role_ID;
   const [complex, setComplex] = useState();
   const [isError, setIsError] = useState(false);
@@ -30,6 +38,7 @@ const Complex = () => {
   useEffect(() => {
     window.scrollTo(0, 390);
   }, [currentPages]);
+
   useEffect(() => {
     setIsLoading(true);
     var options = {
@@ -53,7 +62,10 @@ const Complex = () => {
   }
   const indexOfLastPost = currentPage * cardsPerPage;
   const indexOfFirstPost = indexOfLastPost - cardsPerPage;
-  const currentCards = complex?.slice(indexOfFirstPost, indexOfLastPost);
+  const currentCards = complex?.slice(
+    indexOfFirstPost,
+    indexOfLastPost,
+  );
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
     setCurrentPages(pageNumber);
@@ -87,7 +99,8 @@ const Complex = () => {
                       to="/complex/add"
                     >
                       {" "}
-                      <MdOutlineAddCircleOutline size={28} /> Add Complex
+                      <MdOutlineAddCircleOutline size={28} /> Add
+                      Complex
                     </Button>
                   </span>
                 </Col>
@@ -105,8 +118,14 @@ const Complex = () => {
             <Col lg={2}></Col>
             {complex?.length === 0 || complex === null ? (
               <>
-                <Container style={{ margin: "100px", textAlign: "center" }}>
-                  <h1 style={{ fontSize: "80px", fontWeight: "bold" }}>OPPS</h1>
+                <Container
+                  style={{ margin: "100px", textAlign: "center" }}
+                >
+                  <h1
+                    style={{ fontSize: "80px", fontWeight: "bold" }}
+                  >
+                    OPPS
+                  </h1>
                   <h2>Building not found</h2>
                 </Container>
               </>

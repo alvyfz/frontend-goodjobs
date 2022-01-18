@@ -1,7 +1,14 @@
 import "./AddBuilding.css";
 import Footer from "../../components/footer/Footer";
 import NavBar from "../../components/navbar/NavBar";
-import { Container, Row, Col, Button, Form, Card } from "react-bootstrap";
+import {
+  Container,
+  Row,
+  Col,
+  Button,
+  Form,
+  Card,
+} from "react-bootstrap";
 import { IoIosArrowBack } from "react-icons/io";
 import { useNavigate, useLocation } from "react-router-dom";
 
@@ -21,7 +28,9 @@ const AddBuilding = () => {
   const auth = parseCookies("auth").auth;
   const jwtDefault =
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MCwicm9sZV9pZCI6MCwiZXhwIjoxNjQwNTIzODE1fQ.RTtmDJ2fXyxY4N9GXWJnH-beaFIuHsgUSF3hJHHRXqU";
-  const jwt = jwt_decode(auth ? base64.decode(auth) : null || jwtDefault);
+  const jwt = jwt_decode(
+    auth ? base64.decode(auth) : null || jwtDefault,
+  );
   const role_id = jwt.Role_ID;
   const { search } = useLocation();
   const query = new URLSearchParams(search);
@@ -123,7 +132,9 @@ const AddBuilding = () => {
     const image = e.target.files[0];
 
     if (image) {
-      const uploadTask = storage.ref(`building/${image.name}`).put(image);
+      const uploadTask = storage
+        .ref(`building/${image.name}`)
+        .put(image);
       uploadTask.on(
         "state_change",
         (snapshot) => {},
@@ -142,13 +153,17 @@ const AddBuilding = () => {
             .then((url) => {
               setImages((currentImage) => [...currentImage, url]);
             });
-        }
+        },
       );
     }
   };
   // console.log(images);
+  // const label = (e) => {
+  //   console.log(e.target.id[1]);
+  // };
   // const handleChangeUpdateImage = (img) => (e) => {
   //   const imageUpdate = e.target.files[0];
+  //   console.log(e.target.id);
   //   if (imageUpdate) {
   //     const uploadTask = storage
   //       .ref(`complex/${imageUpdate.name}`)
@@ -177,7 +192,7 @@ const AddBuilding = () => {
   //               }
   //             });
   //           });
-  //       }
+  //       },
   //     );
   //   }
   // };
@@ -198,7 +213,10 @@ const AddBuilding = () => {
         <Row className="justify-content-center">
           <Col lg={7}>
             <Button variant="\f" className="buttonBack">
-              <IoIosArrowBack size={40} onClick={() => Navigate(-1)} />
+              <IoIosArrowBack
+                size={40}
+                onClick={() => Navigate(-1)}
+              />
             </Button>
             <Container fluid className="conformcomplex">
               <Form className="fromAddBuilding">
@@ -229,7 +247,8 @@ const AddBuilding = () => {
                   controlId="formPlaintextEmail"
                 >
                   <Form.Label column sm="2">
-                    Price Start <span className="spansqm">(sqm/month) </span>
+                    Price Start{" "}
+                    <span className="spansqm">(sqm/month) </span>
                   </Form.Label>
                   <Col sm="10">
                     <Form.Control
@@ -264,7 +283,8 @@ const AddBuilding = () => {
                   controlId="formPlaintextEmail"
                 >
                   <Form.Label column sm="2">
-                    Building Size <span className="spansqm">(m²) </span>
+                    Building Size{" "}
+                    <span className="spansqm">(m²) </span>
                   </Form.Label>
                   <Col sm="4">
                     <Form.Control
@@ -402,18 +422,24 @@ const AddBuilding = () => {
                     />
                     <Button
                       variant="outline-dark"
-                      disabled={images.length === maxNumber ? true : false}
+                      disabled={
+                        images.length === maxNumber ? true : false
+                      }
                     >
                       <label for="filee" className="fileee">
                         Upload
                       </label>
                     </Button>{" "}
                     &nbsp;
-                    <Button onClick={() => setImages([])} variant="dark">
+                    <Button
+                      onClick={() => setImages([])}
+                      variant="dark"
+                    >
                       Remove all
                     </Button>
                     <p className="ketImg">
-                      *The first image will be the main image(Max 8 picture)
+                      *The first image will be the main image(Max 8
+                      picture)
                     </p>
                     <Row>
                       {images.map((image, index) => (
@@ -450,13 +476,17 @@ const AddBuilding = () => {
                                 </Button>{" "}
                                 {/* <br />
                                 <input
+                                  index={index}
                                   type="file"
-                                  id="fileeee"
-                                  className="fileeee"
+                                  id={`fileeee ${index}`}
+                                  className={index}
                                   accept="image/*"
-                                  onChange={handleChangeUpdateImage(image)}
+                                  onChange={handleChangeUpdateImage(
+                                    image,
+                                  )}
                                 />
                                 <Button
+                                  variant="safa"
                                   style={{
                                     backgroundColor:
                                       "rgba(255, 255, 255, 0.15)",
@@ -464,7 +494,11 @@ const AddBuilding = () => {
                                   className="buttomimgform"
                                 >
                                   {" "}
-                                  <label for="fileeee" className="fileeeee">
+                                  <label
+                                    for="fileeee"
+                                    className="fileeeee"
+                                    id={index}
+                                  >
                                     <FiEdit
                                       style={{
                                         color: "black",
