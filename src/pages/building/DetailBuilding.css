@@ -147,7 +147,7 @@
   margin-top: 40px;
   font-weight: 500;
   width: 100%;
-  margin-left: 20px;
+  /* margin-left: 20px; */
 }
 .col-bd {
   padding: 0;
@@ -178,6 +178,7 @@
   padding-right: 10px;
   text-align: center;
   padding: 10px;
+  height: 122px;
 }
 .yourReview {
   font-weight: 550;
@@ -210,4 +211,11 @@
   font-size: 13px;
   width: 100%;
   margin-top: 30px;
+}
+.button-edit {
+  padding: 0;
+  margin: 0;
+}
+.button-edit-review {
+  width: 93px;
 }

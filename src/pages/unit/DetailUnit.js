@@ -3,7 +3,14 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Error500 from "../../components/error/Error500";
-import { Container, Spinner, Row, Col, Image, Button } from "react-bootstrap";
+import {
+  Container,
+  Spinner,
+  Row,
+  Col,
+  Image,
+  Button,
+} from "react-bootstrap";
 import NotFound from "../error/NotFound";
 import Footer from "../../components/footer/Footer";
 import { IoIosArrowBack } from "react-icons/io";
@@ -17,7 +24,9 @@ const DetailUnit = () => {
   const auth = parseCookies("auth").auth;
   const jwtDefault =
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MCwicm9sZV9pZCI6MCwiZXhwIjoxNjQwNTIzODE1fQ.RTtmDJ2fXyxY4N9GXWJnH-beaFIuHsgUSF3hJHHRXqU";
-  const jwt = jwt_decode(auth ? base64.decode(auth) : null || jwtDefault);
+  const jwt = jwt_decode(
+    auth ? base64.decode(auth) : null || jwtDefault,
+  );
   const role_id = jwt.Role_ID;
   const { search } = useLocation();
   const query = new URLSearchParams(search);
@@ -79,7 +88,9 @@ const DetailUnit = () => {
         }
       });
     } else {
-      Navigate(`/chat?key=${idUnit}`);
+      Navigate(
+        `/chat?key=${unit?.id}&n=${unit?.name}&b=${buildingName}`,
+      );
     }
   };
   return (
@@ -94,7 +105,9 @@ const DetailUnit = () => {
           {" "}
           <Container fluid className="conheader">
             <div className="textheader">
-              <h1 style={{ fontWeight: "700" }}>{unit?.name.toUpperCase()}</h1>
+              <h1 style={{ fontWeight: "700" }}>
+                {unit?.name.toUpperCase()}
+              </h1>
               <h3>
                 <Link className="spanhome" to="/">
                   <span>HOME</span>
@@ -105,7 +118,10 @@ const DetailUnit = () => {
                 >
                   <span>/ {buildingName.toUpperCase()} /</span>{" "}
                 </Link>
-                <span className="spancon"> {unit?.name.toUpperCase()}</span>
+                <span className="spancon">
+                  {" "}
+                  {unit?.name.toUpperCase()}
+                </span>
               </h3>
             </div>
           </Container>
@@ -115,7 +131,10 @@ const DetailUnit = () => {
               <Col>
                 {" "}
                 <Button variant="\f" className="buttonBack">
-                  <IoIosArrowBack size={40} onClick={() => Navigate(-1)} />
+                  <IoIosArrowBack
+                    size={40}
+                    onClick={() => Navigate(-1)}
+                  />
                 </Button>
               </Col>
             </Row>
@@ -125,7 +144,11 @@ const DetailUnit = () => {
                 <Container className="con-fitur ">
                   <Row className="row-fitur conunit">
                     <Col lg={5}>
-                      <Image src={mainImg} alt="main" className="main-img" />
+                      <Image
+                        src={mainImg}
+                        alt="main"
+                        className="main-img"
+                      />
                       <Row className="row-img">
                         {images?.map((v, i) => {
                           return (
@@ -135,9 +158,13 @@ const DetailUnit = () => {
                                   src={v}
                                   alt={i}
                                   className={
-                                    mainImg === v ? "activeIMG" : "imgs"
+                                    mainImg === v
+                                      ? "activeIMG"
+                                      : "imgs"
                                   }
-                                  onClick={() => setMainImg(images[i])}
+                                  onClick={() =>
+                                    setMainImg(images[i])
+                                  }
                                 />
                               </Col>
                             </>
@@ -153,13 +180,17 @@ const DetailUnit = () => {
                       <p className="startpriceunit">
                         {formatRupiah(unit?.price)}
                       </p>
-                      <p className="textdescription">{unit?.description}</p>
+                      <p className="textdescription">
+                        {unit?.description}
+                      </p>
                       <Row className="rowDetail">
                         <Col lg={4}>
                           <p>Unit size :</p>
                         </Col>
                         <Col lg={8}>
-                          <p className="p-isii">{unit?.unitsize} m²</p>
+                          <p className="p-isii">
+                            {unit?.unitsize} m²
+                          </p>
                         </Col>
                       </Row>
                       <Button

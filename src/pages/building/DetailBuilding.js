@@ -27,12 +27,15 @@ import Swal from "sweetalert2";
 import Footer from "../../components/footer/Footer";
 import CardUnit from "../../components/card/CardUnit";
 import base64 from "base-64";
+import { MdEdit } from "react-icons/md";
 
 const DetailBuilding = () => {
   const auth = parseCookies("auth").auth;
   const jwtDefault =
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MCwicm9sZV9pZCI6MCwiZXhwIjoxNjQwNTIzODE1fQ.RTtmDJ2fXyxY4N9GXWJnH-beaFIuHsgUSF3hJHHRXqU";
-  const jwt = jwt_decode(auth ? base64.decode(auth) : null || jwtDefault);
+  const jwt = jwt_decode(
+    auth ? base64.decode(auth) : null || jwtDefault,
+  );
   const role_id = jwt.Role_ID;
 
   const user_id = jwt.ID;
@@ -51,6 +54,8 @@ const DetailBuilding = () => {
   const [review, setReview] = useState();
   const [avgReview, setAvgReview] = useState(0);
   const [messageRating, setMessageRating] = useState("No Reviews");
+  const [isEditReview, setIsEditReview] = useState(false);
+  const [userReview, setUserReview] = useState();
   useEffect(() => {
     setIsLoading(true);
     var option = {
@@ -111,7 +116,10 @@ const DetailBuilding = () => {
         setIsLoading(false);
       });
   }, [idBuilding]);
-
+  useEffect(() => {
+    setValueRating(userReview?.rating);
+    setValueArea(userReview?.description);
+  }, [userReview]);
   useEffect(() => {
     if (avgReview === 0) {
     } else if (avgReview <= 20 || review?.[0].rating <= 20) {
@@ -126,6 +134,11 @@ const DetailBuilding = () => {
       setMessageRating("Awesome");
     }
   }, [avgReview, review]);
+  useEffect(() => {
+    setUserReview(
+      review?.find((element) => element.user_id === user_id),
+    );
+  }, [review, user_id]);
   const addReviewHandle = (e) => {
     e.preventDefault();
     if (user_id) {
@@ -229,7 +242,6 @@ const DetailBuilding = () => {
     );
   }
 
-  const userReview = review?.find((element) => element.user_id === user_id);
   const conversiValue = (OldValue) => {
     var OldMax = 100;
     var OldMin = 0;
@@ -237,8 +249,41 @@ const DetailBuilding = () => {
     var NewMin = 0;
     var OldRange = OldMax - OldMin;
     var NewRange = NewMax - NewMin;
-    var NewValue = ((OldValue - OldMin) * NewRange) / (OldRange + NewMin);
+    var NewValue =
+      ((OldValue - OldMin) * NewRange) / (OldRange + NewMin);
     return NewValue;
+  };
+
+  const addEditReview = (e) => {
+    e.preventDefault();
+    if (user_id) {
+      axios
+        .put(`http://13.213.57.122:8080/review/${userReview.id}`, {
+          user_id: user_id,
+          building_id: idBuilding,
+          rating: parseInt(valueRating),
+          description: valueArea,
+        })
+        .then(function (response) {
+          Swal.fire("Edit review success!", "", "success");
+          setValueRating();
+          setValueArea();
+          window.location.reload();
+        })
+        .catch(function (error) {
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Something Wrong :( !",
+          });
+        });
+    } else {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Sorry, you have to login first !",
+      });
+    }
   };
   return (
     <>
@@ -261,7 +306,10 @@ const DetailBuilding = () => {
                 <Link className="spanhome" to="/buildings">
                   <span>/ BUILDING /</span>{" "}
                 </Link>
-                <span className="spancon"> {building?.name.toUpperCase()}</span>
+                <span className="spancon">
+                  {" "}
+                  {building?.name.toUpperCase()}
+                </span>
               </h3>
             </div>
           </Container>
@@ -283,7 +331,10 @@ const DetailBuilding = () => {
                             to={`/unit/add?key=${idBuilding}`}
                           >
                             {" "}
-                            <MdOutlineAddCircleOutline size={28} /> Add Unit
+                            <MdOutlineAddCircleOutline
+                              size={28}
+                            />{" "}
+                            Add Unit
                           </Button>
                         </Col>
                       </>
@@ -293,7 +344,11 @@ const DetailBuilding = () => {
                 <Container className="con-fitur">
                   <Row className="row-fitur">
                     <Col lg={5}>
-                      <Image src={mainImg} alt="main" className="main-img" />
+                      <Image
+                        src={mainImg}
+                        alt="main"
+                        className="main-img"
+                      />
                       <Row className="row-img">
                         {images?.map((v, i) => {
                           return (
@@ -303,9 +358,13 @@ const DetailBuilding = () => {
                                   src={v}
                                   alt={i}
                                   className={
-                                    mainImg === v ? "activeIMG" : "imgs"
+                                    mainImg === v
+                                      ? "activeIMG"
+                                      : "imgs"
                                   }
-                                  onClick={() => setMainImg(images[i])}
+                                  onClick={() =>
+                                    setMainImg(images[i])
+                                  }
                                 />
                               </Col>
                             </>
@@ -314,11 +373,15 @@ const DetailBuilding = () => {
                       </Row>
                     </Col>
                     <Col lg={7}>
-                      <p className="textPrice">Start from (sqm per/month)</p>
+                      <p className="textPrice">
+                        Start from (sqm per/month)
+                      </p>
                       <p className="startprice">
                         {formatRupiah(building?.pricestart)}
                       </p>
-                      <p className="textdescription">{building?.description}</p>
+                      <p className="textdescription">
+                        {building?.description}
+                      </p>
                       <Row className="rowDetail">
                         <Col lg={4}>
                           <p>Address :</p>
@@ -332,7 +395,9 @@ const DetailBuilding = () => {
                           <p>Complex :</p>
                         </Col>
                         <Col lg={8}>
-                          <p className="p-isi">{building?.complex.name}</p>
+                          <p className="p-isi">
+                            {building?.complex.name}
+                          </p>
                         </Col>
                       </Row>
                       <Row className="rowDetail">
@@ -367,8 +432,12 @@ const DetailBuilding = () => {
                           <p className="p-isi">
                             Mon - Fri : {officeHours?.weekday}
                           </p>
-                          <p className="p-isi">Sat : {officeHours?.saturday}</p>
-                          <p className="p-isi">Sun : {officeHours?.sunday}</p>
+                          <p className="p-isi">
+                            Sat : {officeHours?.saturday}
+                          </p>
+                          <p className="p-isi">
+                            Sun : {officeHours?.sunday}
+                          </p>
                         </Col>
                       </Row>
                     </Col>
@@ -395,7 +464,10 @@ const DetailBuilding = () => {
                                 to={`/unit/add?key=${idBuilding}`}
                               >
                                 {" "}
-                                <MdOutlineAddCircleOutline size={28} /> Add Unit
+                                <MdOutlineAddCircleOutline
+                                  size={28}
+                                />{" "}
+                                Add Unit
                               </Button>
                             </Col>
                           </>
@@ -443,11 +515,13 @@ const DetailBuilding = () => {
                           <Container className="kotak-review">
                             <div className="h1-rev">
                               {conversiValue(
-                                avgReview || review?.[0].rating || 0
+                                avgReview || review?.[0].rating || 0,
                               )}
                               /<span className="limaper">5</span>
                             </div>
-                            <div className="font-bold">{messageRating}</div>
+                            <div className="font-bold">
+                              {messageRating}
+                            </div>
                             <div className="length-rev">
                               {review?.length || 0} Reviews
                             </div>
@@ -456,7 +530,9 @@ const DetailBuilding = () => {
                             {" "}
                             <Rating
                               className="rating-building"
-                              ratingValue={avgReview || review?.[0].rating || 0}
+                              ratingValue={
+                                avgReview || review?.[0].rating || 0
+                              }
                               allowHover={false}
                               readonly={true}
                               size={30}
@@ -480,31 +556,100 @@ const DetailBuilding = () => {
                       <Col lg={6}>
                         {userReview ? (
                           <>
-                            <Container className="conyourdesc">
-                              <Row className="justify-content-center">
-                                {/* <p className="yourReview">Your review</p> */}
-                                <Rating
-                                  size={30}
-                                  ratingValue={userReview}
-                                  fillColor="#ccc62a"
-                                  allowHover={false}
-                                  readonly={true}
-                                />
-
-                                <p className="yourdescription">
-                                  {userReview.description}
+                            {isEditReview ? (
+                              <>
+                                {" "}
+                                <p className="writeReview">
+                                  Edit Review
                                 </p>
-                              </Row>
-                            </Container>
+                                <Form>
+                                  <Rating
+                                    size={30}
+                                    onClick={(rate) =>
+                                      setValueRating(rate)
+                                    }
+                                    ratingValue={valueRating}
+                                    fillColor="#ccc62a"
+                                  />
+                                  <Form.Group
+                                    className="mb-2"
+                                    controlId="exampleForm.ControlTextarea1"
+                                  >
+                                    <Form.Control
+                                      as="textarea"
+                                      rows={2}
+                                      value={valueArea}
+                                      onChange={(e) =>
+                                        setValueArea(e.target.value)
+                                      }
+                                      required
+                                    />
+                                  </Form.Group>
+                                  <Row>
+                                    {" "}
+                                    <Col lg={7}></Col>
+                                    <Col lg={5}>
+                                      <Button
+                                        variant="ads"
+                                        // className="buttonreview"
+                                        onClick={() =>
+                                          setIsEditReview(false)
+                                        }
+                                      >
+                                        Cancel
+                                      </Button>
+                                      <Button
+                                        className="button-edit-review"
+                                        variant="dark"
+                                        onClick={addEditReview}
+                                      >
+                                        Edit
+                                      </Button>
+                                    </Col>
+                                  </Row>{" "}
+                                </Form>
+                              </>
+                            ) : (
+                              <>
+                                <Container className="conyourdesc">
+                                  <Row className="justify-content-center">
+                                    {/* <p className="yourReview">Your review</p> */}
+                                    <Rating
+                                      size={30}
+                                      ratingValue={userReview}
+                                      fillColor="#ccc62a"
+                                      allowHover={false}
+                                      readonly={true}
+                                    />
+
+                                    <p className="yourdescription">
+                                      {userReview.description}{" "}
+                                      <Button
+                                        variant="saf"
+                                        className="button-edit"
+                                        onClick={() =>
+                                          setIsEditReview(true)
+                                        }
+                                      >
+                                        <MdEdit size={22} />
+                                      </Button>
+                                    </p>
+                                  </Row>
+                                </Container>
+                              </>
+                            )}
                           </>
                         ) : (
                           <>
-                            {" "}
-                            <p className="writeReview">Write Review</p>
+                            <p className="writeReview">
+                              Write Review
+                            </p>
                             <Form>
                               <Rating
                                 size={30}
-                                onClick={(rate) => setValueRating(rate)}
+                                onClick={(rate) =>
+                                  setValueRating(rate)
+                                }
                                 ratingValue={valueRating}
                                 fillColor="#ccc62a"
                               />
@@ -519,7 +664,9 @@ const DetailBuilding = () => {
                                   as="textarea"
                                   rows={2}
                                   value={valueArea}
-                                  onChange={(e) => setValueArea(e.target.value)}
+                                  onChange={(e) =>
+                                    setValueArea(e.target.value)
+                                  }
                                   required
                                 />
                               </Form.Group>
