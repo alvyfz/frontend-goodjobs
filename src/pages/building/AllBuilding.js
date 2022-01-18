@@ -1,6 +1,6 @@
 import NavBar from "../../components/navbar/NavBar";
 import Searching from "../../components/searching/Searching";
-import { Container, Row, Col, Spinner } from "react-bootstrap";
+import { Container, Row, Col, Spinner, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import "./AllBuilding.css";
@@ -27,6 +27,7 @@ const AllBuilding = () => {
   const [cardsPerPage] = useState(6);
   const [isError, setIsError] = useState(false);
   const [currentPages, setCurrentPages] = useState();
+  const [urlParam, setUrlParam] = useState("buildings");
 
   useEffect(() => {
     window.scrollTo(0, 390);
@@ -36,7 +37,7 @@ const AllBuilding = () => {
     setIsLoading(true);
     var option = {
       method: "GET",
-      url: `http://13.213.57.122:8080/buildings`,
+      url: `http://13.213.57.122:8080/${urlParam}`,
     };
 
     axios
@@ -49,7 +50,7 @@ const AllBuilding = () => {
         setIsError(true);
         setIsLoading(false);
       });
-  }, []);
+  }, [urlParam]);
 
   if (isError) {
     return <Error500 />;
@@ -95,6 +96,35 @@ const AllBuilding = () => {
             <Row>
               <Col lg={2}></Col>
               <Col lg={8}>
+                <Form.Group
+                  as={Row}
+                  className="mb-3"
+                  controlId="formPlaintextEmail"
+                >
+                  <Form.Label column sm="1">
+                    Sort by
+                  </Form.Label>
+                  <Col sm="3">
+                    <Form.Select
+                      id="nationality"
+                      name="Filter"
+                      value={urlParam}
+                      onChange={(e) => setUrlParam(e.target.value)}
+                    >
+                      {" "}
+                      <option value={"buildings"}>
+                        Select Sorting
+                      </option>
+                      <option selected value={"buildings/desc"}>
+                        Price From Highest
+                      </option>
+                      <option selected value={"buildings/asc"}>
+                        Price From Lowest
+                      </option>
+                    </Form.Select>
+                  </Col>
+                </Form.Group>
+
                 <Row>
                   {currentCards?.map((v, i) => {
                     return (
