@@ -161,9 +161,9 @@ const AddBuilding = () => {
   // const label = (e) => {
   //   console.log(e.target.id[1]);
   // };
-  // const handleChangeUpdateImage = (img) => (e) => {
+  // const handleChangeUpdateImage = (e) => {
   //   const imageUpdate = e.target.files[0];
-  //   console.log(e.target.id);
+  //   const id = e.target.id;
   //   if (imageUpdate) {
   //     const uploadTask = storage
   //       .ref(`complex/${imageUpdate.name}`)
@@ -184,13 +184,9 @@ const AddBuilding = () => {
   //           .child(imageUpdate.name)
   //           .getDownloadURL()
   //           .then((url) => {
-  //             images.map((v, i) => {
-  //               if (v === img) {
-  //                 let newArr = [...images];
-  //                 newArr[i] = url;
-  //                 setImages(newArr);
-  //               }
-  //             });
+  //             let newArr = [...images];
+  //             newArr[id] = url;
+  //             setImages(newArr);
   //           });
   //       },
   //     );
@@ -476,14 +472,12 @@ const AddBuilding = () => {
                                 </Button>{" "}
                                 {/* <br />
                                 <input
-                                  index={index}
                                   type="file"
-                                  id={`fileeee ${index}`}
-                                  className={index}
+                                  // id={index}
+                                  id="fileeeee"
+                                  // className="fileeeee"
                                   accept="image/*"
-                                  onChange={handleChangeUpdateImage(
-                                    image,
-                                  )}
+                                  onChange={handleChangeUpdateImage}
                                 />
                                 <Button
                                   variant="safa"
@@ -495,9 +489,8 @@ const AddBuilding = () => {
                                 >
                                   {" "}
                                   <label
-                                    for="fileeee"
+                                    for={index}
                                     className="fileeeee"
-                                    id={index}
                                   >
                                     <FiEdit
                                       style={{
