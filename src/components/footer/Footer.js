@@ -1,7 +1,10 @@
 import { Container, Row, Col } from "react-bootstrap";
 import Brand from "../brand/Brand";
 import { Link } from "react-router-dom";
+import { parseCookies } from "nookies";
+
 export default function Footer() {
+  const jwt = parseCookies("auth").auth;
   return (
     <>
       <Container fluid>
@@ -18,10 +21,10 @@ export default function Footer() {
                 <Brand />
               </Link>
               <p style={{ fontSize: "14px" }}>
-                goodJobs is an web-based platform to rent office spaces across
-                Jakarta. goodjobs aims for the convenience of user when
-                searching for a suitable working space in Jakarta’s business
-                district areas.
+                goodJobs is an web-based platform to rent office
+                spaces across Jakarta. goodjobs aims for the
+                convenience of user when searching for a suitable
+                working space in Jakarta’s business district areas.
               </p>
             </Col>
             <Col lg={7}>
@@ -32,7 +35,10 @@ export default function Footer() {
                     <dl style={{ fontSize: "14px" }}>
                       <dd>
                         <Link
-                          style={{ textDecoration: "none", color: "inherit" }}
+                          style={{
+                            textDecoration: "none",
+                            color: "inherit",
+                          }}
                           to="/"
                         >
                           {" "}
@@ -41,7 +47,10 @@ export default function Footer() {
                       </dd>
                       <dd>
                         <Link
-                          style={{ textDecoration: "none", color: "inherit" }}
+                          style={{
+                            textDecoration: "none",
+                            color: "inherit",
+                          }}
                           to="/complex"
                         >
                           {" "}
@@ -50,7 +59,10 @@ export default function Footer() {
                       </dd>
                       <dd>
                         <Link
-                          style={{ textDecoration: "none", color: "inherit" }}
+                          style={{
+                            textDecoration: "none",
+                            color: "inherit",
+                          }}
                           to="/buildings"
                         >
                           {" "}
@@ -60,41 +72,53 @@ export default function Footer() {
                     </dl>
                   </>
                 </Col>
-                <Col lg={4}>
+                {jwt ? (
                   <>
-                    <h6 style={{ fontWeight: "600" }}>ACCOUNT</h6>
+                    <Col lg={4}>
+                      <>
+                        <h6 style={{ fontWeight: "600" }}>ACCOUNT</h6>
 
-                    <dl style={{ fontSize: "14px" }}>
-                      <dd>
-                        <Link
-                          style={{ textDecoration: "none", color: "inherit" }}
-                          to="/myaccount"
-                        >
-                          {" "}
-                          My Account{" "}
-                        </Link>
-                      </dd>
-                    </dl>
-                  </>
-                </Col>
-                <Col lg={4}>
-                  {" "}
-                  <>
-                    <h6 style={{ fontWeight: "600" }}>CONTACT US</h6>
+                        <dl style={{ fontSize: "14px" }}>
+                          <dd>
+                            <Link
+                              style={{
+                                textDecoration: "none",
+                                color: "inherit",
+                              }}
+                              to="/myaccount"
+                            >
+                              {" "}
+                              My Account{" "}
+                            </Link>
+                          </dd>
+                        </dl>
+                      </>
+                    </Col>
+                    <Col lg={4}>
+                      {" "}
+                      <>
+                        <h6 style={{ fontWeight: "600" }}>
+                          CONTACT US
+                        </h6>
 
-                    <dl style={{ fontSize: "14px" }}>
-                      <dd>
-                        <Link
-                          style={{ textDecoration: "none", color: "inherit" }}
-                          to="/chat"
-                        >
-                          {" "}
-                          Chat{" "}
-                        </Link>
-                      </dd>
-                    </dl>
+                        <dl style={{ fontSize: "14px" }}>
+                          <dd>
+                            <Link
+                              style={{
+                                textDecoration: "none",
+                                color: "inherit",
+                              }}
+                              to="/chat"
+                            >
+                              {" "}
+                              Chat{" "}
+                            </Link>
+                          </dd>
+                        </dl>
+                      </>
+                    </Col>
                   </>
-                </Col>
+                ) : null}
               </Row>
             </Col>
           </Row>
