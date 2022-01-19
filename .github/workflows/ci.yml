@@ -2,7 +2,7 @@ name: Build and Deploy
 
 on:
   push:
-    branches: [ master ]
+    branches: [ master deploymentCICD ]
 
 jobs:
   build:
@@ -52,4 +52,4 @@ jobs:
             docker rm -f goodjobs_react; \
             docker rmi alvyfauzi/goodjobs-react:latest; \
             docker pull alvyfauzi/goodjobs-react; \
-            docker run -d -p 3000:3000 --name goodjobs_react alvyfauzi/goodjobs-react
+            docker run -d -p 3000:80 --name goodjobs_react alvyfauzi/goodjobs-react
