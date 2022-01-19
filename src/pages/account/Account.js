@@ -18,6 +18,7 @@ import Footer from "../../components/footer/Footer";
 import ModalChangeAccount from "../../components/modal/ModalChangeAccount";
 import LeftMenu from "../../components/menu/LeftMenu";
 import base64 from "base-64";
+import ModalChangePassword from "../../components/modal/ModalChangePassword";
 
 const Account = () => {
   const Navigate = useNavigate();
@@ -33,6 +34,7 @@ const Account = () => {
   const [isError, setIsError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [modalShowAccount, setModalShowAccount] = useState(false);
+  const [modalPassowrd, setModalPassowrd] = useState(false);
   useEffect(() => {
     setIsLoading(true);
     var option = {
@@ -129,12 +131,21 @@ const Account = () => {
                               user={user}
                             />
                           </Col>
-                          {/* <Col lg={6}>
+                          <Col lg={6}>
                             {" "}
-                            <Button className="buttonacc" variant="dark">
+                            <Button
+                              className="buttonacc"
+                              variant="dark"
+                              onClick={() => setModalPassowrd(true)}
+                            >
                               Change password
                             </Button>
-                          </Col> */}
+                            <ModalChangePassword
+                              show={modalPassowrd}
+                              onHide={() => setModalPassowrd(false)}
+                              user={user}
+                            />
+                          </Col>
                         </Row>
                       </Row>
                     </Container>

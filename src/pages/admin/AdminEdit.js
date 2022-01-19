@@ -115,12 +115,20 @@ const AdminEdit = () => {
     e.preventDefault();
     if (validName && validPhone) {
       axios
-        .put(`http://13.213.57.122:8080/user/${user.id}`, {
-          name: nameUp,
-          email: emailUp.toLowerCase(),
-          phone: phone,
-          roles_id: parseInt(role),
-        })
+        .put(
+          `http://13.213.57.122:8080/user/${user.id}`,
+          {
+            name: nameUp,
+            email: emailUp.toLowerCase(),
+            phone: phone,
+            roles_id: parseInt(role),
+          },
+          {
+            headers: {
+              Authorization: `Bearer ${base64.decode(auth)}`,
+            },
+          },
+        )
         .then(function (response) {
           Swal.fire({
             icon: "success",
@@ -161,18 +169,18 @@ const AdminEdit = () => {
           method: "DELETE",
           url: `http://13.213.57.122:8080/user/${user.id}`,
           headers: {
-            Authorization: `Bearer ${auth}`,
+            Authorization: `Bearer ${base64.decode(auth)}`,
           },
         };
         axios
           .request(options)
           .then(function (response) {
-            window.location.reload();
             Swal.fire(
               `Delete building ${user.email} success!`,
               "",
               "success",
             );
+            window.location.reload();
           })
           .catch(function (error) {
             Swal.fire({
@@ -186,6 +194,7 @@ const AdminEdit = () => {
       }
     });
   };
+
   return (
     <>
       <NavBar />
@@ -271,6 +280,7 @@ const AdminEdit = () => {
                                         value={emailUp}
                                         onChange={handleChangeEmailUp}
                                         required
+                                        disabled
                                       />
                                     </div>
                                     <div className="mb-3">
