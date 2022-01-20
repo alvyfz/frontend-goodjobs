@@ -21,6 +21,9 @@ const Chats = () => {
   );
   const role_id = jwt.Role_ID;
   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+  useEffect(() => {
     if (!role_id || auth === undefined) {
       Navigate("/");
     }
