@@ -28,7 +28,9 @@ const AllBuilding = () => {
   const [isError, setIsError] = useState(false);
   const [currentPages, setCurrentPages] = useState();
   const [urlParam, setUrlParam] = useState("buildings");
-
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   useEffect(() => {
     window.scrollTo(0, 390);
   }, [currentPages]);

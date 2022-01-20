@@ -36,6 +36,9 @@ const Account = () => {
   const [modalShowAccount, setModalShowAccount] = useState(false);
   const [modalPassowrd, setModalPassowrd] = useState(false);
   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+  useEffect(() => {
     setIsLoading(true);
     var option = {
       method: "GET",
