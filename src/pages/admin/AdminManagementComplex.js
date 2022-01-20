@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import {
   Container,
   Row,
@@ -42,6 +43,12 @@ const AdminManagementComplex = () => {
   const [cardsPerPage] = useState(5);
 
   useEffect(() => {
+    if (!role_id) {
+      Navigate("/");
+    }
+    if (!role_id === 1 || !role_id === 2 || !role_id === 3) {
+      <NotFound />;
+    }
     setIsLoading(true);
     var option = {
       method: "GET",
@@ -164,42 +171,41 @@ const AdminManagementComplex = () => {
           </h3>
         </div>
       </Container>
-      {isLoading ? (
-        <div id="spinner">
-          <Spinner animation="border" />
-        </div>
-      ) : (
-        <>
-          <Container fluid className="complexcon conmanUser">
+      <Container fluid className="complexcon conmanUser">
+        <Row>
+          <Col lg={1}></Col>
+          <Col lg={10}>
             <Row>
-              <Col lg={1}></Col>
-              <Col lg={10}>
-                <Row>
+              {" "}
+              <Col lg={4}>
+                <LeftMenu />
+              </Col>
+              <Col lg={8}>
+                {" "}
+                <Container className="con-fitur height400px">
                   {" "}
-                  <Col lg={4}>
-                    <LeftMenu />
-                  </Col>
-                  <Col lg={8}>
-                    {" "}
-                    <Container className="con-fitur height400px">
-                      {" "}
-                      <Row className="row-fitur listrowacc ">
-                        <Form onSubmit={""}>
-                          <Row>
-                            <Form.Control
-                              value={text}
-                              type="text"
-                              placeholder="Seach id, name, or address"
-                              variant="light"
-                              onChange={(e) =>
-                                settext(e.target.value)
-                              }
-                              required
-                              className="inputSearch"
-                            />
-                          </Row>{" "}
-                        </Form>
-                        <br />
+                  <Row className="row-fitur listrowacc ">
+                    <Form onSubmit={""}>
+                      <Row>
+                        <Form.Control
+                          value={text}
+                          type="text"
+                          placeholder="Seach id, name, or address"
+                          variant="light"
+                          onChange={(e) => settext(e.target.value)}
+                          required
+                          className="inputSearch"
+                        />
+                      </Row>{" "}
+                    </Form>
+                    <br />
+                    {isLoading ? (
+                      <div id="spinner">
+                        <Spinner animation="border" />
+                      </div>
+                    ) : (
+                      <>
+                        {" "}
                         {currentCards.length !== 0 ? (
                           <>
                             <div className="tablesUser">
@@ -209,8 +215,9 @@ const AdminManagementComplex = () => {
                                     <th>ID</th>
                                     <th>NAME</th>
                                     <th>Address</th>
-
-                                    <th>ACTION</th>
+                                    {role_id === 3 ? null : (
+                                      <th>ACTION</th>
+                                    )}
                                   </tr>
                                 </thead>
                                 <tbody>
@@ -221,34 +228,35 @@ const AdminManagementComplex = () => {
                                           <td>{v?.id}</td>
                                           <td>{v?.name}</td>
                                           <td>{v?.address}</td>
-                                          {/* <td>{v?.description}</td> */}
-                                          <td className="act-icon">
-                                            {" "}
-                                            <Button
-                                              variant="sada"
-                                              className="buttondelete"
-                                              onClick={() =>
-                                                handleEdit(v)
-                                              }
-                                            >
-                                              <FiEdit
-                                                size={19}
-                                                color="black"
-                                              />{" "}
-                                            </Button>
-                                            <Button
-                                              variant="sada"
-                                              className="buttondelete"
-                                              onClick={() =>
-                                                handleDelete(v)
-                                              }
-                                            >
-                                              <AiOutlineDelete
-                                                size={22}
-                                                color="red"
-                                              />
-                                            </Button>
-                                          </td>
+                                          {role_id === 3 ? null : (
+                                            <td className="act-icon">
+                                              {" "}
+                                              <Button
+                                                variant="sada"
+                                                className="buttondelete"
+                                                onClick={() =>
+                                                  handleEdit(v)
+                                                }
+                                              >
+                                                <FiEdit
+                                                  size={19}
+                                                  color="black"
+                                                />{" "}
+                                              </Button>
+                                              <Button
+                                                variant="sada"
+                                                className="buttondelete"
+                                                onClick={() =>
+                                                  handleDelete(v)
+                                                }
+                                              >
+                                                <AiOutlineDelete
+                                                  size={22}
+                                                  color="red"
+                                                />
+                                              </Button>
+                                            </td>
+                                          )}
                                         </tr>
                                       </>
                                     );
@@ -274,18 +282,18 @@ const AdminManagementComplex = () => {
                               Complex not found :(
                             </h3>
                           </>
-                        )}
-                      </Row>
-                    </Container>
-                  </Col>
-                </Row>
+                        )}{" "}
+                      </>
+                    )}
+                  </Row>
+                </Container>
               </Col>
-              <Col lg={1}></Col>
             </Row>
-          </Container>
-          <Footer />
-        </>
-      )}
+          </Col>
+          <Col lg={1}></Col>
+        </Row>
+      </Container>
+      <Footer />
     </>
   );
 };

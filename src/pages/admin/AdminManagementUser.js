@@ -120,42 +120,41 @@ const AdminManagementUser = () => {
           </h3>
         </div>
       </Container>
-      {isLoading ? (
-        <div id="spinner">
-          <Spinner animation="border" />
-        </div>
-      ) : (
-        <>
-          <Container fluid className="complexcon conmanUser">
+      <Container fluid className="complexcon conmanUser">
+        <Row>
+          <Col lg={1}></Col>
+          <Col lg={10}>
             <Row>
-              <Col lg={1}></Col>
-              <Col lg={10}>
-                <Row>
+              {" "}
+              <Col lg={4}>
+                <LeftMenu />
+              </Col>
+              <Col lg={8}>
+                {" "}
+                <Container className="con-fitur height400px">
                   {" "}
-                  <Col lg={4}>
-                    <LeftMenu />
-                  </Col>
-                  <Col lg={8}>
-                    {" "}
-                    <Container className="con-fitur height400px">
-                      {" "}
-                      <Row className="row-fitur listrowacc ">
-                        <Form onSubmit={""}>
-                          <Row>
-                            <Form.Control
-                              value={text}
-                              type="text"
-                              placeholder="Seach user by id, name , email or phone number"
-                              variant="light"
-                              onChange={(e) =>
-                                settext(e.target.value)
-                              }
-                              required
-                              className="inputSearch"
-                            />
-                          </Row>{" "}
-                        </Form>
-                        <br />
+                  <Row className="row-fitur listrowacc ">
+                    <Form onSubmit={""}>
+                      <Row>
+                        <Form.Control
+                          value={text}
+                          type="text"
+                          placeholder="Seach user by id, name , email or phone number"
+                          variant="light"
+                          onChange={(e) => settext(e.target.value)}
+                          required
+                          className="inputSearch"
+                        />
+                      </Row>{" "}
+                    </Form>
+                    <br />
+                    {isLoading ? (
+                      <div id="spinner">
+                        <Spinner animation="border" />
+                      </div>
+                    ) : (
+                      <>
+                        {" "}
                         {currentCards.length !== 0 ? (
                           <>
                             <div className="tablesUser">
@@ -207,17 +206,17 @@ const AdminManagementUser = () => {
                             </h3>
                           </>
                         )}
-                      </Row>
-                    </Container>
-                  </Col>
-                </Row>
+                      </>
+                    )}
+                  </Row>
+                </Container>
               </Col>
-              <Col lg={1}></Col>
             </Row>
-          </Container>
-          <Footer />
-        </>
-      )}
+          </Col>
+          <Col lg={1}></Col>
+        </Row>
+      </Container>
+      <Footer />
     </>
   );
 };

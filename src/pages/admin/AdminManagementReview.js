@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import {
   Container,
   Row,
@@ -41,6 +42,12 @@ const AdminManagementReview = () => {
   const [cardsPerPage] = useState(8);
 
   useEffect(() => {
+    if (!role_id) {
+      Navigate("/");
+    }
+    if (!role_id === 1 || !role_id === 2 || !role_id === 3) {
+      <NotFound />;
+    }
     setIsLoading(true);
     var option = {
       method: "GET",
@@ -146,41 +153,34 @@ const AdminManagementReview = () => {
           </h3>
         </div>
       </Container>
-      {isLoading ? (
-        <div id="spinner">
-          <Spinner animation="border" />
-        </div>
-      ) : (
-        <>
-          <Container fluid className="complexcon conmanUser">
-            <Row>
-              <Col lg={1}></Col>
-              <Col lg={10}>
-                <Row>
+      <>
+        <Container fluid className="complexcon conmanUser">
+          <Row>
+            <Col lg={1}></Col>
+            <Col lg={10}>
+              <Row>
+                {" "}
+                <Col lg={4}>
+                  <LeftMenu />
+                </Col>
+                <Col lg={8}>
                   {" "}
-                  <Col lg={4}>
-                    <LeftMenu />
-                  </Col>
-                  <Col lg={8}>
+                  <Container className="con-fitur height400px">
                     {" "}
-                    <Container className="con-fitur height400px">
-                      {" "}
-                      <Row className="row-fitur listrowacc ">
-                        <Form onSubmit={""}>
-                          <Row>
-                            {/* <InputGroup> */}
-                            <Form.Control
-                              value={text}
-                              type="text"
-                              placeholder="Seach building id, user id , rating or description"
-                              variant="light"
-                              onChange={(e) =>
-                                settext(e.target.value)
-                              }
-                              required
-                              className="inputSearch"
-                            />
-                            {/* <Button
+                    <Row className="row-fitur listrowacc ">
+                      <Form onSubmit={""}>
+                        <Row>
+                          {/* <InputGroup> */}
+                          <Form.Control
+                            value={text}
+                            type="text"
+                            placeholder="Seach building id, user id , rating or description"
+                            variant="light"
+                            onChange={(e) => settext(e.target.value)}
+                            required
+                            className="inputSearch"
+                          />
+                          {/* <Button
                                 variant="dark"
                                 type="submit"
                                 className="buttonSearch"
@@ -188,82 +188,94 @@ const AdminManagementReview = () => {
                                 <BiSearch size={20} />
                               </Button>{" "}
                             </InputGroup> */}
-                          </Row>{" "}
-                        </Form>
-                        <br />
-                        {currentCards.length !== 0 ? (
-                          <>
-                            <div className="tablesUser">
-                              <Table responsive bordered size="sm">
-                                <thead>
-                                  <tr>
-                                    <th>BUILDING ID</th>
-                                    <th>USER ID</th>
-                                    <th>RATING</th>
-                                    <th>DESCRIPTION</th>
-                                    <th>ACT</th>
-                                  </tr>
-                                </thead>
-                                <tbody>
-                                  {currentCards?.map((v) => {
-                                    return (
-                                      <>
-                                        <tr>
-                                          <td>{v?.building_id}</td>
-                                          <td>{v?.user_id}</td>
-                                          <td>{v?.rating}</td>
-                                          <td>{v?.description}</td>
-                                          <td>
-                                            <Button
-                                              variant="sada"
-                                              className="buttondelete"
-                                              onClick={() =>
-                                                handleDelete(v.id)
-                                              }
-                                            >
-                                              <AiOutlineDelete
-                                                size={22}
-                                                color="red"
-                                              />
-                                            </Button>
-                                          </td>
-                                        </tr>
-                                      </>
-                                    );
-                                  })}
-                                </tbody>
-                              </Table>
-                            </div>
-                            <Row className="justify-content-center">
-                              <Col md={2}>
-                                <Paginations
-                                  className="paginationStyle"
-                                  totalCards={filtered?.length}
-                                  cardsPerPage={cardsPerPage}
-                                  paginate={paginate}
-                                  active={currentPage}
-                                />
-                              </Col>
-                            </Row>
-                          </>
-                        ) : (
-                          <>
-                            <h3 className="userNotFound">
-                              Review not found :(
-                            </h3>
-                          </>
-                        )}
-                      </Row>
-                    </Container>
-                  </Col>
-                </Row>
-              </Col>
-              <Col lg={1}></Col>
-            </Row>
-          </Container>
-          <Footer />
-        </>
-      )}
+                        </Row>{" "}
+                      </Form>
+                      <br />
+                      {isLoading ? (
+                        <div id="spinner">
+                          <Spinner animation="border" />
+                        </div>
+                      ) : (
+                        <>
+                          {" "}
+                          {currentCards.length !== 0 ? (
+                            <>
+                              <div className="tablesUser">
+                                <Table responsive bordered size="sm">
+                                  <thead>
+                                    <tr>
+                                      <th>BUILDING ID</th>
+                                      <th>USER ID</th>
+                                      <th>RATING</th>
+                                      <th>DESCRIPTION</th>
+                                      {role_id === 3 ? null : (
+                                        <th>ACT</th>
+                                      )}
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    {currentCards?.map((v) => {
+                                      return (
+                                        <>
+                                          <tr>
+                                            <td>{v?.building_id}</td>
+                                            <td>{v?.user_id}</td>
+                                            <td>{v?.rating}</td>
+                                            <td>{v?.description}</td>
+                                            {role_id === 3 ? null : (
+                                              <td>
+                                                <Button
+                                                  variant="sada"
+                                                  className="buttondelete"
+                                                  onClick={() =>
+                                                    handleDelete(v.id)
+                                                  }
+                                                >
+                                                  <AiOutlineDelete
+                                                    size={22}
+                                                    color="red"
+                                                  />
+                                                </Button>
+                                              </td>
+                                            )}
+                                          </tr>
+                                        </>
+                                      );
+                                    })}
+                                  </tbody>
+                                </Table>
+                              </div>
+                              <Row className="justify-content-center">
+                                <Col md={2}>
+                                  <Paginations
+                                    className="paginationStyle"
+                                    totalCards={filtered?.length}
+                                    cardsPerPage={cardsPerPage}
+                                    paginate={paginate}
+                                    active={currentPage}
+                                  />
+                                </Col>
+                              </Row>
+                            </>
+                          ) : (
+                            <>
+                              <h3 className="userNotFound">
+                                Review not found :(
+                              </h3>
+                            </>
+                          )}
+                        </>
+                      )}
+                    </Row>
+                  </Container>
+                </Col>
+              </Row>
+            </Col>
+            <Col lg={1}></Col>
+          </Row>
+        </Container>
+        <Footer />
+      </>
     </>
   );
 };

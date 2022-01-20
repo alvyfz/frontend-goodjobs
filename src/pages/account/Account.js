@@ -74,7 +74,6 @@ const Account = () => {
   return (
     <>
       <NavBar />
-
       <Container fluid className="conheader">
         <div className="textheader">
           <h1 style={{ fontWeight: "700" }}>MY ACCOUNT</h1>
@@ -85,26 +84,25 @@ const Account = () => {
             <span className="spancon">MY ACCOUNT</span>
           </h3>
         </div>
-      </Container>
-      {isLoading ? (
-        <div id="spinner">
-          <Spinner animation="border" />
-        </div>
-      ) : (
-        <>
-          {" "}
-          <Container fluid className="complexcon">
+      </Container>{" "}
+      <Container fluid className="complexcon">
+        <Row>
+          <Col lg={1}></Col>
+          <Col lg={10}>
             <Row>
-              <Col lg={1}></Col>
-              <Col lg={10}>
-                <Row>
-                  <Col lg={4}>
-                    <LeftMenu />
-                  </Col>
-                  <Col lg={8}>
-                    {" "}
-                    <Container className="con-fitur">
-                      <Row className="row-fitur listrowacc">
+              <Col lg={4}>
+                <LeftMenu />
+              </Col>
+              <Col lg={8}>
+                {" "}
+                <Container className="con-fitur">
+                  <Row className="row-fitur listrowacc">
+                    {isLoading ? (
+                      <div id="spinner">
+                        <Spinner animation="border" />
+                      </div>
+                    ) : (
+                      <>
                         <div className="listdetail">
                           <p>{user?.name}</p>
                           <p>{user?.email}</p>
@@ -146,18 +144,18 @@ const Account = () => {
                               user={user}
                             />
                           </Col>
-                        </Row>
-                      </Row>
-                    </Container>
-                  </Col>
-                </Row>
+                        </Row>{" "}
+                      </>
+                    )}
+                  </Row>
+                </Container>
               </Col>
-              <Col lg={1}></Col>
             </Row>
-          </Container>
-          <Footer />
-        </>
-      )}
+          </Col>
+          <Col lg={1}></Col>
+        </Row>
+      </Container>
+      <Footer />
     </>
   );
 };

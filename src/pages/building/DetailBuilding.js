@@ -153,7 +153,7 @@ const DetailBuilding = () => {
           Swal.fire("Add review success!", "", "success");
           setValueRating();
           setValueArea();
-          window.location.reload();
+          // window.location.reload();
         })
         .catch(function (error) {
           Swal.fire({

@@ -83,7 +83,7 @@ export default function LeftMenu() {
               </Row>{" "}
             </>
           ) : null}{" "}
-          {role_id === 2 ? (
+          {role_id === 2 || role_id === 3 ? (
             <>
               {" "}
               <Row

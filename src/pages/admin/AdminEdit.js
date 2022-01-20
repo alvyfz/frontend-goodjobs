@@ -12,7 +12,7 @@ import { AiOutlineDelete } from "react-icons/ai";
 import NotFound from "../error/NotFound";
 import NavBar from "../../components/navbar/NavBar";
 import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import { parseCookies } from "nookies";
 import jwt_decode from "jwt-decode";
@@ -45,12 +45,14 @@ const AdminEdit = () => {
   const nameRegex = /^[a-zA-Z\s]{2,40}$/;
   const phoneRegex = /^[0-9]{9,12}$/;
 
-  if (!role_id) {
-    Navigate("/");
-  }
-  if (!role_id === 1) {
-    <NotFound />;
-  }
+  useEffect(()=>{
+    if (!role_id) {
+      Navigate("/");
+    }
+    if (!role_id === 1) {
+      <NotFound />;
+    }
+  },[])
   const handleSearchUser = (e) => {
     e.preventDefault();
     setIsLoading(true);

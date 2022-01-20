@@ -166,7 +166,7 @@ export default function NavBar({
                         </NavDropdown.Item>
                       </>
                     ) : null}{" "}
-                    {user?.Role_ID === 2 ? (
+                    {user?.Role_ID === 2 || user?.Role_ID === 3 ? (
                       <>
                         <NavDropdown.Item
                           as={Link}
