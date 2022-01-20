@@ -69,63 +69,60 @@ const AllBuilding = () => {
     <>
       <NavBar building={true} />
       <Searching />
-      {isLoading ? (
-        <>
-          {" "}
-          <div id="spinner">
-            <Spinner animation="border" />
-          </div>
-        </>
-      ) : (
-        <>
-          <Container fluid className="complexcon">
-            {" "}
-            <div className="title">
-              <Row>
-                <Col lg={2}></Col>
-                <Col lg={3}>
-                  <h3>
-                    <Link className="spanhome" to="/">
-                      <span>HOME</span>{" "}
-                    </Link>
-                    <span className="spancon"> / ALL BUILDING</span>
-                  </h3>
-                </Col>
-              </Row>
-            </div>
-            <Row>
-              <Col lg={2}></Col>
-              <Col lg={8}>
-                <Form.Group
-                  as={Row}
-                  className="mb-3"
-                  controlId="formPlaintextEmail"
-                >
-                  <Form.Label column sm="1">
-                    Sort by
-                  </Form.Label>
-                  <Col sm="3">
-                    <Form.Select
-                      id="nationality"
-                      name="Filter"
-                      value={urlParam}
-                      onChange={(e) => setUrlParam(e.target.value)}
-                    >
-                      {" "}
-                      <option value={"buildings"}>
-                        Select Sorting
-                      </option>
-                      <option selected value={"buildings/desc"}>
-                        Price From Highest
-                      </option>
-                      <option selected value={"buildings/asc"}>
-                        Price From Lowest
-                      </option>
-                    </Form.Select>
-                  </Col>
-                </Form.Group>
 
-                <Row>
+      <Container fluid className="complexcon">
+        {" "}
+        <div className="title">
+          <Row>
+            <Col lg={2}></Col>
+            <Col lg={3}>
+              <h3>
+                <Link className="spanhome" to="/">
+                  <span>HOME</span>{" "}
+                </Link>
+                <span className="spancon"> / ALL BUILDING</span>
+              </h3>
+            </Col>
+          </Row>
+        </div>
+        <Row>
+          <Col lg={2}></Col>
+          <Col lg={8}>
+            <Form.Group
+              as={Row}
+              className="mb-3"
+              controlId="formPlaintextEmail"
+            >
+              <Form.Label column sm="1">
+                Sort by
+              </Form.Label>
+              <Col sm="3">
+                <Form.Select
+                  id="nationality"
+                  name="Filter"
+                  value={urlParam}
+                  onChange={(e) => setUrlParam(e.target.value)}
+                >
+                  {" "}
+                  <option value={"buildings"}>Select Sorting</option>
+                  <option selected value={"buildings/desc"}>
+                    Price From Highest
+                  </option>
+                  <option selected value={"buildings/asc"}>
+                    Price From Lowest
+                  </option>
+                </Form.Select>
+              </Col>
+            </Form.Group>
+
+            <Row>
+              {isLoading ? (
+                <div id="spinner">
+                  <Spinner animation="border" />
+                </div>
+              ) : (
+                <>
+                  {" "}
                   {currentCards?.map((v, i) => {
                     return (
                       <Col
@@ -146,26 +143,26 @@ const AllBuilding = () => {
                       </Col>
                     );
                   })}
-                </Row>
-              </Col>
-              <Col lg={2}> </Col>
+                </>
+              )}
             </Row>
-            <Row className="justify-content-center">
-              <Col md={1}>
-                <Paginations
-                  className="paginationStyle"
-                  totalCards={building?.length}
-                  cardsPerPage={cardsPerPage}
-                  paginate={paginate}
-                  active={currentPage}
-                />
-              </Col>
-            </Row>
-          </Container>
+          </Col>
+          <Col lg={2}> </Col>
+        </Row>
+        <Row className="justify-content-center">
+          <Col md={1}>
+            <Paginations
+              className="paginationStyle"
+              totalCards={building?.length}
+              cardsPerPage={cardsPerPage}
+              paginate={paginate}
+              active={currentPage}
+            />
+          </Col>
+        </Row>
+      </Container>
 
-          <Footer />
-        </>
-      )}
+      <Footer />
     </>
   );
 };
