@@ -122,7 +122,7 @@ const Account = () => {
                                 setModalShowAccount(true)
                               }
                             >
-                              Change account
+                              Edit account
                             </Button>
                             <ModalChangeAccount
                               show={modalShowAccount}
