@@ -61,7 +61,8 @@ export default function CardBuilding({
     var NewMin = 0;
     var OldRange = OldMax - OldMin;
     var NewRange = NewMax - NewMin;
-    var NewValue = ((OldValue - OldMin) * NewRange) / (OldRange + NewMin);
+    var NewValue =
+      ((OldValue - OldMin) * NewRange) / (OldRange + NewMin);
     return NewValue;
   };
 
@@ -82,7 +83,11 @@ export default function CardBuilding({
         axios
           .request(options)
           .then(function (response) {
-            Swal.fire(`Delete building ${name} success!`, "", "success");
+            Swal.fire(
+              `Delete building ${name} success!`,
+              "",
+              "success",
+            );
             window.location.reload();
           })
           .catch(function (error) {
@@ -116,7 +121,10 @@ export default function CardBuilding({
 
   return (
     <>
-      <Card className="cardbuild" style={{ width: "100%", padding: "0" }}>
+      <Card
+        className="cardbuild"
+        style={{ width: "100%", padding: "0" }}
+      >
         {isLoading ? (
           <Spinner />
         ) : (
@@ -132,61 +140,41 @@ export default function CardBuilding({
                 height: "200px",
               }}
             />
-            <Card.ImgOverlay
-              style={{
-                padding: "0px ",
-                fontSize: "18px",
-                textAlign: "left !important",
-                height: "60px",
-                marginTop: "140px",
-
-                backgroundColor: "rgba(0, 0, 0, 0.66)",
-              }}
-            >
-              <p style={{ paddingLeft: "20px", color: "white" }}>
+            <Card.ImgOverlay className="cardImgOverlay">
+              <p className="pCardBuilding">
                 {" "}
-                <span style={{ fontSize: "12px" }}>
+                <span className="fontSize12px">
                   Start from (per sqm/month){" "}
                 </span>
                 <br />{" "}
-                <span style={{ fontWeight: "550", fontSize: "18px" }}>
-                  {formatRupiah()}
-                </span>
+                <span className="spanHarga">{formatRupiah()}</span>
               </p>
             </Card.ImgOverlay>
-            <Card.Body style={{ color: "black" }}>
+            <Card.Body className="cBlack">
               {role_id === 1 || role_id === 2 ? (
                 <>
                   {" "}
                   <Row>
                     <Col lg={8}>
-                      <Card.Title
-                        style={{
-                          fontWeight: "600",
-                          fontSize: "18px",
-                          margin: "0",
-                        }}
-                      >
+                      <Card.Title className="cardTitleBuilding">
                         {name}
                       </Card.Title>
                       <Rating
-                        ratingValue={avgReview || review?.[0].rating || 0}
+                        ratingValue={
+                          avgReview || review?.[0].rating || 0
+                        }
                         allowHover={false}
                         readonly={true}
                         size={18}
-                      ></Rating>
-                      <span
-                        style={{
-                          paddingLeft: "10px",
-                          fontSize: "14px",
-                          paddingTop: "15px",
-                        }}
-                      >
-                        {conversiValue(avgReview) || review?.[0].rating || 0}{" "}
+                      />
+                      <span className="spanRatingValue">
+                        {conversiValue(avgReview) ||
+                          review?.[0].rating ||
+                          0}{" "}
                       </span>
                       <br />
 
-                      <Card.Text style={{ fontSize: "14px" }}>
+                      <Card.Text className="fontSize14px">
                         {complex}
                       </Card.Text>
                     </Col>
@@ -194,7 +182,7 @@ export default function CardBuilding({
                       <Row>
                         <Col>
                           <Button
-                            style={{ padding: "0", paddingLeft: "5px" }}
+                            className="buttonCardBuild"
                             variant="fa"
                             type="button"
                             onClick={handleEdit}
@@ -207,7 +195,7 @@ export default function CardBuilding({
                             type="button"
                             onClick={handleDelete}
                             variant="ds"
-                            style={{ padding: "0", marginLeft: "5px" }}
+                            className="buttonCardBuild"
                           >
                             <AiOutlineDelete size={23} color="red" />
                           </Button>
@@ -219,9 +207,7 @@ export default function CardBuilding({
               ) : (
                 <>
                   {" "}
-                  <Card.Title
-                    style={{ fontWeight: "600", fontSize: "20px", margin: "0" }}
-                  >
+                  <Card.Title className="cardTitleBuildingUser">
                     {name}
                   </Card.Title>
                   <Rating
@@ -230,35 +216,22 @@ export default function CardBuilding({
                     allowHover={false}
                     size={18}
                   ></Rating>
-                  <span
-                    style={{
-                      paddingLeft: "10px",
-                      fontSize: "14px",
-                      paddingTop: "15px",
-                    }}
-                  >
+                  <span className="conversiRatingValue">
                     {conversiValue(avgReview || 0)}{" "}
                   </span>
-                  <Card.Text style={{ fontSize: "14px", color: "#4F4F4F" }}>
+                  <Card.Text className="cardTextUser">
                     {complex}
                   </Card.Text>{" "}
                 </>
               )}
 
               <div style={{ padding: "0" }}>
-                <Row
-                  className="justify-content-center"
-                  style={{ padding: "15px 0px 5px 0px" }}
-                >
+                <Row className="justify-content-center rowButtonRequired">
                   <Button
                     as={Link}
                     to={`/building/detail?key=${id}`}
                     variant="dark"
-                    style={{
-                      width: "91%",
-                      align: "center",
-                      fontSize: "14px",
-                    }}
+                    className="buttonRequiredBuilding"
                   >
                     VIEW DETAIL
                   </Button>{" "}

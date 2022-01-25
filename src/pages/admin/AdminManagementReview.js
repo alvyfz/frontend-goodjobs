@@ -180,14 +180,6 @@ const AdminManagementReview = () => {
                             required
                             className="inputSearch"
                           />
-                          {/* <Button
-                                variant="dark"
-                                type="submit"
-                                className="buttonSearch"
-                              >
-                                <BiSearch size={20} />
-                              </Button>{" "}
-                            </InputGroup> */}
                         </Row>{" "}
                       </Form>
                       <br />

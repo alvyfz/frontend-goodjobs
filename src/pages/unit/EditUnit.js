@@ -162,41 +162,6 @@ const EditUnit = () => {
       );
     }
   };
-  // console.log(images);
-  // const handleChangeUpdateImage = (img) => (e) => {
-  //   const imageUpdate = e.target.files[0];
-  //   if (imageUpdate) {
-  //     const uploadTask = storage
-  //       .ref(`complex/${imageUpdate.name}`)
-  //       .put(imageUpdate);
-  //     uploadTask.on(
-  //       "state_change",
-  //       (snapshot) => {},
-  //       (error) => {
-  //         Swal.fire({
-  //           icon: "error",
-  //           title: "Oops...",
-  //           text: "Something Wrong :( !",
-  //         });
-  //       },
-  //       () => {
-  //         storage
-  //           .ref("complex")
-  //           .child(imageUpdate.name)
-  //           .getDownloadURL()
-  //           .then((url) => {
-  //             images.map((v, i) => {
-  //               if (v === img) {
-  //                 let newArr = [...images];
-  //                 newArr[i] = url;
-  //                 setImages(newArr);
-  //               }
-  //             });
-  //           });
-  //       }
-  //     );
-  //   }
-  // };
   const handleRemove = (image) => {
     var newArray = images.filter((item) => item !== image);
     setImages(newArray);
@@ -358,34 +323,9 @@ const EditUnit = () => {
                                   className="buttomimgform"
                                   variant=""
                                   onClick={() => handleRemove(image)}
-                                  // onClick={() => onImageRemove(index)}
                                 >
                                   <GrClose color="white" />
                                 </Button>{" "}
-                                {/* <br />
-                                <input
-                                  type="file"
-                                  id="fileeee"
-                                  className="fileeee"
-                                  accept="image/*"
-                                  onChange={handleChangeUpdateImage(image)}
-                                />
-                                <Button
-                                  style={{
-                                    backgroundColor:
-                                      "rgba(255, 255, 255, 0.15)",
-                                  }}
-                                  className="buttomimgform"
-                                >
-                                  {" "}
-                                  <label for="fileeee" className="fileeeee">
-                                    <FiEdit
-                                      style={{
-                                        color: "black",
-                                      }}
-                                    />
-                                  </label>
-                                </Button> */}
                               </Card.ImgOverlay>
                             </Card>
                           </div>

@@ -2,11 +2,18 @@
 import Footer from "../../components/footer/Footer";
 import NavBar from "../../components/navbar/NavBar";
 import "./AddComplex.css";
-import { Container, Row, Col, Button, Form, Card } from "react-bootstrap";
+import {
+  Container,
+  Row,
+  Col,
+  Button,
+  Form,
+  Card,
+} from "react-bootstrap";
 import { IoIosArrowBack } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-// import { FiEdit } from "react-icons/fi";
+
 import { GrClose } from "react-icons/gr";
 import { parseCookies } from "nookies";
 import jwt_decode from "jwt-decode";
@@ -21,7 +28,9 @@ const AddComplex = () => {
   const auth = parseCookies("auth").auth;
   const jwtDefault =
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MCwicm9sZV9pZCI6MCwiZXhwIjoxNjQwNTIzODE1fQ.RTtmDJ2fXyxY4N9GXWJnH-beaFIuHsgUSF3hJHHRXqU";
-  const jwt = jwt_decode(auth ? base64.decode(auth) : null || jwtDefault);
+  const jwt = jwt_decode(
+    auth ? base64.decode(auth) : null || jwtDefault,
+  );
   const role_id = jwt.Role_ID;
 
   if (role_id !== 1 && role_id !== 2) {
@@ -30,7 +39,6 @@ const AddComplex = () => {
 
   const [name, setName] = useState("");
   const [images, setImages] = useState([]);
-  // const [image, setImage] = useState([]);
   const [address, setAddres] = useState("");
   const [errName, setErrName] = useState("");
   const [validate, setValidate] = useState(false);
@@ -82,7 +90,9 @@ const AddComplex = () => {
     const image = e.target.files[0];
 
     if (image) {
-      const uploadTask = storage.ref(`complex/${image.name}`).put(image);
+      const uploadTask = storage
+        .ref(`complex/${image.name}`)
+        .put(image);
       uploadTask.on(
         "state_change",
         (snapshot) => {},
@@ -101,45 +111,11 @@ const AddComplex = () => {
             .then((url) => {
               setImages((currentImage) => [...currentImage, url]);
             });
-        }
+        },
       );
     }
   };
-  // console.log(images);
-  // const handleChangeUpdateImage = (img) => (e) => {
-  //   const imageUpdate = e.target.files[0];
-  //   if (imageUpdate) {
-  //     const uploadTask = storage
-  //       .ref(`complex/${imageUpdate.name}`)
-  //       .put(imageUpdate);
-  //     uploadTask.on(
-  //       "state_change",
-  //       (snapshot) => {},
-  //       (error) => {
-  //         Swal.fire({
-  //           icon: "error",
-  //           title: "Oops...",
-  //           text: "Something Wrong :( !",
-  //         });
-  //       },
-  //       () => {
-  //         storage
-  //           .ref("complex")
-  //           .child(imageUpdate.name)
-  //           .getDownloadURL()
-  //           .then((url) => {
-  //             images.map((v, i) => {
-  //               if (v === img) {
-  //                 let newArr = [...images];
-  //                 newArr[i] = url;
-  //                 setImages(newArr);
-  //               }
-  //             });
-  //           });
-  //       }
-  //     );
-  //   }
-  // };
+
   const handleRemove = (image) => {
     var newArray = images.filter((item) => item !== image);
     setImages(newArray);
@@ -157,7 +133,10 @@ const AddComplex = () => {
         <Row className="justify-content-center">
           <Col lg={6}>
             <Button variant="\f" className="buttonBack">
-              <IoIosArrowBack size={40} onClick={() => Navigate(-1)} />
+              <IoIosArrowBack
+                size={40}
+                onClick={() => Navigate(-1)}
+              />
             </Button>
             <Container fluid className="conformcomplex">
               <Form className="formComplex" onSubmit={handleSubmit}>
@@ -218,14 +197,19 @@ const AddComplex = () => {
                     />
                     <Button
                       variant="outline-dark"
-                      disabled={images.length === maxNumber ? true : false}
+                      disabled={
+                        images.length === maxNumber ? true : false
+                      }
                     >
                       <label for="filee" className="fileee">
                         Upload
                       </label>
                     </Button>{" "}
                     &nbsp;
-                    <Button onClick={() => setImages([])} variant="dark">
+                    <Button
+                      onClick={() => setImages([])}
+                      variant="dark"
+                    >
                       Remove all
                     </Button>
                     <Row style={{ marginTop: "15px" }}>
@@ -257,34 +241,9 @@ const AddComplex = () => {
                                   className="buttomimgform"
                                   variant=""
                                   onClick={() => handleRemove(image)}
-                                  // onClick={() => onImageRemove(index)}
                                 >
                                   <GrClose color="white" />
                                 </Button>{" "}
-                                {/* <br />
-                                <input
-                                  type="file"
-                                  id="fileeee"
-                                  className="fileeee"
-                                  accept="image/*"
-                                  onChange={handleChangeUpdateImage(image)}
-                                />
-                                <Button
-                                  style={{
-                                    backgroundColor:
-                                      "rgba(255, 255, 255, 0.15)",
-                                  }}
-                                  className="buttomimgform"
-                                >
-                                  {" "}
-                                  <label for="fileeee" className="fileeeee">
-                                    <FiEdit
-                                      style={{
-                                        color: "black",
-                                      }}
-                                    />
-                                  </label>
-                                </Button> */}
                               </Card.ImgOverlay>
                             </Card>
                           </div>

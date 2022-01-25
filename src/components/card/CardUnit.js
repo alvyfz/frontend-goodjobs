@@ -63,7 +63,6 @@ export default function CardUnit({
       confirmButtonColor: "black",
       confirmButtonText: "Sure",
     }).then((result) => {
-      /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
         Navigate(`/unit/edit?key=${id}`);
       } else if (result.isDenied) {
@@ -80,7 +79,6 @@ export default function CardUnit({
         confirmButtonColor: "black",
         confirmButtonText: "Login?",
       }).then((result) => {
-        /* Read more about isConfirmed, isDenied below */
         if (result.isConfirmed) {
           Navigate(`/login`);
         } else if (result.isDenied) {
@@ -164,18 +162,6 @@ export default function CardUnit({
                 className="justify-content-center"
                 style={{ padding: "20px 0px 20px 0px" }}
               >
-                {/* <Button
-                  style={{
-                    width: "80%",
-                    textAlign: "center",
-                    fontSize: "11px",
-                  }}
-                  variant="dark"
-                  as={Link}
-                  to={`chat?key=${id}`}
-                >
-                  ENQUIRE
-                </Button> */}
                 <Button
                   as={Link}
                   to={`/unit/detail?key=${id}&b=${buildingName}`}

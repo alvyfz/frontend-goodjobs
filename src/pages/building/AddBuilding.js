@@ -13,7 +13,6 @@ import { IoIosArrowBack } from "react-icons/io";
 import { useNavigate, useLocation } from "react-router-dom";
 
 import { useState } from "react";
-// import { FiEdit } from "react-icons/fi";
 import { GrClose } from "react-icons/gr";
 import { parseCookies } from "nookies";
 import jwt_decode from "jwt-decode";
@@ -157,41 +156,7 @@ const AddBuilding = () => {
       );
     }
   };
-  // console.log(images);
-  // const label = (e) => {
-  //   console.log(e.target.id[1]);
-  // };
-  // const handleChangeUpdateImage = (e) => {
-  //   const imageUpdate = e.target.files[0];
-  //   const id = e.target.id;
-  //   if (imageUpdate) {
-  //     const uploadTask = storage
-  //       .ref(`complex/${imageUpdate.name}`)
-  //       .put(imageUpdate);
-  //     uploadTask.on(
-  //       "state_change",
-  //       (snapshot) => {},
-  //       (error) => {
-  //         Swal.fire({
-  //           icon: "error",
-  //           title: "Oops...",
-  //           text: "Something Wrong :( !",
-  //         });
-  //       },
-  //       () => {
-  //         storage
-  //           .ref("complex")
-  //           .child(imageUpdate.name)
-  //           .getDownloadURL()
-  //           .then((url) => {
-  //             let newArr = [...images];
-  //             newArr[id] = url;
-  //             setImages(newArr);
-  //           });
-  //       },
-  //     );
-  //   }
-  // };
+
   const handleRemove = (image) => {
     var newArray = images.filter((item) => item !== image);
     setImages(newArray);
@@ -466,39 +431,9 @@ const AddBuilding = () => {
                                   className="buttomimgform"
                                   variant=""
                                   onClick={() => handleRemove(image)}
-                                  // onClick={() => onImageRemove(index)}
                                 >
                                   <GrClose color="white" />
                                 </Button>{" "}
-                                {/* <br />
-                                <input
-                                  type="file"
-                                  // id={index}
-                                  id="fileeeee"
-                                  // className="fileeeee"
-                                  accept="image/*"
-                                  onChange={handleChangeUpdateImage}
-                                />
-                                <Button
-                                  variant="safa"
-                                  style={{
-                                    backgroundColor:
-                                      "rgba(255, 255, 255, 0.15)",
-                                  }}
-                                  className="buttomimgform"
-                                >
-                                  {" "}
-                                  <label
-                                    for={index}
-                                    className="fileeeee"
-                                  >
-                                    <FiEdit
-                                      style={{
-                                        color: "black",
-                                      }}
-                                    />
-                                  </label>
-                                </Button> */}
                               </Card.ImgOverlay>
                             </Card>
                           </div>
