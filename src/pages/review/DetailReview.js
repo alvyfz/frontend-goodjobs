@@ -48,7 +48,8 @@ const DetailReview = () => {
     var NewMin = 0;
     var OldRange = OldMax - OldMin;
     var NewRange = NewMax - NewMin;
-    var NewValue = ((OldValue - OldMin) * NewRange) / (OldRange + NewMin);
+    var NewValue =
+      ((OldValue - OldMin) * NewRange) / (OldRange + NewMin);
     return NewValue;
   };
   console.log(review);
@@ -58,7 +59,7 @@ const DetailReview = () => {
       <Container fluid className="conheader">
         <div className="textheader">
           {" "}
-          <h1 style={{ fontWeight: "700" }}>
+          <h1 className="h1Review">
             REVIEW {nameBuilding?.toUpperCase()}
           </h1>
           <h3>
@@ -108,7 +109,9 @@ const DetailReview = () => {
                             </Col>
                             <Col lg={8}>
                               <p className="name-p">{v.user.name}</p>
-                              <p className="desc-p">{v.description}</p>
+                              <p className="desc-p">
+                                {v.description}
+                              </p>
                             </Col>
                           </Row>
                         </>

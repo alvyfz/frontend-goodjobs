@@ -56,12 +56,8 @@ const Login = () => {
         const auth = base64.encode(response.data.data.token);
         setCookie(null, "auth", auth, {
           maxAge: 3 * 60 * 60,
-          // encode: (val = "gatau") => val,
-          // httpOnly: true,
-          // path: "/",
-          // secure: process.env.SECURE_COOKIE === "true",
         });
-        
+
         navigate(-1);
         Swal.fire({
           icon: "success",
@@ -70,7 +66,6 @@ const Login = () => {
           confirmButtonColor: "black",
         });
         setPasswordIn("");
-            
       })
       .catch(function (error) {
         Swal.fire({
@@ -100,7 +95,11 @@ const Login = () => {
           roles_id: 4,
         })
         .then(function (response) {
-          Swal.fire("Sign up success!", "You can Sign In now!", "success");
+          Swal.fire(
+            "Sign up success!",
+            "You can Sign In now!",
+            "success",
+          );
           setEmailUp("");
           setPassword1Up("");
           setPassword2Up("");
@@ -156,7 +155,7 @@ const Login = () => {
     setPassword1Up(e.target.value);
     if (!passwordRegex.test(e.target.value)) {
       setErrorPassword(
-        "Password format must contain uppercase letters, lowercase letters, and numbers."
+        "Password format must contain uppercase letters, lowercase letters, and numbers.",
       );
       setValidPassword1(false);
     } else {
@@ -189,7 +188,10 @@ const Login = () => {
         </Col>
         <Col lg={6}>
           {" "}
-          <Row className="justify-content-left" style={{ margin: "20px " }}>
+          <Row
+            className="justify-content-left"
+            style={{ margin: "20px " }}
+          >
             <Col lg={3}></Col>
             <Col lg={6}>
               <div
@@ -299,7 +301,10 @@ const Login = () => {
                         value={nameUp}
                         onChange={handleChangeNameUp}
                       />
-                      <Form.Text className="formText" style={{ color: "red" }}>
+                      <Form.Text
+                        className="formText"
+                        style={{ color: "red" }}
+                      >
                         {errorName}
                       </Form.Text>{" "}
                     </div>
@@ -312,7 +317,10 @@ const Login = () => {
                         value={emailUp}
                         onChange={handleChangeEmailUp}
                       />
-                      <Form.Text className="formText" style={{ color: "red" }}>
+                      <Form.Text
+                        className="formText"
+                        style={{ color: "red" }}
+                      >
                         {errorEmail}
                       </Form.Text>{" "}
                     </div>
@@ -325,7 +333,10 @@ const Login = () => {
                         value={phone}
                         onChange={handleChangePhone}
                       />
-                      <Form.Text className="formText" style={{ color: "red" }}>
+                      <Form.Text
+                        className="formText"
+                        style={{ color: "red" }}
+                      >
                         {errorPhone}
                       </Form.Text>
                     </div>
@@ -384,7 +395,10 @@ const Login = () => {
                           )}
                         </button>{" "}
                       </InputGroup>{" "}
-                      <Form.Text className="formText" style={{ color: "red" }}>
+                      <Form.Text
+                        className="formText"
+                        style={{ color: "red" }}
+                      >
                         {errorPassword2}
                       </Form.Text>{" "}
                     </div>

@@ -14,7 +14,6 @@ import {
 import { IoIosArrowBack } from "react-icons/io";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
-// import { FiEdit } from "react-icons/fi";
 import { GrClose } from "react-icons/gr";
 import { parseCookies } from "nookies";
 import jwt_decode from "jwt-decode";
@@ -44,7 +43,7 @@ const EditComplex = () => {
 
   const [name, setName] = useState("");
   const [images, setImages] = useState([]);
-  // const [image, setImage] = useState([]);
+
   const [address, setAddres] = useState("");
   const [errName, setErrName] = useState("");
   const [validate, setValidate] = useState(true);
@@ -84,7 +83,6 @@ const EditComplex = () => {
         confirmButtonColor: "black",
         confirmButtonText: "Sure",
       }).then((result) => {
-        /* Read more about isConfirmed, isDenied below */
         if (result.isConfirmed) {
           axios
             .put(`http://13.213.57.122:8080/complex/${idComplex}`, {
@@ -174,41 +172,7 @@ const EditComplex = () => {
   if (isError) {
     return <Error500 />;
   }
-  // console.log(images);
-  // const handleChangeUpdateImage = (img) => (e) => {
-  //   const imageUpdate = e.target.files[0];
-  //   if (imageUpdate) {
-  //     const uploadTask = storage
-  //       .ref(`complex/${imageUpdate.name}`)
-  //       .put(imageUpdate);
-  //     uploadTask.on(
-  //       "state_change",
-  //       (snapshot) => {},
-  //       (error) => {
-  //         Swal.fire({
-  //           icon: "error",
-  //           title: "Oops...",
-  //           text: "Something Wrong :( !",
-  //         });
-  //       },
-  //       () => {
-  //         storage
-  //           .ref("complex")
-  //           .child(imageUpdate.name)
-  //           .getDownloadURL()
-  //           .then((url) => {
-  //             images.map((v, i) => {
-  //               if (v === img) {
-  //                 let newArr = [...images];
-  //                 newArr[i] = url;
-  //                 setImages(newArr);
-  //               }
-  //             });
-  //           });
-  //       }
-  //     );
-  //   }
-  // };
+
   const handleRemove = (image) => {
     var newArray = images.filter((item) => item !== image);
     setImages(newArray);
@@ -336,34 +300,9 @@ const EditComplex = () => {
                                   className="buttomimgform"
                                   variant=""
                                   onClick={() => handleRemove(image)}
-                                  // onClick={() => onImageRemove(index)}
                                 >
                                   <GrClose color="white" />
                                 </Button>{" "}
-                                {/* <br />
-                                <input
-                                  type="file"
-                                  id="fileeee"
-                                  className="fileeee"
-                                  accept="image/*"
-                                  onChange={handleChangeUpdateImage(image)}
-                                />
-                                <Button
-                                  style={{
-                                    backgroundColor:
-                                      "rgba(255, 255, 255, 0.15)",
-                                  }}
-                                  className="buttomimgform"
-                                >
-                                  {" "}
-                                  <label for="fileeee" className="fileeeee">
-                                    <FiEdit
-                                      style={{
-                                        color: "black",
-                                      }}
-                                    />
-                                  </label>
-                                </Button> */}
                               </Card.ImgOverlay>
                             </Card>
                           </div>

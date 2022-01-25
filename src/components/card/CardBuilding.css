@@ -7,3 +7,64 @@
   -ms-transform: scale(1.05) !important;
   z-index: 2;
 }
+.cardImgOverlay {
+  padding: 0;
+  font-size: 18px;
+  text-align: left !important;
+  height: 60px;
+  margin-top: 140px;
+  background-color: rgba(0, 0, 0, 0.66);
+}
+.pCardBuilding {
+  padding-left: 20px;
+  color: white;
+}
+.fontSize12px {
+  font-size: 12px;
+}
+.spanHarga {
+  font-weight: 550;
+  font-size: 18px;
+}
+.cBlack {
+  color: black;
+}
+.cardTitleBuilding {
+  font-weight: 600;
+  font-size: 18px;
+  margin: 0;
+}
+.spanRatingValue {
+  padding-left: 10px;
+  font-size: 14px;
+  padding-top: 15px;
+}
+.fontSize14px {
+  font-size: 14px;
+}
+.buttonCardBuild {
+  padding: 0;
+  padding-left: 5px;
+}
+.cardTitleBuildingUser {
+  font-weight: 600;
+  font-size: 20px;
+  margin: 0;
+}
+.conversiRatingValue {
+  padding-left: 10px;
+  font-size: 14px;
+  padding-top: 15px;
+}
+.cardTextUser {
+  font-size: 14px;
+  color: #4f4f4f;
+}
+.buttonRequiredBuilding {
+  width: 91%;
+  align-items: center;
+  font-size: 14px;
+}
+.rowButtonRequired {
+  padding: 15px 0px 5px 0px;
+}
